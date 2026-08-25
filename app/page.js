@@ -290,6 +290,9 @@ export default function Page() {
             >
               <Icon path="M12 3a9 9 0 1 0 9 9c0-.46-.03-.9-.1-1.34A6 6 0 0 1 12 3Z" size={18} />
             </button>
+            <button className="hh-icon-btn" aria-label="Wallet" disabled>
+              <Icon path="M3 7a2 2 0 0 1 2-2h13a1 1 0 0 1 1 1v2M3 7v11a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-4M3 7l4-3h9M15 15h4v-4h-4a2 2 0 0 0 0 4Z" size={18} />
+            </button>
             <button className="hh-icon-btn" aria-label="Notifications" disabled>
               <Icon path="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" size={18} />
             </button>
@@ -356,6 +359,7 @@ export default function Page() {
           </div>
         </div>
 
+        <h2 className="section-head">Extensive range of wellness care</h2>
         <div className="wellness-row">
           {WELLNESS_ITEMS.map((item) => (
             <div className="wellness-item" key={item.label} aria-disabled="true">
@@ -378,7 +382,10 @@ export default function Page() {
               8,000 daily step goal
             </span>
           </div>
-          <div className="step-count">2,602 steps</div>
+          <div className="step-count">
+            <Icon path="M13 4 4 15h6l-1 5 9-11h-6l1-5Z" size={20} width={1.6} />
+            2,602 steps
+          </div>
           <div className="step-bar">
             <div className="step-bar-fill" style={{ width: '32%' }} />
           </div>
@@ -388,6 +395,7 @@ export default function Page() {
             <span>8k</span>
           </div>
           <button className="step-cta" disabled>
+            <Icon path="M12 2 4 14h6l-1 8 9-13h-6l1-7Z" size={16} width={1.8} />
             Start a Challenge
           </button>
         </div>
