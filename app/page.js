@@ -23,6 +23,15 @@ const BANNER_SLIDES = [
   },
 ];
 
+/** Static, non-functional icon row matching the app home page's wellness shortcuts. */
+const WELLNESS_ITEMS = [
+  { label: 'Book Health Check', icon: 'M9 12h6M9 16h4M8 3v3M16 3v3M4 8h16M6 3h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z' },
+  { label: 'Lab Tests', icon: 'M9 2h6M10 2v6.5L5.5 17A3 3 0 0 0 8 21.5h8a3 3 0 0 0 2.5-4.5L14 8.5V2' },
+  { label: 'Pharmacy', icon: 'M4 21V9l8-6 8 6v12M9 21v-6h6v6' },
+  { label: 'Gym', icon: 'M4 8v8M20 8v8M7 12h10M2 12h2M20 12h2' },
+  { label: 'In-clinic Consult', icon: 'M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z' },
+];
+
 const BLANK_FORM = {
   fullName: '',
   mobile: '',
@@ -230,33 +239,70 @@ export default function Page() {
 
   return (
     <>
-      <div className="topbar">
-        <div className="brand">
-          <span className="logo" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z"
-                fill="#fff"
-              />
+      {view === 'programs' && (
+        <div className="topbar">
+          <div className="brand">
+            <span className="logo" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z"
+                  fill="#fff"
+                />
+              </svg>
+            </span>
+            <span>
+              ProHealth<small>HCL Healthcare</small>
+            </span>
+          </div>
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle light or dark theme"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 3a9 9 0 1 0 9 9c0-.46-.03-.9-.1-1.34A6 6 0 0 1 12 3Z" />
             </svg>
-          </span>
-          <span>
-            ProHealth<small>HCL Healthcare</small>
-          </span>
+          </button>
         </div>
-        <button
-          className="theme-toggle"
-          onClick={toggleTheme}
-          aria-label="Toggle light or dark theme"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 3a9 9 0 1 0 9 9c0-.46-.03-.9-.1-1.34A6 6 0 0 1 12 3Z" />
-          </svg>
-        </button>
-      </div>
+      )}
 
-      {/* ---------- Banner ---------- */}
-      <section className={`view ${view === 'banner' ? 'active' : ''}`}>
+      {/* ---------- Home (banner) ---------- */}
+      <section className={`view home-view ${view === 'banner' ? 'active' : ''}`}>
+        <div className="home-header">
+          <div className="brand">
+            <span className="logo" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z"
+                  fill="#fff"
+                />
+              </svg>
+            </span>
+            <span>
+              ProHealth<small>HCL Healthcare</small>
+            </span>
+          </div>
+          <div className="home-header-icons">
+            <button
+              className="hh-icon-btn"
+              onClick={toggleTheme}
+              aria-label="Toggle light or dark theme"
+            >
+              <Icon path="M12 3a9 9 0 1 0 9 9c0-.46-.03-.9-.1-1.34A6 6 0 0 1 12 3Z" size={18} />
+            </button>
+            <button className="hh-icon-btn" aria-label="Notifications" disabled>
+              <Icon path="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" size={18} />
+            </button>
+            <button className="hh-icon-btn" aria-label="Cart" disabled>
+              <Icon path="M6 6h15l-1.5 9h-12L4 3H2m6 18a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" size={18} />
+            </button>
+          </div>
+        </div>
+
+        <p className="home-greeting">
+          Hi <b>there</b>
+        </p>
+
         <div className="hh-banner-wrap">
           <div className="hh-track" ref={trackRef} onScroll={onTrackScroll}>
             {BANNER_SLIDES.map((slide) => (
@@ -308,6 +354,47 @@ export default function Page() {
               />
             ))}
           </div>
+        </div>
+
+        <div className="wellness-row">
+          {WELLNESS_ITEMS.map((item) => (
+            <div className="wellness-item" key={item.label} aria-disabled="true">
+              <span className="wellness-icon">
+                <Icon path={item.icon} size={22} width={1.8} />
+              </span>
+              <span>{item.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="step-card" aria-hidden="true">
+          <div className="step-card-top">
+            <span className="step-sync">
+              <Icon path="M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0 0 13.9 3M19.5 9A8 8 0 0 0 5.6 6" size={14} width={2} />
+              Last sync: just now
+            </span>
+            <span className="step-goal">
+              <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 14a4 4 0 1 1 4-4 4 4 0 0 1-4 4Z" size={14} width={1.8} />
+              8,000 daily step goal
+            </span>
+          </div>
+          <div className="step-count">2,602 steps</div>
+          <div className="step-bar">
+            <div className="step-bar-fill" style={{ width: '32%' }} />
+          </div>
+          <div className="step-scale">
+            <span>0</span>
+            <span>4k</span>
+            <span>8k</span>
+          </div>
+          <button className="step-cta" disabled>
+            Start a Challenge
+          </button>
+        </div>
+
+        <div className="engage-card" aria-hidden="true">
+          <h3>Engage yourself for a healthier you</h3>
+          <p>Take charge of your wellbeing with programs built around your goals.</p>
         </div>
       </section>
 
@@ -642,6 +729,31 @@ export default function Page() {
           </div>
         )}
       </div>
+
+      {view === 'banner' && (
+        <nav className="bottom-nav" aria-hidden="true">
+          <div className="bn-item active">
+            <Icon path="M4 11.5 12 4l8 7.5V21a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1Z" size={20} />
+            <span>Home</span>
+          </div>
+          <div className="bn-item">
+            <Icon path="M8 5v14l11-7Z" size={20} />
+            <span>Play</span>
+          </div>
+          <div className="bn-item">
+            <Icon path="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5Z" size={20} />
+            <span>Profile</span>
+          </div>
+          <div className="bn-item">
+            <Icon path="M4 6h16M4 12h16M4 18h16" size={20} />
+            <span>Menu</span>
+          </div>
+          <div className="bn-benefits">
+            <Icon path="M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z" size={16} />
+            My Benefits
+          </div>
+        </nav>
+      )}
     </>
   );
 }

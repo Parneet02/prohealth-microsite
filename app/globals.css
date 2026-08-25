@@ -303,3 +303,71 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   background:var(--line-strong);transition:background .2s ease, width .2s ease;
 }
 .hh-dot.active{width:20px;border-radius:4px;background:var(--brand)}
+
+/* Home-page chrome: header, greeting, wellness row, step card, engage card
+   and bottom nav, styled to match the host app's home screen layout around
+   the banner. Mostly static/decorative; only the banner and Home tab do
+   anything. */
+.home-view{padding-bottom:76px}
+.home-header{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  max-width:1180px;margin:0 auto;padding:16px clamp(18px,5vw,52px) 0;
+}
+.home-header-icons{display:flex;align-items:center;gap:10px}
+.hh-icon-btn{
+  width:38px;height:38px;border-radius:11px;border:1px solid var(--line-strong);
+  background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;
+}
+.hh-icon-btn:disabled{cursor:default;opacity:.55}
+.home-greeting{
+  max-width:1180px;margin:14px auto 0;padding:0 clamp(18px,5vw,52px);
+  font-size:1.05rem;color:var(--ink);
+}
+.wellness-row{
+  max-width:1180px;margin:22px auto 0;padding:0 clamp(18px,5vw,52px);
+  display:flex;gap:clamp(14px,4vw,28px);overflow-x:auto;
+}
+.wellness-item{
+  flex:none;display:flex;flex-direction:column;align-items:center;gap:8px;
+  width:78px;text-align:center;font-size:.76rem;font-weight:600;color:var(--ink);
+}
+.wellness-icon{
+  width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+  background:var(--surface-2);color:var(--brand);border:1px solid var(--line);
+}
+.step-card{
+  max-width:1180px;margin:22px auto 0;padding:20px clamp(18px,5vw,26px);
+  background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-sm);
+}
+.step-card-top{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:space-between;font-size:.8rem;color:var(--muted);font-weight:600}
+.step-card-top span{display:inline-flex;align-items:center;gap:6px}
+.step-count{margin-top:14px;font-size:1.5rem;font-weight:800;font-family:"Sora",sans-serif}
+.step-bar{margin-top:12px;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.step-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+.step-scale{display:flex;justify-content:space-between;margin-top:6px;font-size:.72rem;color:var(--faint)}
+.step-cta{
+  width:100%;margin-top:16px;padding:13px;border-radius:14px;border:none;
+  background:var(--brand);color:#fff;font-weight:700;font-size:.95rem;cursor:default;
+}
+.engage-card{
+  max-width:1180px;margin:18px auto 0;padding:22px clamp(18px,5vw,26px);
+  border-radius:20px;color:#fff;
+  background:linear-gradient(120deg,#1E3A8A,#2E7D32);
+}
+.engage-card h3{font-size:1.15rem;font-weight:800}
+.engage-card p{margin-top:6px;color:rgba(255,255,255,.85);font-size:.9rem;max-width:44ch}
+
+.bottom-nav{
+  position:sticky;bottom:0;left:0;right:0;z-index:5;
+  display:flex;align-items:center;justify-content:space-around;gap:6px;
+  padding:10px clamp(12px,4vw,24px);background:var(--surface);border-top:1px solid var(--line);
+}
+.bn-item{
+  display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.68rem;
+  font-weight:600;color:var(--faint);
+}
+.bn-item.active{color:var(--brand)}
+.bn-benefits{
+  display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;
+  background:var(--brand);color:#fff;font-size:.76rem;font-weight:700;white-space:nowrap;
+}
