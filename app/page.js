@@ -3,6 +3,26 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { PROGRAMS, SERVICE_TO_KEY, getProgramByService } from '@/lib/programs';
 
+/** Two rotating slides for the home-style banner. Add a slide here to extend the carousel. */
+const BANNER_SLIDES = [
+  {
+    key: 'overview',
+    eyebrow: 'HCL Healthcare Care Plan · ProHealth Programs',
+    title: 'Be proactive about your health',
+    cta: 'Register Your Interest!',
+    sub: 'Take the first steps towards a healthier you',
+    icon: 'M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z',
+  },
+  {
+    key: 'plus-highlight',
+    eyebrow: 'ProHealth Plus · 6 Month Plan',
+    title: 'Diagnostics, dietitian and fitness in one plan',
+    cta: 'Register Your Interest!',
+    sub: 'Stay ahead of your health with proactive, on-demand care',
+    icon: 'M12 2C9 6 6 8 6 13a6 6 0 0 0 12 0c0-5-3-7-6-11Z',
+  },
+];
+
 const BLANK_FORM = {
   fullName: '',
   mobile: '',
@@ -55,8 +75,10 @@ export default function Page() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null); // { service, key, leadId }
   const [tab, setTab] = useState('view');
+  const [activeSlide, setActiveSlide] = useState(0);
   const nameRef = useRef(null);
   const modalRef = useRef(null);
+  const trackRef = useRef(null);
 
   useEffect(() => {
     track('page_view');
@@ -109,6 +131,20 @@ export default function Page() {
     const next = dark ? 'light' : 'dark';
     setTheme(next);
     document.documentElement.setAttribute('data-theme', next);
+  }
+
+  function onTrackScroll() {
+    const el = trackRef.current;
+    if (!el) return;
+    const i = Math.round(el.scrollLeft / el.clientWidth);
+    setActiveSlide(Math.min(BANNER_SLIDES.length - 1, Math.max(0, i)));
+  }
+
+  function goToSlide(i) {
+    const el = trackRef.current;
+    if (!el) return;
+    el.scrollTo({ left: i * el.clientWidth, behavior: 'smooth' });
+    setActiveSlide(i);
   }
 
   function goPrograms() {
@@ -221,66 +257,56 @@ export default function Page() {
 
       {/* ---------- Banner ---------- */}
       <section className={`view ${view === 'banner' ? 'active' : ''}`}>
-        <div className="banner-wrap">
-          <div
-            className="banner"
-            role="button"
-            tabIndex={0}
-            aria-label="Explore ProHealth programs"
-            onClick={goPrograms}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                goPrograms();
-              }
-            }}
-          >
-            <div className="banner-inner">
-              <span className="eyebrow">HCL Healthcare Care Plan · ProHealth Programs</span>
-              <h1>
-                Be <span className="hl">proactive</span>
-                <br />
-                about your health
-              </h1>
-              <p className="sub">
-                Personalized diagnostics, nutrition and lab tracking. Pick the ProHealth program
-                built around your goals.
-              </p>
-              <button
-                className="banner-cta"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  goPrograms();
+        <div className="hh-banner-wrap">
+          <div className="hh-track" ref={trackRef} onScroll={onTrackScroll}>
+            {BANNER_SLIDES.map((slide) => (
+              <div
+                className="hh-slide"
+                key={slide.key}
+                role="button"
+                tabIndex={0}
+                aria-label={`${slide.title}. ${slide.cta}`}
+                onClick={goPrograms}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    goPrograms();
+                  }
                 }}
               >
-                Explore Programs
-                <Icon path="M5 12h14M13 6l6 6-6 6" width={2.4} />
-              </button>
-              <div className="banner-hint">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 3l1.5 4.5L15 9l-4.5 1.5L9 15l-1.5-4.5L3 9l4.5-1.5L9 3zm9 8l.9 2.6L21.5 15l-2.6.9L18 18.5l-.9-2.6L14.5 15l2.6-.9L18 11z" />
-                </svg>
-                Tap the banner to get started
+                <div className="hh-slide-text">
+                  <span className="hh-eyebrow">{slide.eyebrow}</span>
+                  <h1 className="hh-title">{slide.title}</h1>
+                  <span className="hh-cta-line">{slide.cta}</span>
+                  <p className="hh-sub">{slide.sub}</p>
+                </div>
+                <div className="hh-slide-art" aria-hidden="true">
+                  <span className="hh-art-circle">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d={slide.icon} />
+                    </svg>
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="banner-art" aria-hidden="true">
-              <div className="orb a" />
-              <div className="orb b" />
-              <div className="orb c" />
-              <div className="dots" />
-              <div className="pulse-ring">
-                <svg
-                  viewBox="0 0 220 90"
-                  fill="none"
-                  stroke="rgba(255,255,255,.9)"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M2 46h44l12-30 20 62 16-40 12 20h96" />
-                </svg>
-              </div>
-            </div>
+            ))}
+          </div>
+          <div className="hh-dots">
+            {BANNER_SLIDES.map((slide, i) => (
+              <button
+                key={slide.key}
+                type="button"
+                className={`hh-dot ${i === activeSlide ? 'active' : ''}`}
+                aria-label={`Show slide ${i + 1}`}
+                onClick={() => goToSlide(i)}
+              />
+            ))}
           </div>
         </div>
       </section>

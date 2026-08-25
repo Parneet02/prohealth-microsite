@@ -256,3 +256,50 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .admin-panel{margin-top:24px;display:grid;gap:18px}
 .admin-panel .tbl-wrap{max-height:520px}
 .gate-error{color:var(--bad);font-size:.88rem;font-weight:600}
+
+/* Home-app style banner carousel, styled after the Habit Health app's own
+   promo card (light card, orange eyebrow, bold headline, dot pager) so the
+   microsite banner reads as native content inside that app's home feed. */
+.hh-banner-wrap{max-width:1180px;margin:0 auto;padding:clamp(14px,4vw,28px) clamp(18px,5vw,52px) 34px}
+.hh-track{
+  display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  border-radius:20px;box-shadow:var(--shadow);-webkit-overflow-scrolling:touch;
+}
+.hh-track::-webkit-scrollbar{display:none}
+.hh-track{scrollbar-width:none}
+.hh-slide{
+  flex:0 0 100%;scroll-snap-align:start;cursor:pointer;
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;
+  min-height:172px;padding:22px clamp(18px,4vw,30px);
+  background:linear-gradient(120deg,var(--surface-2) 0%,var(--plus-soft) 100%);
+  border:1px solid var(--line);
+}
+.hh-slide:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
+.hh-eyebrow{
+  display:block;font-size:.72rem;font-weight:800;letter-spacing:.02em;
+  color:#E8792B;text-transform:none;
+}
+.hh-title{
+  margin-top:6px;font-size:clamp(1.15rem,3vw,1.5rem);font-weight:800;
+  letter-spacing:-.01em;color:var(--ink);line-height:1.22;
+}
+.hh-cta-line{display:block;margin-top:4px;font-weight:800;color:var(--ink);font-size:1rem}
+.hh-sub{margin-top:6px;color:var(--muted);font-size:.9rem}
+.hh-slide-art{display:flex;align-items:center;justify-content:center}
+.hh-art-circle{
+  width:76px;height:76px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;
+  box-shadow:var(--shadow-sm);
+}
+.hh-art-circle svg{width:34px;height:34px}
+@media(max-width:520px){
+  .hh-slide{min-height:150px;padding:18px}
+  .hh-art-circle{width:56px;height:56px}
+  .hh-art-circle svg{width:26px;height:26px}
+}
+.hh-dots{display:flex;justify-content:center;gap:7px;margin-top:12px}
+.hh-dot{
+  width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;
+  background:var(--line-strong);transition:background .2s ease, width .2s ease;
+}
+.hh-dot.active{width:20px;border-radius:4px;background:var(--brand)}
