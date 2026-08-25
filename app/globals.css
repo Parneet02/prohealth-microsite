@@ -396,3 +396,39 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;
   background:var(--brand);color:#fff;font-size:.76rem;font-weight:700;white-space:nowrap;
 }
+
+/* Home screen (view === 'banner') deliberately matches the host app's own
+   home-page colors rather than the ProHealth brand palette above, so it
+   reads as native content inside that app. Scoped to .home-view /
+   .home-header / .bottom-nav only — every other screen (programs, forms,
+   admin) keeps the ProHealth purple/magenta palette untouched. */
+.home-view, .home-header, .bottom-nav{
+  --hab-navy:#1B4F91; --hab-navy-ink:#14274D;
+  --hab-orange:#F0862A; --hab-green:#39B54A; --hab-yellow:#F7C948;
+  --hab-sky:#DCEEFB; --hab-ground:#CFEAD1;
+}
+.home-header .logo{background:linear-gradient(135deg,var(--hab-orange),var(--hab-navy))}
+.home-header .brand span{color:var(--hab-navy-ink)}
+.home-header .brand small{color:var(--hab-navy)}
+.home-header-icons .hh-icon-btn:first-child{
+  background:var(--hab-green);border-color:var(--hab-green);color:#fff;
+}
+.home-header-icons .hh-icon-btn:not(:first-child){color:var(--hab-navy-ink)}
+.home-greeting{color:var(--hab-navy-ink)}
+.hh-slide{background:linear-gradient(120deg,#F3ECE6 0%,#EFE3E8 100%);border-color:#EAD9CE}
+.hh-eyebrow{color:var(--hab-orange)}
+.hh-title, .hh-cta-line{color:var(--hab-navy-ink)}
+.hh-art-circle{background:linear-gradient(135deg,var(--hab-navy),var(--hab-orange))}
+.hh-dot.active{background:var(--hab-navy)}
+.section-head{color:var(--hab-navy-ink)}
+.wellness-icon{color:var(--hab-navy)}
+.step-scene{background:linear-gradient(180deg,var(--hab-sky) 0%,#EFF8F0 78%)}
+.step-scene::after{background:var(--hab-ground)}
+.step-tree{background:var(--hab-green)}
+.step-pill{color:var(--hab-navy-ink)}
+.step-pill-count{color:var(--hab-orange)}
+.step-bar-fill{background:linear-gradient(90deg,var(--hab-navy),var(--hab-orange))}
+.step-cta{background:var(--hab-yellow);color:var(--hab-navy-ink)}
+.engage-card{background:linear-gradient(120deg,var(--hab-navy) 0%,var(--hab-green) 100%)}
+.bn-item.active{color:var(--hab-navy)}
+.bn-benefits{background:var(--hab-navy)}
