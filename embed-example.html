@@ -1,0 +1,48 @@
+<!doctype html>
+<!--
+  Reference snippet for the Habit Health app team.
+  Drop this iframe into the app's webview page. The microsite posts its height
+  after every view change so the frame never shows an inner scrollbar.
+
+  Two attributes matter:
+    allow="clipboard-write"        keeps copy actions working in the webview
+    sandbox=... allow-downloads    only needed if you sandbox the frame at all;
+                                   without allow-downloads the PDF button dies
+                                   silently on Android.
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ProHealth Programs</title>
+    <style>
+      html, body { margin: 0; background: #F5F3FB; }
+      #prohealth { width: 100%; border: 0; display: block; min-height: 640px; }
+    </style>
+  </head>
+  <body>
+    <iframe
+      id="prohealth"
+      src="https://prohealth-microsite.vercel.app/"
+      title="ProHealth Programs"
+      loading="eager"
+      allow="clipboard-write"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
+    ></iframe>
+
+    <script>
+      // Only accept height messages from the microsite origin.
+      var MICROSITE_ORIGIN = 'https://prohealth-microsite.vercel.app';
+
+      window.addEventListener('message', function (event) {
+        if (event.origin !== MICROSITE_ORIGIN) return;
+        var data = event.data || {};
+        if (data.type !== 'prohealth:height') return;
+        var height = Number(data.height);
+        if (!height || height < 200) return;
+        document.getElementById('prohealth').style.height = height + 'px';
+      });
+    </script>
+  </body>
+</html>
