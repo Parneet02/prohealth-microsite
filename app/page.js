@@ -28,7 +28,7 @@ const WELLNESS_ITEMS = [
   { label: 'Book Health Check', icon: 'M9 12h6M9 16h4M8 3v3M16 3v3M4 8h16M6 3h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z' },
   { label: 'Lab Tests', icon: 'M9 2h6M10 2v6.5L5.5 17A3 3 0 0 0 8 21.5h8a3 3 0 0 0 2.5-4.5L14 8.5V2' },
   { label: 'Pharmacy', icon: 'M4 21V9l8-6 8 6v12M9 21v-6h6v6' },
-  { label: 'Gym', icon: 'M4 8v8M20 8v8M7 12h10M2 12h2M20 12h2' },
+  { label: 'Gym', icon: 'M4 8v8M20 8v8M7 12h10M2 12h2M20 12h2', highlight: true },
   { label: 'In-clinic Consult', icon: 'M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z' },
 ];
 
@@ -269,26 +269,18 @@ export default function Page() {
       {/* ---------- Home (banner) ---------- */}
       <section className={`view home-view ${view === 'banner' ? 'active' : ''}`}>
         <div className="home-header">
-          <div className="brand">
-            <span className="logo" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z"
-                  fill="#fff"
-                />
-              </svg>
-            </span>
-            <span>
-              ProHealth<small>HCL Healthcare</small>
-            </span>
+          <div className="brand hh-wordmark">
+            <span className="hh-wordmark-p">Pro</span>
+            <span className="hh-wordmark-h">Health</span>
+            <small>HCL Healthcare</small>
           </div>
           <div className="home-header-icons">
             <button
-              className="hh-icon-btn"
+              className="hh-icon-btn hh-badge"
               onClick={toggleTheme}
               aria-label="Toggle light or dark theme"
             >
-              <Icon path="M12 3a9 9 0 1 0 9 9c0-.46-.03-.9-.1-1.34A6 6 0 0 1 12 3Z" size={18} />
+              HC
             </button>
             <button className="hh-icon-btn" aria-label="Wallet" disabled>
               <Icon path="M3 7a2 2 0 0 1 2-2h13a1 1 0 0 1 1 1v2M3 7v11a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-4M3 7l4-3h9M15 15h4v-4h-4a2 2 0 0 0 0 4Z" size={18} />
@@ -359,11 +351,11 @@ export default function Page() {
           </div>
         </div>
 
-        <h2 className="section-head">Extensive Range Of Wellness Programs</h2>
+        <h2 className="section-head">Extensive Range Of Wellness Test</h2>
         <div className="wellness-row">
           {WELLNESS_ITEMS.map((item) => (
             <div className="wellness-item" key={item.label} aria-disabled="true">
-              <span className="wellness-icon">
+              <span className={`wellness-icon${item.highlight ? ' highlight' : ''}`}>
                 <Icon path={item.icon} size={22} width={1.8} />
               </span>
               <span>{item.label}</span>
@@ -385,8 +377,8 @@ export default function Page() {
               8,000 daily step goal
             </span>
             <span className="step-pill step-pill-count">
-              <Icon path="M13 4 4 15h6l-1 5 9-11h-6l1-5Z" size={15} width={1.8} />
-              2,602 steps
+              <Icon path="M9 4c-1.5 0-2.5 1.3-2.5 3s1 3 2.5 3 2.5-1.3 2.5-3-1-3-2.5-3ZM6 11c-1.3 0-2.5 1.6-2.5 4s.8 5 2.5 5c1.2 0 1.7-1 3-1s1.3 1 2.5 1c1 0 1.5-.8 1.5-2" size={15} width={1.8} />
+              2,602
             </span>
           </div>
           <div className="step-card-body">
@@ -394,9 +386,15 @@ export default function Page() {
               <div className="step-bar-fill" style={{ width: '32%' }} />
             </div>
             <div className="step-scale">
-              <span>0</span>
-              <span>4k</span>
-              <span>8k</span>
+              <span>
+                <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z" size={11} width={1.8} />0
+              </span>
+              <span>
+                <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z" size={11} width={1.8} />4k
+              </span>
+              <span>
+                <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z" size={11} width={1.8} />8k
+              </span>
             </div>
             <button className="step-cta" disabled>
               <Icon path="M12 2 4 14h6l-1 8 9-13h-6l1-7Z" size={16} width={1.8} />
@@ -406,7 +404,7 @@ export default function Page() {
         </div>
 
         <div className="engage-card" aria-hidden="true">
-          <div>
+          <div className="engage-card-text">
             <h3>
               Engage yourself
               <br />
@@ -414,7 +412,19 @@ export default function Page() {
             </h3>
             <p>Take charge of your wellbeing with programs built around your goals.</p>
           </div>
-          <Icon path="M9 6l6 6-6 6" size={20} width={2.4} />
+          <div className="engage-stat-chip">
+            <span className="engage-stat-label">StepUp Showdown</span>
+            <span className="engage-stat-row">
+              <Icon path="M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z" size={11} width={2} />
+              2900m · 231kcal
+            </span>
+          </div>
+          <span className="engage-badge">
+            <Icon path="M20 6 9 17l-5-5" size={13} width={2.6} />
+          </span>
+          <span className="engage-chevron">
+            <Icon path="M9 6l6 6-6 6" size={20} width={2.4} />
+          </span>
         </div>
       </section>
 

@@ -402,13 +402,17 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   --hab-orange:#F0862A; --hab-green:#39B54A; --hab-yellow:#F7C948;
   --hab-sky:#DCEEFB; --hab-ground:#CFEAD1;
 }
-.home-header .logo{background:linear-gradient(135deg,var(--hab-orange),var(--hab-navy))}
-.home-header .brand span{color:var(--hab-navy-ink)}
-.home-header .brand small{color:var(--hab-navy)}
-.home-header-icons .hh-icon-btn:first-child{
-  background:var(--hab-green);border-color:var(--hab-green);color:#fff;
+.hh-wordmark{flex-wrap:wrap;line-height:1.05}
+.hh-wordmark-p{color:var(--hab-orange);font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
+.hh-wordmark-h{color:var(--hab-navy-ink);font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
+.hh-wordmark small{
+  flex-basis:100%;color:var(--hab-navy);font-weight:700;
 }
-.home-header-icons .hh-icon-btn:not(:first-child){color:var(--hab-navy-ink)}
+.hh-badge{
+  background:var(--hab-green);border-color:var(--hab-green);color:#fff;
+  font-size:.72rem;font-weight:800;letter-spacing:.01em;
+}
+.home-header-icons .hh-icon-btn:not(.hh-badge){color:var(--hab-navy-ink)}
 .home-greeting{color:var(--hab-navy-ink)}
 .hh-slide{background:linear-gradient(120deg,#F3ECE6 0%,#EFE3E8 100%);border-color:#EAD9CE}
 .hh-eyebrow{color:var(--hab-orange)}
@@ -417,13 +421,31 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .hh-dot.active{background:var(--hab-navy)}
 .section-head{color:var(--hab-navy-ink)}
 .wellness-icon{color:var(--hab-navy)}
+.wellness-icon.highlight{background:var(--hab-sky);border-radius:50%}
 .step-scene{background:linear-gradient(180deg,var(--hab-sky) 0%,#EFF8F0 78%)}
 .step-scene::after{background:var(--hab-ground)}
 .step-tree{background:var(--hab-green)}
 .step-pill{color:var(--hab-navy-ink)}
 .step-pill-count{color:var(--hab-orange)}
+.step-scale span{display:inline-flex;align-items:center;gap:3px;color:var(--hab-orange)}
 .step-bar-fill{background:linear-gradient(90deg,var(--hab-navy),var(--hab-orange))}
 .step-cta{background:var(--hab-yellow);color:var(--hab-navy-ink)}
-.engage-card{background:linear-gradient(120deg,var(--hab-navy) 0%,var(--hab-green) 100%)}
+.engage-card{
+  background:linear-gradient(120deg,var(--hab-navy) 0%,var(--hab-green) 100%);
+  position:relative;flex-wrap:wrap;
+}
+.engage-card-text{flex:1 1 auto;min-width:0}
+.engage-stat-chip{
+  flex:none;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
+  border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;
+  font-size:.72rem;color:#fff;
+}
+.engage-stat-label{font-weight:700}
+.engage-stat-row{display:flex;align-items:center;gap:5px;opacity:.9}
+.engage-badge{
+  position:absolute;top:-8px;right:38px;width:22px;height:22px;border-radius:50%;
+  background:#fff;color:var(--hab-green);display:grid;place-items:center;box-shadow:var(--shadow-sm);
+}
+.engage-chevron{color:#fff;opacity:.85;flex:none;align-self:center}
 .bn-item.active{color:var(--hab-navy)}
 .bn-benefits{background:var(--hab-navy)}
