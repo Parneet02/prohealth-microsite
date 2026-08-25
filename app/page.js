@@ -359,7 +359,7 @@ export default function Page() {
           </div>
         </div>
 
-        <h2 className="section-head">Extensive range of wellness care</h2>
+        <h2 className="section-head">Extensive Range Of Wellness Programs</h2>
         <div className="wellness-row">
           {WELLNESS_ITEMS.map((item) => (
             <div className="wellness-item" key={item.label} aria-disabled="true">
@@ -372,37 +372,49 @@ export default function Page() {
         </div>
 
         <div className="step-card" aria-hidden="true">
-          <div className="step-card-top">
-            <span className="step-sync">
-              <Icon path="M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0 0 13.9 3M19.5 9A8 8 0 0 0 5.6 6" size={14} width={2} />
+          <div className="step-scene">
+            <span className="step-tree t1" />
+            <span className="step-tree t2" />
+            <span className="step-tree t3" />
+            <span className="step-pill step-pill-tl">
+              <Icon path="M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0 0 13.9 3M19.5 9A8 8 0 0 0 5.6 6" size={13} width={2} />
               Last sync: just now
             </span>
-            <span className="step-goal">
-              <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 14a4 4 0 1 1 4-4 4 4 0 0 1-4 4Z" size={14} width={1.8} />
+            <span className="step-pill step-pill-tr">
+              <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 14a4 4 0 1 1 4-4 4 4 0 0 1-4 4Z" size={13} width={1.8} />
               8,000 daily step goal
             </span>
+            <span className="step-pill step-pill-count">
+              <Icon path="M13 4 4 15h6l-1 5 9-11h-6l1-5Z" size={15} width={1.8} />
+              2,602 steps
+            </span>
           </div>
-          <div className="step-count">
-            <Icon path="M13 4 4 15h6l-1 5 9-11h-6l1-5Z" size={20} width={1.6} />
-            2,602 steps
+          <div className="step-card-body">
+            <div className="step-bar">
+              <div className="step-bar-fill" style={{ width: '32%' }} />
+            </div>
+            <div className="step-scale">
+              <span>0</span>
+              <span>4k</span>
+              <span>8k</span>
+            </div>
+            <button className="step-cta" disabled>
+              <Icon path="M12 2 4 14h6l-1 8 9-13h-6l1-7Z" size={16} width={1.8} />
+              Start a Challenge
+            </button>
           </div>
-          <div className="step-bar">
-            <div className="step-bar-fill" style={{ width: '32%' }} />
-          </div>
-          <div className="step-scale">
-            <span>0</span>
-            <span>4k</span>
-            <span>8k</span>
-          </div>
-          <button className="step-cta" disabled>
-            <Icon path="M12 2 4 14h6l-1 8 9-13h-6l1-7Z" size={16} width={1.8} />
-            Start a Challenge
-          </button>
         </div>
 
         <div className="engage-card" aria-hidden="true">
-          <h3>Engage yourself for a healthier you</h3>
-          <p>Take charge of your wellbeing with programs built around your goals.</p>
+          <div>
+            <h3>
+              Engage yourself
+              <br />
+              for a healthier you
+            </h3>
+            <p>Take charge of your wellbeing with programs built around your goals.</p>
+          </div>
+          <Icon path="M9 6l6 6-6 6" size={20} width={2.4} />
         </div>
       </section>
 
