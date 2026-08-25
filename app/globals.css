@@ -277,7 +277,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .hh-slide:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
 .hh-eyebrow{
   display:block;font-size:.72rem;font-weight:800;letter-spacing:.02em;
-  color:#E8792B;text-transform:none;
+  color:var(--brand-2);text-transform:none;
 }
 .hh-title{
   margin-top:6px;font-size:clamp(1.15rem,3vw,1.5rem);font-weight:800;
@@ -352,7 +352,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .engage-card{
   max-width:1180px;margin:18px auto 0;padding:22px clamp(18px,5vw,26px);
   border-radius:20px;color:#fff;
-  background:linear-gradient(120deg,#1E3A8A,#2E7D32);
+  background:linear-gradient(120deg,var(--brand),var(--brand-2));
 }
 .engage-card h3{font-size:1.15rem;font-weight:800}
 .engage-card p{margin-top:6px;color:rgba(255,255,255,.85);font-size:.9rem;max-width:44ch}
