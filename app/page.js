@@ -73,6 +73,47 @@ function Icon({ path, size = 20, width = 2 }) {
   );
 }
 
+/** Original flat-illustration graphics (hand-built shapes, not stock photography)
+ * standing in for the host app's real photos on this screen. */
+function ConsultIllustration() {
+  return (
+    <svg viewBox="0 0 200 150" className="hh-illo" aria-hidden="true">
+      <rect x="6" y="118" width="188" height="8" rx="4" fill="var(--hab-ground, #CFEAD1)" opacity=".6" />
+      <rect x="14" y="78" width="52" height="42" rx="12" fill="#8FB6DE" />
+      <circle cx="40" cy="60" r="17" fill="#F2C9A0" />
+      <rect x="30" y="98" width="20" height="26" rx="8" fill="#5B7A9A" />
+      <rect x="118" y="46" width="46" height="76" rx="16" fill="#FFFFFF" stroke="#E3E7EC" strokeWidth="2" />
+      <circle cx="141" cy="34" r="16" fill="#F2C9A0" />
+      <rect x="96" y="72" width="30" height="9" rx="4.5" fill="#F2C9A0" transform="rotate(-18 96 72)" />
+      <rect x="90" y="66" width="16" height="6" rx="3" fill="var(--hab-orange, #F0862A)" transform="rotate(-18 90 66)" />
+    </svg>
+  );
+}
+
+function RunnerIllustration() {
+  return (
+    <svg viewBox="0 0 90 90" className="step-runner" aria-hidden="true">
+      <circle cx="47" cy="16" r="9" fill="#F2C9A0" />
+      <path d="M47 25 30 40 22 30M47 25 60 34 66 20" stroke="#E24B4B" strokeWidth="7" fill="none" strokeLinecap="round" />
+      <path d="M47 25 38 55 20 66M47 25 56 52 68 78" stroke="#2F3C4E" strokeWidth="7" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function HighFiveIllustration() {
+  return (
+    <svg viewBox="0 0 140 90" className="engage-illo" aria-hidden="true">
+      <circle cx="34" cy="30" r="14" fill="#FFE0B2" />
+      <rect x="18" y="46" width="32" height="38" rx="12" fill="#FFFFFF" opacity=".92" />
+      <path d="M46 52 62 38" stroke="#FFFFFF" strokeWidth="8" strokeLinecap="round" opacity=".92" />
+      <circle cx="106" cy="28" r="14" fill="#D7C4A3" />
+      <rect x="90" y="44" width="32" height="38" rx="12" fill="#FFFFFF" opacity=".8" />
+      <path d="M94 50 78 36" stroke="#FFFFFF" strokeWidth="8" strokeLinecap="round" opacity=".8" />
+      <circle cx="70" cy="34" r="7" fill="#FFFFFF" opacity=".95" />
+    </svg>
+  );
+}
+
 export default function Page() {
   const [view, setView] = useState('banner');
   const [theme, setTheme] = useState(null);
@@ -322,18 +363,7 @@ export default function Page() {
                   <p className="hh-sub">{slide.sub}</p>
                 </div>
                 <div className="hh-slide-art" aria-hidden="true">
-                  <span className="hh-art-circle">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d={slide.icon} />
-                    </svg>
-                  </span>
+                  <ConsultIllustration />
                 </div>
               </div>
             ))}
@@ -368,6 +398,7 @@ export default function Page() {
             <span className="step-tree t1" />
             <span className="step-tree t2" />
             <span className="step-tree t3" />
+            <RunnerIllustration />
             <span className="step-pill step-pill-tl">
               <Icon path="M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0 0 13.9 3M19.5 9A8 8 0 0 0 5.6 6" size={13} width={2} />
               Last sync: just now
@@ -404,6 +435,7 @@ export default function Page() {
         </div>
 
         <div className="engage-card" aria-hidden="true">
+          <HighFiveIllustration />
           <div className="engage-card-text">
             <h3>
               Engage yourself

@@ -263,7 +263,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .hh-track{scrollbar-width:none}
 .hh-slide{
   flex:0 0 100%;scroll-snap-align:start;cursor:pointer;
-  display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;
+  display:grid;grid-template-columns:1fr min(38%,150px);align-items:center;gap:12px;
   min-height:172px;padding:22px clamp(18px,4vw,30px);
   background:linear-gradient(120deg,var(--surface-2) 0%,var(--plus-soft) 100%);
   border:1px solid var(--line);
@@ -279,17 +279,10 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 }
 .hh-cta-line{display:block;margin-top:4px;font-weight:800;color:var(--ink);font-size:1rem}
 .hh-sub{margin-top:6px;color:var(--muted);font-size:.9rem}
-.hh-slide-art{display:flex;align-items:center;justify-content:center}
-.hh-art-circle{
-  width:76px;height:76px;border-radius:50%;display:grid;place-items:center;flex:none;
-  background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;
-  box-shadow:var(--shadow-sm);
-}
-.hh-art-circle svg{width:34px;height:34px}
+.hh-slide-art{display:flex;align-items:center;justify-content:center;min-width:0}
+.hh-illo{width:100%;height:auto;max-width:150px}
 @media(max-width:520px){
   .hh-slide{min-height:150px;padding:18px}
-  .hh-art-circle{width:56px;height:56px}
-  .hh-art-circle svg{width:26px;height:26px}
 }
 .hh-dots{display:flex;justify-content:center;gap:7px;margin-top:12px}
 .hh-dot{
@@ -349,6 +342,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .step-tree.t1{left:12%}
 .step-tree.t2{left:24%;bottom:11px;width:9px;height:9px}
 .step-tree.t3{right:16%;bottom:19px;width:11px;height:11px}
+.step-runner{position:absolute;left:48%;bottom:18px;width:46px;height:46px;z-index:2;transform:translateX(-50%)}
 .step-pill{
   position:absolute;z-index:2;display:inline-flex;align-items:center;gap:6px;
   background:color-mix(in srgb,var(--surface) 92%,transparent);color:var(--ink);
@@ -368,13 +362,14 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 }
 .engage-card{
   max-width:480px;margin:18px auto 0;padding:22px clamp(18px,5vw,26px);
-  border-radius:20px;color:#fff;
+  border-radius:20px;color:#fff;overflow:hidden;
   background:linear-gradient(120deg,var(--brand),var(--brand-2));
   display:flex;align-items:center;justify-content:space-between;gap:14px;
 }
 .engage-card h3{font-size:1.15rem;font-weight:800;line-height:1.3}
 .engage-card p{margin-top:6px;color:rgba(255,255,255,.85);font-size:.9rem;max-width:38ch}
 .engage-card svg{flex:none;opacity:.85}
+.engage-illo{position:absolute;right:14px;bottom:8px;width:110px;height:auto;opacity:.9;z-index:0}
 
 .bottom-nav{
   position:sticky;bottom:0;z-index:5;
@@ -417,7 +412,6 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .hh-slide{background:linear-gradient(120deg,#F3ECE6 0%,#EFE3E8 100%);border-color:#EAD9CE}
 .hh-eyebrow{color:var(--hab-orange)}
 .hh-title, .hh-cta-line{color:var(--hab-navy-ink)}
-.hh-art-circle{background:linear-gradient(135deg,var(--hab-navy),var(--hab-orange))}
 .hh-dot.active{background:var(--hab-navy)}
 .section-head{color:var(--hab-navy-ink)}
 .wellness-icon{color:var(--hab-navy)}
@@ -434,18 +428,18 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   background:linear-gradient(120deg,var(--hab-navy) 0%,var(--hab-green) 100%);
   position:relative;flex-wrap:wrap;
 }
-.engage-card-text{flex:1 1 auto;min-width:0}
+.engage-card-text{flex:1 1 auto;min-width:0;position:relative;z-index:1}
 .engage-stat-chip{
   flex:none;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
   border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;
-  font-size:.72rem;color:#fff;
+  font-size:.72rem;color:#fff;position:relative;z-index:1;
 }
 .engage-stat-label{font-weight:700}
 .engage-stat-row{display:flex;align-items:center;gap:5px;opacity:.9}
 .engage-badge{
-  position:absolute;top:-8px;right:38px;width:22px;height:22px;border-radius:50%;
+  position:absolute;top:-8px;right:38px;width:22px;height:22px;border-radius:50%;z-index:2;
   background:#fff;color:var(--hab-green);display:grid;place-items:center;box-shadow:var(--shadow-sm);
 }
-.engage-chevron{color:#fff;opacity:.85;flex:none;align-self:center}
+.engage-chevron{color:#fff;opacity:.85;flex:none;align-self:center;position:relative;z-index:1}
 .bn-item.active{color:var(--hab-navy)}
 .bn-benefits{background:var(--hab-navy)}
