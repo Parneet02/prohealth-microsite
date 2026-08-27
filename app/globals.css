@@ -276,7 +276,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .hh-slide{
   flex:0 0 100%;scroll-snap-align:start;cursor:pointer;
   display:grid;grid-template-columns:1fr min(38%,150px);align-items:center;gap:12px;
-  min-height:172px;padding:22px clamp(18px,4vw,30px);
+  aspect-ratio:16/9;min-height:0;padding:22px clamp(18px,4vw,30px);
   background:linear-gradient(120deg,var(--surface-2) 0%,var(--plus-soft) 100%);
   border:1px solid var(--line);
 }
@@ -303,8 +303,8 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   .home-greeting{margin-top:8px;font-size:.95rem;padding:0 16px}
   .hh-banner-wrap{padding:10px 16px 0}
   .hh-slide{
-    min-height:0;height:clamp(150px,30dvh,260px);overflow:hidden;
-    padding:13px 14px;gap:10px;grid-template-columns:1fr min(30%,104px);
+    min-height:0;height:auto;aspect-ratio:16/9;overflow:hidden;
+    padding:12px 14px 22px;gap:10px;grid-template-columns:1fr min(34%,120px);
   }
   .hh-eyebrow{font-size:.6rem;line-height:1.25}
   .hh-title{margin-top:3px;font-size:1rem;line-height:1.15}
@@ -313,13 +313,18 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
     margin-top:3px;font-size:.72rem;line-height:1.3;
     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
   }
-  .hh-dots{margin-top:8px}
+  .hh-dots{bottom:8px}
   .hh-dot{width:6px;height:6px}
   .hh-dot.active{width:16px}
   .section-head{margin-top:16px;font-size:1rem}
   .wellness-row{margin-top:10px}
 }
-.hh-dots{display:flex;justify-content:center;gap:7px;margin-top:12px}
+/* Dots overlay the bottom of the banner card, as in the host app. */
+.hh-banner-wrap{position:relative}
+.hh-dots{
+  position:absolute;left:0;right:0;bottom:10px;z-index:2;
+  display:flex;justify-content:center;gap:7px;
+}
 .hh-dot{
   width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;
   background:var(--line-strong);transition:background .2s ease, width .2s ease;
@@ -397,20 +402,33 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .engage-card svg{flex:none;opacity:.85}
 .engage-illo{position:absolute;right:14px;bottom:8px;width:110px;height:auto;opacity:.9;z-index:0}
 
+/* Floating nav, matching the host app: a white pill bar (active tab on a
+   light-blue chip) plus a separate "My Benefits" block flush to the right
+   edge with only its left corners rounded. Values from the ForHer app's
+   mobile BottomNav so the two surfaces match. */
 .bottom-nav{
-  position:sticky;bottom:0;z-index:5;
+  position:sticky;bottom:calc(12px + var(--safe-b));z-index:5;
   max-width:480px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-around;gap:6px;
-  padding:10px clamp(12px,4vw,24px);background:var(--surface);border-top:1px solid var(--line);
+  display:flex;align-items:center;gap:8px;
+  padding:0 0 0 10px;background:none;border:none;
+}
+.bn-bar{
+  flex:1;min-width:0;height:58px;border-radius:29px;background:#fff;
+  display:flex;align-items:center;justify-content:space-around;padding:0 8px;
+  box-shadow:0 5px 14px rgba(27,42,61,.18);
 }
 .bn-item{
-  display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.68rem;
-  font-weight:600;color:var(--faint);
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+  font-size:10.5px;font-weight:500;color:var(--hab-text,#1B2A3D);
 }
-.bn-item.active{color:var(--brand)}
+.bn-ic{width:44px;height:28px;border-radius:14px;display:grid;place-items:center}
+.bn-item.active .bn-ic{background:#D2E1F0}
+.bn-item.active{color:var(--hab-blue,#2060B0);font-weight:700}
 .bn-benefits{
-  display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;
-  background:var(--brand);color:#fff;font-size:.76rem;font-weight:700;white-space:nowrap;
+  flex:none;width:94px;height:58px;border-radius:24px 0 0 24px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  background:#1E5AAD;color:#fff;font-size:10.5px;font-weight:700;white-space:nowrap;
+  box-shadow:0 5px 12px rgba(30,90,173,.35);
 }
 
 /* Home screen (view === 'banner') deliberately matches the host app's own
@@ -486,14 +504,6 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   background:#fff;color:#15837D;display:grid;place-items:center;box-shadow:var(--shadow-sm);
 }
 .engage-chevron{color:#fff;opacity:.85;flex:none;align-self:center;position:relative;z-index:1}
-.bottom-nav{height:74px;background:var(--hab-surface);border-top:1px solid var(--hab-line);padding:0 8px}
-.bn-item{font-size:10px;font-weight:500;color:var(--hab-text-soft)}
-.bn-item.active{color:var(--hab-blue);font-weight:600}
-.bn-benefits{
-  background:linear-gradient(135deg,var(--hab-blue),var(--hab-blue-bright));
-  padding:10px 16px;font-size:11.5px;font-weight:600;gap:7px;transform:translateY(-2px);
-  box-shadow:0 8px 18px -5px rgba(32,96,176,.55);
-}
 
 /* ---- Programs screen, same Habit design language as the home shell ---- */
 .programs-view{

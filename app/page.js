@@ -788,25 +788,35 @@ export default function Page() {
 
       {view === 'banner' && !embedded && (
         <nav className="bottom-nav" aria-hidden="true">
-          <div className="bn-item active">
-            <Icon path="M4 11.5 12 4l8 7.5V21a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1Z" size={20} />
-            <span>Home</span>
-          </div>
-          <div className="bn-item">
-            <Icon path="M8 5v14l11-7Z" size={20} />
-            <span>Play</span>
-          </div>
-          <div className="bn-item">
-            <Icon path="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5Z" size={20} />
-            <span>Profile</span>
-          </div>
-          <div className="bn-item">
-            <Icon path="M4 6h16M4 12h16M4 18h16" size={20} />
-            <span>Menu</span>
+          <div className="bn-bar">
+            <div className="bn-item active">
+              <span className="bn-ic">
+                <Icon path="M4 11.5 12 4l8 7.5V21a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1Z" size={20} width={1.75} />
+              </span>
+              <span className="bn-l">Home</span>
+            </div>
+            <div className="bn-item">
+              <span className="bn-ic">
+                <Icon path="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9Zm0 5a4 4 0 1 0 4 4 4 4 0 0 0-4-4Zm0 3a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z" size={20} width={1.75} />
+              </span>
+              <span className="bn-l">Play</span>
+            </div>
+            <div className="bn-item">
+              <span className="bn-ic">
+                <Icon path="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2c-4 0-8 2-8 5v1h16v-1c0-3-4-5-8-5Z" size={20} width={1.75} />
+              </span>
+              <span className="bn-l">Profile</span>
+            </div>
+            <div className="bn-item">
+              <span className="bn-ic">
+                <Icon path="M4 7h16M4 12h16M4 17h16" size={20} width={1.75} />
+              </span>
+              <span className="bn-l">Menu</span>
+            </div>
           </div>
           <div className="bn-benefits">
-            <Icon path="M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z" size={16} />
-            My Benefits
+            <Icon path="M12 5v14M5 12h14" size={18} width={2} />
+            <span>My Benefits</span>
           </div>
         </nav>
       )}
