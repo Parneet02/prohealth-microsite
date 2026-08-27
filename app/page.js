@@ -79,23 +79,27 @@ function Icon({ path, size = 20, width = 2 }) {
  * tracked wide below. Ported from the ForHer repo's HabitHealthLogo so the
  * two surfaces render the same mark.
  */
-function HabitHealthLogo() {
+function HabitHealthLogo({ id = 'a' }) {
+  // The gradient id must be unique per instance — the lockup renders on more
+  // than one screen, and a duplicated id makes the fill reference resolve to
+  // the wrong (or a hidden) node, leaving the figure unpainted.
+  const grad = `habit-figure-${id}`;
   return (
     <div className="hhl">
       <div className="hhl-word">
         <span className="hhl-letter">H</span>
         <svg className="hhl-figure" viewBox="0 0 100 120" aria-hidden="true">
           <defs>
-            <linearGradient id="habit-figure-a" x1="50%" y1="0%" x2="50%" y2="100%">
+            <linearGradient id={grad} x1="50%" y1="0%" x2="50%" y2="100%">
               <stop offset="0%" stopColor="#F5A623" />
               <stop offset="60%" stopColor="#F08144" />
               <stop offset="100%" stopColor="#E94B3F" />
             </linearGradient>
           </defs>
-          <circle cx="50" cy="16" r="10" fill="url(#habit-figure-a)" />
-          <path d="M 50 28 C 42 46, 32 78, 18 112 L 34 112 C 42 88, 48 68, 56 50 Z" fill="url(#habit-figure-a)" />
-          <path d="M 56 50 C 64 68, 70 88, 82 112 L 98 112 C 84 78, 74 46, 66 28 C 60 26, 55 26, 50 28 Z" fill="url(#habit-figure-a)" />
-          <rect x="36" y="78" width="32" height="7" rx="2.5" fill="url(#habit-figure-a)" />
+          <circle cx="50" cy="16" r="10" fill={`url(#${grad})`} />
+          <path d="M 50 28 C 42 46, 32 78, 18 112 L 34 112 C 42 88, 48 68, 56 50 Z" fill={`url(#${grad})`} />
+          <path d="M 56 50 C 64 68, 70 88, 82 112 L 98 112 C 84 78, 74 46, 66 28 C 60 26, 55 26, 50 28 Z" fill={`url(#${grad})`} />
+          <rect x="36" y="78" width="32" height="7" rx="2.5" fill={`url(#${grad})`} />
         </svg>
         <span className="hhl-letter">B</span>
         <span className="hhl-letter">I</span>
@@ -303,33 +307,6 @@ export default function Page() {
 
   return (
     <>
-      {view === 'programs' && (
-        <div className="topbar">
-          <div className="brand">
-            <span className="logo" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z"
-                  fill="#fff"
-                />
-              </svg>
-            </span>
-            <span>
-              ProHealth<small>HCL Healthcare</small>
-            </span>
-          </div>
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label="Toggle light or dark theme"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 3a9 9 0 1 0 9 9c0-.46-.03-.9-.1-1.34A6 6 0 0 1 12 3Z" />
-            </svg>
-          </button>
-        </div>
-      )}
-
       {/* ---------- Home (banner) ---------- */}
       <section className={`view home-view ${view === 'banner' ? 'active' : ''}`}>
         <div className="home-header">
@@ -463,13 +440,17 @@ export default function Page() {
       </section>
 
       {/* ---------- Programs ---------- */}
-      <section className={`view ${view === 'programs' ? 'active' : ''}`}>
-        <div className="programs-head">
-          <button className="back" onClick={() => setView('banner')}>
-            <Icon path="M19 12H5M11 18l-6-6 6-6" size={18} width={2.4} />
-            Back
+      <section className={`view programs-view ${view === 'programs' ? 'active' : ''}`}>
+        <div className="sub-header">
+          <button className="sub-back" onClick={() => setView('banner')} aria-label="Back">
+            <Icon path="M19 12H5M11 18l-6-6 6-6" size={20} width={2} />
           </button>
-          <h2>Choose your ProHealth program</h2>
+          <HabitHealthLogo id="programs" />
+          <span className="sub-spacer" />
+        </div>
+
+        <div className="programs-head">
+          <h2>Care Plans</h2>
           <p className="lead">
             Premium, on-demand health programs from HCL Healthcare. Register in the one that fits
             you and download your flyer instantly.

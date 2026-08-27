@@ -457,3 +457,55 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   padding:10px 16px;font-size:11.5px;font-weight:600;gap:7px;transform:translateY(-2px);
   box-shadow:0 8px 18px -5px rgba(32,96,176,.55);
 }
+
+/* ---- Programs screen, same Habit design language as the home shell ---- */
+.programs-view{
+  --hab-blue:#2060B0; --hab-blue-bright:#2E78D6; --hab-blue-deep:#173F73;
+  --hab-blue-soft:#EAF1FB; --hab-orange:#F67F1B; --hab-orange-deep:#B85806;
+  --hab-page:#F4F6F9; --hab-surface:#FFFFFF; --hab-line:#ECEEF2;
+  --hab-text:#1B2A3D; --hab-text-muted:#5A6473; --hab-text-soft:#9AA1AC;
+  background:var(--hab-page);min-height:100vh;
+}
+.sub-header{
+  max-width:480px;margin:0 auto;padding:10px 16px 4px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--hab-surface);border-bottom:1px solid var(--hab-line);
+}
+.sub-back{
+  width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(27,42,61,.05);color:var(--hab-text);display:grid;place-items:center;
+}
+.sub-spacer{width:36px}
+.programs-view .programs-head{padding:18px 18px 0}
+.programs-view .programs-head h2{
+  font-size:22px;font-weight:800;letter-spacing:-.01em;color:var(--hab-text);margin-top:0;
+}
+.programs-view .programs-head .lead{
+  color:var(--hab-text-muted);font-size:13px;margin-top:6px;max-width:44ch;
+}
+.programs-view .programs{padding:16px 16px 40px;gap:14px}
+/* Habit structure and neutrals, but each card keeps its own --accent from
+   lib/programs.js so Plus/Diet/Lab stay visually distinct. */
+.programs-view .card{
+  border:none;border-radius:18px;background:var(--hab-surface);
+  grid-template-columns:1fr;
+  box-shadow:0 .5px 1px rgba(27,42,61,.05), 0 8px 22px -10px rgba(27,42,61,.12);
+}
+.programs-view .card .stripe{display:none}
+.programs-view .card-body{padding:16px 16px 14px}
+.programs-view .pill{font-size:10.5px;padding:5px 11px}
+.programs-view .card h3{font-size:17px;font-weight:800;color:var(--hab-text);margin-top:10px}
+.programs-view .tagline{font-size:12.5px;font-style:normal;font-weight:600}
+.programs-view .price-badge{border:none;margin-top:12px;padding:6px 6px 6px 13px}
+.programs-view .price-badge .pd{font-size:12px;color:var(--hab-text-muted);font-weight:600}
+.programs-view .price-badge .pp{padding:5px 13px}
+.programs-view .price-badge .pp b{font-family:inherit;font-size:15px}
+.programs-view .desc{color:var(--hab-text-muted);font-size:12.5px;margin-top:12px}
+.programs-view .chip{
+  background:#F4F6FA;border:none;color:var(--hab-text-muted);font-size:11px;padding:5px 10px;
+}
+.programs-view .card-actions{margin-top:16px;gap:9px}
+.programs-view .btn{font-size:13px;padding:11px 20px}
+.programs-view .btn-ghost{padding:9.5px 18px;border-width:1.5px}
+.programs-view .card-media{padding:0 16px 16px}
+.programs-view .card-media img{border-radius:12px;border-color:var(--hab-line)}
