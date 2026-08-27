@@ -125,7 +125,15 @@ function HabitHealthLogo({ id = 'a' }) {
  * standing in for the host app's real photos on this screen. */
 function ConsultIllustration() {
   return (
-    <svg viewBox="0 0 200 150" className="hh-illo" aria-hidden="true">
+    <svg
+      viewBox="0 0 200 150"
+      className="hh-illo"
+      /* Anchored to the card's bottom-right so it bleeds off those edges.
+         "meet" not "slice": this is a sparse placeholder, and slicing crops
+         mid-figure. Swap to slice once the real lifestyle photo lands. */
+      preserveAspectRatio="xMaxYMax meet"
+      aria-hidden="true"
+    >
       <rect x="6" y="118" width="188" height="8" rx="4" fill="var(--hab-ground, #CFEAD1)" opacity=".6" />
       <rect x="14" y="78" width="52" height="42" rx="12" fill="#8FB6DE" />
       <circle cx="40" cy="60" r="17" fill="#F2C9A0" />
@@ -430,7 +438,7 @@ export default function Page() {
             <h3>
               Engage yourself
               <br />
-              for a healthier you
+              for a healthier you.
             </h3>
             <p>Take charge of your wellbeing with programs built around your goals.</p>
           </div>

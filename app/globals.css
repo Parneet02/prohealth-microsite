@@ -212,64 +212,82 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .hh-track{scrollbar-width:none}
 .hh-slide{
   flex:0 0 100%;scroll-snap-align:start;position:relative;isolation:isolate;
-  min-height:0;padding:20px 18px;
-  max-height:46dvh;                       /* dvh, not vh — mobile chrome */
+  cursor:pointer;overflow:hidden;
+  aspect-ratio:2.55;min-height:0;padding:14px 18px;
+  max-height:34dvh;                       /* dvh, not vh — mobile chrome */
+  display:flex;flex-direction:column;justify-content:center;
   background:linear-gradient(120deg,var(--surface-2) 0%,var(--plus-soft) 100%);
   border:1px solid var(--line);
 }
-.hh-slide-text{position:relative;z-index:1;max-width:64%}
+.hh-slide-text{position:relative;z-index:1;max-width:55%}
 .hh-eyebrow{
-  display:block;font-size:11px;font-weight:600;letter-spacing:.06em;
+  display:block;font-size:10px;font-weight:600;letter-spacing:.06em;line-height:1.3;
   text-transform:uppercase;color:var(--brand-2);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
+/* Spans the full card, not the 55% text column: at 55% (and at the old 64%)
+   both headings needed a third line and the clamp truncated them — the bug was
+   still live above 520px. The art is behind and bottom-anchored, so the wider
+   heading does not collide with it. */
 .hh-title{
-  margin-top:8px;font-size:clamp(19px,5.2vw,24px);font-weight:700;
-  letter-spacing:-.01em;color:var(--ink);line-height:1.2;text-wrap:balance;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  margin-top:5px;font-size:15px;font-weight:700;max-width:72%;
+  letter-spacing:-.01em;color:var(--ink);line-height:1.25;text-wrap:balance;
 }
-.hh-sub{
-  margin-top:12px;color:var(--muted);font-size:13px;line-height:1.4;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-}
+.hh-slide-text{max-width:none}
+/* Eyebrow tracks the heading width — at 55% "PROHEALTH PLUS · 6 MONTHS"
+   ellipsised. Sub and CTA stay at 55% to sit clear of the art. */
+.hh-eyebrow{max-width:72%}
+.hh-sub, .hh-cta{max-width:55%}
+.hh-sub{margin-top:5px;color:var(--muted);font-size:11px;line-height:1.35}
+/* Inline bold link, not a pill: the pill plus two lines of sub overflows the
+   2.55:1 card, and the live app uses a text affordance here. The whole card is
+   tappable; this stays a real button so it is keyboard reachable. */
 .hh-cta{
-  margin-top:16px;display:inline-flex;align-items:center;justify-content:center;
-  min-height:40px;padding:0 16px;border:none;border-radius:999px;cursor:pointer;
-  background:#6A2C91;color:#fff;font-size:14px;font-weight:600;
+  margin-top:7px;display:inline-block;padding:0;border:none;background:none;
+  cursor:pointer;color:#6A2C91;font-size:13px;font-weight:700;text-align:left;
 }
-.hh-cta:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-/* Behind the text, pinned bottom-right; drops out on very narrow screens. */
+.hh-cta:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+/* Full-bleed to the card's top, right and bottom edges, behind the text. */
 .hh-slide-art{
-  position:absolute;right:10px;bottom:0;z-index:0;pointer-events:none;
-  width:130px;display:flex;align-items:flex-end;justify-content:flex-end;
+  position:absolute;top:0;right:0;bottom:0;z-index:0;pointer-events:none;
+  width:42%;display:block;
 }
-.hh-illo{width:100%;height:auto}
+.hh-illo{width:100%;height:100%;display:block}
+/* At 360 the 2.55:1 card is only 132px tall and the stack overflows it, so
+   tighten the rhythm rather than clip the sub (which carries the price). */
+@media(max-width:375px){
+  .hh-slide{padding:10px 14px}
+  .hh-title{margin-top:3px}
+  .hh-sub{margin-top:3px}
+  .hh-cta{margin-top:5px}
+}
 @media(max-width:339px){.hh-slide-art{display:none}}
 /* Mobile hero compression. Inside the host webview the usable viewport is the
    screen minus the app's own header and tab bar, so the hero has to stay near
    half of it and let the next section peek as a scroll cue. dvh (not vh)
    because vh ignores mobile browser chrome. */
 @media(max-width:520px){
-  .home-header{padding:calc(10px + var(--safe-t)) 16px 0}
+  /* --pad is the page gutter; the live app runs nearly edge to edge. */
+  .home-view{--pad:12px}
+  .home-header{padding:calc(10px + var(--safe-t)) var(--pad) 0}
   .hh-icon-btn{width:32px;height:32px;border-radius:9px}
-  .home-greeting{margin-top:8px;margin-bottom:0;font-size:.95rem;padding:0 16px}
-  /* Card padding/type come from the base rules; only the page gutter and the
-     greeting-to-card gap change here. */
-  .hh-banner-wrap{padding:12px 16px 0}
-  /* 64% cannot hold either heading in two lines at phone widths — the clamp
-     truncates them. The heading sits above the bottom-anchored illustration,
-     so it can span the full card; the sub and button stay at 64% to keep clear
-     of the art. */
-  .hh-slide-text{max-width:100%}
-  .hh-sub{max-width:64%}
-  .hh-dot{width:6px;height:6px}
-  .hh-dot.active{width:16px}
-  .section-head{margin-top:16px;font-size:1rem}
-  .wellness-row{margin-top:10px}
+  .home-greeting{margin-top:8px;margin-bottom:0;font-size:.95rem;padding:0 var(--pad)}
+  .hh-banner-wrap{padding:6px var(--pad) 0}
+  .section-head{margin-top:16px;font-size:1rem;padding:0 var(--pad)}
+  .wellness-row{margin-top:10px;padding:0 var(--pad)}
+  .step-card{width:calc(100% - (var(--pad) * 2))}
+  .engage-card{width:calc(100% - (var(--pad) * 2))}
+  .foot{padding-left:var(--pad);padding-right:var(--pad)}
 }
-.hh-dots{display:flex;justify-content:center;gap:7px;margin-top:12px}
+/* Overlaid on the card's bottom edge, as in the live app — sitting below the
+   card wasted vertical space. */
+.hh-banner-wrap{position:relative}
+.hh-dots{
+  position:absolute;left:0;right:0;bottom:5px;z-index:2;
+  display:flex;justify-content:center;gap:6px;pointer-events:auto;
+}
 .hh-dot{
-  width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;
+  width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;
   background:var(--line-strong);transition:background .2s ease, width .2s ease;
 }
 .hh-dot.active{width:20px;border-radius:4px;background:var(--brand)}
@@ -301,11 +319,15 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 }
 .wellness-row{
   max-width:480px;margin:14px auto 0;padding:0 clamp(18px,5vw,52px);
-  display:flex;gap:clamp(14px,4vw,28px);overflow-x:auto;
+  display:flex;gap:20px;overflow-x:auto;
+  /* Keep the scrolling, hide the native bar — it renders as a visible track on
+     platforms with classic (non-overlay) scrollbars. */
+  scrollbar-width:none;-ms-overflow-style:none;
 }
+.wellness-row::-webkit-scrollbar{display:none}
 .wellness-item{
-  flex:none;display:flex;flex-direction:column;align-items:center;gap:8px;
-  width:78px;text-align:center;font-size:.76rem;font-weight:600;color:var(--ink);
+  flex:0 0 72px;display:flex;flex-direction:column;align-items:center;gap:8px;
+  width:72px;text-align:center;font-size:.76rem;font-weight:600;color:var(--ink);
 }
 .wellness-icon{
   width:56px;height:56px;border-radius:16px;margin:0 auto;
@@ -431,7 +453,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .step-goal small{color:var(--hab-text-muted)}
 .step-cta{background:var(--hab-gold);color:var(--hab-gold-text)}
 .engage-card{
-  background:linear-gradient(135deg,#2D4A7C 0%,#15837D 100%);
+  background:#1258A8;   /* live app is solid blue, not a teal gradient */
   position:relative;flex-wrap:wrap;
 }
 .engage-card-text{flex:1 1 auto;min-width:0;position:relative;z-index:1}
@@ -444,7 +466,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .engage-stat-row{display:flex;align-items:center;gap:5px;opacity:.9}
 .engage-badge{
   position:absolute;top:-8px;right:38px;width:22px;height:22px;border-radius:50%;z-index:2;
-  background:#fff;color:#15837D;display:grid;place-items:center;box-shadow:var(--shadow-sm);
+  background:#fff;color:#1258A8;display:grid;place-items:center;box-shadow:var(--shadow-sm);
 }
 .engage-chevron{color:#fff;opacity:.85;flex:none;align-self:center;position:relative;z-index:1}
 
