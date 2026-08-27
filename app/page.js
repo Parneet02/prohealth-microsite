@@ -157,8 +157,19 @@ export default function Page() {
   const modalRef = useRef(null);
   const trackRef = useRef(null);
 
+  /* The host app draws its own header and bottom tab bar around this page, so
+     the replica chrome below would double up. Hidden when embedded (in a frame,
+     or ?embed=1 for a plain webview, which is not framed); shown standalone so
+     the page still demos as the full home screen. */
+  const [embedded, setEmbedded] = useState(false);
+
   useEffect(() => {
     track('page_view');
+    if (typeof window === 'undefined') return;
+    const forced = new URLSearchParams(window.location.search).get('embed');
+    if (forced === '1') setEmbedded(true);
+    else if (forced === '0') setEmbedded(false);
+    else setEmbedded(window.parent !== window);
   }, []);
 
   /* Report height to the Habit Health app so the iframe can resize itself. */
@@ -309,7 +320,7 @@ export default function Page() {
     <>
       {/* ---------- Home (banner) ---------- */}
       <section className={`view home-view ${view === 'banner' ? 'active' : ''}`}>
-        <div className="home-header">
+        <div className="home-header" hidden={embedded}>
           <HabitHealthLogo />
           <div className="home-header-icons">
             <button
@@ -775,7 +786,7 @@ export default function Page() {
         )}
       </div>
 
-      {view === 'banner' && (
+      {view === 'banner' && !embedded && (
         <nav className="bottom-nav" aria-hidden="true">
           <div className="bn-item active">
             <Icon path="M4 11.5 12 4l8 7.5V21a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1Z" size={20} />

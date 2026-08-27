@@ -11,6 +11,9 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: '#6A2C91',
+  // Required for env(safe-area-inset-*) to resolve to anything but 0 in the
+  // host app's webview.
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({ children }) {

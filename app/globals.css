@@ -11,6 +11,14 @@
   --radius:22px; --radius-sm:14px;
   --good:#2E7D32; --bad:#C0392B;
   --focus:#B0338C;
+  /* Host app chrome. The page renders inside a webview whose bottom tab bar
+     overlays our viewport, so content has to reserve room for it. */
+  --app-nav:56px;
+  --safe-t:env(safe-area-inset-top,0px);
+  --safe-r:env(safe-area-inset-right,0px);
+  --safe-b:env(safe-area-inset-bottom,0px);
+  --safe-l:env(safe-area-inset-left,0px);
+  --nav-clear:calc(var(--app-nav) + var(--safe-b));
 }
 :root:not([data-theme="light"]){}
 @media (prefers-color-scheme: dark){
@@ -47,6 +55,10 @@ body{
   margin:0; background:var(--ground); color:var(--ink);
   font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   line-height:1.6; -webkit-font-smoothing:antialiased;
+  /* Clear the host tab bar and any notch/rounded-corner insets. */
+  padding-left:var(--safe-l); padding-right:var(--safe-r);
+  padding-bottom:var(--nav-clear);
+  overflow-x:hidden;
 }
 h1,h2,h3{font-family:"Sora","Plus Jakarta Sans",system-ui,sans-serif;text-wrap:balance;margin:0;line-height:1.12}
 p{margin:0}
@@ -281,8 +293,31 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .hh-sub{margin-top:6px;color:var(--muted);font-size:.9rem}
 .hh-slide-art{display:flex;align-items:center;justify-content:center;min-width:0}
 .hh-illo{width:100%;height:auto;max-width:150px}
+/* Mobile hero compression. Inside the host webview the usable viewport is the
+   screen minus the app's own header and tab bar, so the hero has to stay near
+   half of it and let the next section peek as a scroll cue. dvh (not vh)
+   because vh ignores mobile browser chrome. */
 @media(max-width:520px){
-  .hh-slide{min-height:150px;padding:18px}
+  .home-header{padding:calc(10px + var(--safe-t)) 16px 0}
+  .hh-icon-btn{width:32px;height:32px;border-radius:9px}
+  .home-greeting{margin-top:8px;font-size:.95rem;padding:0 16px}
+  .hh-banner-wrap{padding:10px 16px 0}
+  .hh-slide{
+    min-height:0;height:clamp(150px,30dvh,260px);overflow:hidden;
+    padding:13px 14px;gap:10px;grid-template-columns:1fr min(30%,104px);
+  }
+  .hh-eyebrow{font-size:.6rem;line-height:1.25}
+  .hh-title{margin-top:3px;font-size:1rem;line-height:1.15}
+  .hh-cta-line{margin-top:2px;font-size:.83rem}
+  .hh-sub{
+    margin-top:3px;font-size:.72rem;line-height:1.3;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .hh-dots{margin-top:8px}
+  .hh-dot{width:6px;height:6px}
+  .hh-dot.active{width:16px}
+  .section-head{margin-top:16px;font-size:1rem}
+  .wellness-row{margin-top:10px}
 }
 .hh-dots{display:flex;justify-content:center;gap:7px;margin-top:12px}
 .hh-dot{
@@ -295,10 +330,12 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
    and bottom nav, styled to match the host app's home screen layout around
    the banner. Mostly static/decorative; only the banner and Home tab do
    anything. */
-.home-view{padding-bottom:76px}
+.home-view{padding-bottom:12px}
+.home-header[hidden]{display:none}
 .home-header{
   display:flex;align-items:center;justify-content:space-between;gap:16px;
   max-width:480px;margin:0 auto;padding:16px clamp(18px,5vw,52px) 0;
+  padding-top:calc(16px + var(--safe-t));
 }
 .home-header-icons{display:flex;align-items:center;gap:10px}
 .hh-icon-btn{
@@ -464,10 +501,10 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   --hab-blue-soft:#EAF1FB; --hab-orange:#F67F1B; --hab-orange-deep:#B85806;
   --hab-page:#F4F6F9; --hab-surface:#FFFFFF; --hab-line:#ECEEF2;
   --hab-text:#1B2A3D; --hab-text-muted:#5A6473; --hab-text-soft:#9AA1AC;
-  background:var(--hab-page);min-height:100vh;
+  background:var(--hab-page);min-height:100dvh;
 }
 .sub-header{
-  max-width:480px;margin:0 auto;padding:10px 16px 4px;
+  max-width:480px;margin:0 auto;padding:calc(10px + var(--safe-t)) 16px 4px;
   display:flex;align-items:center;justify-content:space-between;
   background:var(--hab-surface);border-bottom:1px solid var(--hab-line);
 }
@@ -483,7 +520,18 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .programs-view .programs-head .lead{
   color:var(--hab-text-muted);font-size:13px;margin-top:6px;max-width:44ch;
 }
-.programs-view .programs{padding:16px 16px 40px;gap:14px}
+.programs-view .programs{padding:14px 16px 24px;gap:12px}
+/* The flyer preview is the tallest thing in a card and pushes the next card's
+   buttons far down the scroll. Cap it so more than one plan is reachable. */
+.programs-view .card-media img{max-height:200px;object-fit:contain}
+@media(max-width:520px){
+  .programs-view .programs-head{padding:14px 16px 0}
+  .programs-view .programs-head h2{font-size:20px}
+  .programs-view .programs-head .lead{font-size:12.5px;margin-top:5px}
+  .programs-view .card-media img{max-height:168px}
+  .programs-view .card-actions{margin-top:14px}
+  .programs-view .btn{padding:10px 18px}
+}
 /* Habit structure and neutrals, but each card keeps its own --accent from
    lib/programs.js so Plus/Diet/Lab stay visually distinct. */
 .programs-view .card{
