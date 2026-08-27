@@ -154,7 +154,6 @@ function HighFiveIllustration() {
 
 export default function Page() {
   const [view, setView] = useState('banner');
-  const [theme, setTheme] = useState(null);
   const [viewerKey, setViewerKey] = useState(null);
   const [form, setForm] = useState(BLANK_FORM);
   const [formOpen, setFormOpen] = useState(false);
@@ -220,17 +219,6 @@ export default function Page() {
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [closeForm]);
-
-  function toggleTheme() {
-    const dark =
-      theme != null
-        ? theme === 'dark'
-        : typeof window !== 'undefined' &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const next = dark ? 'light' : 'dark';
-    setTheme(next);
-    document.documentElement.setAttribute('data-theme', next);
-  }
 
   function onTrackScroll() {
     const el = trackRef.current;
@@ -334,11 +322,7 @@ export default function Page() {
         <div className="home-header" hidden={embedded}>
           <HabitHealthLogo />
           <div className="home-header-icons">
-            <button
-              className="hh-icon-btn hh-badge"
-              onClick={toggleTheme}
-              aria-label="Habit Cares"
-            >
+            <button className="hh-icon-btn hh-badge" aria-label="Habit Cares" disabled>
               HC
             </button>
             <button className="hh-icon-btn" aria-label="Wallet" disabled>

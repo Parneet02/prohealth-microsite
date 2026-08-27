@@ -64,26 +64,7 @@ h1,h2,h3{font-family:"Sora","Plus Jakarta Sans",system-ui,sans-serif;text-wrap:b
 p{margin:0}
 a{color:inherit}
 button{font-family:inherit}
-.eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--muted)}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:8px}
-
-/* ---------- Top bar ---------- */
-.topbar{
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:16px clamp(18px,5vw,52px);max-width:480px;margin:0 auto;
-}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-family:"Sora",sans-serif;letter-spacing:-.01em}
-.brand .logo{
-  width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;
-  background:linear-gradient(135deg,#6A2C91,#B0338C);box-shadow:var(--shadow-sm);flex:none;
-}
-.brand small{display:block;font-family:"Plus Jakarta Sans";font-weight:600;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.theme-toggle{
-  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);
-  width:40px;height:40px;border-radius:11px;cursor:pointer;display:grid;place-items:center;
-  transition:transform .15s ease, background .2s ease;
-}
-.theme-toggle:hover{transform:translateY(-1px)}
 
 /* ---------- Views ---------- */
 .view{display:none;animation:fade .5s ease both}
@@ -91,51 +72,8 @@ button{font-family:inherit}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-/* ---------- Banner ---------- */
-.banner-wrap{max-width:480px;margin:0 auto;padding:clamp(14px,4vw,40px) clamp(18px,5vw,52px) 60px}
-.banner{
-  position:relative;overflow:hidden;border-radius:28px;cursor:pointer;
-  background:linear-gradient(115deg,#4B1E73 0%,#6A2C91 42%,#B0338C 100%);
-  color:#fff;box-shadow:0 40px 90px -40px rgba(90,30,120,.75);
-  display:grid;grid-template-columns:1.15fr .85fr;min-height:340px;
-  transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease;
-}
-.banner:hover{transform:translateY(-4px);box-shadow:0 55px 110px -45px rgba(90,30,120,.9)}
-.banner:focus-visible{outline:3px solid #fff;outline-offset:4px}
-.banner-inner{padding:clamp(26px,4vw,52px);display:flex;flex-direction:column;justify-content:center;gap:18px;position:relative;z-index:2}
-.banner .eyebrow{color:rgba(255,255,255,.82)}
-.banner h1{font-size:clamp(2rem,4.6vw,3.35rem);font-weight:800;letter-spacing:-.02em}
-.banner h1 .hl{background:linear-gradient(90deg,#FFD1EC,#FFE9A8);-webkit-background-clip:text;background-clip:text;color:transparent}
-.banner .sub{font-size:clamp(1rem,1.6vw,1.18rem);color:rgba(255,255,255,.9);max-width:34ch}
-.banner-cta{
-  align-self:flex-start;margin-top:6px;display:inline-flex;align-items:center;gap:10px;
-  background:#fff;color:#6A2C91;font-weight:700;font-size:1.02rem;border:none;
-  padding:15px 30px;border-radius:999px;cursor:pointer;box-shadow:0 14px 30px -12px rgba(0,0,0,.45);
-  transition:transform .2s ease, gap .2s ease;
-}
-.banner:hover .banner-cta{gap:16px}
-.banner-cta svg{transition:transform .2s ease}
-.banner:hover .banner-cta svg{transform:translateX(4px)}
-.banner-hint{position:absolute;bottom:16px;right:22px;font-size:.8rem;color:rgba(255,255,255,.72);z-index:2;display:flex;align-items:center;gap:7px}
-.banner-art{position:relative;z-index:1}
-.orb{position:absolute;border-radius:50%;filter:saturate(1.1)}
-.orb.a{width:150px;height:150px;right:-30px;top:-40px;background:radial-gradient(circle at 32% 30%,#C77DE8,#7A2F9E 70%);box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
-.orb.b{width:90px;height:90px;right:120px;bottom:-24px;background:radial-gradient(circle at 32% 30%,#FF9AD1,#B0338C 72%)}
-.orb.c{width:52px;height:52px;right:38px;bottom:70px;background:radial-gradient(circle at 32% 30%,#FFE0A6,#E8A93D 74%)}
-.dots{position:absolute;right:34px;top:130px;width:120px;height:90px;opacity:.5;
-  background-image:radial-gradient(rgba(255,255,255,.9) 1.6px,transparent 1.7px);background-size:15px 15px}
-.pulse-ring{position:absolute;inset:0;pointer-events:none;z-index:1}
-.pulse-ring svg{position:absolute;right:40px;top:50%;transform:translateY(-50%);width:min(46%,320px);height:auto;opacity:.9}
-@media(max-width:760px){
-  .banner{grid-template-columns:1fr;min-height:0}
-  .banner-art{display:none}
-  .banner-hint{position:static;margin-top:6px}
-}
-
 /* ---------- Programs page ---------- */
 .programs-head{max-width:480px;margin:0 auto;padding:8px clamp(18px,5vw,52px) 4px}
-.back{display:inline-flex;align-items:center;gap:8px;background:none;border:none;color:var(--muted);font-weight:600;cursor:pointer;padding:8px 0;font-size:.95rem}
-.back:hover{color:var(--brand)}
 .programs-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin-top:8px}
 .programs-head .lead{color:var(--muted);max-width:60ch;margin-top:12px;font-size:1.05rem}
 .programs{max-width:480px;margin:0 auto;padding:26px clamp(18px,5vw,52px) 40px;display:flex;flex-direction:column;gap:24px}
@@ -227,7 +165,6 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .viewer-body img{width:100%;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--surface-2)}
 .vfull{width:100%;text-align:center}
 .admin .modal{width:min(620px,100%)}
-.leads-body{padding:22px 26px}
 .stat{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:16px}
 .stat .box{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px 18px;flex:1;min-width:120px}
 .stat .n{font-family:"Sora";font-size:1.7rem;font-weight:700}
