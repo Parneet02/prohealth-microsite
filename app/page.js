@@ -73,6 +73,39 @@ function Icon({ path, size = 20, width = 2 }) {
   );
 }
 
+/**
+ * Habit Health lockup — "HABIT" in a heavy royal-blue serif with the "A"
+ * replaced by a stylised yoga figure in an orange→coral gradient, "HEALTH"
+ * tracked wide below. Ported from the ForHer repo's HabitHealthLogo so the
+ * two surfaces render the same mark.
+ */
+function HabitHealthLogo() {
+  return (
+    <div className="hhl">
+      <div className="hhl-word">
+        <span className="hhl-letter">H</span>
+        <svg className="hhl-figure" viewBox="0 0 100 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="habit-figure-a" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stopColor="#F5A623" />
+              <stop offset="60%" stopColor="#F08144" />
+              <stop offset="100%" stopColor="#E94B3F" />
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="16" r="10" fill="url(#habit-figure-a)" />
+          <path d="M 50 28 C 42 46, 32 78, 18 112 L 34 112 C 42 88, 48 68, 56 50 Z" fill="url(#habit-figure-a)" />
+          <path d="M 56 50 C 64 68, 70 88, 82 112 L 98 112 C 84 78, 74 46, 66 28 C 60 26, 55 26, 50 28 Z" fill="url(#habit-figure-a)" />
+          <rect x="36" y="78" width="32" height="7" rx="2.5" fill="url(#habit-figure-a)" />
+        </svg>
+        <span className="hhl-letter">B</span>
+        <span className="hhl-letter">I</span>
+        <span className="hhl-letter">T</span>
+      </div>
+      <div className="hhl-sub">HEALTH</div>
+    </div>
+  );
+}
+
 /** Original flat-illustration graphics (hand-built shapes, not stock photography)
  * standing in for the host app's real photos on this screen. */
 function ConsultIllustration() {
@@ -86,16 +119,6 @@ function ConsultIllustration() {
       <circle cx="141" cy="34" r="16" fill="#F2C9A0" />
       <rect x="96" y="72" width="30" height="9" rx="4.5" fill="#F2C9A0" transform="rotate(-18 96 72)" />
       <rect x="90" y="66" width="16" height="6" rx="3" fill="var(--hab-orange, #F0862A)" transform="rotate(-18 90 66)" />
-    </svg>
-  );
-}
-
-function RunnerIllustration() {
-  return (
-    <svg viewBox="0 0 90 90" className="step-runner" aria-hidden="true">
-      <circle cx="47" cy="16" r="9" fill="#F2C9A0" />
-      <path d="M47 25 30 40 22 30M47 25 60 34 66 20" stroke="#E24B4B" strokeWidth="7" fill="none" strokeLinecap="round" />
-      <path d="M47 25 38 55 20 66M47 25 56 52 68 78" stroke="#2F3C4E" strokeWidth="7" fill="none" strokeLinecap="round" />
     </svg>
   );
 }
@@ -310,16 +333,12 @@ export default function Page() {
       {/* ---------- Home (banner) ---------- */}
       <section className={`view home-view ${view === 'banner' ? 'active' : ''}`}>
         <div className="home-header">
-          <div className="brand hh-wordmark">
-            <span className="hh-wordmark-p">Pro</span>
-            <span className="hh-wordmark-h">Health</span>
-            <small>HCL Healthcare</small>
-          </div>
+          <HabitHealthLogo />
           <div className="home-header-icons">
             <button
               className="hh-icon-btn hh-badge"
               onClick={toggleTheme}
-              aria-label="Toggle light or dark theme"
+              aria-label="Habit Cares"
             >
               HC
             </button>
@@ -394,44 +413,27 @@ export default function Page() {
         </div>
 
         <div className="step-card" aria-hidden="true">
-          <div className="step-scene">
-            <span className="step-tree t1" />
-            <span className="step-tree t2" />
-            <span className="step-tree t3" />
-            <RunnerIllustration />
-            <span className="step-pill step-pill-tl">
-              <Icon path="M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0 0 13.9 3M19.5 9A8 8 0 0 0 5.6 6" size={13} width={2} />
-              Last sync: just now
+          <div className="step-card-head">
+            <span className="step-sync">
+              <Icon path="M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0 0 13.9 3M19.5 9A8 8 0 0 0 5.6 6" size={13} width={2.25} />
+              Last sync: Just now
             </span>
-            <span className="step-pill step-pill-tr">
-              <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 14a4 4 0 1 1 4-4 4 4 0 0 1-4 4Z" size={13} width={1.8} />
-              8,000 daily step goal
-            </span>
-            <span className="step-pill step-pill-count">
-              <Icon path="M9 4c-1.5 0-2.5 1.3-2.5 3s1 3 2.5 3 2.5-1.3 2.5-3-1-3-2.5-3ZM6 11c-1.3 0-2.5 1.6-2.5 4s.8 5 2.5 5c1.2 0 1.7-1 3-1s1.3 1 2.5 1c1 0 1.5-.8 1.5-2" size={15} width={1.8} />
-              2,602
+            <span className="step-goal">
+              <span className="step-goal-ic">
+                <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 14a4 4 0 1 1 4-4 4 4 0 0 1-4 4Z" size={16} width={2} />
+              </span>
+              <span>
+                <b>8,000</b>
+                <small>Daily Step Goal</small>
+              </span>
             </span>
           </div>
-          <div className="step-card-body">
-            <div className="step-bar">
-              <div className="step-bar-fill" style={{ width: '32%' }} />
-            </div>
-            <div className="step-scale">
-              <span>
-                <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z" size={11} width={1.8} />0
-              </span>
-              <span>
-                <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z" size={11} width={1.8} />4k
-              </span>
-              <span>
-                <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z" size={11} width={1.8} />8k
-              </span>
-            </div>
-            <button className="step-cta" disabled>
-              <Icon path="M12 2 4 14h6l-1 8 9-13h-6l1-7Z" size={16} width={1.8} />
-              Start a Challenge
-            </button>
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="step-scene-img" src="/home/park-scene.png" alt="" />
+          <button className="step-cta" disabled>
+            <Icon path="M12 2 4 14h6l-1 8 9-13h-6l1-7Z" size={16} width={1.8} />
+            Start a Challenge
+          </button>
         </div>
 
         <div className="engage-card" aria-hidden="true">

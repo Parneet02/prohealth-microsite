@@ -323,46 +323,35 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   width:78px;text-align:center;font-size:.76rem;font-weight:600;color:var(--ink);
 }
 .wellness-icon{
-  width:44px;height:44px;display:grid;place-items:center;color:var(--brand);
+  width:56px;height:56px;border-radius:16px;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;
 }
+.wellness-icon svg{width:26px;height:26px}
 .step-card{
-  max-width:480px;margin:22px auto 0;
-  background:var(--surface);border:1px solid var(--line);border-radius:20px;
-  box-shadow:var(--shadow-sm);overflow:hidden;
+  width:calc(100% - 28px);max-width:452px;margin:14px auto 0;
+  background:var(--surface);border-radius:18px;overflow:hidden;padding-bottom:12px;
+  box-shadow:0 .5px 1px rgba(27,42,61,.05), 0 8px 22px -10px rgba(27,42,61,.12);
 }
-.step-scene{
-  position:relative;height:128px;overflow:hidden;
-  background:linear-gradient(180deg,var(--plus-soft) 0%,var(--surface-2) 78%);
+.step-card-head{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 14px 10px;
 }
-.step-scene::after{
-  content:'';position:absolute;left:-8%;right:-8%;bottom:-34px;height:70px;border-radius:50%;
-  background:var(--diet-soft);
+.step-sync{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600}
+.step-goal{display:inline-flex;align-items:center;gap:7px}
+.step-goal-ic{
+  width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none;
 }
-.step-tree{position:absolute;bottom:16px;width:14px;height:14px;border-radius:50%;background:var(--diet);z-index:1}
-.step-tree.t1{left:12%}
-.step-tree.t2{left:24%;bottom:11px;width:9px;height:9px}
-.step-tree.t3{right:16%;bottom:19px;width:11px;height:11px}
-.step-runner{position:absolute;left:48%;bottom:18px;width:46px;height:46px;z-index:2;transform:translateX(-50%)}
-.step-pill{
-  position:absolute;z-index:2;display:inline-flex;align-items:center;gap:6px;
-  background:color-mix(in srgb,var(--surface) 92%,transparent);color:var(--ink);
-  font-size:.72rem;font-weight:700;padding:6px 10px;border-radius:999px;box-shadow:var(--shadow-sm);
-}
-.step-pill-tl{top:10px;left:10px}
-.step-pill-tr{top:10px;right:10px}
-.step-pill-count{left:10px;bottom:10px;font-size:.85rem;color:var(--brand)}
-.step-card-body{padding:16px clamp(18px,5vw,26px) 20px}
-.step-bar{height:8px;border-radius:999px;background:var(--line);overflow:hidden}
-.step-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
-.step-scale{display:flex;justify-content:space-between;margin-top:6px;font-size:.72rem;color:var(--faint)}
+.step-goal b{display:block;font-size:.87rem;font-weight:800;line-height:1.15}
+.step-goal small{display:block;font-size:.6rem;font-weight:500}
+.step-scene-img{display:block;width:100%;height:auto}
 .step-cta{
-  width:100%;margin-top:16px;padding:13px;border-radius:14px;border:none;
-  background:var(--brand);color:#fff;font-weight:700;font-size:.95rem;cursor:default;
-  display:flex;align-items:center;justify-content:center;gap:9px;
+  width:calc(100% - 24px);margin:12px 12px 0;padding:12px;border-radius:999px;border:none;
+  font-weight:800;font-size:.85rem;cursor:default;
+  display:flex;align-items:center;justify-content:center;gap:7px;
 }
 .engage-card{
-  max-width:480px;margin:18px auto 0;padding:22px clamp(18px,5vw,26px);
-  border-radius:20px;color:#fff;overflow:hidden;
+  width:calc(100% - 32px);max-width:448px;margin:14px auto 0;padding:18px;
+  border-radius:18px;color:#fff;overflow:hidden;
   background:linear-gradient(120deg,var(--brand),var(--brand-2));
   display:flex;align-items:center;justify-content:space-between;gap:14px;
 }
@@ -392,40 +381,59 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
    reads as native content inside that app. Scoped to .home-view /
    .home-header / .bottom-nav only — every other screen (programs, forms,
    admin) keeps the ProHealth purple/magenta palette untouched. */
+/* Palette lifted verbatim from the ForHer repo's theme/habit.ts so both
+   surfaces render the host app's home screen identically. */
 .home-view, .home-header, .bottom-nav{
-  --hab-navy:#1B4F91; --hab-navy-ink:#14274D;
-  --hab-orange:#F0862A; --hab-green:#39B54A; --hab-yellow:#F7C948;
-  --hab-sky:#DCEEFB; --hab-ground:#CFEAD1;
+  --hab-blue:#2060B0; --hab-blue-bright:#2E78D6; --hab-blue-deep:#173F73;
+  --hab-blue-soft:#EAF1FB; --hab-orange:#F67F1B; --hab-orange-deep:#B85806;
+  --hab-green-hc:#7DAA4A; --hab-gold:#F9D75E; --hab-gold-text:#1B2A3D;
+  --hab-page:#F4F6F9; --hab-surface:#FFFFFF; --hab-line:#ECEEF2;
+  --hab-text:#1B2A3D; --hab-text-muted:#5A6473; --hab-text-soft:#9AA1AC;
 }
-.hh-wordmark{flex-wrap:wrap;line-height:1.05}
-.hh-wordmark-p{color:var(--hab-orange);font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
-.hh-wordmark-h{color:var(--hab-navy-ink);font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
-.hh-wordmark small{
-  flex-basis:100%;color:var(--hab-navy);font-weight:700;
+.home-view{background:var(--hab-page)}
+.home-header{background:var(--hab-surface);border-bottom:1px solid var(--hab-line);padding:11px 18px}
+
+/* HABIT/HEALTH lockup */
+.hhl{display:inline-flex;flex-direction:column;align-items:center;gap:2px;line-height:1}
+.hhl-word{
+  display:inline-flex;align-items:center;font-size:18px;line-height:.85;letter-spacing:.01em;
+  font-family:"Playfair Display","Times New Roman",serif;font-weight:900;color:var(--hab-blue);
+}
+.hhl-figure{display:inline-block;width:.78em;height:.95em;margin:0 -.02em}
+.hhl-sub{
+  font-family:"Plus Jakarta Sans",sans-serif;font-weight:600;font-size:7px;
+  color:var(--hab-blue);letter-spacing:.44em;text-indent:.44em;margin-top:2px;
+}
+
+.home-header-icons{gap:13px}
+.hh-icon-btn{
+  width:29px;height:29px;border:none;background:none;border-radius:0;
+  color:var(--hab-text);
 }
 .hh-badge{
-  background:var(--hab-green);border-color:var(--hab-green);color:#fff;
-  font-size:.72rem;font-weight:800;letter-spacing:.01em;
+  border:2px solid var(--hab-green-hc);border-radius:50%;color:var(--hab-green-hc);
+  background:none;font-size:10px;font-weight:700;
 }
-.home-header-icons .hh-icon-btn:not(.hh-badge){color:var(--hab-navy-ink)}
-.home-greeting{color:var(--hab-navy-ink)}
-.hh-slide{background:linear-gradient(120deg,#F3ECE6 0%,#EFE3E8 100%);border-color:#EAD9CE}
+.home-greeting{color:var(--hab-text);font-size:19px;padding-top:0;margin-top:16px}
+.home-greeting b{font-weight:700}
+.hh-slide{background:linear-gradient(120deg,#FDF1E3 0%,#FBE7D6 100%);border-color:#F5E0CD}
 .hh-eyebrow{color:var(--hab-orange)}
-.hh-title, .hh-cta-line{color:var(--hab-navy-ink)}
-.hh-dot.active{background:var(--hab-navy)}
-.section-head{color:var(--hab-navy-ink)}
-.wellness-icon{color:var(--hab-navy)}
-.wellness-icon.highlight{background:var(--hab-sky);border-radius:50%}
-.step-scene{background:linear-gradient(180deg,var(--hab-sky) 0%,#EFF8F0 78%)}
-.step-scene::after{background:var(--hab-ground)}
-.step-tree{background:var(--hab-green)}
-.step-pill{color:var(--hab-navy-ink)}
-.step-pill-count{color:var(--hab-orange)}
-.step-scale span{display:inline-flex;align-items:center;gap:3px;color:var(--hab-orange)}
-.step-bar-fill{background:linear-gradient(90deg,var(--hab-navy),var(--hab-orange))}
-.step-cta{background:var(--hab-yellow);color:var(--hab-navy-ink)}
+.hh-title, .hh-cta-line{color:var(--hab-text)}
+.hh-sub{color:var(--hab-text-muted)}
+.hh-dot.active{background:var(--hab-blue)}
+.section-head{color:var(--hab-text);font-size:15.5px}
+.wellness-item{color:var(--hab-text);font-size:11.5px;font-weight:500}
+.wellness-icon{background:#F4F6FA;color:var(--hab-blue)}
+.wellness-icon.highlight{background:var(--hab-blue-soft)}
+.step-card{background:var(--hab-surface)}
+.step-sync{color:var(--hab-text-muted)}
+.step-sync svg{color:var(--hab-blue)}
+.step-goal-ic{background:#FDEBD9;color:var(--hab-orange)}
+.step-goal b{color:var(--hab-text)}
+.step-goal small{color:var(--hab-text-muted)}
+.step-cta{background:var(--hab-gold);color:var(--hab-gold-text)}
 .engage-card{
-  background:linear-gradient(120deg,var(--hab-navy) 0%,var(--hab-green) 100%);
+  background:linear-gradient(135deg,#2D4A7C 0%,#15837D 100%);
   position:relative;flex-wrap:wrap;
 }
 .engage-card-text{flex:1 1 auto;min-width:0;position:relative;z-index:1}
@@ -438,8 +446,14 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .engage-stat-row{display:flex;align-items:center;gap:5px;opacity:.9}
 .engage-badge{
   position:absolute;top:-8px;right:38px;width:22px;height:22px;border-radius:50%;z-index:2;
-  background:#fff;color:var(--hab-green);display:grid;place-items:center;box-shadow:var(--shadow-sm);
+  background:#fff;color:#15837D;display:grid;place-items:center;box-shadow:var(--shadow-sm);
 }
 .engage-chevron{color:#fff;opacity:.85;flex:none;align-self:center;position:relative;z-index:1}
-.bn-item.active{color:var(--hab-navy)}
-.bn-benefits{background:var(--hab-navy)}
+.bottom-nav{height:74px;background:var(--hab-surface);border-top:1px solid var(--hab-line);padding:0 8px}
+.bn-item{font-size:10px;font-weight:500;color:var(--hab-text-soft)}
+.bn-item.active{color:var(--hab-blue);font-weight:600}
+.bn-benefits{
+  background:linear-gradient(135deg,var(--hab-blue),var(--hab-blue-bright));
+  padding:10px 16px;font-size:11.5px;font-weight:600;gap:7px;transform:translateY(-2px);
+  box-shadow:0 8px 18px -5px rgba(32,96,176,.55);
+}
