@@ -274,25 +274,40 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .hh-track::-webkit-scrollbar{display:none}
 .hh-track{scrollbar-width:none}
 .hh-slide{
-  flex:0 0 100%;scroll-snap-align:start;cursor:pointer;
-  display:grid;grid-template-columns:1fr min(38%,150px);align-items:center;gap:12px;
-  aspect-ratio:16/9;min-height:0;padding:22px clamp(18px,4vw,30px);
+  flex:0 0 100%;scroll-snap-align:start;position:relative;isolation:isolate;
+  min-height:0;padding:20px 18px;
+  max-height:46dvh;                       /* dvh, not vh — mobile chrome */
   background:linear-gradient(120deg,var(--surface-2) 0%,var(--plus-soft) 100%);
   border:1px solid var(--line);
 }
-.hh-slide:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
+.hh-slide-text{position:relative;z-index:1;max-width:64%}
 .hh-eyebrow{
-  display:block;font-size:.72rem;font-weight:800;letter-spacing:.02em;
-  color:var(--brand-2);text-transform:none;
+  display:block;font-size:11px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--brand-2);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .hh-title{
-  margin-top:6px;font-size:clamp(1.15rem,3vw,1.5rem);font-weight:800;
-  letter-spacing:-.01em;color:var(--ink);line-height:1.22;
+  margin-top:8px;font-size:clamp(19px,5.2vw,24px);font-weight:700;
+  letter-spacing:-.01em;color:var(--ink);line-height:1.2;text-wrap:balance;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
 }
-.hh-cta-line{display:block;margin-top:4px;font-weight:800;color:var(--ink);font-size:1rem}
-.hh-sub{margin-top:6px;color:var(--muted);font-size:.9rem}
-.hh-slide-art{display:flex;align-items:center;justify-content:center;min-width:0}
-.hh-illo{width:100%;height:auto;max-width:150px}
+.hh-sub{
+  margin-top:12px;color:var(--muted);font-size:13px;line-height:1.4;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.hh-cta{
+  margin-top:16px;display:inline-flex;align-items:center;justify-content:center;
+  min-height:40px;padding:0 16px;border:none;border-radius:999px;cursor:pointer;
+  background:#6A2C91;color:#fff;font-size:14px;font-weight:600;
+}
+.hh-cta:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+/* Behind the text, pinned bottom-right; drops out on very narrow screens. */
+.hh-slide-art{
+  position:absolute;right:10px;bottom:0;z-index:0;pointer-events:none;
+  width:130px;display:flex;align-items:flex-end;justify-content:flex-end;
+}
+.hh-illo{width:100%;height:auto}
+@media(max-width:339px){.hh-slide-art{display:none}}
 /* Mobile hero compression. Inside the host webview the usable viewport is the
    screen minus the app's own header and tab bar, so the hero has to stay near
    half of it and let the next section peek as a scroll cue. dvh (not vh)
@@ -300,31 +315,22 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 @media(max-width:520px){
   .home-header{padding:calc(10px + var(--safe-t)) 16px 0}
   .hh-icon-btn{width:32px;height:32px;border-radius:9px}
-  .home-greeting{margin-top:8px;font-size:.95rem;padding:0 16px}
-  .hh-banner-wrap{padding:10px 16px 0}
-  .hh-slide{
-    min-height:0;height:auto;aspect-ratio:16/9;overflow:hidden;
-    padding:12px 14px 22px;gap:10px;grid-template-columns:1fr min(34%,120px);
-  }
-  .hh-eyebrow{font-size:.6rem;line-height:1.25}
-  .hh-title{margin-top:3px;font-size:1rem;line-height:1.15}
-  .hh-cta-line{margin-top:2px;font-size:.83rem}
-  .hh-sub{
-    margin-top:3px;font-size:.72rem;line-height:1.3;
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-  }
-  .hh-dots{bottom:8px}
+  .home-greeting{margin-top:8px;margin-bottom:0;font-size:.95rem;padding:0 16px}
+  /* Card padding/type come from the base rules; only the page gutter and the
+     greeting-to-card gap change here. */
+  .hh-banner-wrap{padding:12px 16px 0}
+  /* 64% cannot hold either heading in two lines at phone widths — the clamp
+     truncates them. The heading sits above the bottom-anchored illustration,
+     so it can span the full card; the sub and button stay at 64% to keep clear
+     of the art. */
+  .hh-slide-text{max-width:100%}
+  .hh-sub{max-width:64%}
   .hh-dot{width:6px;height:6px}
   .hh-dot.active{width:16px}
   .section-head{margin-top:16px;font-size:1rem}
   .wellness-row{margin-top:10px}
 }
-/* Dots overlay the bottom of the banner card, as in the host app. */
-.hh-banner-wrap{position:relative}
-.hh-dots{
-  position:absolute;left:0;right:0;bottom:10px;z-index:2;
-  display:flex;justify-content:center;gap:7px;
-}
+.hh-dots{display:flex;justify-content:center;gap:7px;margin-top:12px}
 .hh-dot{
   width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;
   background:var(--line-strong);transition:background .2s ease, width .2s ease;
@@ -473,7 +479,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .home-greeting b{font-weight:700}
 .hh-slide{background:linear-gradient(120deg,#FDF1E3 0%,#FBE7D6 100%);border-color:#F5E0CD}
 .hh-eyebrow{color:var(--hab-orange)}
-.hh-title, .hh-cta-line{color:var(--hab-text)}
+.hh-title{color:var(--hab-text)}
 .hh-sub{color:var(--hab-text-muted)}
 .hh-dot.active{background:var(--hab-blue)}
 .section-head{color:var(--hab-text);font-size:15.5px}

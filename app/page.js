@@ -4,22 +4,33 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { PROGRAMS, SERVICE_TO_KEY, getProgramByService } from '@/lib/programs';
 
 /** Two rotating slides for the home-style banner. Add a slide here to extend the carousel. */
+const inr = (n) => `₹${n.toLocaleString('en-IN')}`;
+
+/* Every figure below is derived from lib/programs.js — the single source of
+   truth for pricing — so the banner can never drift from the plan cards. */
+const PLUS = PROGRAMS.find((p) => p.key === 'plus');
+const CHEAPEST = PROGRAMS.reduce((a, b) => (b.priceValue < a.priceValue ? b : a));
+const BEST_SAVING = Math.max(
+  ...PROGRAMS.map((p) => Math.round(((p.mrpValue - p.priceValue) / p.mrpValue) * 100))
+);
+
 const BANNER_SLIDES = [
   {
     key: 'overview',
-    eyebrow: 'HCL Healthcare Care Plan · ProHealth Programs',
-    title: 'Be proactive about your health',
-    cta: 'Register Your Interest!',
-    sub: 'Take the first steps towards a healthier you',
-    icon: 'M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z',
+    eyebrow: 'ProHealth Care Plans',
+    title: 'Diagnostics, diet and fitness in one plan',
+    // "6 months" -> "6 month" so it reads as an adjective before "plans".
+    sub: `${CHEAPEST.duration.replace(/s$/, '')} plans from ${inr(CHEAPEST.priceValue)} · Save up to ${BEST_SAVING}%`,
+    cta: 'Explore Plans',
+    action: 'programs',
   },
   {
     key: 'plus-highlight',
-    eyebrow: 'ProHealth Plus · 6 Month Plan',
-    title: 'Diagnostics, dietitian and fitness in one plan',
-    cta: 'Register Your Interest!',
-    sub: 'Stay ahead of your health with proactive, on-demand care',
-    icon: 'M12 2C9 6 6 8 6 13a6 6 0 0 0 12 0c0-5-3-7-6-11Z',
+    eyebrow: `${PLUS.name} · ${PLUS.duration}`,
+    title: '3 lab panels, 3 doctor consults, 2 diet consults',
+    sub: `${inr(PLUS.priceValue)} instead of ${inr(PLUS.mrpValue)}`,
+    cta: 'Register Now',
+    action: 'register-plus',
   },
 ];
 
@@ -352,25 +363,30 @@ export default function Page() {
               <div
                 className="hh-slide"
                 key={slide.key}
-                role="button"
-                tabIndex={0}
-                aria-label={`${slide.title}. ${slide.cta}`}
-                onClick={goPrograms}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    goPrograms();
-                  }
-                }}
+                /* Redundant affordance so the whole card stays tappable; the
+                   button below carries the accessible semantics. */
+                onClick={() =>
+                  slide.action === 'register-plus' ? openForm(PLUS.service) : goPrograms()
+                }
               >
+                <div className="hh-slide-art" aria-hidden="true">
+                  <ConsultIllustration />
+                </div>
                 <div className="hh-slide-text">
                   <span className="hh-eyebrow">{slide.eyebrow}</span>
                   <h1 className="hh-title">{slide.title}</h1>
-                  <span className="hh-cta-line">{slide.cta}</span>
                   <p className="hh-sub">{slide.sub}</p>
-                </div>
-                <div className="hh-slide-art" aria-hidden="true">
-                  <ConsultIllustration />
+                  <button
+                    type="button"
+                    className="hh-cta"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (slide.action === 'register-plus') openForm(PLUS.service);
+                      else goPrograms();
+                    }}
+                  >
+                    {slide.cta}
+                  </button>
                 </div>
               </div>
             ))}
