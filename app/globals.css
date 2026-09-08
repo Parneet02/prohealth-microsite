@@ -159,7 +159,6 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   .success .stext{font-size:.86rem;margin-top:6px}
   .success-actions{margin:14px 0 8px}
   .dl-btn{padding:12px 22px}
-  .done{margin-top:10px}
 }
 .flyer-toggle{
   display:inline-flex;align-items:center;gap:6px;border:none;background:none;cursor:pointer;
@@ -172,7 +171,6 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .dl-btn{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;text-decoration:none;font:inherit;font-weight:700;border:none;cursor:pointer;padding:14px 28px;border-radius:999px;box-shadow:0 12px 26px -14px var(--accent);transition:transform .15s ease}
 .dl-btn:hover{transform:translateY(-2px)}
 .note{font-size:.8rem;color:var(--faint);text-align:center;max-width:40ch}
-.done{display:block;margin:16px auto 0;background:none;border:none;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font:inherit}
 
 /* ---------- Admin leads panel ---------- */
 /* Matches the other modals rather than the old 600px outlier. */
@@ -565,10 +563,9 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   order:-1;padding:0;display:block;width:100%;line-height:0;
   background:none;border:none;cursor:pointer;
 }
-/* Ratio comes from lib/programs.js per plan: the logo+title strip ends at a
-   different height in each flyer (Plus wraps to two title lines, Diet and Lab
-   do not), so one shared ratio either clips Plus mid-word or drags Diet and
-   Lab into their body artwork. */
+/* Ratio comes from lib/programs.js per plan: each flyer's title block ends at
+   a different height, and zooming to equalise them would crop the logos off
+   the sides, so the crop height varies and the gap below the text does not. */
 .programs-view .card-media img{
   display:block;width:100%;height:auto;aspect-ratio:var(--banner-ratio,3.4);
   max-width:none;max-height:none;

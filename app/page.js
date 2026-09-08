@@ -795,10 +795,6 @@ export default function Page() {
                     ))}
                   </div>
                 )}
-
-                <button className="done" onClick={closeForm}>
-                  Done
-                </button>
               </div>
             )}
           </div>
