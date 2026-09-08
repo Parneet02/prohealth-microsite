@@ -322,15 +322,7 @@ export default function Page() {
   const formProgram = form.service ? getProgramByService(form.service) : null;
   const accentStyle = (p) =>
     p
-      ? {
-          '--accent': p.accent,
-          '--accent-soft': p.soft,
-          ...(p.banner && {
-            '--banner-ratio': p.banner.ratio,
-            '--banner-scale': p.banner.scale,
-            '--banner-origin': p.banner.origin,
-          }),
-        }
+      ? { '--accent': p.accent, '--accent-soft': p.soft, '--banner-ratio': p.bannerRatio }
       : undefined;
 
   return (

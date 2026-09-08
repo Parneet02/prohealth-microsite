@@ -561,23 +561,19 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 /* The flyer leads the card as a banner rather than dangling underneath it.
    The art is 1:1, but its top strip (HABIT + HCL marks and the programme
    title) is banner-shaped, so it is cropped to that from the top. */
-/* The banner crops to a text- and logo-free region of the flyer art, so the
-   card supplies its own heading rather than inheriting the flyer's baked-in
-   logos and per-flyer text alignment. Each flyer places its imagery
-   differently, so scale/origin come from lib/programs.js. */
 .programs-view .card-media{
   order:-1;padding:0;display:block;width:100%;line-height:0;
   background:none;border:none;cursor:pointer;
-  aspect-ratio:var(--banner-ratio,2.9);overflow:hidden;
-  border-radius:18px 18px 0 0;
 }
+/* Ratio comes from lib/programs.js per plan: the logo+title strip ends at a
+   different height in each flyer (Plus wraps to two title lines, Diet and Lab
+   do not), so one shared ratio either clips Plus mid-word or drags Diet and
+   Lab into their body artwork. */
 .programs-view .card-media img{
-  display:block;width:100%;height:100%;
-  max-width:none;max-height:none;aspect-ratio:auto;
-  object-fit:cover;
-  transform:scale(var(--banner-scale,1));
-  transform-origin:var(--banner-origin,50% 50%);
-  border:none;border-radius:0;
+  display:block;width:100%;height:auto;aspect-ratio:var(--banner-ratio,3.4);
+  max-width:none;max-height:none;
+  object-fit:cover;object-position:top center;
+  border:none;border-radius:18px 18px 0 0;
 }
 /* The inline price badge fits at phone widths here; the global 420px rule
    stacks it into an oversized block. */
