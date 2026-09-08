@@ -509,8 +509,8 @@ export default function Page() {
                   <button className="btn btn-primary" onClick={() => openForm(p.service)}>
                     Register Now
                   </button>
-                  <button className="btn btn-ghost" onClick={() => openViewer(p.key)}>
-                    View Flyer
+                  <button className="flyer-link" onClick={() => openViewer(p.key)}>
+                    View flyer
                   </button>
                 </div>
               </div>

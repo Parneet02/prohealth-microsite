@@ -553,9 +553,15 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .programs-view .chip{
   background:#F4F6FA;border:none;color:var(--hab-text-muted);font-size:11px;padding:5px 10px;
 }
-.programs-view .card-actions{margin-top:16px;gap:9px}
+ /* Register is the card's only button. Viewing the flyer skips the form, so
+   it stays available but reads as a quiet link rather than a peer CTA. */
+.programs-view .card-actions{margin-top:16px;gap:10px;flex-direction:column;align-items:stretch}
+.programs-view .card-actions .btn-primary{width:100%;justify-content:center}
+.flyer-link{align-self:center;background:none;border:none;padding:4px 6px;cursor:pointer;
+  font:inherit;font-size:.82rem;font-weight:500;color:var(--muted);
+  text-decoration:underline;text-underline-offset:3px}
+.flyer-link:hover{color:var(--accent)}
 .programs-view .btn{font-size:13px;padding:11px 20px}
-.programs-view .btn-ghost{padding:9.5px 18px;border-width:1.5px}
 /* The flyer leads the card as a banner rather than dangling underneath it.
    The art is 1:1, but its top strip (HABIT + HCL marks and the programme
    title) is banner-shaped, so it is cropped to that from the top. */
