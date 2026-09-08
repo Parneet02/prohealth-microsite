@@ -481,21 +481,9 @@ export default function Page() {
             <article className="card" key={p.key} style={accentStyle(p)}>
               <div className="stripe" />
               <div className="card-body">
-                {/* Icon carries the programme identity; the name lives in the
-                    heading only — the old pill repeated it verbatim. */}
+                {/* No icon chip: the banner above already carries the brand
+                    mark, so it was a third repetition of the same identity. */}
                 <div className="card-head">
-                  <span className="card-ico" aria-hidden="true">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinejoin="round"
-                      strokeLinecap="round"
-                    >
-                      <path d={p.icon} />
-                    </svg>
-                  </span>
                   <div className="card-head-text">
                     <h3>{p.name}</h3>
                     <div className="tagline">{p.tagline}</div>

@@ -525,7 +525,6 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   .programs-view .programs-head{padding:14px 16px 0}
   .programs-view .programs-head h2{font-size:20px}
   .programs-view .programs-head .lead{font-size:12.5px;margin-top:5px}
-  .programs-view .card-media img{max-width:min(100%,140px)}
   .programs-view .card-actions{margin-top:14px}
   .programs-view .btn{padding:10px 18px}
 }
@@ -559,16 +558,20 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .programs-view .card-actions{margin-top:16px;gap:9px}
 .programs-view .btn{font-size:13px;padding:11px 20px}
 .programs-view .btn-ghost{padding:9.5px 18px;border-width:1.5px}
-/* Square thumbnail: the flyer art is 1:1, so a full-width contain box left
-   ~80px of white either side. Sized to the image, centred, tappable. */
+/* The flyer leads the card as a banner rather than dangling underneath it.
+   The art is 1:1, but its top strip (HABIT + HCL marks and the programme
+   title) is banner-shaped, so it is cropped to that from the top. */
 .programs-view .card-media{
-  padding:0 16px 16px;display:flex;justify-content:center;width:100%;
+  order:-1;padding:0;display:block;width:100%;line-height:0;
   background:none;border:none;cursor:pointer;
 }
+/* 3.1 stops just above the flyer's photo block; 2.5 left a sliver of it
+   showing, which read as a mis-crop. */
 .programs-view .card-media img{
-  display:block;width:auto;height:auto;aspect-ratio:1;
-  max-width:min(100%,150px);max-height:none;object-fit:cover;
-  border-radius:12px;border:1px solid var(--hab-line);
+  display:block;width:100%;height:auto;aspect-ratio:3.1;
+  max-width:none;max-height:none;
+  object-fit:cover;object-position:top center;
+  border:none;border-radius:18px 18px 0 0;
 }
 /* The inline price badge fits at phone widths here; the global 420px rule
    stacks it into an oversized block. */
