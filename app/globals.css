@@ -565,10 +565,12 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   order:-1;padding:0;display:block;width:100%;line-height:0;
   background:none;border:none;cursor:pointer;
 }
-/* 3.1 stops just above the flyer's photo block; 2.5 left a sliver of it
-   showing, which read as a mis-crop. */
+/* Ratio comes from lib/programs.js per plan: the logo+title strip ends at a
+   different height in each flyer (Plus wraps to two title lines, Diet and Lab
+   do not), so one shared ratio either clips Plus mid-word or drags Diet and
+   Lab into their body artwork. */
 .programs-view .card-media img{
-  display:block;width:100%;height:auto;aspect-ratio:3.1;
+  display:block;width:100%;height:auto;aspect-ratio:var(--banner-ratio,3.4);
   max-width:none;max-height:none;
   object-fit:cover;object-position:top center;
   border:none;border-radius:18px 18px 0 0;

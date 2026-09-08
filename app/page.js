@@ -321,7 +321,9 @@ export default function Page() {
   const viewerProgram = viewerKey ? PROGRAMS.find((p) => p.key === viewerKey) : null;
   const formProgram = form.service ? getProgramByService(form.service) : null;
   const accentStyle = (p) =>
-    p ? { '--accent': p.accent, '--accent-soft': p.soft } : undefined;
+    p
+      ? { '--accent': p.accent, '--accent-soft': p.soft, '--banner-ratio': p.bannerRatio }
+      : undefined;
 
   return (
     <>
