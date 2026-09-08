@@ -169,7 +169,7 @@ export default function Page() {
   const [serverError, setServerError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null); // { service, key, leadId }
-  const [tab, setTab] = useState('view');
+  const [tab, setTab] = useState('none');
   const [activeSlide, setActiveSlide] = useState(0);
   const nameRef = useRef(null);
   const modalRef = useRef(null);
@@ -308,7 +308,7 @@ export default function Page() {
         key: SERVICE_TO_KEY[form.service] || 'plus',
         leadId: data.id,
       });
-      setTab('view');
+      setTab('none');
       if (modalRef.current) modalRef.current.scrollTop = 0;
     } catch {
       setServerError('Network problem. Check your connection and try again.');
@@ -481,22 +481,26 @@ export default function Page() {
             <article className="card" key={p.key} style={accentStyle(p)}>
               <div className="stripe" />
               <div className="card-body">
-                <span className="pill">
-                  <svg
-                    className="ico"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                  >
-                    <path d={p.icon} />
-                  </svg>
-                  {p.name}
-                </span>
-                <h3>{p.name}</h3>
-                <div className="tagline">{p.tagline}</div>
+                {/* Icon carries the programme identity; the name lives in the
+                    heading only — the old pill repeated it verbatim. */}
+                <div className="card-head">
+                  <span className="card-ico" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                    >
+                      <path d={p.icon} />
+                    </svg>
+                  </span>
+                  <div className="card-head-text">
+                    <h3>{p.name}</h3>
+                    <div className="tagline">{p.tagline}</div>
+                  </div>
+                </div>
                 <div className="price-badge">
                   <span className="pd">Plan duration {p.duration}</span>
                   <span className="pp">
@@ -520,10 +524,18 @@ export default function Page() {
                   </button>
                 </div>
               </div>
-              <div className="card-media">
+              {/* Square thumbnail, tappable. The source art is 1:1, so the old
+                  full-width contain box letterboxed it with ~80px of white
+                  either side. */}
+              <button
+                type="button"
+                className="card-media"
+                onClick={() => openViewer(p.key)}
+                aria-label={`View the ${p.name} flyer`}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={p.previews[0]} alt={`${p.name} flyer`} loading="lazy" />
-              </div>
+                <img src={p.previews[0]} alt="" loading="lazy" />
+              </button>
             </article>
           ))}
         </div>
@@ -595,8 +607,12 @@ export default function Page() {
             <div className="modal-head">
               <div>
                 <span className="badge">{form.service || 'ProHealth'}</span>
-                <div className="mtitle">Register Now</div>
-                <div className="msub">Fill in your details to register and get your flyer.</div>
+                <div className="mtitle">{success ? 'You’re registered' : 'Register Now'}</div>
+                <div className="msub">
+                  {success
+                    ? 'Your flyer is ready to download.'
+                    : 'Fill in your details to register and get your flyer.'}
+                </div>
               </div>
               <button className="x" onClick={closeForm} aria-label="Close">
                 ✕
@@ -737,18 +753,32 @@ export default function Page() {
                   Our team will reach out to you about {success.service} within 48 working hours.
                   You can view or download your flyer below.
                 </p>
-                <div className="flyer-tabs">
-                  <button
-                    className={tab === 'view' ? 'active' : ''}
-                    onClick={() => setTab('view')}
+                {/* Download is the point of this screen, so it is the primary
+                    button rather than one of two equal-weight tabs. The preview
+                    stays collapsed so "Done" is reachable without scrolling. */}
+                <div className="success-actions">
+                  <a
+                    className="dl-btn"
+                    href={`/api/brochure/${successProgram.key}?lead=${success.leadId}`}
+                    download={successProgram.downloadName}
+                    target="_blank"
+                    rel="noopener"
                   >
-                    View flyer
-                  </button>
+                    <Icon path="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16" width={2.2} />
+                    Download PDF flyer
+                  </a>
                   <button
-                    className={tab === 'download' ? 'active' : ''}
-                    onClick={() => setTab('download')}
+                    type="button"
+                    className="flyer-toggle"
+                    aria-expanded={tab === 'view'}
+                    onClick={() => setTab(tab === 'view' ? 'none' : 'view')}
                   >
-                    Download flyer
+                    {tab === 'view' ? 'Hide flyer' : 'View flyer'}
+                    <Icon
+                      path={tab === 'view' ? 'M18 15l-6-6-6 6' : 'M6 9l6 6 6-6'}
+                      size={16}
+                      width={2.2}
+                    />
                   </button>
                 </div>
 
@@ -763,25 +793,6 @@ export default function Page() {
                         style={i ? { marginTop: 12 } : undefined}
                       />
                     ))}
-                  </div>
-                )}
-
-                {tab === 'download' && (
-                  <div className="flyer-panel dl-row">
-                    <a
-                      className="dl-btn"
-                      href={`/api/brochure/${successProgram.key}?lead=${success.leadId}`}
-                      download={successProgram.downloadName}
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      <Icon path="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16" width={2.2} />
-                      Download PDF flyer
-                    </a>
-                    <p className="note">
-                      Saves the full resolution flyer for {successProgram.name}. Your download is
-                      logged so the care team knows you have the details.
-                    </p>
                   </div>
                 )}
 

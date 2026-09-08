@@ -148,10 +148,25 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .check{width:64px;height:64px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin:0 auto 14px}
 .success h3{text-align:center;font-family:"Sora";font-size:1.4rem}
 .success .stext{text-align:center;color:var(--muted);margin-top:8px;max-width:42ch;margin-inline:auto}
-.flyer-tabs{display:flex;gap:8px;justify-content:center;margin:22px 0 16px;background:var(--surface-2);padding:6px;border-radius:14px;border:1px solid var(--line)}
-.flyer-tabs button{flex:1;border:none;background:none;color:var(--muted);font-weight:600;padding:10px;border-radius:10px;cursor:pointer}
-.flyer-tabs button.active{background:var(--surface);color:var(--accent);box-shadow:var(--shadow-sm)}
-.flyer-panel{text-align:center}
+.success-actions{display:flex;flex-direction:column;align-items:center;gap:10px;margin:20px 0 14px}
+/* On a 640px-tall screen the modal caps at 92vh and the success panel
+   overflowed, pushing "Done" out of reach. */
+@media(max-height:700px){
+  .success{padding:18px}
+  .check{width:48px;height:48px;margin-bottom:10px}
+  .check svg{width:26px;height:26px}
+  .success h3{font-size:1.15rem}
+  .success .stext{font-size:.86rem;margin-top:6px}
+  .success-actions{margin:14px 0 8px}
+  .dl-btn{padding:12px 22px}
+  .done{margin-top:10px}
+}
+.flyer-toggle{
+  display:inline-flex;align-items:center;gap:6px;border:none;background:none;cursor:pointer;
+  color:var(--accent);font:inherit;font-weight:600;font-size:.9rem;padding:8px 10px;border-radius:10px;
+}
+.flyer-toggle:hover{background:var(--accent-soft)}
+.flyer-panel{text-align:center;margin-top:4px}
 .flyer-panel img{max-width:100%;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
 .dl-row{display:flex;flex-direction:column;gap:10px;align-items:center}
 .dl-btn{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;text-decoration:none;font:inherit;font-weight:700;border:none;cursor:pointer;padding:14px 28px;border-radius:999px;box-shadow:0 12px 26px -14px var(--accent);transition:transform .15s ease}
@@ -496,14 +511,11 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   color:var(--hab-text-muted);font-size:13px;margin-top:6px;max-width:44ch;
 }
 .programs-view .programs{padding:14px 16px 24px;gap:12px}
-/* The flyer preview is the tallest thing in a card and pushes the next card's
-   buttons far down the scroll. Cap it so more than one plan is reachable. */
-.programs-view .card-media img{max-height:200px;object-fit:contain}
 @media(max-width:520px){
   .programs-view .programs-head{padding:14px 16px 0}
   .programs-view .programs-head h2{font-size:20px}
   .programs-view .programs-head .lead{font-size:12.5px;margin-top:5px}
-  .programs-view .card-media img{max-height:168px}
+  .programs-view .card-media img{max-width:min(100%,140px)}
   .programs-view .card-actions{margin-top:14px}
   .programs-view .btn{padding:10px 18px}
 }
@@ -516,9 +528,16 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 }
 .programs-view .card .stripe{display:none}
 .programs-view .card-body{padding:16px 16px 14px}
-.programs-view .pill{font-size:10.5px;padding:5px 11px}
-.programs-view .card h3{font-size:17px;font-weight:800;color:var(--hab-text);margin-top:10px}
-.programs-view .tagline{font-size:12.5px;font-style:normal;font-weight:600}
+/* Icon + title lockup replaces the pill that repeated the heading. */
+.programs-view .card-head{display:flex;align-items:center;gap:11px}
+.programs-view .card-ico{
+  width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;
+  background:var(--accent-soft);color:var(--accent);
+}
+.programs-view .card-ico svg{width:20px;height:20px}
+.programs-view .card-head-text{min-width:0}
+.programs-view .card h3{font-size:17px;font-weight:800;color:var(--hab-text);margin-top:0}
+.programs-view .tagline{font-size:12.5px;font-style:normal;font-weight:600;margin-top:2px}
 .programs-view .price-badge{border:none;margin-top:12px;padding:6px 6px 6px 13px}
 .programs-view .price-badge .pd{font-size:12px;color:var(--hab-text-muted);font-weight:600}
 .programs-view .price-badge .pp{padding:5px 13px}
@@ -530,5 +549,18 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .programs-view .card-actions{margin-top:16px;gap:9px}
 .programs-view .btn{font-size:13px;padding:11px 20px}
 .programs-view .btn-ghost{padding:9.5px 18px;border-width:1.5px}
-.programs-view .card-media{padding:0 16px 16px}
-.programs-view .card-media img{border-radius:12px;border-color:var(--hab-line)}
+/* Square thumbnail: the flyer art is 1:1, so a full-width contain box left
+   ~80px of white either side. Sized to the image, centred, tappable. */
+.programs-view .card-media{
+  padding:0 16px 16px;display:flex;justify-content:center;width:100%;
+  background:none;border:none;cursor:pointer;
+}
+.programs-view .card-media img{
+  display:block;width:auto;height:auto;aspect-ratio:1;
+  max-width:min(100%,150px);max-height:none;object-fit:cover;
+  border-radius:12px;border:1px solid var(--hab-line);
+}
+/* The inline price badge fits at phone widths here; the global 420px rule
+   stacks it into an oversized block. */
+.programs-view .price-badge{flex-direction:row;align-items:center;border-radius:999px}
+.programs-view .card-media:hover img{filter:brightness(1.03)}
