@@ -483,14 +483,12 @@ export default function Page() {
             <article className="card" key={p.key} style={accentStyle(p)}>
               <div className="stripe" />
               <div className="card-body">
-                {/* No icon chip: the banner above already carries the brand
-                    mark, so it was a third repetition of the same identity. */}
-                <div className="card-head">
-                  <div className="card-head-text">
-                    <h3>{p.name}</h3>
-                    <div className="tagline">{p.tagline}</div>
-                  </div>
-                </div>
+                {/* The banner above carries the plan name and tagline, so the
+                    body starts at the price. The heading stays for screen
+                    readers and document outline, since the banner is an image. */}
+                <h3 className="sr-only">
+                  {p.name} — {p.tagline}
+                </h3>
                 <div className="price-badge">
                   <span className="pd">Plan duration {p.duration}</span>
                   <span className="pp">

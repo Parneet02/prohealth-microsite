@@ -535,16 +535,6 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 }
 .programs-view .card .stripe{display:none}
 .programs-view .card-body{padding:16px 16px 14px}
-/* Icon + title lockup replaces the pill that repeated the heading. */
-.programs-view .card-head{display:flex;align-items:center;gap:11px}
-.programs-view .card-ico{
-  width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;
-  background:var(--accent-soft);color:var(--accent);
-}
-.programs-view .card-ico svg{width:20px;height:20px}
-.programs-view .card-head-text{min-width:0}
-.programs-view .card h3{font-size:17px;font-weight:800;color:var(--hab-text);margin-top:0}
-.programs-view .tagline{font-size:12.5px;font-style:normal;font-weight:600;margin-top:2px}
 .programs-view .price-badge{border:none;margin-top:12px;padding:6px 6px 6px 13px}
 .programs-view .price-badge .pd{font-size:12px;color:var(--hab-text-muted);font-weight:600}
 .programs-view .price-badge .pp{padding:5px 13px}
@@ -586,3 +576,9 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
    stacks it into an oversized block. */
 .programs-view .price-badge{flex-direction:row;align-items:center;border-radius:999px}
 .programs-view .card-media:hover img{filter:brightness(1.03)}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* First element in the body is now the price badge, which carries its own
+   top margin from the shared card rules. */
+.programs-view .card-body > .price-badge{margin-top:0}
