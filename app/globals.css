@@ -175,9 +175,19 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .done{display:block;margin:16px auto 0;background:none;border:none;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font:inherit}
 
 /* ---------- Admin leads panel ---------- */
-.modal.viewer{width:min(600px,100%)}
-.viewer-body{padding:20px 24px 26px;display:flex;flex-direction:column;gap:16px}
+/* Matches the other modals rather than the old 600px outlier. */
+.modal.viewer{width:min(440px,100%)}
+.viewer-body{padding:16px 18px 8px;display:flex;flex-direction:column;gap:14px}
+.viewer-page{margin:0;display:flex;flex-direction:column;gap:6px}
+.viewer-page figcaption{font-size:.72rem;color:var(--faint);text-align:center}
 .viewer-body img{width:100%;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--surface-2)}
+.viewer-cta{
+  position:sticky;bottom:0;z-index:2;padding:12px 18px calc(14px + var(--safe-b));
+  background:var(--surface);border-top:1px solid var(--line);
+}
+/* Base .btn is 1rem here (the modal is outside .programs-view), which wrapped
+   the label onto two lines. */
+.viewer-cta .btn{font-size:14px;padding:12px 18px}
 .vfull{width:100%;text-align:center}
 .admin .modal{width:min(620px,100%)}
 .stat{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:16px}

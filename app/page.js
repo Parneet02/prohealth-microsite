@@ -558,11 +558,12 @@ export default function Page() {
       >
         {viewerProgram && (
           <div className="modal viewer" role="dialog" aria-modal="true" style={accentStyle(viewerProgram)}>
+            {/* No badge here: it repeated the title verbatim, and the header
+                was eating ~330px before any flyer showed. */}
             <div className="modal-head">
               <div>
-                <span className="badge">{viewerProgram.name}</span>
                 <div className="mtitle">{viewerProgram.name} flyer</div>
-                <div className="msub">Preview only. Register to download the PDF.</div>
+                <div className="msub">Preview only — register to download the PDF.</div>
               </div>
               <button className="x" onClick={() => setViewerKey(null)} aria-label="Close">
                 ✕
@@ -570,9 +571,18 @@ export default function Page() {
             </div>
             <div className="viewer-body">
               {viewerProgram.previews.map((src, i) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img key={src} src={src} alt={`${viewerProgram.name} flyer page ${i + 1}`} />
+                <figure className="viewer-page" key={src}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={src} alt={`${viewerProgram.name} flyer page ${i + 1}`} />
+                  <figcaption>
+                    Page {i + 1} of {viewerProgram.previews.length}
+                  </figcaption>
+                </figure>
               ))}
+            </div>
+            {/* Sticky: the CTA sat under ~1200px of flyer images, so it could
+                only be reached by scrolling both pages. */}
+            <div className="viewer-cta">
               <button
                 className="btn btn-primary vfull"
                 onClick={() => {
