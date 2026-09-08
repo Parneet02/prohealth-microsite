@@ -569,14 +569,18 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   order:-1;padding:0;display:block;width:100%;line-height:0;
   background:none;border:none;cursor:pointer;
 }
-/* Ratio comes from lib/programs.js per plan: each flyer's title block ends at
-   a different height, and zooming to equalise them would crop the logos off
-   the sides, so the crop height varies and the gap below the text does not. */
+/* Crop values come from lib/programs.js per plan. The negative margin scrolls
+   the flyer's logo strip out of view; margin-top percentages resolve against
+   the container's width, which is also the square flyer's rendered height, so
+   --banner-top is a plain fraction of the source image. */
+.programs-view .card-media{
+  aspect-ratio:var(--banner-ratio,4.5);overflow:hidden;border-radius:18px 18px 0 0;
+}
 .programs-view .card-media img{
-  display:block;width:100%;height:auto;aspect-ratio:var(--banner-ratio,3.4);
+  display:block;width:100%;height:auto;aspect-ratio:auto;
   max-width:none;max-height:none;
-  object-fit:cover;object-position:top center;
-  border:none;border-radius:18px 18px 0 0;
+  margin-top:calc(var(--banner-top,0) * -100%);
+  border:none;border-radius:0;
 }
 /* The inline price badge fits at phone widths here; the global 420px rule
    stacks it into an oversized block. */
