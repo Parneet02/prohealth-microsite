@@ -237,7 +237,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   flex:0 0 100%;scroll-snap-align:start;position:relative;isolation:isolate;
   cursor:pointer;overflow:hidden;
   aspect-ratio:2.55;min-height:0;padding:14px 18px;
-  max-height:34dvh;                       /* dvh, not vh — mobile chrome */
+  max-height:calc(.34 * var(--vh, 100dvh)); /* --vh is frozen when embedded */
   display:flex;flex-direction:column;justify-content:center;
   background:linear-gradient(120deg,var(--surface-2) 0%,var(--plus-soft) 100%);
   border:1px solid var(--line);
@@ -499,7 +499,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   --hab-blue-soft:#EAF1FB; --hab-orange:#F67F1B; --hab-orange-deep:#B85806;
   --hab-page:#F4F6F9; --hab-surface:#FFFFFF; --hab-line:#ECEEF2;
   --hab-text:#1B2A3D; --hab-text-muted:#5A6473; --hab-text-soft:#9AA1AC;
-  background:var(--hab-page);min-height:100dvh;
+  background:var(--hab-page);min-height:var(--vh, 100dvh);
 }
 .sub-header{
   max-width:480px;margin:0 auto;padding:calc(10px + var(--safe-t)) 16px 4px;

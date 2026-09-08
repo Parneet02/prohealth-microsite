@@ -190,14 +190,40 @@ export default function Page() {
     else setEmbedded(window.parent !== window);
   }, []);
 
+  /* Inside a frame the host resizes us from the height we report, which makes
+     dvh units a feedback loop: taller frame, taller viewport, taller content,
+     taller report. Freeze the viewport height into --vh so layout stops
+     tracking the frame, and re-measure only when the width actually changes
+     (rotation), never on the height changes we caused ourselves. */
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.parent === window) return;
+    const root = document.documentElement;
+    let width = window.innerWidth;
+    const freeze = () => root.style.setProperty('--vh', `${window.innerHeight}px`);
+    freeze();
+    const onResize = () => {
+      if (window.innerWidth === width) return;
+      width = window.innerWidth;
+      freeze();
+    };
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('resize', onResize);
+      root.style.removeProperty('--vh');
+    };
+  }, []);
+
   /* Report height to the Habit Health app so the iframe can resize itself. */
   useEffect(() => {
     if (typeof window === 'undefined' || window.parent === window) return;
+    let last = 0;
     const post = () => {
-      const height = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight
+      const height = Math.ceil(
+        Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
       );
+      // Sub-pixel rounding alone would keep the conversation going forever.
+      if (Math.abs(height - last) < 2) return;
+      last = height;
       window.parent.postMessage({ type: 'prohealth:height', height }, '*');
     };
     post();
