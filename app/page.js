@@ -470,7 +470,7 @@ export default function Page() {
       >
         {formOpen && (
           <div
-            className="modal"
+            className="modal register-modal"
             role="dialog"
             aria-modal="true"
             ref={modalRef}
