@@ -436,16 +436,18 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .home-view{background:var(--hab-page)}
 .home-header{background:var(--hab-surface);border-bottom:1px solid var(--hab-line);padding:11px 18px}
 
-/* HABIT/HEALTH lockup */
-.hhl{display:inline-flex;flex-direction:column;align-items:center;gap:2px;line-height:1}
-.hhl-word{
-  display:inline-flex;align-items:center;font-size:18px;line-height:.85;letter-spacing:.01em;
-  font-family:"Playfair Display","Times New Roman",serif;font-weight:900;color:var(--hab-blue);
+/* HABIT/HEALTH logo */
+.hhl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-.hhl-figure{display:inline-block;width:.78em;height:.95em;margin:0 -.02em}
-.hhl-sub{
-  font-family:"Plus Jakarta Sans",sans-serif;font-weight:600;font-size:7px;
-  color:var(--hab-blue);letter-spacing:.44em;text-indent:.44em;margin-top:2px;
+
+.hhl-logo-image {
+  width: 140px;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .home-header-icons{gap:13px}

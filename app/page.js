@@ -42,66 +42,14 @@ function Icon({ path, size = 20, width = 2 }) {
   );
 }
 
-function HabitHealthLogo({ id = 'a' }) {
-  const grad = `habit-figure-${id}`;
-
+function HabitHealthLogo() {
   return (
     <div className="hhl">
-      <div className="hhl-word">
-        <span className="hhl-letter">H</span>
-
-        <svg
-          className="hhl-figure"
-          viewBox="0 0 100 120"
-          aria-hidden="true"
-        >
-          <defs>
-            <linearGradient
-              id={grad}
-              x1="50%"
-              y1="0%"
-              x2="50%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="#F5A623" />
-              <stop offset="60%" stopColor="#F08144" />
-              <stop offset="100%" stopColor="#E94B3F" />
-            </linearGradient>
-          </defs>
-
-          <circle
-            cx="50"
-            cy="16"
-            r="10"
-            fill={`url(#${grad})`}
-          />
-
-          <path
-            d="M 50 28 C 42 46, 32 78, 18 112 L 34 112 C 42 88, 48 68, 56 50 Z"
-            fill={`url(#${grad})`}
-          />
-
-          <path
-            d="M 56 50 C 64 68, 70 88, 82 112 L 98 112 C 84 78, 74 46, 66 28 C 60 26, 55 26, 50 28 Z"
-            fill={`url(#${grad})`}
-          />
-
-          <rect
-            x="36"
-            y="78"
-            width="32"
-            height="7"
-            rx="2.5"
-            fill={`url(#${grad})`}
-          />
-        </svg>
-
-        <span className="hhl-letter">B</span>
-        <span className="hhl-letter">I</span>
-        <span className="hhl-letter">T</span>
-      </div>
-
-      <div className="hhl-sub">HEALTH</div>
+      <img
+        src="/habit-health-logo.png"
+        alt="Habit Health"
+        className="hhl-logo-image"
+      />
     </div>
   );
 }
