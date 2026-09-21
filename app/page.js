@@ -423,67 +423,6 @@ export default function Page() {
             ))}
           </div>
         </div>
-
-        <h2 className="section-head">Extensive Range Of Wellness Test</h2>
-        <div className="wellness-row">
-          {WELLNESS_ITEMS.map((item) => (
-            <div className="wellness-item" key={item.label} aria-disabled="true">
-              <span className={`wellness-icon${item.highlight ? ' highlight' : ''}`}>
-                <Icon path={item.icon} size={22} width={1.8} />
-              </span>
-              <span>{item.label}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="step-card" aria-hidden="true">
-          <div className="step-card-head">
-            <span className="step-sync">
-              <Icon path="M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0 0 13.9 3M19.5 9A8 8 0 0 0 5.6 6" size={13} width={2.25} />
-              Last sync: Just now
-            </span>
-            <span className="step-goal">
-              <span className="step-goal-ic">
-                <Icon path="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 14a4 4 0 1 1 4-4 4 4 0 0 1-4 4Z" size={16} width={2} />
-              </span>
-              <span>
-                <b>8,000</b>
-                <small>Daily Step Goal</small>
-              </span>
-            </span>
-          </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="step-scene-img" src="/home/park-scene.png" alt="" />
-          <button className="step-cta" disabled>
-            <Icon path="M12 2 4 14h6l-1 8 9-13h-6l1-7Z" size={16} width={1.8} />
-            Start a Challenge
-          </button>
-        </div>
-
-        <div className="engage-card" aria-hidden="true">
-          <HighFiveIllustration />
-          <div className="engage-card-text">
-            <h3>
-              Engage yourself
-              <br />
-              for a healthier you.
-            </h3>
-            <p>Take charge of your wellbeing with programs built around your goals.</p>
-          </div>
-          <div className="engage-stat-chip">
-            <span className="engage-stat-label">StepUp Showdown</span>
-            <span className="engage-stat-row">
-              <Icon path="M12 21s-7-4.35-9.33-9.02C1.06 8.9 2.7 5.5 6.1 5.5c2 0 3.2 1.1 3.9 2.2C10.7 6.6 11.9 5.5 13.9 5.5c3.4 0 5.04 3.4 3.43 6.48C19 16.65 12 21 12 21Z" size={11} width={2} />
-              2900m · 231kcal
-            </span>
-          </div>
-          <span className="engage-badge">
-            <Icon path="M20 6 9 17l-5-5" size={13} width={2.6} />
-          </span>
-          <span className="engage-chevron">
-            <Icon path="M9 6l6 6-6 6" size={20} width={2.4} />
-          </span>
-        </div>
       </section>
 
       {/* ---------- Programs ---------- */}
@@ -554,13 +493,6 @@ export default function Page() {
           ))}
         </div>
       </section>
-
-      <footer>
-        <div className="foot">
-          <span>© HCL Healthcare · ProHealth Programs. Making Corporate India Healthier.</span>
-          <span>Care team: +91 9599105133 · careplan@hclhealthcare.in</span>
-        </div>
-      </footer>
 
       {/* ---------- Flyer preview ---------- */}
       <div
