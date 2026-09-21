@@ -537,9 +537,13 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .programs-view .card .stripe{display:none}
 .programs-view .card-body{padding:16px 16px 14px}
 .programs-view .price-badge{border:none;margin-top:12px;padding:6px 6px 6px 13px}
-.programs-view .price-badge .pd{font-size:12px;color:var(--hab-text-muted);font-weight:600}
-:root[data-theme="dark"] .programs-view .price-badge .pd{
-  color:#FFFFFF;
+.programs-view .price-badge .pd {
+  font-size: 12px;
+  color: var(--hab-text-muted);
+  font-weight: 600;
+}
+html[data-theme="dark"] .programs-view .price-badge .pd {
+  color: #FFFFFF !important;
 }
 .programs-view .price-badge .pp{padding:5px 13px}
 .programs-view .price-badge .pp b{font-family:inherit;font-size:15px}
