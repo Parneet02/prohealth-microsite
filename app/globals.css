@@ -124,6 +124,12 @@ footer{border-top:1px solid var(--line);margin-top:20px}
 .register-modal .modal-head{
   background:color-mix(in srgb,var(--accent) 12%,var(--surface));
 }
+.modal{
+  scrollbar-width:none;
+}
+.modal::-webkit-scrollbar{
+  display:none;
+}
 .modal-head{padding:22px 26px;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface);z-index:2}
 .modal-head .mtitle{font-family:"Sora";font-weight:700;font-size:1.25rem}
 .modal-head .msub{color:var(--muted);font-size:.9rem;margin-top:3px}
