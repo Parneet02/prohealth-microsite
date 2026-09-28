@@ -63,7 +63,6 @@ export default function Page() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null);
   const [tab, setTab] = useState('none');
-
   const nameRef = useRef(null);
   const modalRef = useRef(null);
 
@@ -85,7 +84,6 @@ export default function Page() {
 
     const onResize = () => {
       if (window.innerWidth === width) return;
-
       width = window.innerWidth;
       freeze();
     };
@@ -333,9 +331,11 @@ export default function Page() {
               <div className="stripe" />
 
               <div className="card-body">
-                <h3 className="sr-only">
-                  {p.name} — {p.tagline}
-                </h3>
+                {/* Visible plan name banner */}
+                <div className="plan-banner">
+                  <h3>{p.name}</h3>
+                  <div className="tagline">{p.tagline}</div>
+                </div>
 
                 <div className="price-badge">
                   <span className="pd">
@@ -447,7 +447,6 @@ export default function Page() {
                 className="btn btn-primary vfull"
                 onClick={() => {
                   const service = viewerProgram.service;
-
                   setViewerKey(null);
                   openForm(service);
                 }}
