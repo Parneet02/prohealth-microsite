@@ -469,29 +469,54 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   /* --pad is the page gutter; the live app runs nearly edge to edge. */
 
   .programs-view .card{
-    grid-template-columns:1fr;
+  border:none;
+  border-radius:18px;
+  background:var(--hab-surface);
+  grid-template-columns:minmax(0, 1fr) 220px;
+  align-items:stretch;
+  box-shadow:0 .5px 1px rgba(27,42,61,.05), 0 8px 22px -10px rgba(27,42,61,.12);
   }
 
   .programs-view .card-body{
-    grid-column:1;
-    grid-row:2;
+  grid-column:1;
+  grid-row:1;
+  padding:18px 16px;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
   }
+.programs-view .card-media{
+  order:2;
+  grid-column:2;
+  grid-row:1;
+  width:100%;
+  min-height:100%;
+  aspect-ratio:auto;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+  background:none;
+  border:none;
+  border-radius:0 18px 18px 0;
+  cursor:pointer;
+  overflow:hidden;
+}
 
-  .programs-view .card-media{
-    grid-column:1;
-    grid-row:1;
-    min-height:0;
-    padding:0;
-    border-radius:18px 18px 0 0;
-  }
+.programs-view .card-media img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  max-height:none;
+  object-fit:contain;
+  margin:0;
+  border:none;
+  border-radius:0;
+}
 
-  .programs-view .card-media img{
-    max-height:none;
-    width:100%;
-    max-width:100%;
-    margin-top:0;
-    border-radius:0;
-  }
 
   .home-view{--pad:12px}
 
