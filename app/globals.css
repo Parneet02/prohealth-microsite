@@ -1,57 +1,102 @@
-```css
 :root{
+
   --ground:#F5F3FB; --surface:#FFFFFF; --surface-2:#FAF8FE;
+
   --ink:#241A33; --muted:#6B6480; --faint:#938CA6;
+
   --line:#E7E2F0; --line-strong:#D8D0E6;
+
   --brand:#6A2C91; --brand-2:#B0338C;
+
   --plus:#6A2C91; --plus-soft:#F1E9F7;
+
   --diet:#2E7D32; --diet-soft:#E6F2E7;
+
   --lab:#C6820A; --lab-soft:#FBEFD4;
+
   --shadow:0 18px 50px -22px rgba(46,25,74,.35);
+
   --shadow-sm:0 6px 20px -12px rgba(46,25,74,.30);
+
   --radius:22px; --radius-sm:14px;
+
   --good:#2E7D32; --bad:#C0392B;
+
   --focus:#B0338C;
+
   /* Host app chrome. The page renders inside a webview whose bottom tab bar
      overlays our viewport, so content has to reserve room for it. */
+
   --app-nav:56px;
+
   --safe-t:env(safe-area-inset-top,0px);
+
   --safe-r:env(safe-area-inset-right,0px);
+
   --safe-b:env(safe-area-inset-bottom,0px);
+
   --safe-l:env(safe-area-inset-left,0px);
+
   --nav-clear:calc(var(--app-nav) + var(--safe-b));
+
 }
 
 :root:not([data-theme="light"]){}
 
 @media (prefers-color-scheme: dark){
+
   :root:not([data-theme="light"]){
+
     --ground:#140F1C; --surface:#1E1728; --surface-2:#241C31;
+
     --ink:#F3EEF9; --muted:#B4AAC6; --faint:#8A80A0;
+
     --line:#332941; --line-strong:#40344F;
+
     --brand:#B884D8; --brand-2:#E86FBE;
+
     --plus:#C79BE4; --plus-soft:#2A1E38;
+
     --diet:#7FD08A; --diet-soft:#17281A;
+
     --lab:#F0C04E; --lab-soft:#2E2410;
+
     --shadow:0 20px 55px -24px rgba(0,0,0,.7);
+
     --shadow-sm:0 8px 22px -14px rgba(0,0,0,.65);
+
     --good:#7FD08A; --bad:#F0857A;
+
     --focus:#E86FBE;
+
   }
+
 }
 
 :root[data-theme="dark"]{
+
   --ground:#140F1C; --surface:#1E1728; --surface-2:#241C31;
+
   --ink:#F3EEF9; --muted:#B4AAC6; --faint:#8A80A0;
+
   --line:#332941; --line-strong:#40344F;
+
   --brand:#B884D8; --brand-2:#E86FBE;
+
   --plus:#C79BE4; --plus-soft:#2A1E38;
+
   --diet:#7FD08A; --diet-soft:#17281A;
+
   --lab:#F0C04E; --lab-soft:#2E2410;
+
   --shadow:0 20px 55px -24px rgba(0,0,0,.7);
+
   --shadow-sm:0 8px 22px -14px rgba(0,0,0,.65);
+
   --good:#7FD08A; --bad:#F0857A;
+
   --focus:#E86FBE;
+
 }
 
 *{box-sizing:border-box}
@@ -59,13 +104,21 @@
 html{-webkit-text-size-adjust:100%}
 
 body{
+
   margin:0; background:var(--ground); color:var(--ink);
+
   font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+
   line-height:1.6; -webkit-font-smoothing:antialiased;
+
   /* Clear the host tab bar and any notch/rounded-corner insets. */
+
   padding-left:var(--safe-l); padding-right:var(--safe-r);
+
   padding-bottom:var(--nav-clear);
+
   overflow-x:hidden;
+
 }
 
 h1,h2,h3{font-family:"Sora","Plus Jakarta Sans",system-ui,sans-serif;text-wrap:balance;margin:0;line-height:1.12}
@@ -99,9 +152,13 @@ button{font-family:inherit}
 .programs{max-width:480px;margin:0 auto;padding:26px clamp(18px,5vw,52px) 40px;display:flex;flex-direction:column;gap:24px}
 
 .card{
+
   --accent:var(--brand);
+
   position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--line);
+
   border-radius:var(--radius);box-shadow:var(--shadow);display:grid;grid-template-columns:8px 1fr;
+
 }
 
 .card .stripe{background:var(--accent)}
@@ -113,6 +170,7 @@ button{font-family:inherit}
 .card-media img{width:100%;max-height:280px;object-fit:contain;border-radius:16px;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--surface-2)}
 
 .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 13px;border-radius:999px;font-weight:700;font-size:.74rem;letter-spacing:.04em;
+
   background:var(--accent-soft);color:var(--accent)}
 
 .pill .ico{width:16px;height:16px}
@@ -122,6 +180,7 @@ button{font-family:inherit}
 .tagline{color:var(--accent);font-weight:600;font-style:italic;margin-top:4px;font-size:1.02rem}
 
 .price-badge{display:inline-flex;align-items:center;gap:12px;margin-top:16px;padding:7px 8px 7px 16px;
+
   border-radius:999px;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent)}
 
 .price-badge .pd{font-weight:700;font-size:.9rem;color:var(--ink)}
@@ -171,19 +230,27 @@ footer{border-top:1px solid var(--line);margin-top:20px}
 .modal{background:var(--surface);color:var(--ink);width:min(440px,100%);max-height:92vh;overflow:auto;border-radius:24px;box-shadow:var(--shadow);border:1px solid var(--line)}
 
 .register-modal{
+
   background:color-mix(in srgb,var(--accent) 12%,var(--surface));
+
 }
 
 .register-modal .modal-head{
+
   background:color-mix(in srgb,var(--accent) 12%,var(--surface));
+
 }
 
 .modal{
+
   scrollbar-width:none;
+
 }
 
 .modal::-webkit-scrollbar{
+
   display:none;
+
 }
 
 .modal-head{padding:22px 26px;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface);z-index:2}
@@ -207,8 +274,11 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .field .req{color:var(--bad)}
 
 .field input,.field select{
+
   width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line-strong);
+
   background:var(--surface-2);color:var(--ink);font:inherit;transition:border .15s ease, box-shadow .15s ease;
+
 }
 
 .field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
@@ -245,6 +315,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 
 /* On a 640px-tall screen the modal caps at 92vh and the success panel
    overflowed, pushing "Done" out of reach. */
+
 @media(max-height:700px){
 
   .success{padding:18px}
@@ -264,8 +335,11 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 }
 
 .flyer-toggle{
+
   display:inline-flex;align-items:center;gap:6px;border:none;background:none;cursor:pointer;
+
   color:var(--accent);font:inherit;font-weight:600;font-size:.9rem;padding:8px 10px;border-radius:10px;
+
 }
 
 .flyer-toggle:hover{background:var(--accent-soft)}
@@ -297,8 +371,11 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .viewer-body img{width:100%;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--surface-2)}
 
 .viewer-cta{
+
   position:sticky;bottom:0;z-index:2;padding:12px 18px calc(14px + var(--safe-b));
+
   background:var(--surface);border-top:1px solid var(--line);
+
 }
 
 /* Base .btn is 1rem here (the modal is outside .programs-view), which wrapped
@@ -380,8 +457,11 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .hh-banner-wrap{max-width:480px;margin:0 auto;padding:clamp(14px,4vw,28px) clamp(18px,5vw,52px) 34px}
 
 .hh-track{
+
   display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+
   border-radius:20px;box-shadow:var(--shadow);-webkit-overflow-scrolling:touch;
+
 }
 
 .hh-track::-webkit-scrollbar{display:none}
@@ -389,21 +469,33 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .hh-track{scrollbar-width:none}
 
 .hh-slide{
+
   flex:0 0 100%;scroll-snap-align:start;position:relative;isolation:isolate;
+
   cursor:pointer;overflow:hidden;
+
   aspect-ratio:2.55;min-height:0;padding:14px 18px;
+
   max-height:calc(.34 * var(--vh, 100dvh));
+
   display:flex;flex-direction:column;justify-content:center;
+
   background:linear-gradient(120deg,var(--surface-2) 0%,var(--plus-soft) 100%);
+
   border:1px solid var(--line);
+
 }
 
 .hh-slide-text{position:relative;z-index:1;max-width:55%}
 
 .hh-eyebrow{
+
   display:block;font-size:10px;font-weight:600;letter-spacing:.06em;line-height:1.3;
+
   text-transform:uppercase;color:var(--brand-2);
+
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+
 }
 
 /* Spans the full card, not the 55% text column: at 55% (and at the old 64%)
@@ -412,8 +504,11 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
    heading does not collide with it. */
 
 .hh-title{
+
   margin-top:5px;font-size:15px;font-weight:700;max-width:72%;
+
   letter-spacing:-.01em;color:var(--ink);line-height:1.25;text-wrap:balance;
+
 }
 
 .hh-slide-text{max-width:none}
@@ -432,8 +527,11 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
    tappable; this stays a real button so it is keyboard reachable. */
 
 .hh-cta{
+
   margin-top:7px;display:inline-block;padding:0;border:none;background:none;
+
   cursor:pointer;color:#6A2C91;font-size:13px;font-weight:700;text-align:left;
+
 }
 
 .hh-cta:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
@@ -441,8 +539,11 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 /* Full-bleed to the card's top, right and bottom edges, behind the text. */
 
 .hh-slide-art{
+
   position:absolute;top:0;right:0;bottom:0;z-index:0;pointer-events:none;
+
   width:42%;display:block;
+
 }
 
 .hh-illo{width:100%;height:100%;display:block}
@@ -451,10 +552,15 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
    tighten the rhythm rather than clip the sub (which carries the price). */
 
 @media(max-width:375px){
+
   .hh-slide{padding:10px 14px}
+
   .hh-title{margin-top:3px}
+
   .hh-sub{margin-top:3px}
+
   .hh-cta{margin-top:5px}
+
 }
 
 @media(max-width:339px){.hh-slide-art{display:none}}
@@ -469,54 +575,22 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   /* --pad is the page gutter; the live app runs nearly edge to edge. */
 
   .programs-view .card{
-  border:none;
-  border-radius:18px;
-  background:var(--hab-surface);
-  grid-template-columns:minmax(0, 1fr) 220px;
-  align-items:stretch;
-  box-shadow:0 .5px 1px rgba(27,42,61,.05), 0 8px 22px -10px rgba(27,42,61,.12);
+    grid-template-columns:minmax(0, 1fr) 150px;
   }
 
   .programs-view .card-body{
-  grid-column:1;
-  grid-row:1;
-  padding:18px 16px;
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+    grid-column:1;
+    grid-row:1;
   }
-.programs-view .card-media{
-  order:2;
-  grid-column:2;
-  grid-row:1;
-  width:100%;
-  min-height:100%;
-  aspect-ratio:auto;
-  padding:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  line-height:0;
-  background:none;
-  border:none;
-  border-radius:0 18px 18px 0;
-  cursor:pointer;
-  overflow:hidden;
-}
 
-.programs-view .card-media img{
-  display:block;
-  width:100%;
-  height:auto;
-  max-width:100%;
-  max-height:none;
-  object-fit:contain;
-  margin:0;
-  border:none;
-  border-radius:0;
-}
-
+  .programs-view .card-media{
+    order:2;
+    grid-column:2;
+    grid-row:1;
+    min-height:100%;
+    padding:10px;
+    border-radius:0 18px 18px 0;
+  }
 
   .home-view{--pad:12px}
 
@@ -537,6 +611,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
   .engage-card{width:calc(100% - (var(--pad) * 2))}
 
   .foot{padding-left:var(--pad);padding-right:var(--pad)}
+
 }
 
 /* Overlaid on the card's bottom edge, as in the live app — sitting below the
@@ -545,13 +620,20 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .hh-banner-wrap{position:relative}
 
 .hh-dots{
+
   position:absolute;left:0;right:0;bottom:5px;z-index:2;
+
   display:flex;justify-content:center;gap:6px;pointer-events:auto;
+
 }
 
 .hh-dot{
+
   width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;
-  background:var(--line-strong);transition:background .2s ease, width .2s ease;
+
+  background:var(--line-strong);
+transition:background .2s ease, width .2s ease;
+
 }
 
 .hh-dot.active{width:20px;border-radius:4px;background:var(--brand)}
@@ -566,61 +648,92 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .home-header[hidden]{display:none}
 
 .home-header{
+
   display:flex;align-items:center;justify-content:space-between;gap:16px;
+
   max-width:480px;margin:0 auto;padding:16px clamp(18px,5vw,52px) 0;
+
   padding-top:calc(16px + var(--safe-t));
+
 }
 
 .home-header-icons{display:flex;align-items:center;gap:10px}
 
 .hh-icon-btn{
+
   width:38px;height:38px;border-radius:11px;border:1px solid var(--line-strong);
+
   background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;
+
 }
 
 .hh-icon-btn:disabled{cursor:default;opacity:.55}
 
 .home-greeting{
+
   max-width:480px;margin:14px auto 0;padding:0 clamp(18px,5vw,52px);
+
   font-size:1.05rem;color:var(--ink);
+
 }
 
 .section-head{
+
   max-width:480px;margin:26px auto 0;padding:0 clamp(18px,5vw,52px);
+
   font-size:1.1rem;font-weight:800;letter-spacing:-.01em;color:var(--ink);
+
 }
 
 .wellness-row{
+
   max-width:480px;margin:14px auto 0;padding:0 clamp(18px,5vw,52px);
+
   display:flex;gap:20px;overflow-x:auto;
+
   /* Keep the scrolling, hide the native bar — it renders as a visible track on
      platforms with classic (non-overlay) scrollbars. */
+
   scrollbar-width:none;-ms-overflow-style:none;
+
 }
 
 .wellness-row::-webkit-scrollbar{display:none}
 
 .wellness-item{
+
   flex:0 0 72px;display:flex;flex-direction:column;align-items:center;gap:8px;
+
   width:72px;text-align:center;font-size:.76rem;font-weight:600;color:var(--ink);
+
 }
 
 .wellness-icon{
+
   width:56px;height:56px;border-radius:16px;margin:0 auto;
+
   display:flex;align-items:center;justify-content:center;
+
 }
 
 .wellness-icon svg{width:26px;height:26px}
 
 .step-card{
+
   width:calc(100% - 28px);max-width:452px;margin:14px auto 0;
+
   background:var(--surface);border-radius:18px;overflow:hidden;padding-bottom:12px;
+
   box-shadow:0 .5px 1px rgba(27,42,61,.05), 0 8px 22px -10px rgba(27,42,61,.12);
+
 }
 
 .step-card-head{
+
   display:flex;align-items:center;justify-content:space-between;gap:12px;
+
   padding:12px 14px 10px;
+
 }
 
 .step-sync{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600}
@@ -628,7 +741,9 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .step-goal{display:inline-flex;align-items:center;gap:7px}
 
 .step-goal-ic{
+
   width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none;
+
 }
 
 .step-goal b{display:block;font-size:.87rem;font-weight:800;line-height:1.15}
@@ -638,16 +753,25 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .step-scene-img{display:block;width:100%;height:auto}
 
 .step-cta{
+
   width:calc(100% - 24px);margin:12px 12px 0;padding:12px;border-radius:999px;border:none;
+
   font-weight:800;font-size:.85rem;cursor:default;
+
   display:flex;align-items:center;justify-content:center;gap:7px;
+
 }
 
 .engage-card{
+
   width:calc(100% - 32px);max-width:448px;margin:14px auto 0;padding:18px;
+
   border-radius:18px;color:#fff;overflow:hidden;
+
   background:linear-gradient(120deg,var(--brand),var(--brand-2));
+
   display:flex;align-items:center;justify-content:space-between;gap:14px;
+
 }
 
 .engage-card h3{font-size:1.15rem;font-weight:800;line-height:1.3}
@@ -664,21 +788,33 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
    mobile BottomNav so the two surfaces match. */
 
 .bottom-nav{
+
   position:sticky;bottom:calc(12px + var(--safe-b));z-index:5;
+
   max-width:480px;margin:0 auto;
+
   display:flex;align-items:center;gap:8px;
+
   padding:0 0 0 10px;background:none;border:none;
+
 }
 
 .bn-bar{
+
   flex:1;min-width:0;height:58px;border-radius:29px;background:#fff;
+
   display:flex;align-items:center;justify-content:space-around;padding:0 8px;
+
   box-shadow:0 5px 14px rgba(27,42,61,.18);
+
 }
 
 .bn-item{
+
   display:flex;flex-direction:column;align-items:center;gap:1px;
+
   font-size:10.5px;font-weight:500;color:var(--hab-text,#1B2A3D);
+
 }
 
 .bn-ic{width:44px;height:28px;border-radius:14px;display:grid;place-items:center}
@@ -688,10 +824,15 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .bn-item.active{color:var(--hab-blue,#2060B0);font-weight:700}
 
 .bn-benefits{
+
   flex:none;width:94px;height:58px;border-radius:24px 0 0 24px;
+
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+
   background:#1E5AAD;color:#fff;font-size:10.5px;font-weight:700;white-space:nowrap;
+
   box-shadow:0 5px 12px rgba(30,90,173,.35);
+
 }
 
 /* Home screen (view === 'banner') deliberately matches the host app's own
@@ -704,11 +845,17 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
    surfaces render the host app's home screen identically. */
 
 .home-view, .home-header, .bottom-nav{
+
   --hab-blue:#2060B0; --hab-blue-bright:#2E78D6; --hab-blue-deep:#173F73;
+
   --hab-blue-soft:#EAF1FB; --hab-orange:#F67F1B; --hab-orange-deep:#B85806;
+
   --hab-green-hc:#7DAA4A; --hab-gold:#F9D75E; --hab-gold-text:#1B2A3D;
+
   --hab-page:#F4F6F9; --hab-surface:#FFFFFF; --hab-line:#ECEEF2;
+
   --hab-text:#1B2A3D; --hab-text-muted:#5A6473; --hab-text-soft:#9AA1AC;
+
 }
 
 .home-view{background:var(--hab-page)}
@@ -718,28 +865,43 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 /* HABIT/HEALTH logo */
 
 .hhl {
+
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
+
 }
 
 .hhl-logo-image {
+
   width: 140px;
+
   height: auto;
+
   display: block;
+
   object-fit: contain;
+
 }
 
 .home-header-icons{gap:13px}
 
 .hh-icon-btn{
+
   width:29px;height:29px;border:none;background:none;border-radius:0;
+
   color:var(--hab-text);
+
 }
 
 .hh-badge{
+
   border:2px solid var(--hab-green-hc);border-radius:50%;color:var(--hab-green-hc);
+
   background:none;font-size:10px;font-weight:700;
+
 }
 
 .home-greeting{color:var(--hab-text);font-size:19px;padding-top:0;margin-top:16px}
@@ -779,16 +941,23 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .step-cta{background:var(--hab-gold);color:var(--hab-gold-text)}
 
 .engage-card{
+
   background:#1258A8;
+
   position:relative;flex-wrap:wrap;
+
 }
 
 .engage-card-text{flex:1 1 auto;min-width:0;position:relative;z-index:1}
 
 .engage-stat-chip{
+
   flex:none;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
+
   border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;
+
   font-size:.72rem;color:#fff;position:relative;z-index:1;
+
 }
 
 .engage-stat-label{font-weight:700}
@@ -796,8 +965,11 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .engage-stat-row{display:flex;align-items:center;gap:5px;opacity:.9}
 
 .engage-badge{
+
   position:absolute;top:-8px;right:38px;width:22px;height:22px;border-radius:50%;z-index:2;
+
   background:#fff;color:#1258A8;display:grid;place-items:center;box-shadow:var(--shadow-sm);
+
 }
 
 .engage-chevron{color:#fff;opacity:.85;flex:none;align-self:center;position:relative;z-index:1}
@@ -805,22 +977,35 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 /* ---- Programs screen, same Habit design language as the home shell ---- */
 
 .programs-view{
+
   --hab-blue:#2060B0; --hab-blue-bright:#2E78D6; --hab-blue-deep:#173F73;
+
   --hab-blue-soft:#EAF1FB; --hab-orange:#F67F1B; --hab-orange-deep:#B85806;
+
   --hab-page:#F4F6F9; --hab-surface:#FFFFFF; --hab-line:#ECEEF2;
+
   --hab-text:#1B2A3D; --hab-text-muted:#5A6473; --hab-text-soft:#9AA1AC;
+
   background:var(--hab-page);min-height:var(--vh, 100dvh);
+
 }
 
 .sub-header{
+
   max-width:480px;margin:0 auto;padding:calc(10px + var(--safe-t)) 16px 4px;
+
   display:flex;align-items:center;justify-content:space-between;
+
   background:var(--hab-surface);border-bottom:1px solid var(--hab-line);
+
 }
 
 .sub-back{
+
   width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;
+
   background:rgba(27,42,61,.05);color:var(--hab-text);display:grid;place-items:center;
+
 }
 
 .sub-spacer{width:36px}
@@ -828,63 +1013,98 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .programs-view .programs-head{padding:18px 18px 0}
 
 .programs-view .programs-head h2{
+
   font-size:22px;font-weight:800;letter-spacing:-.01em;color:var(--hab-text);margin-top:0;
+
 }
 
 .programs-view .programs-head .lead{
+
   color:var(--hab-text-muted);font-size:13px;margin-top:6px;max-width:44ch;
+
 }
 
 .programs-view .programs{padding:14px 16px 24px;gap:12px}
 
 @media(max-width:520px){
+
   .programs-view .programs-head{padding:14px 16px 0}
+
   .programs-view .programs-head h2{font-size:20px}
+
   .programs-view .programs-head .lead{font-size:12.5px;margin-top:5px}
+
   .programs-view .card-actions{margin-top:14px}
+
   .programs-view .btn{padding:10px 18px}
+
 }
 
 /* Habit structure and neutrals, but each card keeps its own --accent from
    lib/programs.js so Plus/Diet/Lab stay visually distinct. */
 
 .programs-view .card{
+
   border:none;
+
   border-radius:18px;
+
   background:var(--hab-surface);
-  grid-template-columns:1fr;
+
+  grid-template-columns:minmax(0, 1fr) 180px;
+
   align-items:stretch;
+
   box-shadow:0 .5px 1px rgba(27,42,61,.05), 0 8px 22px -10px rgba(27,42,61,.12);
+
 }
 
 .programs-view .card .stripe{display:none}
 
 .programs-view .card-body{
+
   grid-column:1;
-  grid-row:2;
+
+  grid-row:1;
+
   padding:18px 16px;
+
   min-width:0;
+
   display:flex;
+
   flex-direction:column;
+
   justify-content:center;
+
 }
 
 .programs-view .price-badge{border:none;margin-top:12px;padding:6px 6px 6px 13px}
 
 .programs-view .price-badge .pd {
+
   font-size: 12px;
+
   color: var(--hab-text-muted);
+
   font-weight: 600;
+
 }
 
 [data-theme="dark"] .programs-view .price-badge .pd {
+
   color: #FFFFFF !important;
+
 }
 
 @media (prefers-color-scheme: dark) {
+
   .programs-view .price-badge .pd {
+
     color: #FFFFFF !important;
+
   }
+
 }
 
 .programs-view .price-badge .pp{padding:5px 13px}
@@ -894,7 +1114,9 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .programs-view .desc{color:var(--hab-text-muted);font-size:12.5px;margin-top:12px}
 
 .programs-view .chip{
+
   background:#F4F6FA;border:none;color:var(--hab-text-muted);font-size:11px;padding:5px 10px;
+
 }
 
 /* Register is the card's only button. Viewing the flyer skips the form, so
@@ -905,62 +1127,79 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .programs-view .card-actions .btn-primary{width:100%;justify-content:center}
 
 .flyer-link{align-self:center;background:none;border:none;padding:4px 6px;cursor:pointer;
+
   font:inherit;font-size:.82rem;font-weight:500;color:var(--muted);
+
   text-decoration:underline;text-underline-offset:3px}
 
 .flyer-link:hover{color:var(--accent)}
 
 .programs-view .btn{font-size:13px;padding:11px 20px}
 
-/* The flyer leads the card as a banner rather than dangling underneath it.
-   The art is 1:1, but its top strip (HABIT + HCL marks and the programme
-   title) is banner-shaped, so it is cropped to that from the top. */
+/* The flyer is displayed on the right side of the card. */
 
 .programs-view .card-media{
-  order:1;
-  grid-column:1;
+
+  order:2;
+
+  grid-column:2;
+
   grid-row:1;
+
   width:100%;
-  min-height:0;
+
+  min-height:100%;
+
   aspect-ratio:auto;
-  padding:0;
+
+  padding:12px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   line-height:0;
+
   background:none;
+
   border:none;
-  border-radius:18px 18px 0 0;
+
+  border-radius:0 18px 18px 0;
+
   cursor:pointer;
+
   overflow:hidden;
+
 }
 
 .programs-view .card-media img{
+
   display:block;
+
   width:100%;
+
   height:auto;
+
   max-width:100%;
+
   max-height:none;
+
   object-fit:contain;
+
   margin:0;
+
   border:none;
+
   border-radius:0;
+
 }
 
 .programs-view .card-media:hover img{
-  filter:brightness(1.03);
-}
 
-.programs-view .card-media img{
-  display:block;
-  width:100%;
-  height:auto;
-  aspect-ratio:auto;
-  max-width:100%;
-  max-height:none;
-  margin-top:0;
-  border:none;
-  border-radius:0;
+  filter:brightness(1.03);
+
 }
 
 /* The inline price badge fits at phone widths here; the global 420px rule
@@ -971,6 +1210,7 @@ form{padding:22px 26px 26px;display:grid;gap:16px}
 .programs-view .card-media:hover img{filter:brightness(1.03)}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* First element in the body is now the price badge, which carries its own
