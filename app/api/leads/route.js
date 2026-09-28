@@ -3,6 +3,7 @@ import { validateLead, isBot } from '@/lib/validate';
 import { getRequestMeta, isRateLimited, json } from '@/lib/request';
 import { sendLeadNotification } from '@/lib/mailer';
 import { getProgramByService } from '@/lib/programs';
+import { encrypt, hash } from '@/lib/encryption';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
