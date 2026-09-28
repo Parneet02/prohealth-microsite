@@ -2,6 +2,7 @@ import { getCollection, COLLECTIONS } from '@/lib/mongodb';
 import { json } from '@/lib/request';
 import { PROGRAMS } from '@/lib/programs';
 import { isAuthorised } from '@/lib/auth';
+import { encrypt, hash } from '@/lib/encryption';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';

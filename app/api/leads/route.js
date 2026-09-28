@@ -35,6 +35,12 @@ export async function POST(req) {
 
   const doc = {
     ...data,
+    name: encrypt(data.name),
+    mobile: encrypt(data.mobile),
+    email: encrypt(data.email),
+    employeeId: encrypt(data.employeeId),
+    location: encrypt(data.location),
+    emailHash: hash(data.email),
     programKey: program?.key || null,
     status: 'new',
     source: 'habit-health-app',
@@ -55,7 +61,7 @@ export async function POST(req) {
     // not get three emails because someone tapped submit on a slow network.
     const dayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
     const existing = await leads.findOne({
-      email: data.email,
+      emailHash: hash(data.email),
       service: data.service,
       createdAt: { $gte: dayAgo },
     });
@@ -76,7 +82,11 @@ export async function POST(req) {
   }
 
   // The lead is already stored, so mail problems degrade rather than fail.
-  const mail = await sendLeadNotification({ ...doc, _id: String(insertedId) });
+  const mail = await sendLeadNotification({
+  ...data,
+  programKey: program?.key || null,
+  _id: String(insertedId),
+  });
 
   try {
     const leads = await getCollection(COLLECTIONS.leads);
