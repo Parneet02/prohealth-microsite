@@ -49,11 +49,6 @@
   --nav-clear: calc(var(--app-nav) + var(--safe-b));
 }
 
-
-/* =========================================================
-   GLOBAL BOX SIZING
-   ========================================================= */
-
 *,
 *::before,
 *::after {
@@ -61,9 +56,9 @@
 }
 
 
-/* =========================================================
+/* =========================
    LIGHT MODE
-   ========================================================= */
+   ========================= */
 
 :root[data-theme="light"] {
   --ground: #F5F3FB;
@@ -105,9 +100,9 @@
 }
 
 
-/* =========================================================
+/* =========================
    DARK MODE
-   ========================================================= */
+   ========================= */
 
 :root[data-theme="dark"] {
   --ground: #140F1C;
@@ -149,9 +144,9 @@
 }
 
 
-/* =========================================================
-   PROGRAMS PAGE
-   ========================================================= */
+/* =========================
+   PROGRAM PAGE
+   ========================= */
 
 .programs-view {
   min-height: 100vh;
@@ -194,9 +189,9 @@
 }
 
 
-/* =========================================================
+/* =========================
    THEME TOGGLE
-   ========================================================= */
+   ========================= */
 
 .theme-toggle {
   margin-left: auto;
@@ -238,9 +233,9 @@
 }
 
 
-/* =========================================================
-   PROGRAM CARD
-   ========================================================= */
+/* =========================
+   CARD
+   ========================= */
 
 .programs-view .card {
   position: relative;
@@ -252,29 +247,31 @@
   border: 1px solid var(--line);
   border-radius: 28px;
   box-shadow: var(--shadow-card);
+
   --accent: var(--brand);
   --accent-soft: var(--plus-soft);
 }
 
 
-/* =========================================================
-   STRIPE
-   ========================================================= */
+/* Remove old colored stripe */
 
 .programs-view .stripe {
   display: none;
 }
 
 
-/* =========================================================
+/* =========================
    CARD BODY
-   ========================================================= */
+   ========================= */
 
 .programs-view .card-body {
   grid-column: 1;
   grid-row: 1;
+
   min-width: 0;
+
   padding: 44px 36px 38px 64px;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -282,72 +279,78 @@
 }
 
 
-/* =========================================================
-   PROGRAM BANNER
-   ========================================================= */
+/* =========================
+   PLAN BANNER
+   ========================= */
 
 .programs-view .plan-banner {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  margin-bottom: 20px;
-  padding: 10px 17px;
+  gap: 10px;
+
+  margin-bottom: 18px;
+  padding: 12px 20px;
+
   border-radius: 30px;
+
   background: var(--accent-soft);
   color: var(--accent);
-  font-size: 15px;
-  font-weight: 800;
+
+  font-size: 21px;
+  font-weight: 850;
   line-height: 1;
+
   white-space: nowrap;
 }
 
 .programs-view .plan-banner-icon {
-  font-size: 21px;
+  font-size: 27px;
   line-height: 1;
 }
 
 
-/* =========================================================
-   PROGRAM TITLE
-   ========================================================= */
+/* =========================
+   REMOVE DUPLICATE TITLE
+   ========================= */
 
 .programs-view .program-title {
-  margin: 0;
-  color: var(--ink);
-  font-size: 40px;
-  line-height: 1.08;
-  font-weight: 850;
-  letter-spacing: -.7px;
+  display: none;
 }
 
 
-/* =========================================================
+/* =========================
    TAGLINE
-   ========================================================= */
+   ========================= */
 
 .programs-view .program-tagline {
-  margin-top: 10px;
-  margin-bottom: 25px;
+  margin-top: 0;
+  margin-bottom: 22px;
+
   color: var(--accent);
+
   font-size: 20px;
-  line-height: 1.3;
+  line-height: 1.35;
   font-weight: 700;
   font-style: italic;
 }
 
 
-/* =========================================================
+/* =========================
    PRICE
-   ========================================================= */
+   ========================= */
 
 .programs-view .price-badge {
   display: inline-flex;
   align-items: center;
+
   min-height: 58px;
-  margin-bottom: 25px;
+
+  margin-bottom: 22px;
   padding: 5px 8px 5px 20px;
+
   border: 1px solid var(--line-strong);
   border-radius: 40px;
+
   background: var(--surface-2);
   color: var(--ink);
 }
@@ -356,101 +359,144 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
+
   margin-left: 18px;
   padding: 11px 18px;
+
   border-radius: 30px;
+
   background: var(--accent);
   color: #fff;
+
   white-space: nowrap;
 }
 
 
-/* =========================================================
+/* =========================
    DESCRIPTION
-   ========================================================= */
+   ========================= */
 
 .programs-view .desc {
-  max-width: 720px;
-  margin: 0 0 22px;
+  max-width: 650px;
+
+  margin: 0 0 20px;
+
   color: var(--muted);
-  font-size: 17px;
-  line-height: 1.65;
+
+  font-size: 16px;
+  line-height: 1.55;
 }
 
 
-/* =========================================================
-   CHIPS
-   ========================================================= */
+/* =========================
+   FEATURE CHIPS
+   ========================= */
 
 .programs-view .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+
+  gap: 10px 12px;
+
+  max-width: 680px;
+
+  margin-bottom: 24px;
 }
 
 .programs-view .chip {
+  padding: 7px 12px;
+
   border: 1px solid var(--line);
+
+  border-radius: 20px;
+
   background: var(--surface-2);
   color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.25;
+
+  white-space: nowrap;
 }
 
 
-/* =========================================================
+/* =========================
    BUTTONS
-   ========================================================= */
+   ========================= */
 
 .programs-view .card-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+
+  gap: 14px;
+
   margin-top: 0;
 }
 
 .programs-view .btn-primary {
-  min-height: 60px;
-  padding: 0 34px;
+  min-height: 58px;
+
+  padding: 0 32px;
+
   border: 0;
   border-radius: 32px;
+
   background: var(--accent);
   color: #fff;
-  font-size: 17px;
+
+  font-size: 16px;
+
   box-shadow:
     0 12px 25px rgba(181, 127, 220, .25);
+
   cursor: pointer;
 }
 
 .programs-view .flyer-link {
-  min-height: 58px;
-  padding: 0 30px;
+  min-height: 56px;
+
+  padding: 0 28px;
+
   border: 2px solid var(--accent);
   border-radius: 32px;
+
   background: transparent;
   color: var(--accent);
+
   cursor: pointer;
 }
 
 
-/* =========================================================
+/* =========================
    FLYER
-   ========================================================= */
+   ========================= */
 
 .programs-view .card-media {
   grid-column: 2;
   grid-row: 1;
+
   align-self: center;
   justify-self: center;
+
   width: 285px;
   height: 400px;
+
   margin-right: 28px;
   padding: 0;
+
   border: 0;
   border-radius: 22px;
+
   background: transparent;
+
   overflow: hidden;
+
   cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   transition:
     transform .25s ease,
     box-shadow .25s ease;
@@ -458,29 +504,41 @@
 
 .programs-view .card-media img {
   display: block;
+
   width: 100%;
   height: 100%;
-  object-fit: cover;
+
+  object-fit: contain;
+  object-position: center;
+
   border-radius: 22px;
 }
 
 
-/* =========================================================
+/* =========================
    OVERLAY
-   ========================================================= */
+   ========================= */
 
 .overlay {
   position: fixed;
+
   z-index: 1000;
+
   inset: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 24px;
+
   background: rgba(7, 4, 12, .78);
+
   backdrop-filter: blur(10px);
+
   opacity: 0;
   visibility: hidden;
+
   transition:
     opacity .2s ease,
     visibility .2s ease;
@@ -492,210 +550,284 @@
 }
 
 
-/* =========================================================
-   NORMAL MODAL
-   ========================================================= */
+/* =========================
+   MODAL
+   ========================= */
 
 .modal {
   width: min(680px, 100%);
+
   max-height: min(900px, 92vh);
+
   overflow: auto;
+
   background: var(--surface);
+
   border: 1px solid var(--line);
+
   border-radius: 22px;
+
   box-shadow:
     0 30px 80px rgba(0, 0, 0, .5);
+
   color: var(--ink);
 }
 
 
-/* =========================================================
+/* =========================
    REGISTRATION MODAL
-   ========================================================= */
+   ========================= */
 
 .register-modal {
   width: min(440px, 100%);
+
   max-height: 92vh;
+
   overflow-x: hidden;
   overflow-y: hidden;
+
   background:
     color-mix(
       in srgb,
       var(--accent) 12%,
       var(--surface)
     );
+
   color: var(--ink);
+
   border-radius: 24px;
+
   box-shadow: var(--shadow);
+
   border: 1px solid var(--line);
 }
 
 
-/* =========================================================
+/* =========================
    MODAL HEADER
-   ========================================================= */
+   ========================= */
 
 .modal-head {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
   padding: 24px;
+
   border-bottom: 1px solid var(--line);
+
   background: var(--surface);
+
   min-width: 0;
 }
 
 .register-modal .modal-head {
   padding: 22px 26px;
+
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
   gap: 14px;
+
   border-bottom: 1px solid var(--line);
+
   position: sticky;
+
   top: 0;
+
   background:
     color-mix(
       in srgb,
       var(--accent) 12%,
       var(--surface)
     );
+
   z-index: 2;
+
   min-width: 0;
 }
 
 
-/* =========================================================
-   TITLE
-   ========================================================= */
+/* =========================
+   MODAL TEXT
+   ========================= */
 
 .mtitle {
   margin-top: 8px;
+
   font-size: 23px;
   font-weight: 800;
+
   color: var(--ink);
+
   min-width: 0;
 }
 
 .register-modal .mtitle {
   font-family: "Sora", sans-serif;
+
   font-weight: 700;
+
   font-size: 1.25rem;
+
   color: var(--ink);
 }
 
-
-/* =========================================================
-   SUBTITLE
-   ========================================================= */
-
 .msub {
   margin-top: 5px;
+
   color: var(--muted);
+
   font-size: 13px;
+
   line-height: 1.5;
 }
 
 .register-modal .msub {
   color: var(--muted);
+
   font-size: .9rem;
+
   margin-top: 3px;
 }
 
 
-/* =========================================================
+/* =========================
    BADGE
-   ========================================================= */
+   ========================= */
 
 .badge {
   display: inline-flex;
+
   align-items: center;
+
   gap: 7px;
+
   padding: 7px 12px;
+
   border-radius: 20px;
+
   background: var(--accent-soft);
+
   color: var(--accent);
+
   font-size: 12px;
+
   font-weight: 800;
+
   max-width: 100%;
 }
 
 .register-modal .badge {
   display: inline-flex;
+
   align-items: center;
+
   gap: 7px;
+
   padding: 5px 11px;
+
   border-radius: 999px;
+
   font-weight: 700;
+
   font-size: .72rem;
+
   background: var(--accent-soft);
+
   color: var(--accent);
+
   margin-bottom: 8px;
+
   max-width: 100%;
 }
 
 
-/* =========================================================
+/* =========================
    CLOSE BUTTON
-   ========================================================= */
+   ========================= */
 
 .x {
   width: 38px;
   height: 38px;
+
   flex: 0 0 auto;
+
   border: 1px solid var(--line-strong);
+
   border-radius: 50%;
+
   background: transparent;
+
   color: var(--ink);
+
   font-size: 19px;
+
   cursor: pointer;
 }
 
 .register-modal .x {
   border: none;
+
   background: var(--surface-2);
+
   color: var(--ink);
+
   width: 36px;
   height: 36px;
+
   border-radius: 10px;
+
   cursor: pointer;
+
   font-size: 1.1rem;
+
   flex: 0 0 auto;
 }
 
 
-/* =========================================================
-   REGISTRATION FORM
-   ========================================================= */
+/* =========================
+   FORM
+   ========================= */
 
 .register-modal form {
   width: 100%;
+
   padding: 22px 26px 26px;
+
   display: grid;
+
   gap: 16px;
+
   min-width: 0;
 }
 
-
-/* =========================================================
-   FIELD
-   ========================================================= */
-
 .register-modal .field {
   width: 100%;
+
   min-width: 0;
+
   display: grid;
+
   gap: 6px;
+
   margin-bottom: 0;
 }
 
 .register-modal .field label {
   display: block;
+
   width: 100%;
+
   font-weight: 600;
+
   font-size: .9rem;
+
   color: var(--ink);
+
   margin-bottom: 0;
+
   overflow-wrap: break-word;
 }
 
@@ -703,28 +835,36 @@
   color: var(--bad);
 }
 
-
-/* =========================================================
-   INPUT + SELECT
-   ========================================================= */
-
 .register-modal .field input,
 .register-modal .field select {
   display: block;
+
   width: 100%;
   max-width: 100%;
   min-width: 0;
+
   height: 46px;
+
   padding: 0 14px;
+
   margin: 0;
+
   border-radius: 12px;
+
   border: 1.5px solid var(--line-strong);
+
   background: var(--surface-2);
+
   color: var(--ink);
+
   font-family: inherit;
+
   font-size: 14px;
+
   outline: none;
+
   box-sizing: border-box;
+
   transition:
     border .15s ease,
     box-shadow .15s ease;
@@ -732,13 +872,16 @@
 
 .register-modal .field input::placeholder {
   color: var(--faint);
+
   opacity: 1;
 }
 
 .register-modal .field input:focus,
 .register-modal .field select:focus {
   outline: none;
+
   border-color: var(--accent);
+
   box-shadow:
     0 0 0 3px
     color-mix(
@@ -749,36 +892,46 @@
 }
 
 
-/* =========================================================
-   TWO COLUMN FIELDS
-   ========================================================= */
+/* =========================
+   TWO COLUMN FORM
+   ========================= */
 
 .register-modal .two {
   width: 100%;
+
   display: grid;
+
   grid-template-columns:
     minmax(0, 1fr)
     minmax(0, 1fr);
+
   gap: 16px;
+
   min-width: 0;
 }
 
 .register-modal .two .field {
   min-width: 0;
+
   width: 100%;
 }
 
 
-/* =========================================================
+/* =========================
    ERROR
-   ========================================================= */
+   ========================= */
 
 .register-modal .field .err {
   width: 100%;
+
   min-height: 16px;
+
   color: var(--bad);
+
   font-size: .8rem;
+
   display: none;
+
   overflow-wrap: break-word;
 }
 
@@ -791,15 +944,13 @@
   display: block;
 }
 
-
-/* =========================================================
-   FORM ERROR
-   ========================================================= */
-
 .register-modal .form-error {
   width: 100%;
+
   margin-bottom: 0;
+
   padding: 12px 14px;
+
   border:
     1px solid
     color-mix(
@@ -807,71 +958,100 @@
       var(--bad) 55%,
       var(--line)
     );
+
   border-radius: 10px;
+
   background:
     color-mix(
       in srgb,
       var(--bad) 12%,
       var(--surface)
     );
+
   color: var(--bad);
+
   font-size: 13px;
+
   overflow-wrap: break-word;
 }
 
 
-/* =========================================================
-   SUBMIT BUTTON
-   ========================================================= */
+/* =========================
+   SUBMIT
+   ========================= */
 
 .register-modal .submit {
   width: 100%;
+
   min-width: 0;
+
   margin-top: 4px;
+
   background: var(--accent);
+
   color: #fff;
+
   border: none;
+
   padding: 15px;
+
   border-radius: 14px;
+
   font-weight: 700;
+
   font-size: 1.02rem;
+
   cursor: pointer;
+
   box-sizing: border-box;
 }
 
 .register-modal .submit:disabled {
   opacity: .65;
+
   cursor: not-allowed;
 }
 
 
-/* =========================================================
+/* =========================
    CONSENT
-   ========================================================= */
+   ========================= */
 
 .register-modal .consent {
   width: 100%;
+
   font-size: .78rem;
+
   color: var(--faint);
+
   text-align: center;
+
   line-height: 1.5;
+
   overflow-wrap: break-word;
 }
 
 
-/* =========================================================
+/* =========================
    SPINNER
-   ========================================================= */
+   ========================= */
 
 .spinner {
   display: inline-block;
+
   width: 16px;
   height: 16px;
+
   border: 2px solid rgba(255,255,255,.35);
+
   border-top-color: #fff;
+
   border-radius: 50%;
+
   animation: spin .7s linear infinite;
+
   vertical-align: middle;
+
   margin-right: 7px;
 }
 
@@ -882,23 +1062,27 @@
 }
 
 
-/* =========================================================
+/* =========================
    HONEYPOT
-   ========================================================= */
+   ========================= */
 
 .hp {
   position: absolute !important;
+
   left: -9999px !important;
+
   width: 1px !important;
   height: 1px !important;
+
   opacity: 0 !important;
+
   pointer-events: none !important;
 }
 
 
-/* =========================================================
+/* =========================
    TABLET
-   ========================================================= */
+   ========================= */
 
 @media (max-width: 900px) {
   .programs-view .card {
@@ -906,82 +1090,213 @@
   }
 
   .programs-view .card-body {
-    padding-left: 48px;
+    padding-left: 42px;
+    padding-right: 20px;
   }
 
   .programs-view .card-media {
-    width: 235px;
-    height: 340px;
-    margin-right: 20px;
+    width: 225px;
+    height: 330px;
+
+    margin-right: 16px;
+  }
+
+  .programs-view .plan-banner {
+    font-size: 19px;
+  }
+
+  .programs-view .program-tagline {
+    font-size: 18px;
+  }
+
+  .programs-view .desc {
+    font-size: 15px;
   }
 }
 
 
-/* =========================================================
+/* =========================
    MOBILE
-   ========================================================= */
+   ========================= */
 
 @media (max-width: 700px) {
   .programs-view .card {
-    grid-template-columns: 1fr;
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 145px;
+
+    min-height: 0;
+
+    overflow: hidden;
+
+    align-items: start;
   }
 
   /*
-    Flyer stays at the top-right on mobile.
-    Contain prevents any part of the flyer from being cropped.
+    Flyer stays at the top-right.
+    It is contained so the full flyer remains visible.
   */
   .programs-view .card-media {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 1;
-    width: 145px;
-    height: 205px;
-    margin: 24px 24px 0 auto;
+
+    width: 125px;
+    height: 175px;
+
+    margin: 24px 20px 0 0;
+
+    justify-self: end;
+    align-self: start;
+
     border-radius: 16px;
+
     z-index: 2;
   }
 
   .programs-view .card-media img {
     width: 100%;
     height: 100%;
+
     object-fit: contain;
     object-position: center;
+
     border-radius: 16px;
   }
 
   /*
-    Main content moves below the flyer.
+    Text stays on the left and is aligned
+    with the top of the flyer.
   */
   .programs-view .card-body {
     grid-column: 1;
-    grid-row: 2;
-    padding: 24px 24px 30px;
+    grid-row: 1;
+
+    min-width: 0;
+
+    padding: 28px 12px 30px 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 
   /*
-    Program name is already shown in the banner,
-    so hide the duplicate title on mobile.
+    Bigger ProHealth banner.
   */
-  .programs-view .program-title {
-    display: none;
+  .programs-view .plan-banner {
+    max-width: 100%;
+
+    margin-bottom: 14px;
+
+    padding: 10px 14px;
+
+    font-size: 17px;
+
+    gap: 7px;
+
+    white-space: normal;
+  }
+
+  .programs-view .plan-banner-icon {
+    font-size: 22px;
   }
 
   .programs-view .program-tagline {
-    margin-top: 4px;
-    margin-bottom: 16px;
-    font-size: 17px;
+    margin-top: 0;
+
+    margin-bottom: 15px;
+
+    font-size: 15px;
+
+    line-height: 1.35;
+  }
+
+  .programs-view .price-badge {
+    min-height: 48px;
+
+    margin-bottom: 15px;
+
+    padding: 4px 6px 4px 12px;
+
+    font-size: 12px;
+  }
+
+  .programs-view .price-badge .pp {
+    gap: 6px;
+
+    margin-left: 8px;
+
+    padding: 8px 11px;
   }
 
   .programs-view .desc {
-    margin-bottom: 16px;
-    font-size: 15px;
-    line-height: 1.5;
+    max-width: 100%;
+
+    margin-bottom: 14px;
+
+    font-size: 14px;
+
+    line-height: 1.45;
+  }
+
+  /*
+    Short, compact feature line.
+  */
+  .programs-view .chips {
+    width: 100%;
+
+    max-width: 100%;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px 7px;
+
+    margin-bottom: 18px;
+  }
+
+  .programs-view .chip {
+    padding: 5px 8px;
+
+    font-size: 11px;
+
+    line-height: 1.2;
+
+    white-space: normal;
+  }
+
+  .programs-view .card-actions {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 9px;
+  }
+
+  .programs-view .btn-primary,
+  .programs-view .flyer-link {
+    width: 100%;
+
+    min-height: 48px;
+
+    padding: 0 16px;
+
+    font-size: 14px;
+
+    text-align: center;
   }
 }
 
 
-/* =========================================================
+/* =========================
    SMALL MOBILE
-   ========================================================= */
+   ========================= */
 
 @media (max-width: 520px) {
   .programs-view .sub-header {
@@ -995,6 +1310,7 @@
   .theme-toggle {
     width: 38px;
     height: 38px;
+
     font-size: 22px;
   }
 
@@ -1006,29 +1322,76 @@
     padding: 0 18px 30px;
   }
 
-  .programs-view .card-body {
-    padding: 24px 24px 30px;
+  .programs-view .card {
+    grid-template-columns: minmax(0, 1fr) 125px;
   }
 
-  .programs-view .program-title {
-    font-size: 32px;
+  .programs-view .card-body {
+    padding: 24px 8px 26px 20px;
+  }
+
+  .programs-view .card-media {
+    width: 108px;
+    height: 155px;
+
+    margin: 20px 14px 0 0;
+  }
+
+  .programs-view .plan-banner {
+    font-size: 15px;
+
+    padding: 9px 11px;
+
+    gap: 6px;
+  }
+
+  .programs-view .plan-banner-icon {
+    font-size: 19px;
   }
 
   .programs-view .program-tagline {
-    font-size: 17px;
+    font-size: 14px;
+
+    margin-bottom: 13px;
+  }
+
+  .programs-view .price-badge {
+    min-height: 44px;
+
+    font-size: 11px;
+
+    padding-left: 10px;
+  }
+
+  .programs-view .price-badge .pp {
+    padding: 7px 9px;
+
+    margin-left: 6px;
+  }
+
+  .programs-view .desc {
+    font-size: 13px;
+
+    line-height: 1.4;
+  }
+
+  .programs-view .chip {
+    font-size: 10px;
+
+    padding: 5px 7px;
   }
 
   .programs-view .card-actions {
-    flex-direction: column;
-    align-items: stretch;
     width: 100%;
   }
 
   .programs-view .btn-primary,
   .programs-view .flyer-link {
     width: 100%;
-    justify-content: center;
-    text-align: center;
+
+    min-height: 45px;
+
+    font-size: 13px;
   }
 
   .overlay {
@@ -1037,14 +1400,19 @@
 
   .modal {
     max-height: 94vh;
+
     border-radius: 18px;
   }
 
   .register-modal {
     width: 100%;
+
     max-width: 440px;
+
     max-height: 94vh;
+
     border-radius: 18px;
+
     overflow-x: hidden;
     overflow-y: hidden;
   }
@@ -1059,23 +1427,28 @@
 
   .register-modal form {
     width: 100%;
+
     padding: 18px;
+
     gap: 16px;
   }
 
   .register-modal .two {
     grid-template-columns: minmax(0, 1fr);
+
     gap: 0;
   }
 
   .register-modal .field {
     width: 100%;
+
     min-width: 0;
   }
 
   .register-modal .field input,
   .register-modal .field select {
     width: 100%;
+
     max-width: 100%;
   }
 }

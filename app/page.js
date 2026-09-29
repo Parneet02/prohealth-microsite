@@ -380,10 +380,6 @@ export default function Page() {
                   <span>{p.name}</span>
                 </div>
 
-                <h3 className="program-title">
-                  {p.name}
-                </h3>
-
                 <div className="program-tagline">
                   {p.tagline}
                 </div>
@@ -400,7 +396,9 @@ export default function Page() {
                 </div>
 
                 <p className="desc">
-                  {p.desc}
+                  {p.key === 'plus'
+                    ? 'Maintain your health momentum with diagnostics, Internal Medicine, dietitian, and fitness sessions for proactive care.'
+                    : p.desc}
                 </p>
 
                 <div className="chips">
@@ -810,7 +808,6 @@ export default function Page() {
                       path="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"
                       width={2.2}
                     />
-
                     Download PDF flyer
                   </a>
 
