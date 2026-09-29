@@ -941,7 +941,7 @@ export default function Page() {
                             style={
                               i
                                 ? {
-                                    marginTop:12,
+                                    marginTop: 12,
                                   }
                                 : undefined
                             }
