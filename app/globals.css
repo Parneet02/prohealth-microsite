@@ -62,6 +62,50 @@
 
 
 /* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+:root[data-theme="light"] {
+  --ground: #F5F3FB;
+  --surface: #FFFFFF;
+  --surface-2: #FAF8FE;
+
+  --ink: #241A33;
+  --muted: #6B6480;
+  --faint: #938CA6;
+
+  --line: #E7E2F0;
+  --line-strong: #D8D0E6;
+
+  --brand: #6A2C91;
+  --brand-2: #B0338C;
+
+  --plus: #6A2C91;
+  --plus-soft: #F1E9F7;
+
+  --diet: #2E7D32;
+  --diet-soft: #E6F2E7;
+
+  --lab: #C6820A;
+  --lab-soft: #FBEFD4;
+
+  --good: #2E7D32;
+  --bad: #C0392B;
+  --focus: #B0338C;
+
+  --shadow-card:
+    0 1px 2px rgba(46, 25, 74, 0.08),
+    0 18px 45px rgba(46, 25, 74, 0.12);
+
+  --shadow:
+    0 18px 50px -22px rgba(46, 25, 74, 0.35);
+
+  --shadow-sm:
+    0 6px 20px -12px rgba(46, 25, 74, 0.30);
+}
+
+
+/* =========================================================
    DARK MODE
    ========================================================= */
 
@@ -106,52 +150,6 @@
 
 
 /* =========================================================
-   SYSTEM DARK MODE
-   ========================================================= */
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --ground: #140F1C;
-    --surface: #1E1728;
-    --surface-2: #241C31;
-
-    --ink: #F3EEF9;
-    --muted: #B4AAC6;
-    --faint: #8A80A0;
-
-    --line: #332941;
-    --line-strong: #40344F;
-
-    --brand: #B884D8;
-    --brand-2: #E86FBE;
-
-    --plus: #C79BE4;
-    --plus-soft: #2A1E38;
-
-    --diet: #7FD08A;
-    --diet-soft: #17281A;
-
-    --lab: #F0C04E;
-    --lab-soft: #2E2410;
-
-    --good: #7FD08A;
-    --bad: #F0857A;
-    --focus: #E86FBE;
-
-    --shadow-card:
-      0 1px 2px rgba(0, 0, 0, 0.2),
-      0 18px 45px rgba(0, 0, 0, 0.25);
-
-    --shadow:
-      0 20px 55px -24px rgba(0, 0, 0, 0.7);
-
-    --shadow-sm:
-      0 8px 22px -14px rgba(0, 0, 0, 0.65);
-  }
-}
-
-
-/* =========================================================
    PROGRAMS PAGE
    ========================================================= */
 
@@ -168,6 +166,8 @@
   align-items: center;
   padding: 0 32px;
   border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
 }
 
 .programs-head {
@@ -176,6 +176,7 @@
   padding: 38px 24px 30px;
 }
 
+.programs-head h1,
 .programs-head h2 {
   color: var(--ink);
 }
@@ -191,6 +192,58 @@
 
   display: grid;
   gap: 24px;
+}
+
+
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
+
+.theme-toggle {
+  margin-left: auto;
+
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+
+  background: var(--surface-2);
+  color: var(--ink);
+
+  font-size: 20px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    color .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+  background: var(--surface);
+}
+
+.theme-toggle:focus {
+  outline: none;
+  border-color: var(--brand-2);
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--brand-2) 20%,
+      transparent
+    );
 }
 
 
@@ -837,7 +890,6 @@
 
 /* =========================================================
    INPUT + SELECT
-   IMPORTANT: FIXES OVERLAPPING
    ========================================================= */
 
 .register-modal .field input,
@@ -898,7 +950,6 @@
 
 /* =========================================================
    TWO COLUMN FIELDS
-   IMPORTANT: FIXES CELLS OVERRIDING EACH OTHER
    ========================================================= */
 
 .register-modal .two {
@@ -1147,6 +1198,12 @@
     height: 28px;
   }
 
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+
   .programs-head {
     padding: 30px 18px 24px;
   }
@@ -1217,10 +1274,6 @@
     gap: 16px;
   }
 
-  /*
-   * On small screens every field gets its own row.
-   * This prevents mobile/email/other cells from overlapping.
-   */
   .register-modal .two {
     grid-template-columns: minmax(0, 1fr);
 

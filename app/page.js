@@ -67,6 +67,7 @@ export default function Page() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null);
   const [tab, setTab] = useState('none');
+  const [theme, setTheme] = useState('light');
 
   const nameRef = useRef(null);
   const modalRef = useRef(null);
@@ -74,6 +75,25 @@ export default function Page() {
   useEffect(() => {
     track('page_view');
   }, []);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      setTheme(savedTheme);
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }, []);
+
+  function toggleTheme() {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+
+    setTheme(nextTheme);
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('theme', nextTheme);
+  }
 
   useEffect(() => {
     if (typeof window === 'undefined' || window.parent === window) {
@@ -135,8 +155,8 @@ export default function Page() {
     post();
 
     const ro = new ResizeObserver(post);
-    ro.observe(document.body);
 
+    ro.observe(document.body);
     window.addEventListener('load', post);
 
     return () => {
@@ -319,11 +339,25 @@ export default function Page() {
       <section className="view programs-view active">
         <div className="sub-header">
           <HabitHealthLogo id="programs" />
+
           <span className="sub-spacer" />
+
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={
+              theme === 'dark'
+                ? 'Switch to light mode'
+                : 'Switch to dark mode'
+            }
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
         </div>
 
         <div className="programs-head">
-          <h2>Care Plans</h2>
+          <h1>Choose your ProHealth program</h1>
 
           <p className="lead">
             Premium, on-demand health programs from HCL Healthcare. Register
@@ -341,7 +375,6 @@ export default function Page() {
               <div className="stripe" />
 
               <div className="card-body">
-
                 {/* PLAN NAME */}
                 <div className="plan-banner">
                   <span className="plan-banner-icon">♡</span>
@@ -414,7 +447,6 @@ export default function Page() {
       </section>
 
       {/* FLYER VIEWER */}
-
       <div
         className={`overlay ${viewerProgram ? 'open' : ''}`}
         aria-hidden={!viewerProgram}
@@ -471,6 +503,7 @@ export default function Page() {
                 className="btn btn-primary vfull"
                 onClick={() => {
                   const service = viewerProgram.service;
+
                   setViewerKey(null);
                   openForm(service);
                 }}
@@ -483,7 +516,6 @@ export default function Page() {
       </div>
 
       {/* REGISTRATION MODAL */}
-
       <div
         className={`overlay ${formOpen ? 'open' : ''}`}
         aria-hidden={!formOpen}
@@ -775,6 +807,7 @@ export default function Page() {
                       path="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"
                       width={2.2}
                     />
+
                     Download PDF flyer
                   </a>
 
