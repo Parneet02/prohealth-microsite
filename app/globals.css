@@ -7,6 +7,7 @@
   --faint: #8f879e;
   --line: #392f47;
   --line-strong: #4b3e5d;
+
   --brand: #b985e2;
   --brand-2: #c993e9;
 
@@ -15,33 +16,9 @@
     0 18px 45px rgba(0, 0, 0, 0.25);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family:
-    'Plus Jakarta Sans',
-    Arial,
-    sans-serif;
-  background: var(--ground);
-  color: var(--ink);
-}
-
-button,
-input,
-select {
-  font: inherit;
-}
-
-button {
-  -webkit-tap-highlight-color: transparent;
-}
+/* =========================================================
+   PAGE
+   ========================================================= */
 
 .programs-view {
   min-height: 100vh;
@@ -50,14 +27,12 @@ button {
   padding-bottom: 50px;
 }
 
-/* HEADER */
-
 .programs-view .sub-header {
   height: 64px;
   display: flex;
   align-items: center;
   padding: 0 32px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
 .programs-view .sub-spacer {
@@ -75,25 +50,9 @@ button {
   object-fit: contain;
 }
 
-.top-nav {
-  display: flex;
-  align-items: center;
-}
-
-.top-nav button {
-  border: 0;
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.top-nav button.active {
-  color: var(--ink);
-}
-
-/* PAGE HEADING */
+/* =========================================================
+   PAGE HEADING
+   ========================================================= */
 
 .programs-head {
   max-width: 1250px;
@@ -106,7 +65,7 @@ button {
   font-size: 30px;
   line-height: 1.15;
   font-weight: 800;
-  color: #fff;
+  color: #ffffff;
 }
 
 .programs-head .lead {
@@ -117,51 +76,59 @@ button {
   line-height: 1.75;
 }
 
-.eyebrow {
-  margin: 0 0 9px;
-  color: var(--brand);
-  font-size: 11px;
-  line-height: 1.3;
-  font-weight: 850;
-  letter-spacing: 1.5px;
-}
-
-/* PROGRAM CARDS */
+/* =========================================================
+   PROGRAMS
+   ========================================================= */
 
 .programs {
   max-width: 1250px;
   margin: 0 auto;
   padding: 0 24px 40px;
+
   display: grid;
   gap: 24px;
 }
 
+/* =========================================================
+   CARD
+   ========================================================= */
+
 .programs-view .card {
   position: relative;
+
   display: grid;
   grid-template-columns: minmax(0, 1fr) 310px;
+
   min-height: 555px;
+
   overflow: hidden;
+
   background: #1c1626;
   border: 1px solid #392e47;
   border-radius: 28px;
+
   box-shadow: var(--shadow-card);
 }
 
-/* EACH CARD KEEPS ITS OWN FLYER COLOR */
+/* Left colored vertical line */
 
 .programs-view .stripe {
   position: absolute;
   z-index: 3;
+
   top: 0;
   bottom: 0;
   left: 0;
+
   width: 10px;
 
-  background: var(--accent);
-
+  background: var(--accent, #bd89e3);
   border-radius: 28px 0 0 28px;
 }
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
 
 .programs-view .card-body {
   grid-column: 1;
@@ -177,12 +144,9 @@ button {
   justify-content: center;
 }
 
-/*
- * BANNER USES THE SAME ACCENT AS ITS FLYER.
- * Green flyer = green banner.
- * Yellow flyer = yellow banner.
- * Other flyers keep their own colors.
- */
+/* =========================================================
+   PLAN NAME SMALL BANNER
+   ========================================================= */
 
 .programs-view .plan-banner {
   display: inline-flex;
@@ -190,30 +154,29 @@ button {
   gap: 9px;
 
   margin-bottom: 20px;
+
   padding: 10px 17px;
 
   border-radius: 30px;
 
-  background: var(--accent);
-  color: #fff;
+  background: rgba(117, 67, 151, 0.20);
+  color: var(--accent, #c18ae7);
 
   font-size: 15px;
   font-weight: 800;
   line-height: 1;
-  white-space: nowrap;
 
-  box-shadow:
-    0 8px 20px color-mix(
-      in srgb,
-      var(--accent) 22%,
-      transparent
-    );
+  white-space: nowrap;
 }
 
 .programs-view .plan-banner-icon {
   font-size: 21px;
   line-height: 1;
 }
+
+/* =========================================================
+   PROGRAM TITLE
+   ========================================================= */
 
 .programs-view .program-title {
   margin: 0;
@@ -230,13 +193,17 @@ button {
   margin-top: 10px;
   margin-bottom: 25px;
 
-  color: var(--accent);
+  color: var(--accent, #c18ae7);
 
   font-size: 20px;
   line-height: 1.3;
   font-weight: 700;
   font-style: italic;
 }
+
+/* =========================================================
+   PRICE
+   ========================================================= */
 
 .programs-view .price-badge {
   display: inline-flex;
@@ -245,12 +212,14 @@ button {
   min-height: 58px;
 
   margin-bottom: 25px;
+
   padding: 5px 8px 5px 20px;
 
   border: 1px solid #5a486d;
   border-radius: 40px;
 
   background: #251d30;
+
   color: #f5f0fb;
 }
 
@@ -266,12 +235,14 @@ button {
   gap: 9px;
 
   margin-left: 18px;
+
   padding: 11px 18px;
 
   border-radius: 30px;
 
-  background: var(--accent);
-  color: #fff;
+  background: var(--accent, #c18ae7);
+
+  color: #ffffff;
 
   white-space: nowrap;
 }
@@ -287,6 +258,10 @@ button {
   font-weight: 850;
 }
 
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
 .programs-view .desc {
   max-width: 720px;
 
@@ -297,6 +272,10 @@ button {
   font-size: 17px;
   line-height: 1.65;
 }
+
+/* =========================================================
+   CHIPS
+   ========================================================= */
 
 .programs-view .chips {
   display: flex;
@@ -317,7 +296,7 @@ button {
   border: 1px solid #3c304b;
   border-radius: 25px;
 
-  background: rgba(255, 255, 255, 0.015);
+  background: rgba(255,255,255,.015);
 
   color: #ded6e9;
 
@@ -325,14 +304,17 @@ button {
   font-weight: 700;
 }
 
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
 .programs-view .card-actions {
   display: flex;
   align-items: center;
   gap: 16px;
+
   margin-top: 0;
 }
-
-/* BUTTONS */
 
 .programs-view .btn {
   border: 0;
@@ -342,9 +324,9 @@ button {
   font-weight: 800;
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
 }
 
 .programs-view .btn-primary {
@@ -354,36 +336,20 @@ button {
 
   border-radius: 32px;
 
-  background: var(--accent);
-  color: #fff;
+  background: var(--accent, #c18ae7);
+  color: #ffffff;
 
   font-size: 17px;
 
   box-shadow:
-    0 12px 25px
-    color-mix(
-      in srgb,
-      var(--accent) 25%,
-      transparent
-    );
+    0 12px 25px rgba(181, 127, 220, .25);
 }
 
 .programs-view .btn-primary:hover {
   transform: translateY(-2px);
 
   box-shadow:
-    0 16px 32px
-    color-mix(
-      in srgb,
-      var(--accent) 35%,
-      transparent
-    );
-}
-
-.programs-view .btn-primary:disabled {
-  opacity: 0.65;
-  cursor: not-allowed;
-  transform: none;
+    0 16px 32px rgba(181, 127, 220, .35);
 }
 
 .programs-view .flyer-link {
@@ -391,11 +357,11 @@ button {
 
   padding: 0 30px;
 
-  border: 2px solid var(--accent);
+  border: 2px solid var(--accent, #c18ae7);
   border-radius: 32px;
 
   background: transparent;
-  color: var(--accent);
+  color: var(--accent, #c18ae7);
 
   font-family: inherit;
   font-size: 17px;
@@ -404,18 +370,20 @@ button {
   cursor: pointer;
 
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+    background .2s ease,
+    color .2s ease,
+    transform .2s ease;
 }
 
 .programs-view .flyer-link:hover {
-  background: var(--accent);
-  color: #fff;
+  background: var(--accent, #c18ae7);
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
-/* FLYER */
+/* =========================================================
+   FLYER IMAGE
+   ========================================================= */
 
 .programs-view .card-media {
   grid-column: 2;
@@ -428,6 +396,7 @@ button {
   height: 400px;
 
   margin-right: 28px;
+
   padding: 0;
 
   border: 0;
@@ -444,13 +413,15 @@ button {
   justify-content: center;
 
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    transform .25s ease,
+    box-shadow .25s ease;
 }
 
 .programs-view .card-media:hover {
   transform: scale(1.025);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+
+  box-shadow:
+    0 20px 45px rgba(0,0,0,.3);
 }
 
 .programs-view .card-media img {
@@ -464,171 +435,11 @@ button {
   border-radius: 22px;
 }
 
-/* REGISTRATION MODAL */
+/* =========================================================
+   OVERLAY
+   ========================================================= */
 
-.form-modal {
-  position: relative;
-
-  width: min(720px, 100%);
-  max-height: 92vh;
-
-  overflow: auto;
-
-  border: 1px solid var(--line-strong);
-  border-radius: 24px;
-
-  background: var(--surface);
-
-  box-shadow:
-    0 30px 90px rgba(0, 0, 0, 0.5);
-}
-
-.registration-form {
-  padding: 24px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.form-grid label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-grid label > span {
-  color: #eee8f7;
-  font-size: 14px;
-  font-weight: 750;
-}
-
-.form-grid input,
-.form-grid select {
-  width: 100%;
-  min-height: 52px;
-
-  padding: 0 15px;
-
-  border: 1px solid var(--line-strong);
-  border-radius: 14px;
-
-  outline: none;
-
-  background: var(--surface-2);
-  color: var(--ink);
-
-  font-size: 15px;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.form-grid input::placeholder {
-  color: var(--faint);
-}
-
-.form-grid input:focus,
-.form-grid select:focus {
-  border-color: var(--brand);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(185, 133, 226, 0.15);
-}
-
-.form-grid small {
-  color: #f08b9c;
-  font-size: 12px;
-}
-
-.form-error {
-  margin-top: 20px;
-
-  padding: 12px 15px;
-
-  border: 1px solid
-    rgba(240, 139, 156, 0.25);
-
-  border-radius: 12px;
-
-  background:
-    rgba(240, 139, 156, 0.08);
-
-  color: #f3a1af;
-
-  font-size: 14px;
-}
-
-.submit-btn {
-  margin-top: 26px;
-}
-
-/* SUCCESS */
-
-.success-state {
-  min-height: 320px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  padding: 40px;
-
-  text-align: center;
-}
-
-.success-icon {
-  width: 62px;
-  height: 62px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 18px;
-
-  border-radius: 50%;
-
-  background: var(--brand);
-  color: #fff;
-
-  font-size: 30px;
-  font-weight: 800;
-}
-
-.success-state h2 {
-  margin: 0 0 10px;
-
-  color: #fff;
-
-  font-size: 30px;
-}
-
-.success-state p {
-  max-width: 600px;
-
-  margin: 0 0 24px;
-
-  color: var(--muted);
-
-  line-height: 1.7;
-}
-
-.success-close {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-}
-
-/* MODALS */
-
-.modal-backdrop {
+.overlay {
   position: fixed;
   z-index: 1000;
 
@@ -638,125 +449,412 @@ button {
   align-items: center;
   justify-content: center;
 
-  padding: 25px;
+  padding: 24px;
 
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(7, 4, 12, .78);
+  backdrop-filter: blur(10px);
 
-  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity .2s ease,
+    visibility .2s ease;
 }
 
-.viewer-modal {
-  width: min(900px, 100%);
+.overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
 
-  max-height: 92vh;
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal {
+  width: min(680px, 100%);
+  max-height: min(900px, 92vh);
 
   overflow: auto;
 
-  border: 1px solid var(--line-strong);
-  border-radius: 24px;
+  background: #1d1727;
 
-  background: var(--surface);
+  border: 1px solid #40344d;
+  border-radius: 22px;
 
   box-shadow:
-    0 30px 90px rgba(0, 0, 0, 0.5);
+    0 30px 80px rgba(0,0,0,.5);
+
+  color: #ffffff;
 }
 
-.viewer-head {
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 24px;
+
+  border-bottom: 1px solid #362b42;
+}
+
+.mtitle {
+  margin-top: 8px;
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.msub {
+  margin-top: 5px;
+
+  color: #a9a0b6;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.badge {
+  display: inline-flex;
+
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  background: rgba(184, 132, 216, .15);
+  color: #c897e9;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.x {
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid #493b57;
+  border-radius: 50%;
+
+  background: transparent;
+  color: #d8d0e1;
+
+  font-size: 19px;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.register-modal form {
+  padding: 24px;
+}
+
+.field {
+  margin-bottom: 17px;
+}
+
+.field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #e9e2f0;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.req {
+  color: #e18bc5;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 14px;
+
+  border: 1px solid #40344c;
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #17121f;
+  color: #f4eff8;
+
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.field input::placeholder {
+  color: #766d81;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #b982df;
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.err {
+  display: block;
+
+  min-height: 16px;
+
+  margin-top: 4px;
+
+  color: #ee8e9a;
+
+  font-size: 11px;
+}
+
+.form-error {
+  margin-bottom: 18px;
+
+  padding: 12px 14px;
+
+  border: 1px solid #743b47;
+  border-radius: 10px;
+
+  background: #311b23;
+  color: #f2a5ae;
+
+  font-size: 13px;
+}
+
+.submit {
+  width: 100%;
+  height: 52px;
+
+  border: 0;
+  border-radius: 28px;
+
+  background: var(--accent, #bd87df);
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.submit:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: inline-block;
+
+  width: 15px;
+  height: 15px;
+
+  margin-right: 8px;
+
+  border: 2px solid rgba(255,255,255,.35);
+  border-top-color: #ffffff;
+
+  border-radius: 50%;
+
+  animation: spin .7s linear infinite;
+
+  vertical-align: -2px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.consent {
+  margin: 13px 0 0;
+
+  color: #81788d;
+
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.hp {
+  position: absolute !important;
+
+  width: 1px !important;
+  height: 1px !important;
+
+  overflow: hidden !important;
+
+  opacity: 0 !important;
+
+  pointer-events: none !important;
+}
+
+/* =========================================================
+   VIEWER
+   ========================================================= */
+
+.viewer {
+  width: min(900px, 100%);
+}
+
+.viewer-body {
+  padding: 20px;
+
+  background: #110d18;
+}
+
+.viewer-page {
+  margin: 0 0 20px;
+}
+
+.viewer-page img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 12px;
+}
+
+.viewer-page figcaption {
+  margin-top: 7px;
+
+  color: #8f869b;
+
+  font-size: 11px;
+  text-align: center;
+}
+
+.viewer-cta {
+  padding: 18px 20px;
+
+  border-top: 1px solid #362b42;
+}
+
+.vfull {
+  width: 100%;
+}
+
+/* =========================================================
+   SUCCESS
+   ========================================================= */
+
+.success {
+  padding: 30px 24px;
+  text-align: center;
+}
+
+.check {
+  width: 68px;
+  height: 68px;
+
+  margin: 0 auto 18px;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
-  padding: 20px 24px;
+  border-radius: 50%;
 
-  border-bottom: 1px solid var(--line);
+  background: rgba(139, 211, 167, .13);
+  color: #8bd3a7;
 }
 
-.viewer-head h2 {
+.success h3 {
   margin: 0;
-
-  color: #fff;
 
   font-size: 22px;
 }
 
-.modal-close {
-  width: 42px;
-  height: 42px;
+.stext {
+  max-width: 480px;
 
+  margin: 12px auto 22px;
+
+  color: #aaa1b5;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.success-actions {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dl-btn,
+.flyer-toggle {
+  min-height: 48px;
+
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
 
-  border: 1px solid var(--line-strong);
-  border-radius: 50%;
+  border-radius: 25px;
 
-  background: var(--surface-2);
-  color: #fff;
+  font-family: inherit;
+  font-weight: 800;
+
+  text-decoration: none;
 
   cursor: pointer;
-
-  font-size: 27px;
-  line-height: 1;
 }
 
-.viewer-content {
-  padding: 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.dl-btn {
+  background: var(--accent, #bd87df);
+  color: #ffffff;
 }
 
-.viewer-content img {
+.flyer-toggle {
+  border: 1px solid #584968;
+
+  background: transparent;
+  color: #c397e0;
+}
+
+.flyer-panel {
+  margin-top: 20px;
+}
+
+.flyer-panel img {
   display: block;
 
-  max-width: 100%;
-  max-height: 65vh;
-
-  width: auto;
+  width: 100%;
   height: auto;
 
-  border-radius: 16px;
-
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
 }
 
-.viewer-actions {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-
-  padding: 0 24px 24px;
-}
-
-/* MOBILE */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 900px) {
   .programs-view .card {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .programs-view .card-body {
-    grid-column: 1;
-    grid-row: 1;
-
-    padding: 38px 30px 30px 48px;
+    grid-template-columns: minmax(0, 1fr) 250px;
   }
 
   .programs-view .card-media {
-    grid-column: 1;
-    grid-row: 2;
+    width: 220px;
+    height: 315px;
+    margin-right: 20px;
+  }
 
-    width: calc(100% - 48px);
-    max-width: 360px;
-
-    height: auto;
-
-    aspect-ratio: 0.72;
-
-    margin: 0 auto 30px;
+  .programs-view .card-body {
+    padding-left: 48px;
+    padding-right: 24px;
   }
 
   .programs-view .program-title {
@@ -764,9 +862,63 @@ button {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
+  .programs-head {
+    padding: 28px 18px 24px;
+  }
+
+  .programs-head h2 {
+    font-size: 27px;
+  }
+
+  .programs-head .lead {
+    font-size: 15px;
+  }
+
+  .programs {
+    padding: 0 16px 30px;
+  }
+
+  .programs-view .card {
+    grid-template-columns: 1fr;
+  }
+
+  .programs-view .card-body {
+    grid-column: 1;
+    grid-row: 1;
+
+    padding: 30px 24px 24px 34px;
+  }
+
+  .programs-view .card-media {
+    grid-column: 1;
+    grid-row: 2;
+
+    width: calc(100% - 48px);
+    height: auto;
+
+    aspect-ratio: 1 / 1.18;
+
+    margin: 0 auto 25px;
+
+    justify-self: center;
+  }
+
+  .programs-view .program-title {
+    font-size: 31px;
+  }
+
+  .programs-view .program-tagline {
+    font-size: 17px;
+  }
+
+  .programs-view .price-badge {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
   .programs-view .sub-header {
-    height: 58px;
     padding: 0 18px;
   }
 
@@ -775,65 +927,79 @@ button {
   }
 
   .programs-head {
-    padding: 30px 18px 24px;
+    padding: 25px 16px 22px;
   }
 
   .programs-head h2 {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .programs-head .lead {
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .programs {
-    padding: 0 18px 32px;
+    padding: 0 12px 25px;
     gap: 18px;
   }
 
   .programs-view .card {
-    border-radius: 22px;
+    border-radius: 21px;
   }
 
   .programs-view .stripe {
     width: 7px;
-    border-radius: 22px 0 0 22px;
+    border-radius: 21px 0 0 21px;
   }
 
   .programs-view .card-body {
-    padding: 30px 22px 25px 30px;
+    padding: 26px 18px 20px 27px;
   }
 
   .programs-view .plan-banner {
-    margin-bottom: 17px;
-    padding: 9px 14px;
+    margin-bottom: 16px;
+
+    padding: 8px 13px;
+
     font-size: 13px;
   }
 
+  .programs-view .plan-banner-icon {
+    font-size: 18px;
+  }
+
   .programs-view .program-title {
-    font-size: 29px;
-    letter-spacing: -0.4px;
+    font-size: 28px;
   }
 
   .programs-view .program-tagline {
-    font-size: 17px;
+    margin-top: 8px;
     margin-bottom: 20px;
+
+    font-size: 16px;
   }
 
   .programs-view .price-badge {
+    width: 100%;
+
     min-height: 52px;
-    margin-bottom: 20px;
-    padding-left: 15px;
+
+    padding-left: 14px;
   }
 
   .programs-view .price-badge .pd {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .programs-view .price-badge .pp {
-    margin-left: 10px;
-    padding: 9px 13px;
+    margin-left: auto;
+
+    padding: 9px 12px;
+  }
+
+  .programs-view .price-badge .pp s {
+    font-size: 11px;
   }
 
   .programs-view .price-badge .pp b {
@@ -841,40 +1007,30 @@ button {
   }
 
   .programs-view .desc {
-    font-size: 15px;
-    line-height: 1.55;
-  }
-
-  .programs-view .chips {
-    gap: 8px;
-    margin-bottom: 22px;
+    font-size: 14px;
+    line-height: 1.6;
   }
 
   .programs-view .chip {
-    min-height: 34px;
-    padding: 6px 12px;
-    font-size: 12px;
+    font-size: 11px;
+    padding: 6px 10px;
   }
 
   .programs-view .card-actions {
     width: 100%;
-
     flex-direction: column;
     align-items: stretch;
-
-    gap: 10px;
   }
 
   .programs-view .btn-primary,
   .programs-view .flyer-link {
     width: 100%;
-    min-height: 54px;
   }
 
   .programs-view .card-media {
-    width: calc(100% - 44px);
+    width: calc(100% - 40px);
 
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 
     border-radius: 18px;
   }
@@ -883,43 +1039,25 @@ button {
     border-radius: 18px;
   }
 
-  .form-modal {
-    border-radius: 18px;
-  }
-
-  .registration-form {
-    padding: 18px;
-  }
-
-  .form-grid {
+  .two {
     grid-template-columns: 1fr;
-    gap: 17px;
+    gap: 0;
   }
 
-  .modal-backdrop {
+  .overlay {
     padding: 12px;
   }
 
-  .viewer-modal {
+  .modal {
+    max-height: 94vh;
     border-radius: 18px;
   }
 
-  .viewer-head {
-    padding: 16px;
+  .modal-head {
+    padding: 18px;
   }
 
-  .viewer-content {
-    padding: 16px;
-  }
-
-  .viewer-actions {
-    flex-direction: column;
-
-    padding: 0 16px 16px;
-  }
-
-  .viewer-actions .btn,
-  .viewer-actions .flyer-link {
-    width: 100%;
+  .register-modal form {
+    padding: 18px;
   }
 }
