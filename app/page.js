@@ -18,6 +18,33 @@ const BLANK_FORM = {
   company: '',
 };
 
+const SHORT_DESCRIPTIONS = {
+  plus:
+    'Maintain your health with diagnostics, Internal Medicine, dietitian, and fitness sessions.',
+  diet:
+    'A premium, on-demand nutrition program with personalized diet plans and expert tele-consultations, helping you eat smarter and live healthier.',
+  lab:
+    'Track sugar and cholesterol levels while engaging in Care Plan fitness sessions to maintain balance, energy, and long-term health outcomes.',
+};
+
+const SHORT_CHIPS = {
+  plus: [
+    'Lab Panel x3',
+    'IM Consults x3',
+    'Dietitian x2',
+    'Live Fitness',
+  ],
+  diet: [
+    'Personalized Diet Plans',
+    'Expert Tele-Consults',
+  ],
+  lab: [
+    'HbA1c & FBS x3',
+    'Lipid Profile x3',
+    'Care Plan Fitness',
+  ],
+};
+
 function track(type, programKey) {
   try {
     fetch('/api/events', {
@@ -81,9 +108,15 @@ export default function Page() {
 
     if (savedTheme === 'dark' || savedTheme === 'light') {
       setTheme(savedTheme);
-      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.documentElement.setAttribute(
+        'data-theme',
+        savedTheme
+      );
     } else {
-      document.documentElement.setAttribute('data-theme', 'light');
+      document.documentElement.setAttribute(
+        'data-theme',
+        'light'
+      );
     }
   }, []);
 
@@ -91,12 +124,18 @@ export default function Page() {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
 
     setTheme(nextTheme);
-    document.documentElement.setAttribute('data-theme', nextTheme);
+    document.documentElement.setAttribute(
+      'data-theme',
+      nextTheme
+    );
     localStorage.setItem('theme', nextTheme);
   }
 
   useEffect(() => {
-    if (typeof window === 'undefined' || window.parent === window) {
+    if (
+      typeof window === 'undefined' ||
+      window.parent === window
+    ) {
       return;
     }
 
@@ -104,7 +143,10 @@ export default function Page() {
     let width = window.innerWidth;
 
     const freeze = () => {
-      root.style.setProperty('--vh', `${window.innerHeight}px`);
+      root.style.setProperty(
+        '--vh',
+        `${window.innerHeight}px`
+      );
     };
 
     freeze();
@@ -125,7 +167,10 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || window.parent === window) {
+    if (
+      typeof window === 'undefined' ||
+      window.parent === window
+    ) {
       return;
     }
 
@@ -286,7 +331,8 @@ export default function Page() {
         }
 
         setServerError(
-          data.message || 'Something went wrong. Please try again.'
+          data.message ||
+            'Something went wrong. Please try again.'
         );
 
         return;
@@ -338,7 +384,7 @@ export default function Page() {
     <>
       <section className="view programs-view active">
         <div className="sub-header">
-          <HabitHealthLogo id="programs" />
+          <HabitHealthLogo />
 
           <span className="sub-spacer" />
 
@@ -360,97 +406,109 @@ export default function Page() {
           <h1>Choose your ProHealth program</h1>
 
           <p className="lead">
-            Premium, on-demand health programs from HCL Healthcare. Register
-            in the one that fits you and download your flyer instantly.
+            Premium, on-demand health programs from HCL Healthcare.
+            Register in the one that fits you and download your
+            flyer instantly.
           </p>
         </div>
 
         <div className="programs">
-          {PROGRAMS.map((p) => (
-            <article
-              className="card"
-              key={p.key}
-              style={accentStyle(p)}
-            >
-              <div className="stripe" />
+          {PROGRAMS.map((p) => {
+            const description =
+              SHORT_DESCRIPTIONS[p.key] || p.desc;
 
-              <div className="card-body">
-                <div className="plan-banner">
-                  <span className="plan-banner-icon">♡</span>
-                  <span>{p.name}</span>
-                </div>
+            const chips =
+              SHORT_CHIPS[p.key] || p.chips;
 
-                <div className="program-tagline">
-                  {p.tagline}
-                </div>
-
-                <div className="price-badge">
-                  <span className="pd">
-                    Plan duration {p.duration}
-                  </span>
-
-                  <span className="pp">
-                    <s>{p.mrp}</s>
-                    <b>{p.price}</b>
-                  </span>
-                </div>
-
-                <p className="desc">
-                  {p.key === 'plus'
-                    ? 'Maintain your health with diagnostics, Internal Medicine, dietitian, and fitness sessions.'
-                    : p.key === 'diet'
-                    ? 'Personalized diet plans and expert consultations to help you eat smarter and live healthier.'
-                    : p.key === 'lab'
-                    ? 'Track sugar and cholesterol with diagnostics and fitness sessions for better long-term health.'
-                    : p.desc}
-                </p>
-
-                <div className="chips">
-                  {p.chips.map((c) => (
-                    <span className="chip" key={c}>
-                      {c}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="card-actions">
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => openForm(p.service)}
-                  >
-                    Register Now
-                  </button>
-
-                  <button
-                    className="flyer-link"
-                    onClick={() => openViewer(p.key)}
-                  >
-                    View Flyer
-                  </button>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                className="card-media"
-                onClick={() => openViewer(p.key)}
-                aria-label={`View the ${p.name} flyer`}
+            return (
+              <article
+                className="card"
+                key={p.key}
+                style={accentStyle(p)}
               >
-                <img
-                  src={p.previews[0]}
-                  alt=""
-                  loading="lazy"
-                />
-              </button>
-            </article>
-          ))}
+                <div className="stripe" />
+
+                <div className="card-body">
+                  <div className="plan-banner">
+                    <span className="plan-banner-icon">
+                      ♡
+                    </span>
+
+                    <span>{p.name}</span>
+                  </div>
+
+                  <h3 className="program-title">
+                    {p.name}
+                  </h3>
+
+                  <div className="program-tagline">
+                    {p.tagline}
+                  </div>
+
+                  <div className="price-badge">
+                    <span className="pd">
+                      Plan duration {p.duration}
+                    </span>
+
+                    <span className="pp">
+                      <s>{p.mrp}</s>
+                      <b>{p.price}</b>
+                    </span>
+                  </div>
+
+                  <p className="desc">
+                    {description}
+                  </p>
+
+                  <div className="chips">
+                    {chips.map((c) => (
+                      <span className="chip" key={c}>
+                        {c}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="card-actions">
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => openForm(p.service)}
+                    >
+                      Register Now
+                    </button>
+
+                    <button
+                      type="button"
+                      className="flyer-link"
+                      onClick={() => openViewer(p.key)}
+                    >
+                      View Flyer
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="card-media"
+                  onClick={() => openViewer(p.key)}
+                  aria-label={`View the ${p.name} flyer`}
+                >
+                  <img
+                    src={p.previews[0]}
+                    alt=""
+                    loading="lazy"
+                  />
+                </button>
+              </article>
+            );
+          })}
         </div>
       </section>
 
-      {/* FLYER VIEWER */}
-
       <div
-        className={`overlay ${viewerProgram ? 'open' : ''}`}
+        className={`overlay ${
+          viewerProgram ? 'open' : ''
+        }`}
         aria-hidden={!viewerProgram}
         onClick={(e) => {
           if (e.target === e.currentTarget) {
@@ -477,6 +535,7 @@ export default function Page() {
               </div>
 
               <button
+                type="button"
                 className="x"
                 onClick={() => setViewerKey(null)}
                 aria-label="Close"
@@ -487,14 +546,20 @@ export default function Page() {
 
             <div className="viewer-body">
               {viewerProgram.previews.map((src, i) => (
-                <figure className="viewer-page" key={src}>
+                <figure
+                  className="viewer-page"
+                  key={src}
+                >
                   <img
                     src={src}
-                    alt={`${viewerProgram.name} flyer page ${i + 1}`}
+                    alt={`${viewerProgram.name} flyer page ${
+                      i + 1
+                    }`}
                   />
 
                   <figcaption>
-                    Page {i + 1} of {viewerProgram.previews.length}
+                    Page {i + 1} of{' '}
+                    {viewerProgram.previews.length}
                   </figcaption>
                 </figure>
               ))}
@@ -502,6 +567,7 @@ export default function Page() {
 
             <div className="viewer-cta">
               <button
+                type="button"
                 className="btn btn-primary vfull"
                 onClick={() => {
                   const service = viewerProgram.service;
@@ -516,8 +582,6 @@ export default function Page() {
           </div>
         )}
       </div>
-
-      {/* REGISTRATION MODAL */}
 
       <div
         className={`overlay ${formOpen ? 'open' : ''}`}
@@ -545,7 +609,9 @@ export default function Page() {
                 </span>
 
                 <div className="mtitle">
-                  {success ? 'You’re registered' : 'Register Now'}
+                  {success
+                    ? 'You’re registered'
+                    : 'Register Now'}
                 </div>
 
                 <div className="msub">
@@ -556,6 +622,7 @@ export default function Page() {
               </div>
 
               <button
+                type="button"
                 className="x"
                 onClick={closeForm}
                 aria-label="Close"
@@ -578,7 +645,8 @@ export default function Page() {
                   }`}
                 >
                   <label htmlFor="fullName">
-                    Full Name <span className="req">*</span>
+                    Full Name{' '}
+                    <span className="req">*</span>
                   </label>
 
                   <input
@@ -589,7 +657,10 @@ export default function Page() {
                     placeholder="e.g. Anjali Sharma"
                     value={form.fullName}
                     onChange={(e) =>
-                      update('fullName', e.target.value)
+                      update(
+                        'fullName',
+                        e.target.value
+                      )
                     }
                   />
 
@@ -605,7 +676,8 @@ export default function Page() {
                     }`}
                   >
                     <label htmlFor="mobile">
-                      Mobile Number <span className="req">*</span>
+                      Mobile Number{' '}
+                      <span className="req">*</span>
                     </label>
 
                     <input
@@ -637,7 +709,8 @@ export default function Page() {
                     }`}
                   >
                     <label htmlFor="empId">
-                      Employee ID <span className="req">*</span>
+                      Employee ID{' '}
+                      <span className="req">*</span>
                     </label>
 
                     <input
@@ -646,7 +719,10 @@ export default function Page() {
                       placeholder="e.g. HCL123456"
                       value={form.empId}
                       onChange={(e) =>
-                        update('empId', e.target.value)
+                        update(
+                          'empId',
+                          e.target.value
+                        )
                       }
                     />
 
@@ -662,7 +738,8 @@ export default function Page() {
                   }`}
                 >
                   <label htmlFor="email">
-                    Email ID <span className="req">*</span>
+                    Email ID{' '}
+                    <span className="req">*</span>
                   </label>
 
                   <input
@@ -672,7 +749,10 @@ export default function Page() {
                     placeholder="name@company.com"
                     value={form.email}
                     onChange={(e) =>
-                      update('email', e.target.value)
+                      update(
+                        'email',
+                        e.target.value
+                      )
                     }
                   />
 
@@ -688,7 +768,8 @@ export default function Page() {
                     }`}
                   >
                     <label htmlFor="location">
-                      Location <span className="req">*</span>
+                      Location{' '}
+                      <span className="req">*</span>
                     </label>
 
                     <input
@@ -698,7 +779,10 @@ export default function Page() {
                       placeholder="e.g. Noida"
                       value={form.location}
                       onChange={(e) =>
-                        update('location', e.target.value)
+                        update(
+                          'location',
+                          e.target.value
+                        )
                       }
                     />
 
@@ -721,7 +805,10 @@ export default function Page() {
                       id="service"
                       value={form.service}
                       onChange={(e) =>
-                        update('service', e.target.value)
+                        update(
+                          'service',
+                          e.target.value
+                        )
                       }
                     >
                       <option value="">
@@ -752,7 +839,10 @@ export default function Page() {
                   aria-hidden="true"
                   value={form.company}
                   onChange={(e) =>
-                    update('company', e.target.value)
+                    update(
+                      'company',
+                      e.target.value
+                    )
                   }
                 />
 
@@ -774,8 +864,9 @@ export default function Page() {
                 </button>
 
                 <p className="consent">
-                  By registering you agree that HCL Healthcare may
-                  contact you about your selected ProHealth program.
+                  By registering you agree that HCL Healthcare
+                  may contact you about your selected ProHealth
+                  program.
                 </p>
               </form>
             )}
@@ -796,8 +887,8 @@ export default function Page() {
 
                 <p className="stext">
                   Our team will reach out to you about{' '}
-                  {success.service} within 48 working hours. You
-                  can view or download your flyer below.
+                  {success.service} within 48 working hours.
+                  You can view or download your flyer below.
                 </p>
 
                 <div className="success-actions">
@@ -821,7 +912,9 @@ export default function Page() {
                     aria-expanded={tab === 'view'}
                     onClick={() =>
                       setTab(
-                        tab === 'view' ? 'none' : 'view'
+                        tab === 'view'
+                          ? 'none'
+                          : 'view'
                       )
                     }
                   >
@@ -843,20 +936,22 @@ export default function Page() {
 
                 {tab === 'view' && (
                   <div className="flyer-panel">
-                    {successProgram.previews.map((src, i) => (
-                      <img
-                        key={src}
-                        src={src}
-                        alt={`${successProgram.name} flyer page ${
-                          i + 1
-                        }`}
-                        style={
-                          i
-                            ? { marginTop: 12 }
-                            : undefined
-                        }
-                      />
-                    ))}
+                    {successProgram.previews.map(
+                      (src, i) => (
+                        <img
+                          key={src}
+                          src={src}
+                          alt={`${successProgram.name} flyer page ${
+                            i + 1
+                          }`}
+                          style={
+                            i
+                              ? { marginTop: 12 }
+                              : undefined
+                          }
+                        />
+                      )
+                    )}
                   </div>
                 )}
               </div>
