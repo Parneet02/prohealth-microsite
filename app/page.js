@@ -70,6 +70,50 @@ export default function Page() {
 
   const [theme, setTheme] = useState('light');
 
+useEffect(() => {
+  const savedTheme = localStorage.getItem('theme');
+
+  const initialTheme =
+    savedTheme === 'dark' ? 'dark' : 'light';
+
+  setTheme(initialTheme);
+
+  document.documentElement.setAttribute(
+    'data-theme',
+    initialTheme
+  );
+
+  document.documentElement.style.colorScheme =
+    initialTheme;
+}, []);
+
+function toggleTheme() {
+  const currentTheme =
+    document.documentElement.getAttribute(
+      'data-theme'
+    ) || 'light';
+
+  const nextTheme =
+    currentTheme === 'dark'
+      ? 'light'
+      : 'dark';
+
+  document.documentElement.setAttribute(
+    'data-theme',
+    nextTheme
+  );
+
+  document.documentElement.style.colorScheme =
+    nextTheme;
+
+  localStorage.setItem(
+    'theme',
+    nextTheme
+  );
+
+  setTheme(nextTheme);
+}
+
   const nameRef = useRef(null);
   const modalRef = useRef(null);
 
@@ -439,18 +483,16 @@ export default function Page() {
           <span className="sub-spacer" />
 
           <button
-            type="button"
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label={
-              theme === 'dark'
-                ? 'Switch to light mode'
-                : 'Switch to dark mode'
+          type="button"
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={
+            theme === 'dark'
+            ? 'Switch to light mode'
+            : 'Switch to dark mode'
             }
-          >
-            {theme === 'dark'
-              ? '☀️'
-              : '🌙'}
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
           </button>
         </div>
 
