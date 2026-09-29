@@ -18,33 +18,6 @@ const BLANK_FORM = {
   company: '',
 };
 
-const SHORT_DESCRIPTIONS = {
-  plus:
-    'Maintain your health with diagnostics, Internal Medicine, dietitian, and fitness sessions.',
-  diet:
-    'A premium, on-demand nutrition program with personalized diet plans and expert tele-consultations, helping you eat smarter and live healthier.',
-  lab:
-    'Track sugar and cholesterol levels while engaging in Care Plan fitness sessions to maintain balance, energy, and long-term health outcomes.',
-};
-
-const SHORT_CHIPS = {
-  plus: [
-    'Lab Panel x3',
-    'IM Consults x3',
-    'Dietitian x2',
-    'Live Fitness',
-  ],
-  diet: [
-    'Personalized Diet Plans',
-    'Expert Tele-Consults',
-  ],
-  lab: [
-    'HbA1c & FBS x3',
-    'Lipid Profile x3',
-    'Care Plan Fitness',
-  ],
-};
-
 function track(type, programKey) {
   try {
     fetch('/api/events', {
@@ -121,13 +94,16 @@ export default function Page() {
   }, []);
 
   function toggleTheme() {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    const nextTheme =
+      theme === 'dark' ? 'light' : 'dark';
 
     setTheme(nextTheme);
+
     document.documentElement.setAttribute(
       'data-theme',
       nextTheme
     );
+
     localStorage.setItem('theme', nextTheme);
   }
 
@@ -140,6 +116,7 @@ export default function Page() {
     }
 
     const root = document.documentElement;
+
     let width = window.innerWidth;
 
     const freeze = () => {
@@ -155,13 +132,21 @@ export default function Page() {
       if (window.innerWidth === width) return;
 
       width = window.innerWidth;
+
       freeze();
     };
 
-    window.addEventListener('resize', onResize);
+    window.addEventListener(
+      'resize',
+      onResize
+    );
 
     return () => {
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener(
+        'resize',
+        onResize
+      );
+
       root.style.removeProperty('--vh');
     };
   }, []);
@@ -202,11 +187,19 @@ export default function Page() {
     const ro = new ResizeObserver(post);
 
     ro.observe(document.body);
-    window.addEventListener('load', post);
+
+    window.addEventListener(
+      'load',
+      post
+    );
 
     return () => {
       ro.disconnect();
-      window.removeEventListener('load', post);
+
+      window.removeEventListener(
+        'load',
+        post
+      );
     };
   }, [formOpen, viewerKey, success]);
 
@@ -223,13 +216,20 @@ export default function Page() {
       if (e.key !== 'Escape') return;
 
       setViewerKey(null);
+
       closeForm();
     };
 
-    document.addEventListener('keydown', onKey);
+    document.addEventListener(
+      'keydown',
+      onKey
+    );
 
     return () => {
-      document.removeEventListener('keydown', onKey);
+      document.removeEventListener(
+        'keydown',
+        onKey
+      );
     };
   }, [closeForm]);
 
@@ -242,16 +242,26 @@ export default function Page() {
     setErrors({});
     setServerError('');
     setSuccess(null);
+
     setFormOpen(true);
 
-    track('form_open', SERVICE_TO_KEY[service]);
+    track(
+      'form_open',
+      SERVICE_TO_KEY[service]
+    );
 
-    setTimeout(() => nameRef.current?.focus(), 60);
+    setTimeout(() => {
+      nameRef.current?.focus();
+    }, 60);
   }
 
   function openViewer(key) {
     setViewerKey(key);
-    track('flyer_view', key);
+
+    track(
+      'flyer_view',
+      key
+    );
   }
 
   function update(field, value) {
@@ -272,27 +282,44 @@ export default function Page() {
     const e = {};
 
     if (d.fullName.trim().length < 2) {
-      e.fullName = 'Please enter your full name.';
+      e.fullName =
+        'Please enter your full name.';
     }
 
-    if (!/^[6-9]\d{9}$/.test(d.mobile.replace(/\D/g, ''))) {
-      e.mobile = 'Enter a valid 10 digit mobile number.';
+    if (
+      !/^[6-9]\d{9}$/.test(
+        d.mobile.replace(/\D/g, '')
+      )
+    ) {
+      e.mobile =
+        'Enter a valid 10 digit mobile number.';
     }
 
     if (!d.empId.trim()) {
-      e.empId = 'Please enter your Employee ID.';
+      e.empId =
+        'Please enter your Employee ID.';
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email.trim())) {
-      e.email = 'Enter a valid email address.';
+    /*
+     * Fixed email validation regex
+     */
+    if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+        d.email.trim()
+      )
+    ) {
+      e.email =
+        'Enter a valid email address.';
     }
 
     if (!d.location.trim()) {
-      e.location = 'Please enter your location.';
+      e.location =
+        'Please enter your location.';
     }
 
     if (!d.service) {
-      e.service = 'Please choose a preferred service.';
+      e.service =
+        'Please choose a preferred service.';
     }
 
     return e;
@@ -307,23 +334,38 @@ export default function Page() {
 
     setErrors(found);
 
-    if (Object.keys(found).length) return;
+    if (Object.keys(found).length) {
+      return;
+    }
 
     setSubmitting(true);
 
     try {
-      const res = await fetch('/api/leads', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...form,
-          mobile: form.mobile.replace(/\D/g, ''),
-        }),
-      });
+      const res = await fetch(
+        '/api/leads',
+        {
+          method: 'POST',
 
-      const data = await res.json().catch(() => ({}));
+          headers: {
+            'Content-Type':
+              'application/json',
+          },
+
+          body: JSON.stringify({
+            ...form,
+            mobile:
+              form.mobile.replace(
+                /\D/g,
+                ''
+              ),
+          }),
+        }
+      );
+
+      const data =
+        await res
+          .json()
+          .catch(() => ({}));
 
       if (!res.ok || !data.ok) {
         if (data.errors) {
@@ -340,7 +382,12 @@ export default function Page() {
 
       setSuccess({
         service: form.service,
-        key: SERVICE_TO_KEY[form.service] || 'plus',
+
+        key:
+          SERVICE_TO_KEY[
+            form.service
+          ] || 'plus',
+
         leadId: data.id,
       });
 
@@ -359,15 +406,21 @@ export default function Page() {
   }
 
   const successProgram = success
-    ? getProgramByService(success.service)
+    ? getProgramByService(
+        success.service
+      )
     : null;
 
   const viewerProgram = viewerKey
-    ? PROGRAMS.find((p) => p.key === viewerKey)
+    ? PROGRAMS.find(
+        (p) => p.key === viewerKey
+      )
     : null;
 
   const formProgram = form.service
-    ? getProgramByService(form.service)
+    ? getProgramByService(
+        form.service
+      )
     : null;
 
   const accentStyle = (p) =>
@@ -375,16 +428,20 @@ export default function Page() {
       ? {
           '--accent': p.accent,
           '--accent-soft': p.soft,
-          '--banner-ratio': p.bannerRatio,
-          '--banner-top': p.bannerTop,
+          '--banner-ratio':
+            p.bannerRatio,
+          '--banner-top':
+            p.bannerTop,
         }
       : undefined;
 
   return (
     <>
       <section className="view programs-view active">
+
         <div className="sub-header">
-          <HabitHealthLogo />
+
+          <HabitHealthLogo id="programs" />
 
           <span className="sub-spacer" />
 
@@ -400,131 +457,203 @@ export default function Page() {
           >
             ⏾
           </button>
+
         </div>
+
 
         <div className="programs-head">
-          <h1>Choose your ProHealth program</h1>
+
+          <h1>
+            Choose your ProHealth program
+          </h1>
 
           <p className="lead">
-            Premium, on-demand health programs from HCL Healthcare.
-            Register in the one that fits you and download your
+            Premium, on-demand health programs
+            from HCL Healthcare. Register in the
+            one that fits you and download your
             flyer instantly.
           </p>
+
         </div>
+
 
         <div className="programs">
-          {PROGRAMS.map((p) => {
-            const description =
-              SHORT_DESCRIPTIONS[p.key] || p.desc;
 
-            const chips =
-              SHORT_CHIPS[p.key] || p.chips;
+          {PROGRAMS.map((p) => (
 
-            return (
-              <article
-                className="card"
-                key={p.key}
-                style={accentStyle(p)}
-              >
-                <div className="stripe" />
+            <article
+              className="card"
+              key={p.key}
+              style={accentStyle(p)}
+            >
 
-                <div className="card-body">
-                  <div className="plan-banner">
-                    <span className="plan-banner-icon">
-                      ♡
-                    </span>
+              <div className="stripe" />
 
-                    <span>{p.name}</span>
-                  </div>
 
-                  <h3 className="program-title">
+              <div className="card-body">
+
+                <div className="plan-banner">
+
+                  <span className="plan-banner-icon">
+                    ♡
+                  </span>
+
+                  <span>
                     {p.name}
-                  </h3>
+                  </span>
 
-                  <div className="program-tagline">
-                    {p.tagline}
-                  </div>
-
-                  <div className="price-badge">
-                    <span className="pd">
-                      Plan duration {p.duration}
-                    </span>
-
-                    <span className="pp">
-                      <s>{p.mrp}</s>
-                      <b>{p.price}</b>
-                    </span>
-                  </div>
-
-                  <p className="desc">
-                    {description}
-                  </p>
-
-                  <div className="chips">
-                    {chips.map((c) => (
-                      <span className="chip" key={c}>
-                        {c}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="card-actions">
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      onClick={() => openForm(p.service)}
-                    >
-                      Register Now
-                    </button>
-
-                    <button
-                      type="button"
-                      className="flyer-link"
-                      onClick={() => openViewer(p.key)}
-                    >
-                      View Flyer
-                    </button>
-                  </div>
                 </div>
 
-                <button
-                  type="button"
-                  className="card-media"
-                  onClick={() => openViewer(p.key)}
-                  aria-label={`View the ${p.name} flyer`}
-                >
-                  <img
-                    src={p.previews[0]}
-                    alt=""
-                    loading="lazy"
-                  />
-                </button>
-              </article>
-            );
-          })}
+
+                <div className="program-tagline">
+                  {p.tagline}
+                </div>
+
+
+                <div className="price-badge">
+
+                  <span className="pd">
+                    Plan duration {p.duration}
+                  </span>
+
+                  <span className="pp">
+
+                    <s>
+                      {p.mrp}
+                    </s>
+
+                    <b>
+                      {p.price}
+                    </b>
+
+                  </span>
+
+                </div>
+
+
+                <p className="desc">
+
+                  {p.key === 'plus'
+                    ? 'Maintain your health with diagnostics, Internal Medicine, dietitian, and fitness sessions.'
+                    : p.key === 'diet'
+                    ? 'Personalized diet plans and expert consultations to help you eat smarter and live healthier.'
+                    : p.key === 'lab'
+                    ? 'Track sugar and cholesterol with diagnostics and fitness sessions for better long-term health.'
+                    : p.desc}
+
+                </p>
+
+
+                <div className="chips">
+
+                  {p.chips.map((c) => (
+
+                    <span
+                      className="chip"
+                      key={c}
+                    >
+                      {c}
+                    </span>
+
+                  ))}
+
+                </div>
+
+
+                <div className="card-actions">
+
+                  <button
+                    className="btn btn-primary"
+                    onClick={() =>
+                      openForm(
+                        p.service
+                      )
+                    }
+                  >
+                    Register Now
+                  </button>
+
+
+                  <button
+                    className="flyer-link"
+                    onClick={() =>
+                      openViewer(
+                        p.key
+                      )
+                    }
+                  >
+                    View Flyer
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <button
+                type="button"
+                className="card-media"
+                onClick={() =>
+                  openViewer(
+                    p.key
+                  )
+                }
+                aria-label={`View the ${p.name} flyer`}
+              >
+
+                <img
+                  src={p.previews[0]}
+                  alt=""
+                  loading="lazy"
+                />
+
+              </button>
+
+            </article>
+
+          ))}
+
         </div>
+
       </section>
+
+
+      {/* FLYER VIEWER */}
 
       <div
         className={`overlay ${
-          viewerProgram ? 'open' : ''
+          viewerProgram
+            ? 'open'
+            : ''
         }`}
         aria-hidden={!viewerProgram}
         onClick={(e) => {
-          if (e.target === e.currentTarget) {
+
+          if (
+            e.target ===
+            e.currentTarget
+          ) {
             setViewerKey(null);
           }
+
         }}
       >
+
         {viewerProgram && (
+
           <div
             className="modal viewer"
             role="dialog"
             aria-modal="true"
-            style={accentStyle(viewerProgram)}
+            style={accentStyle(
+              viewerProgram
+            )}
           >
+
             <div className="modal-head">
+
               <div>
+
                 <div className="mtitle">
                   {viewerProgram.name} flyer
                 </div>
@@ -532,80 +661,126 @@ export default function Page() {
                 <div className="msub">
                   Preview only — register to download the PDF.
                 </div>
+
               </div>
 
+
               <button
-                type="button"
                 className="x"
-                onClick={() => setViewerKey(null)}
+                onClick={() =>
+                  setViewerKey(null)
+                }
                 aria-label="Close"
               >
                 ✕
               </button>
+
             </div>
+
 
             <div className="viewer-body">
-              {viewerProgram.previews.map((src, i) => (
-                <figure
-                  className="viewer-page"
-                  key={src}
-                >
-                  <img
-                    src={src}
-                    alt={`${viewerProgram.name} flyer page ${
-                      i + 1
-                    }`}
-                  />
 
-                  <figcaption>
-                    Page {i + 1} of{' '}
-                    {viewerProgram.previews.length}
-                  </figcaption>
-                </figure>
-              ))}
+              {viewerProgram.previews.map(
+                (src, i) => (
+
+                  <figure
+                    className="viewer-page"
+                    key={src}
+                  >
+
+                    <img
+                      src={src}
+                      alt={`${viewerProgram.name} flyer page ${
+                        i + 1
+                      }`}
+                    />
+
+                    <figcaption>
+                      Page {i + 1} of{' '}
+                      {
+                        viewerProgram
+                          .previews
+                          .length
+                      }
+                    </figcaption>
+
+                  </figure>
+
+                )
+              )}
+
             </div>
 
+
             <div className="viewer-cta">
+
               <button
-                type="button"
                 className="btn btn-primary vfull"
                 onClick={() => {
-                  const service = viewerProgram.service;
+
+                  const service =
+                    viewerProgram.service;
 
                   setViewerKey(null);
+
                   openForm(service);
+
                 }}
               >
                 Register to download this flyer
               </button>
+
             </div>
+
           </div>
+
         )}
+
       </div>
 
+
+      {/* REGISTRATION MODAL */}
+
       <div
-        className={`overlay ${formOpen ? 'open' : ''}`}
+        className={`overlay ${
+          formOpen
+            ? 'open'
+            : ''
+        }`}
         aria-hidden={!formOpen}
         onClick={(e) => {
-          if (e.target === e.currentTarget) {
+
+          if (
+            e.target ===
+            e.currentTarget
+          ) {
             closeForm();
           }
+
         }}
       >
+
         {formOpen && (
+
           <div
             className="modal register-modal"
             role="dialog"
             aria-modal="true"
             ref={modalRef}
             style={accentStyle(
-              success ? successProgram : formProgram
+              success
+                ? successProgram
+                : formProgram
             )}
           >
+
             <div className="modal-head">
+
               <div>
+
                 <span className="badge">
-                  {form.service || 'ProHealth'}
+                  {form.service ||
+                    'ProHealth'}
                 </span>
 
                 <div className="mtitle">
@@ -619,34 +794,50 @@ export default function Page() {
                     ? 'Your flyer is ready to download.'
                     : 'Fill in your details to register and get your flyer.'}
                 </div>
+
               </div>
 
+
               <button
-                type="button"
                 className="x"
                 onClick={closeForm}
                 aria-label="Close"
               >
                 ✕
               </button>
+
             </div>
 
+
             {!success && (
-              <form onSubmit={onSubmit} noValidate>
+
+              <form
+                onSubmit={onSubmit}
+                noValidate
+              >
+
                 {serverError && (
+
                   <div className="form-error">
                     {serverError}
                   </div>
+
                 )}
+
 
                 <div
                   className={`field ${
-                    errors.fullName ? 'invalid' : ''
+                    errors.fullName
+                      ? 'invalid'
+                      : ''
                   }`}
                 >
+
                   <label htmlFor="fullName">
                     Full Name{' '}
-                    <span className="req">*</span>
+                    <span className="req">
+                      *
+                    </span>
                   </label>
 
                   <input
@@ -667,17 +858,25 @@ export default function Page() {
                   <span className="err">
                     {errors.fullName}
                   </span>
+
                 </div>
 
+
                 <div className="two">
+
                   <div
                     className={`field ${
-                      errors.mobile ? 'invalid' : ''
+                      errors.mobile
+                        ? 'invalid'
+                        : ''
                     }`}
                   >
+
                     <label htmlFor="mobile">
                       Mobile Number{' '}
-                      <span className="req">*</span>
+                      <span className="req">
+                        *
+                      </span>
                     </label>
 
                     <input
@@ -692,8 +891,14 @@ export default function Page() {
                         update(
                           'mobile',
                           e.target.value
-                            .replace(/\D/g, '')
-                            .slice(0, 10)
+                            .replace(
+                              /\D/g,
+                              ''
+                            )
+                            .slice(
+                              0,
+                              10
+                            )
                         )
                       }
                     />
@@ -701,16 +906,23 @@ export default function Page() {
                     <span className="err">
                       {errors.mobile}
                     </span>
+
                   </div>
+
 
                   <div
                     className={`field ${
-                      errors.empId ? 'invalid' : ''
+                      errors.empId
+                        ? 'invalid'
+                        : ''
                     }`}
                   >
+
                     <label htmlFor="empId">
                       Employee ID{' '}
-                      <span className="req">*</span>
+                      <span className="req">
+                        *
+                      </span>
                     </label>
 
                     <input
@@ -729,17 +941,25 @@ export default function Page() {
                     <span className="err">
                       {errors.empId}
                     </span>
+
                   </div>
+
                 </div>
+
 
                 <div
                   className={`field ${
-                    errors.email ? 'invalid' : ''
+                    errors.email
+                      ? 'invalid'
+                      : ''
                   }`}
                 >
+
                   <label htmlFor="email">
                     Email ID{' '}
-                    <span className="req">*</span>
+                    <span className="req">
+                      *
+                    </span>
                   </label>
 
                   <input
@@ -759,17 +979,25 @@ export default function Page() {
                   <span className="err">
                     {errors.email}
                   </span>
+
                 </div>
 
+
                 <div className="two">
+
                   <div
                     className={`field ${
-                      errors.location ? 'invalid' : ''
+                      errors.location
+                        ? 'invalid'
+                        : ''
                     }`}
                   >
+
                     <label htmlFor="location">
                       Location{' '}
-                      <span className="req">*</span>
+                      <span className="req">
+                        *
+                      </span>
                     </label>
 
                     <input
@@ -789,16 +1017,23 @@ export default function Page() {
                     <span className="err">
                       {errors.location}
                     </span>
+
                   </div>
+
 
                   <div
                     className={`field ${
-                      errors.service ? 'invalid' : ''
+                      errors.service
+                        ? 'invalid'
+                        : ''
                     }`}
                   >
+
                     <label htmlFor="service">
                       Preferred Service{' '}
-                      <span className="req">*</span>
+                      <span className="req">
+                        *
+                      </span>
                     </label>
 
                     <select
@@ -811,25 +1046,34 @@ export default function Page() {
                         )
                       }
                     >
+
                       <option value="">
                         Select a program
                       </option>
 
-                      {PROGRAMS.map((p) => (
-                        <option
-                          key={p.key}
-                          value={p.service}
-                        >
-                          {p.name}
-                        </option>
-                      ))}
+                      {PROGRAMS.map(
+                        (p) => (
+
+                          <option
+                            key={p.key}
+                            value={p.service}
+                          >
+                            {p.name}
+                          </option>
+
+                        )
+                      )}
+
                     </select>
 
                     <span className="err">
                       {errors.service}
                     </span>
+
                   </div>
+
                 </div>
+
 
                 <input
                   className="hp"
@@ -846,118 +1090,167 @@ export default function Page() {
                   }
                 />
 
+
                 <button
                   className="submit"
                   type="submit"
                   disabled={submitting}
                 >
+
                   {submitting && (
+
                     <span
                       className="spinner"
                       aria-hidden="true"
                     />
+
                   )}
 
                   {submitting
                     ? 'Registering'
                     : 'Register and get my flyer'}
+
                 </button>
 
+
                 <p className="consent">
-                  By registering you agree that HCL Healthcare
-                  may contact you about your selected ProHealth
-                  program.
+                  By registering you agree
+                  that HCL Healthcare may
+                  contact you about your
+                  selected ProHealth program.
                 </p>
+
               </form>
+
             )}
 
-            {success && successProgram && (
-              <div className="success show">
-                <div className="check">
-                  <Icon
-                    path="M20 6 9 17l-5-5"
-                    size={34}
-                    width={2.6}
-                  />
-                </div>
 
-                <h3>
-                  Thank you for sharing your interest!
-                </h3>
+            {success &&
+              successProgram && (
 
-                <p className="stext">
-                  Our team will reach out to you about{' '}
-                  {success.service} within 48 working hours.
-                  You can view or download your flyer below.
-                </p>
+                <div className="success show">
 
-                <div className="success-actions">
-                  <a
-                    className="dl-btn"
-                    href={`/api/brochure/${successProgram.key}?lead=${success.leadId}`}
-                    download={successProgram.downloadName}
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <Icon
-                      path="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"
-                      width={2.2}
-                    />
-                    Download PDF flyer
-                  </a>
-
-                  <button
-                    type="button"
-                    className="flyer-toggle"
-                    aria-expanded={tab === 'view'}
-                    onClick={() =>
-                      setTab(
-                        tab === 'view'
-                          ? 'none'
-                          : 'view'
-                      )
-                    }
-                  >
-                    {tab === 'view'
-                      ? 'Hide flyer'
-                      : 'View flyer'}
+                  <div className="check">
 
                     <Icon
-                      path={
-                        tab === 'view'
-                          ? 'M18 15l-6-6-6 6'
-                          : 'M6 9l6 6 6-6'
-                      }
-                      size={16}
-                      width={2.2}
+                      path="M20 6 9 17l-5-5"
+                      size={34}
+                      width={2.6}
                     />
-                  </button>
-                </div>
 
-                {tab === 'view' && (
-                  <div className="flyer-panel">
-                    {successProgram.previews.map(
-                      (src, i) => (
-                        <img
-                          key={src}
-                          src={src}
-                          alt={`${successProgram.name} flyer page ${
-                            i + 1
-                          }`}
-                          style={
-                            i
-                              ? { marginTop: 12 }
-                              : undefined
-                          }
-                        />
-                      )
-                    )}
                   </div>
-                )}
-              </div>
-            )}
+
+
+                  <h3>
+                    Thank you for sharing your interest!
+                  </h3>
+
+
+                  <p className="stext">
+
+                    Our team will reach out to
+                    you about{' '}
+                    {success.service} within
+                    48 working hours. You can
+                    view or download your flyer
+                    below.
+
+                  </p>
+
+
+                  <div className="success-actions">
+
+                    <a
+                      className="dl-btn"
+                      href={`/api/brochure/${successProgram.key}?lead=${success.leadId}`}
+                      download={
+                        successProgram.downloadName
+                      }
+                      target="_blank"
+                      rel="noopener"
+                    >
+
+                      <Icon
+                        path="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"
+                        width={2.2}
+                      />
+
+                      Download PDF flyer
+
+                    </a>
+
+
+                    <button
+                      type="button"
+                      className="flyer-toggle"
+                      aria-expanded={
+                        tab === 'view'
+                      }
+                      onClick={() =>
+                        setTab(
+                          tab === 'view'
+                            ? 'none'
+                            : 'view'
+                        )
+                      }
+                    >
+
+                      {tab === 'view'
+                        ? 'Hide flyer'
+                        : 'View flyer'}
+
+                      <Icon
+                        path={
+                          tab === 'view'
+                            ? 'M18 15l-6-6-6 6'
+                            : 'M6 9l6 6 6-6'
+                        }
+                        size={16}
+                        width={2.2}
+                      />
+
+                    </button>
+
+                  </div>
+
+
+                  {tab === 'view' && (
+
+                    <div className="flyer-panel">
+
+                      {successProgram.previews.map(
+                        (src, i) => (
+
+                          <img
+                            key={src}
+                            src={src}
+                            alt={`${successProgram.name} flyer page ${
+                              i + 1
+                            }`}
+                            style={
+                              i
+                                ? {
+                                    marginTop: 12,
+                                  }
+                                : undefined
+                            }
+                          />
+
+                        )
+                      )}
+
+                    </div>
+
+                  )}
+
+                </div>
+
+              )}
+
           </div>
+
         )}
+
       </div>
     </>
   );
