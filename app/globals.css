@@ -1025,8 +1025,10 @@ SMALL MOBILE
     font-size: 22px;
   }
 
-  .programs-head {
-    padding: 30px 18px 24px;
+  .programs-head h1,
+  .programs-head h2 {
+  white-space: nowrap;
+  font-size: 22px;
   }
 
   .programs {
