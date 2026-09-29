@@ -2,7 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { PROGRAMS, SERVICE_TO_KEY, getProgramByService } from '@/lib/programs';
+import {
+  PROGRAMS,
+  SERVICE_TO_KEY,
+  getProgramByService,
+} from '@/lib/programs';
 
 const BLANK_FORM = {
   fullName: '',
@@ -63,6 +67,7 @@ export default function Page() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null);
   const [tab, setTab] = useState('none');
+
   const nameRef = useRef(null);
   const modalRef = useRef(null);
 
@@ -71,7 +76,9 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || window.parent === window) return;
+    if (typeof window === 'undefined' || window.parent === window) {
+      return;
+    }
 
     const root = document.documentElement;
     let width = window.innerWidth;
@@ -84,6 +91,7 @@ export default function Page() {
 
     const onResize = () => {
       if (window.innerWidth === width) return;
+
       width = window.innerWidth;
       freeze();
     };
@@ -97,7 +105,9 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || window.parent === window) return;
+    if (typeof window === 'undefined' || window.parent === window) {
+      return;
+    }
 
     let last = 0;
 
@@ -331,10 +341,19 @@ export default function Page() {
               <div className="stripe" />
 
               <div className="card-body">
-                {/* Visible plan name banner */}
+
+                {/* PLAN NAME */}
                 <div className="plan-banner">
-                  <h3>{p.name}</h3>
-                  <div className="tagline">{p.tagline}</div>
+                  <span className="plan-banner-icon">♡</span>
+                  <span>{p.name}</span>
+                </div>
+
+                <h3 className="program-title">
+                  {p.name}
+                </h3>
+
+                <div className="program-tagline">
+                  {p.tagline}
                 </div>
 
                 <div className="price-badge">
@@ -343,11 +362,14 @@ export default function Page() {
                   </span>
 
                   <span className="pp">
-                    <s>{p.mrp}</s> <b>{p.price}</b>
+                    <s>{p.mrp}</s>
+                    <b>{p.price}</b>
                   </span>
                 </div>
 
-                <p className="desc">{p.desc}</p>
+                <p className="desc">
+                  {p.desc}
+                </p>
 
                 <div className="chips">
                   {p.chips.map((c) => (
@@ -369,7 +391,7 @@ export default function Page() {
                     className="flyer-link"
                     onClick={() => openViewer(p.key)}
                   >
-                    View flyer
+                    View Flyer
                   </button>
                 </div>
               </div>
@@ -390,6 +412,8 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      {/* FLYER VIEWER */}
 
       <div
         className={`overlay ${viewerProgram ? 'open' : ''}`}
@@ -457,6 +481,8 @@ export default function Page() {
           </div>
         )}
       </div>
+
+      {/* REGISTRATION MODAL */}
 
       <div
         className={`overlay ${formOpen ? 'open' : ''}`}
@@ -666,7 +692,10 @@ export default function Page() {
                       </option>
 
                       {PROGRAMS.map((p) => (
-                        <option key={p.key} value={p.service}>
+                        <option
+                          key={p.key}
+                          value={p.service}
+                        >
                           {p.name}
                         </option>
                       ))}
