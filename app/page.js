@@ -50,7 +50,7 @@ export default function Home() {
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null);
-  const [activeTab, setActiveTab] = useState('programs');
+  const [showForm, setShowForm] = useState(false);
 
   const formRef = useRef(null);
 
@@ -88,13 +88,7 @@ export default function Home() {
 
     setErrors({});
     setSuccess(null);
-
-    setTimeout(() => {
-      formRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
-    }, 50);
+    setShowForm(true);
 
     track('register_click', {
       program: program.key,
@@ -129,7 +123,8 @@ export default function Home() {
     }
 
     if (!/^[0-9]{10}$/.test(form.mobile.trim())) {
-      nextErrors.mobile = 'Please enter a valid 10-digit mobile number.';
+      nextErrors.mobile =
+        'Please enter a valid 10-digit mobile number.';
     }
 
     if (
@@ -182,7 +177,9 @@ export default function Home() {
 
       const program =
         getProgramByService(form.service) ||
-        PROGRAMS.find((item) => item.name === form.service);
+        PROGRAMS.find(
+          (item) => item.name === form.service
+        );
 
       setSuccess({
         name: form.fullName,
@@ -202,7 +199,8 @@ export default function Home() {
       });
 
       track('registration_error', {
-        message: error?.message || 'unknown_error',
+        message:
+          error?.message || 'unknown_error',
       });
     } finally {
       setSubmitting(false);
@@ -211,23 +209,18 @@ export default function Home() {
 
   /*
    * IMPORTANT:
-   * Every program keeps its own accent / soft / banner settings
-   * from lib/programs.js.
-   *
-   * Do NOT put one common banner color here.
+   * Every card gets its OWN accent color from PROGRAMS.
+   * Therefore the banner matches the corresponding flyer.
    */
-  const accentStyle = (program) => {
-    if (!program) {
-      return undefined;
-    }
-
-    return {
-      '--accent': program.accent,
-      '--accent-soft': program.soft,
-      '--banner-ratio': program.bannerRatio,
-      '--banner-top': program.bannerTop,
-    };
-  };
+  const accentStyle = (program) =>
+    program
+      ? {
+          '--accent': program.accent,
+          '--accent-soft': program.soft,
+          '--banner-ratio': program.bannerRatio,
+          '--banner-top': program.bannerTop,
+        }
+      : undefined;
 
   const downloadFlyer = (program) => {
     if (!program?.previews?.[0]) {
@@ -235,6 +228,7 @@ export default function Home() {
     }
 
     const link = document.createElement('a');
+
     link.href = program.previews[0];
     link.download = `${program.key || 'prohealth'}-flyer`;
     link.target = '_blank';
@@ -256,11 +250,10 @@ export default function Home() {
 
         <div className="sub-spacer" />
 
-        <nav className="top-nav" aria-label="Main navigation">
+        <nav className="top-nav">
           <button
             type="button"
-            className={activeTab === 'programs' ? 'active' : ''}
-            onClick={() => setActiveTab('programs')}
+            className="active"
           >
             Programs
           </button>
@@ -268,13 +261,16 @@ export default function Home() {
       </header>
 
       <section className="programs-head">
-        <p className="eyebrow">HABIT HEALTH × HCL HEALTHCARE</p>
+        <p className="eyebrow">
+          HABIT HEALTH × HCL HEALTHCARE
+        </p>
 
         <h2>Personalised Health Programs</h2>
 
         <p className="lead">
-          Take control of your health with personalised programs designed
-          around your needs, goals and everyday habits.
+          Take control of your health with personalised
+          programs designed around your needs, goals and
+          everyday habits.
         </p>
       </section>
 
@@ -289,7 +285,10 @@ export default function Home() {
 
             <div className="card-body">
               <div className="plan-banner">
-                <span className="plan-banner-icon">♡</span>
+                <span className="plan-banner-icon">
+                  ♡
+                </span>
+
                 <span>{program.name}</span>
               </div>
 
@@ -329,7 +328,10 @@ export default function Home() {
                 program.chips.length > 0 && (
                   <div className="chips">
                     {program.chips.map((chip) => (
-                      <span className="chip" key={chip}>
+                      <span
+                        className="chip"
+                        key={chip}
+                      >
                         {chip}
                       </span>
                     ))}
@@ -370,169 +372,235 @@ export default function Home() {
         ))}
       </section>
 
-      <section className="registration-section" ref={formRef}>
-        <div className="registration-card">
-          {!success ? (
-            <>
-              <div className="registration-head">
-                <p className="eyebrow">GET STARTED</p>
+      {/* REGISTRATION MODAL */}
+      {showForm && (
+        <div
+          className="modal-backdrop"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (
+              event.target === event.currentTarget
+            ) {
+              setShowForm(false);
+            }
+          }}
+        >
+          <div
+            className="form-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Program registration"
+            ref={formRef}
+          >
+            {!success ? (
+              <>
+                <div className="viewer-head">
+                  <div>
+                    <p className="eyebrow">
+                      GET STARTED
+                    </p>
 
-                <h2>Register for a Program</h2>
+                    <h2>Register for a Program</h2>
+                  </div>
 
-                <p>
-                  Share your details and our team will get in touch
-                  with you.
-                </p>
-              </div>
-
-              <form onSubmit={onSubmit} noValidate>
-                <div className="form-grid">
-                  <label>
-                    <span>Full Name</span>
-
-                    <input
-                      type="text"
-                      value={form.fullName}
-                      onChange={(event) =>
-                        update('fullName', event.target.value)
-                      }
-                      placeholder="Enter your full name"
-                    />
-
-                    {errors.fullName && (
-                      <small>{errors.fullName}</small>
-                    )}
-                  </label>
-
-                  <label>
-                    <span>Mobile Number</span>
-
-                    <input
-                      type="tel"
-                      inputMode="numeric"
-                      maxLength={10}
-                      value={form.mobile}
-                      onChange={(event) =>
-                        update(
-                          'mobile',
-                          event.target.value.replace(/\D/g, '')
-                        )
-                      }
-                      placeholder="10-digit mobile number"
-                    />
-
-                    {errors.mobile && (
-                      <small>{errors.mobile}</small>
-                    )}
-                  </label>
-
-                  <label>
-                    <span>Email Address</span>
-
-                    <input
-                      type="email"
-                      value={form.email}
-                      onChange={(event) =>
-                        update('email', event.target.value)
-                      }
-                      placeholder="Enter your email"
-                    />
-
-                    {errors.email && (
-                      <small>{errors.email}</small>
-                    )}
-                  </label>
-
-                  <label>
-                    <span>Program</span>
-
-                    <select
-                      value={form.service}
-                      onChange={(event) =>
-                        update('service', event.target.value)
-                      }
-                    >
-                      <option value="">
-                        Select a program
-                      </option>
-
-                      {PROGRAMS.map((program) => (
-                        <option
-                          key={program.key}
-                          value={program.service || program.name}
-                        >
-                          {program.name}
-                        </option>
-                      ))}
-                    </select>
-
-                    {errors.service && (
-                      <small>{errors.service}</small>
-                    )}
-                  </label>
+                  <button
+                    type="button"
+                    className="modal-close"
+                    onClick={() =>
+                      setShowForm(false)
+                    }
+                    aria-label="Close"
+                  >
+                    ×
+                  </button>
                 </div>
 
-                {errors.submit && (
-                  <div className="form-error">
-                    {errors.submit}
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  className="btn btn-primary submit-btn"
-                  disabled={submitting}
+                <form
+                  className="registration-form"
+                  onSubmit={onSubmit}
+                  noValidate
                 >
-                  {submitting
-                    ? 'Submitting...'
-                    : 'Submit Registration'}
-                </button>
-              </form>
-            </>
-          ) : (
-            <div className="success-state">
-              <div className="success-icon">✓</div>
+                  <div className="form-grid">
+                    <label>
+                      <span>Full Name</span>
 
-              <h2>Registration Submitted</h2>
+                      <input
+                        type="text"
+                        value={form.fullName}
+                        onChange={(event) =>
+                          update(
+                            'fullName',
+                            event.target.value
+                          )
+                        }
+                        placeholder="Enter your full name"
+                      />
 
-              <p>
-                Thank you, {success.name}. Your registration has
-                been received successfully.
-              </p>
+                      {errors.fullName && (
+                        <small>
+                          {errors.fullName}
+                        </small>
+                      )}
+                    </label>
 
-              {success.program?.previews?.[0] && (
+                    <label>
+                      <span>Mobile Number</span>
+
+                      <input
+                        type="tel"
+                        inputMode="numeric"
+                        maxLength={10}
+                        value={form.mobile}
+                        onChange={(event) =>
+                          update(
+                            'mobile',
+                            event.target.value.replace(
+                              /\D/g,
+                              ''
+                            )
+                          )
+                        }
+                        placeholder="10-digit mobile number"
+                      />
+
+                      {errors.mobile && (
+                        <small>
+                          {errors.mobile}
+                        </small>
+                      )}
+                    </label>
+
+                    <label>
+                      <span>Email Address</span>
+
+                      <input
+                        type="email"
+                        value={form.email}
+                        onChange={(event) =>
+                          update(
+                            'email',
+                            event.target.value
+                          )
+                        }
+                        placeholder="Enter your email"
+                      />
+
+                      {errors.email && (
+                        <small>
+                          {errors.email}
+                        </small>
+                      )}
+                    </label>
+
+                    <label>
+                      <span>Program</span>
+
+                      <select
+                        value={form.service}
+                        onChange={(event) =>
+                          update(
+                            'service',
+                            event.target.value
+                          )
+                        }
+                      >
+                        <option value="">
+                          Select a program
+                        </option>
+
+                        {PROGRAMS.map((item) => (
+                          <option
+                            key={item.key}
+                            value={
+                              item.service ||
+                              item.name
+                            }
+                          >
+                            {item.name}
+                          </option>
+                        ))}
+                      </select>
+
+                      {errors.service && (
+                        <small>
+                          {errors.service}
+                        </small>
+                      )}
+                    </label>
+                  </div>
+
+                  {errors.submit && (
+                    <div className="form-error">
+                      {errors.submit}
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="btn btn-primary submit-btn"
+                    disabled={submitting}
+                  >
+                    {submitting
+                      ? 'Submitting...'
+                      : 'Submit Registration'}
+                  </button>
+                </form>
+              </>
+            ) : (
+              <div className="success-state">
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="modal-close success-close"
                   onClick={() =>
-                    downloadFlyer(success.program)
+                    setShowForm(false)
                   }
+                  aria-label="Close"
                 >
-                  Download Flyer
+                  ×
                 </button>
-              )}
 
-              <button
-                type="button"
-                className="success-back"
-                onClick={() => {
-                  setSuccess(null);
-                  setErrors({});
-                }}
-              >
-                Register for another program
-              </button>
-            </div>
-          )}
+                <div className="success-icon">
+                  ✓
+                </div>
+
+                <h2>
+                  Registration Submitted
+                </h2>
+
+                <p>
+                  Thank you, {success.name}. Your
+                  registration has been received
+                  successfully.
+                </p>
+
+                {success.program?.previews?.[0] && (
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() =>
+                      downloadFlyer(
+                        success.program
+                      )
+                    }
+                  >
+                    Download Flyer
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-      </section>
+      )}
 
+      {/* FLYER VIEWER */}
       {viewer && (
         <div
           className="modal-backdrop"
           role="presentation"
           onMouseDown={(event) => {
-            if (event.target === event.currentTarget) {
+            if (
+              event.target === event.currentTarget
+            ) {
               setViewer(null);
             }
           }}
@@ -545,7 +613,10 @@ export default function Home() {
           >
             <div className="viewer-head">
               <div>
-                <p className="eyebrow">PROGRAM FLYER</p>
+                <p className="eyebrow">
+                  PROGRAM FLYER
+                </p>
+
                 <h2>{viewer.name}</h2>
               </div>
 
@@ -581,7 +652,9 @@ export default function Home() {
               <button
                 type="button"
                 className="flyer-link"
-                onClick={() => downloadFlyer(viewer)}
+                onClick={() =>
+                  downloadFlyer(viewer)
+                }
               >
                 Download Flyer
               </button>
