@@ -278,20 +278,8 @@
    ========================================================= */
 
 .programs-view .stripe {
-  position: absolute;
-  z-index: 3;
-
-  top: 0;
-  bottom: 0;
-  left: 0;
-
-  width: 10px;
-
-  background: var(--accent);
-
-  border-radius: 28px 0 0 28px;
+  display: none;
 }
-
 
 /* =========================================================
    CARD BODY
