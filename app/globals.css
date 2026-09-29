@@ -1025,9 +1025,9 @@ SMALL MOBILE
     font-size: 22px;
   }
 
-  /* MOVE HEADING FURTHER UP */
+  /* MOVE HEADING UP + REDUCE SPACE BELOW */
   .programs-head {
-    padding: 8px 18px 24px;
+    padding: 0 18px 12px;
   }
 
   .programs-head h1,
