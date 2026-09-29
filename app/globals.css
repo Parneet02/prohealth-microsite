@@ -2,26 +2,19 @@
   --ground: #F5F3FB;
   --surface: #FFFFFF;
   --surface-2: #FAF8FE;
-
   --ink: #241A33;
   --muted: #6B6480;
   --faint: #938CA6;
-
   --line: #E7E2F0;
   --line-strong: #D8D0E6;
-
   --brand: #6A2C91;
   --brand-2: #B0338C;
-
   --plus: #6A2C91;
   --plus-soft: #F1E9F7;
-
   --diet: #2E7D32;
   --diet-soft: #E6F2E7;
-
   --lab: #C6820A;
   --lab-soft: #FBEFD4;
-
   --good: #2E7D32;
   --bad: #C0392B;
   --focus: #B0338C;
@@ -38,7 +31,6 @@
 
   --radius: 22px;
   --radius-sm: 14px;
-
   --app-nav: 56px;
 
   --safe-t: env(safe-area-inset-top, 0px);
@@ -64,26 +56,19 @@
   --ground: #F5F3FB;
   --surface: #FFFFFF;
   --surface-2: #FAF8FE;
-
   --ink: #241A33;
   --muted: #6B6480;
   --faint: #938CA6;
-
   --line: #E7E2F0;
   --line-strong: #D8D0E6;
-
   --brand: #6A2C91;
   --brand-2: #B0338C;
-
   --plus: #6A2C91;
   --plus-soft: #F1E9F7;
-
   --diet: #2E7D32;
   --diet-soft: #E6F2E7;
-
   --lab: #C6820A;
   --lab-soft: #FBEFD4;
-
   --good: #2E7D32;
   --bad: #C0392B;
   --focus: #B0338C;
@@ -98,26 +83,19 @@
   --ground: #140F1C;
   --surface: #1E1728;
   --surface-2: #241C31;
-
   --ink: #F3EEF9;
   --muted: #B4AAC6;
   --faint: #8A80A0;
-
   --line: #332941;
   --line-strong: #40344F;
-
   --brand: #B884D8;
   --brand-2: #E86FBE;
-
   --plus: #C79BE4;
   --plus-soft: #2A1E38;
-
   --diet: #7FD08A;
   --diet-soft: #17281A;
-
   --lab: #F0C04E;
   --lab-soft: #2E2410;
-
   --good: #7FD08A;
   --bad: #F0857A;
   --focus: #E86FBE;
@@ -188,7 +166,6 @@
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
-
   transition:
     background .2s ease,
     color .2s ease,
@@ -217,17 +194,12 @@
   grid-template-columns:
     minmax(0, 1fr)
     310px;
-
   min-height: 520px;
-
   overflow: hidden;
-
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 28px;
-
   box-shadow: var(--shadow-card);
-
   --accent: var(--brand);
   --accent-soft: var(--plus-soft);
 }
@@ -249,11 +221,8 @@
 .programs-view .card-body {
   grid-column: 1;
   grid-row: 1;
-
   min-width: 0;
-
   padding: 38px 34px 34px 58px;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -268,21 +237,15 @@
 .programs-view .plan-banner {
   display: inline-flex;
   align-items: center;
-
   gap: 8px;
   margin-bottom: 14px;
-
   padding: 8px 14px;
-
   border-radius: 24px;
-
   background: var(--accent-soft);
   color: var(--accent);
-
   font-size: 18px;
   font-weight: 850;
   line-height: 1;
-
   white-space: nowrap;
 }
 
@@ -308,9 +271,7 @@
 .programs-view .program-tagline {
   margin-top: 0;
   margin-bottom: 18px;
-
   color: var(--accent);
-
   font-size: 18px;
   line-height: 1.3;
   font-weight: 700;
@@ -325,16 +286,11 @@
 .programs-view .price-badge {
   display: inline-flex;
   align-items: center;
-
   min-height: 54px;
-
   margin-bottom: 18px;
-
   padding: 4px 7px 4px 16px;
-
   border: 1px solid var(--line-strong);
   border-radius: 40px;
-
   background: var(--surface-2);
   color: var(--ink);
 }
@@ -342,17 +298,12 @@
 .programs-view .price-badge .pp {
   display: inline-flex;
   align-items: center;
-
   gap: 8px;
   margin-left: 14px;
-
   padding: 10px 16px;
-
   border-radius: 30px;
-
   background: var(--accent);
   color: #fff;
-
   white-space: nowrap;
 }
 
@@ -363,11 +314,8 @@
 
 .programs-view .desc {
   max-width: 610px;
-
   margin: 0 0 16px;
-
   color: var(--muted);
-
   font-size: 15px;
   line-height: 1.5;
 }
@@ -380,26 +328,19 @@
 .programs-view .chips {
   display: flex;
   flex-wrap: wrap;
-
   gap: 8px;
-
   max-width: 650px;
-
   margin-bottom: 20px;
 }
 
 .programs-view .chip {
   padding: 6px 10px;
-
   border: 1px solid var(--line);
   border-radius: 18px;
-
   background: var(--surface-2);
   color: var(--muted);
-
   font-size: 12px;
   line-height: 1.2;
-
   white-space: nowrap;
 }
 
@@ -411,39 +352,28 @@
 .programs-view .card-actions {
   display: flex;
   align-items: center;
-
   gap: 12px;
-
   margin-top: 0;
 }
 
 .programs-view .btn-primary {
   min-height: 54px;
-
   padding: 0 28px;
-
   border: 0;
   border-radius: 30px;
-
   background: var(--accent);
   color: #fff;
-
   font-size: 15px;
-
   cursor: pointer;
 }
 
 .programs-view .flyer-link {
   min-height: 52px;
-
   padding: 0 26px;
-
   border: 2px solid var(--accent);
   border-radius: 30px;
-
   background: transparent;
   color: var(--accent);
-
   cursor: pointer;
 }
 
@@ -455,26 +385,17 @@
 .programs-view .card-media {
   grid-column: 2;
   grid-row: 1;
-
   align-self: center;
   justify-self: center;
-
   width: 270px;
   height: 380px;
-
   margin-right: 20px;
-
   padding: 0;
-
   border: 0;
   border-radius: 22px;
-
   background: transparent;
-
   overflow: hidden;
-
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -482,13 +403,10 @@
 
 .programs-view .card-media img {
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: contain;
   object-position: center;
-
   border-radius: 22px;
 }
 
@@ -500,22 +418,15 @@
 .overlay {
   position: fixed;
   z-index: 1000;
-
   inset: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 24px;
-
   background: rgba(7, 4, 12, .78);
-
   backdrop-filter: blur(10px);
-
   opacity: 0;
   visibility: hidden;
-
   transition:
     opacity .2s ease,
     visibility .2s ease;
@@ -533,19 +444,13 @@
 
 .modal {
   width: min(680px, 100%);
-
   max-height: min(900px, 92vh);
-
   overflow: auto;
-
   background: var(--surface);
-
   border: 1px solid var(--line);
   border-radius: 22px;
-
   box-shadow:
     0 30px 80px rgba(0, 0, 0, .5);
-
   color: var(--ink);
 }
 
@@ -556,31 +461,22 @@
 
 .register-modal {
   width: min(440px, 100%);
-
   max-height: 92vh;
-
   overflow-x: hidden;
   overflow-y: auto;
-
   scrollbar-width: none;
   -ms-overflow-style: none;
-
   background:
     color-mix(
       in srgb,
       var(--accent) 12%,
       var(--surface)
     );
-
   color: var(--ink);
-
   border-radius: 24px;
-
   box-shadow: var(--shadow);
-
   border: 1px solid var(--line);
 }
-
 
 .register-modal::-webkit-scrollbar {
   width: 0;
@@ -597,39 +493,28 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-
   padding: 24px;
-
   border-bottom: 1px solid var(--line);
-
   background: var(--surface);
-
   min-width: 0;
 }
 
 .register-modal .modal-head {
   padding: 22px 26px;
-
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-
   gap: 14px;
-
   border-bottom: 1px solid var(--line);
-
   position: sticky;
   top: 0;
-
   background:
     color-mix(
       in srgb,
       var(--accent) 12%,
       var(--surface)
     );
-
   z-index: 2;
-
   min-width: 0;
 }
 
@@ -640,39 +525,29 @@
 
 .mtitle {
   margin-top: 8px;
-
   font-size: 23px;
   font-weight: 800;
-
   color: var(--ink);
-
   min-width: 0;
 }
 
 .register-modal .mtitle {
   font-family: "Sora", sans-serif;
-
   font-weight: 700;
-
   font-size: 1.25rem;
-
   color: var(--ink);
 }
 
 .msub {
   margin-top: 5px;
-
   color: var(--muted);
-
   font-size: 13px;
   line-height: 1.5;
 }
 
 .register-modal .msub {
   color: var(--muted);
-
   font-size: .9rem;
-
   margin-top: 3px;
 }
 
@@ -684,40 +559,27 @@
 .badge {
   display: inline-flex;
   align-items: center;
-
   gap: 7px;
-
   padding: 7px 12px;
-
   border-radius: 20px;
-
   background: var(--accent-soft);
   color: var(--accent);
-
   font-size: 12px;
   font-weight: 800;
-
   max-width: 100%;
 }
 
 .register-modal .badge {
   display: inline-flex;
   align-items: center;
-
   gap: 7px;
-
   padding: 5px 11px;
-
   border-radius: 999px;
-
   font-weight: 700;
   font-size: .72rem;
-
   background: var(--accent-soft);
   color: var(--accent);
-
   margin-bottom: 8px;
-
   max-width: 100%;
 }
 
@@ -729,36 +591,24 @@
 .x {
   width: 38px;
   height: 38px;
-
   flex: 0 0 auto;
-
   border: 1px solid var(--line-strong);
-
   border-radius: 50%;
-
   background: transparent;
   color: var(--ink);
-
   font-size: 19px;
-
   cursor: pointer;
 }
 
 .register-modal .x {
   border: none;
-
   background: var(--surface-2);
   color: var(--ink);
-
   width: 36px;
   height: 36px;
-
   border-radius: 10px;
-
   cursor: pointer;
-
   font-size: 1.1rem;
-
   flex: 0 0 auto;
 }
 
@@ -769,41 +619,27 @@
 
 .register-modal form {
   width: 100%;
-
   padding: 22px 26px 26px;
-
   display: grid;
-
   gap: 16px;
-
   min-width: 0;
 }
 
 .register-modal .field {
   width: 100%;
-
   min-width: 0;
-
   display: grid;
-
   gap: 6px;
-
   margin-bottom: 0;
 }
 
 .register-modal .field label {
   display: block;
-
   width: 100%;
-
   font-weight: 600;
-
   font-size: .9rem;
-
   color: var(--ink);
-
   margin-bottom: 0;
-
   overflow-wrap: break-word;
 }
 
@@ -814,31 +650,19 @@
 .register-modal .field input,
 .register-modal .field select {
   display: block;
-
   width: 100%;
   max-width: 100%;
   min-width: 0;
-
   height: 46px;
-
   padding: 0 14px;
-
   margin: 0;
-
   border-radius: 12px;
-
   border: 1.5px solid var(--line-strong);
-
   background: var(--surface-2);
-
   color: var(--ink);
-
   font-family: inherit;
-
   font-size: 14px;
-
   outline: none;
-
   box-sizing: border-box;
 }
 
@@ -860,15 +684,11 @@
 
 .register-modal .two {
   width: 100%;
-
   display: grid;
-
   grid-template-columns:
     minmax(0, 1fr)
     minmax(0, 1fr);
-
   gap: 16px;
-
   min-width: 0;
 }
 
@@ -879,15 +699,10 @@
 
 .register-modal .field .err {
   width: 100%;
-
   min-height: 16px;
-
   color: var(--bad);
-
   font-size: .8rem;
-
   display: none;
-
   overflow-wrap: break-word;
 }
 
@@ -902,11 +717,8 @@
 
 .register-modal .form-error {
   width: 100%;
-
   margin-bottom: 0;
-
   padding: 12px 14px;
-
   border:
     1px solid
     color-mix(
@@ -914,18 +726,14 @@
       var(--bad) 55%,
       var(--line)
     );
-
   border-radius: 10px;
-
   background:
     color-mix(
       in srgb,
       var(--bad) 12%,
       var(--surface)
     );
-
   color: var(--bad);
-
   font-size: 13px;
 }
 
@@ -936,24 +744,15 @@
 
 .register-modal .submit {
   width: 100%;
-
   min-width: 0;
-
   margin-top: 4px;
-
   background: var(--accent);
   color: #fff;
-
   border: none;
-
   padding: 15px;
-
   border-radius: 14px;
-
   font-weight: 700;
-
   font-size: 1.02rem;
-
   cursor: pointer;
 }
 
@@ -969,13 +768,9 @@
 
 .register-modal .consent {
   width: 100%;
-
   font-size: .78rem;
-
   color: var(--faint);
-
   text-align: center;
-
   line-height: 1.5;
 }
 
@@ -986,20 +781,13 @@
 
 .spinner {
   display: inline-block;
-
   width: 16px;
   height: 16px;
-
   border: 2px solid rgba(255,255,255,.35);
-
   border-top-color: #fff;
-
   border-radius: 50%;
-
   animation: spin .7s linear infinite;
-
   vertical-align: middle;
-
   margin-right: 7px;
 }
 
@@ -1016,14 +804,10 @@
 
 .hp {
   position: absolute !important;
-
   left: -9999px !important;
-
   width: 1px !important;
   height: 1px !important;
-
   opacity: 0 !important;
-
   pointer-events: none !important;
 }
 
@@ -1033,7 +817,6 @@
    ========================= */
 
 @media (max-width: 900px) {
-
   .programs-view .card {
     grid-template-columns:
       minmax(0, 1fr)
@@ -1048,7 +831,6 @@
   .programs-view .card-media {
     width: 215px;
     height: 315px;
-
     margin-right: 14px;
   }
 }
@@ -1059,81 +841,55 @@
    ========================= */
 
 @media (max-width: 700px) {
-
   .programs-view .card {
     display: grid;
-
     grid-template-columns:
       minmax(0, 1fr)
       145px;
-
     min-height: 0;
-
     overflow: hidden;
-
     align-items: start;
   }
-
 
   /* Flyer remains on the right */
   .programs-view .card-media {
     grid-column: 2;
     grid-row: 1;
-
     width: 125px;
     height: 175px;
-
-    margin: 22px 18px 0 0;
-
+    margin: 30px 18px 0 0;
     justify-self: end;
     align-self: start;
-
     border-radius: 16px;
-
     z-index: 2;
   }
 
   .programs-view .card-media img {
     width: 100%;
     height: 100%;
-
     object-fit: contain;
     object-position: center;
-
     border-radius: 16px;
   }
-
 
   /* Existing content */
   .programs-view .card-body {
     grid-column: 1;
     grid-row: 1;
-
     min-width: 0;
-
     padding: 10px 8px 18px 20px;
-
     display: flex;
-
     flex-direction: column;
-
     align-items: flex-start;
-
     justify-content: flex-start;
   }
 
-
   .programs-view .plan-banner {
     max-width: 100%;
-
     margin-bottom: 7px;
-
     padding: 7px 10px;
-
     font-size: 15px;
-
     gap: 6px;
-
     white-space: normal;
   }
 
@@ -1141,36 +897,25 @@
     font-size: 19px;
   }
 
-
   .programs-view .program-tagline {
     margin-top: 0;
-
     margin-bottom: 8px;
-
     font-size: 14px;
-
     line-height: 1.3;
   }
 
-
   .programs-view .price-badge {
     min-height: 43px;
-
     margin-bottom: 8px;
-
     padding: 4px 5px 4px 10px;
-
     font-size: 11px;
   }
 
   .programs-view .price-badge .pp {
     gap: 5px;
-
     margin-left: 6px;
-
     padding: 7px 9px;
   }
-
 
   /*
    * DESCRIPTION
@@ -1179,16 +924,11 @@
   .programs-view .desc {
     width: calc(100% + 145px);
     max-width: none;
-
-    margin-top: 0;
-
+    margin-top: 12px;
     margin-bottom: 7px;
-
     font-size: 12.5px;
-
     line-height: 1.35;
   }
-
 
   /*
    * CHIPS
@@ -1197,24 +937,17 @@
   .programs-view .chips {
     width: calc(100% + 145px);
     max-width: none;
-
     gap: 4px;
-
     margin-top: 0;
-
     margin-bottom: 9px;
   }
 
   .programs-view .chip {
     padding: 4px 6px;
-
     font-size: 10px;
-
     line-height: 1.15;
-
     white-space: normal;
   }
-
 
   /*
    * BUTTONS
@@ -1222,28 +955,19 @@
    */
   .programs-view .card-actions {
     width: calc(100% + 145px);
-
     display: flex;
-
     flex-direction: column;
-
     align-items: stretch;
-
     gap: 6px;
-
     margin-top: 0;
   }
 
   .programs-view .btn-primary,
   .programs-view .flyer-link {
     width: 100%;
-
     min-height: 42px;
-
     padding: 0 12px;
-
     font-size: 12px;
-
     text-align: center;
   }
 }
@@ -1254,7 +978,6 @@
    ========================= */
 
 @media (max-width: 520px) {
-
   .programs-view .sub-header {
     padding: 0 18px;
   }
@@ -1266,7 +989,6 @@
   .theme-toggle {
     width: 38px;
     height: 38px;
-
     font-size: 22px;
   }
 
@@ -1277,7 +999,6 @@
   .programs {
     padding: 0 18px 30px;
   }
-
 
   .programs-view .card {
     grid-template-columns:
@@ -1292,18 +1013,13 @@
   .programs-view .card-media {
     width: 103px;
     height: 148px;
-
-    margin: 14px 12px 0 0;
+    margin: 20px 12px 0 0;
   }
-
 
   .programs-view .plan-banner {
     font-size: 14px;
-
     padding: 7px 9px;
-
     gap: 5px;
-
     margin-bottom: 6px;
   }
 
@@ -1311,30 +1027,22 @@
     font-size: 18px;
   }
 
-
   .programs-view .program-tagline {
     font-size: 13px;
-
     margin-bottom: 7px;
   }
 
-
   .programs-view .price-badge {
     min-height: 40px;
-
     font-size: 10px;
-
     padding-left: 8px;
-
     margin-bottom: 7px;
   }
 
   .programs-view .price-badge .pp {
     padding: 6px 8px;
-
     margin-left: 5px;
   }
-
 
   /*
    * DESCRIPTION
@@ -1342,14 +1050,11 @@
   .programs-view .desc {
     width: calc(100% + 118px);
     max-width: none;
-
     font-size: 11.5px;
-
     line-height: 1.3;
-
+    margin-top: 10px;
     margin-bottom: 6px;
   }
-
 
   /*
    * CHIPS
@@ -1357,18 +1062,14 @@
   .programs-view .chips {
     width: calc(100% + 118px);
     max-width: none;
-
     gap: 3px;
-
     margin-bottom: 7px;
   }
 
   .programs-view .chip {
     font-size: 9.5px;
-
     padding: 4px 5px;
   }
-
 
   /*
    * BUTTONS
@@ -1376,13 +1077,11 @@
   .programs-view .btn-primary,
   .programs-view .flyer-link {
     min-height: 40px;
-
     font-size: 11.5px;
   }
 
   .programs-view .card-actions {
     width: calc(100% + 118px);
-
     gap: 5px;
   }
 
@@ -1397,33 +1096,25 @@
 
   .modal {
     max-height: 94vh;
-
     border-radius: 18px;
   }
 
   .register-modal {
     width: 100%;
-
     max-width: 440px;
-
     max-height: 94vh;
-
     border-radius: 18px;
-
     overflow-x: hidden !important;
     overflow-y: auto !important;
-
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
 
   .register-modal::-webkit-scrollbar {
     display: none;
-
     width: 0;
     height: 0;
   }
-
 
   .modal-head {
     padding: 18px;
@@ -1431,40 +1122,31 @@
 
   .register-modal .modal-head {
     padding: 18px;
-
     position: sticky;
     top: 0;
-
     z-index: 2;
   }
 
-
   .register-modal form {
     width: 100%;
-
     padding: 18px;
-
     gap: 16px;
   }
-
 
   .register-modal .two {
     grid-template-columns:
       minmax(0, 1fr);
-
     gap: 0;
   }
 
   .register-modal .field {
     width: 100%;
-
     min-width: 0;
   }
 
   .register-modal .field input,
   .register-modal .field select {
     width: 100%;
-
     max-width: 100%;
   }
 }
