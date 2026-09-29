@@ -1,24 +1,136 @@
 :root {
-  --ground: #100c19;
-  --surface: #1d1727;
-  --surface-2: #241d31;
-  --ink: #f7f3ff;
-  --muted: #b6aec5;
-  --faint: #8f879e;
-  --line: #392f47;
-  --line-strong: #4b3e5d;
+  --ground: #F5F3FB;
+  --surface: #FFFFFF;
+  --surface-2: #FAF8FE;
 
-  --brand: #b985e2;
-  --brand-2: #c993e9;
+  --ink: #241A33;
+  --muted: #6B6480;
+  --faint: #938CA6;
+
+  --line: #E7E2F0;
+  --line-strong: #D8D0E6;
+
+  --brand: #6A2C91;
+  --brand-2: #B0338C;
+
+  --plus: #6A2C91;
+  --plus-soft: #F1E9F7;
+
+  --diet: #2E7D32;
+  --diet-soft: #E6F2E7;
+
+  --lab: #C6820A;
+  --lab-soft: #FBEFD4;
+
+  --good: #2E7D32;
+  --bad: #C0392B;
+  --focus: #B0338C;
+
+  --shadow-card:
+    0 1px 2px rgba(46, 25, 74, 0.08),
+    0 18px 45px rgba(46, 25, 74, 0.12);
+
+  --shadow:
+    0 18px 50px -22px rgba(46, 25, 74, 0.35);
+
+  --app-nav: 56px;
+
+  --safe-t: env(safe-area-inset-top, 0px);
+  --safe-r: env(safe-area-inset-right, 0px);
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-l: env(safe-area-inset-left, 0px);
+
+  --nav-clear: calc(var(--app-nav) + var(--safe-b));
+}
+
+
+/* =========================
+   DARK MODE
+   ========================= */
+
+:root[data-theme="dark"] {
+  --ground: #140F1C;
+  --surface: #1E1728;
+  --surface-2: #241C31;
+
+  --ink: #F3EEF9;
+  --muted: #B4AAC6;
+  --faint: #8A80A0;
+
+  --line: #332941;
+  --line-strong: #40344F;
+
+  --brand: #B884D8;
+  --brand-2: #E86FBE;
+
+  --plus: #C79BE4;
+  --plus-soft: #2A1E38;
+
+  --diet: #7FD08A;
+  --diet-soft: #17281A;
+
+  --lab: #F0C04E;
+  --lab-soft: #2E2410;
+
+  --good: #7FD08A;
+  --bad: #F0857A;
+  --focus: #E86FBE;
 
   --shadow-card:
     0 1px 2px rgba(0, 0, 0, 0.2),
     0 18px 45px rgba(0, 0, 0, 0.25);
+
+  --shadow:
+    0 20px 55px -24px rgba(0, 0, 0, 0.7);
 }
 
-/* =========================================================
-   PAGE
-   ========================================================= */
+
+/* =========================
+   SYSTEM DARK MODE
+   ========================= */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #140F1C;
+    --surface: #1E1728;
+    --surface-2: #241C31;
+
+    --ink: #F3EEF9;
+    --muted: #B4AAC6;
+    --faint: #8A80A0;
+
+    --line: #332941;
+    --line-strong: #40344F;
+
+    --brand: #B884D8;
+    --brand-2: #E86FBE;
+
+    --plus: #C79BE4;
+    --plus-soft: #2A1E38;
+
+    --diet: #7FD08A;
+    --diet-soft: #17281A;
+
+    --lab: #F0C04E;
+    --lab-soft: #2E2410;
+
+    --good: #7FD08A;
+    --bad: #F0857A;
+    --focus: #E86FBE;
+
+    --shadow-card:
+      0 1px 2px rgba(0, 0, 0, 0.2),
+      0 18px 45px rgba(0, 0, 0, 0.25);
+
+    --shadow:
+      0 20px 55px -24px rgba(0, 0, 0, 0.7);
+  }
+}
+
+
+/* =========================
+   PROGRAMS PAGE
+   ========================= */
 
 .programs-view {
   min-height: 100vh;
@@ -32,27 +144,8 @@
   display: flex;
   align-items: center;
   padding: 0 32px;
-  border-bottom: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid var(--line);
 }
-
-.programs-view .sub-spacer {
-  flex: 1;
-}
-
-.hhl {
-  display: flex;
-  align-items: center;
-}
-
-.hhl-logo-image {
-  width: auto;
-  height: 32px;
-  object-fit: contain;
-}
-
-/* =========================================================
-   PAGE HEADING
-   ========================================================= */
 
 .programs-head {
   max-width: 1250px;
@@ -61,111 +154,83 @@
 }
 
 .programs-head h2 {
-  margin: 0 0 8px;
-  font-size: 30px;
-  line-height: 1.15;
-  font-weight: 800;
-  color: #ffffff;
+  color: var(--ink);
 }
 
 .programs-head .lead {
-  margin: 0;
-  max-width: 900px;
-  color: #b9b0c9;
-  font-size: 17px;
-  line-height: 1.75;
+  color: var(--muted);
 }
-
-/* =========================================================
-   PROGRAMS
-   ========================================================= */
 
 .programs {
   max-width: 1250px;
   margin: 0 auto;
   padding: 0 24px 40px;
-
   display: grid;
   gap: 24px;
 }
 
-/* =========================================================
-   CARD
-   ========================================================= */
+
+/* =========================
+   PROGRAM CARD
+   ========================= */
 
 .programs-view .card {
   position: relative;
-
   display: grid;
   grid-template-columns: minmax(0, 1fr) 310px;
-
   min-height: 555px;
-
   overflow: hidden;
 
-  background: #1c1626;
-  border: 1px solid #392e47;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 28px;
-
   box-shadow: var(--shadow-card);
-}
 
-/* Left colored vertical line */
+  --accent: var(--brand);
+  --accent-soft: var(--plus-soft);
+}
 
 .programs-view .stripe {
   position: absolute;
   z-index: 3;
-
   top: 0;
   bottom: 0;
   left: 0;
-
   width: 10px;
-
-  background: var(--accent, #bd89e3);
+  background: var(--accent);
   border-radius: 28px 0 0 28px;
 }
-
-/* =========================================================
-   CARD BODY
-   ========================================================= */
 
 .programs-view .card-body {
   grid-column: 1;
   grid-row: 1;
-
   min-width: 0;
-
   padding: 44px 36px 38px 64px;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 }
 
-/* =========================================================
-   PLAN NAME SMALL BANNER
-   ========================================================= */
+
+/* =========================
+   PROGRAM BANNER
+   ========================= */
 
 .programs-view .plan-banner {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-
   margin-bottom: 20px;
-
   padding: 10px 17px;
-
   border-radius: 30px;
 
-  background: rgba(117, 67, 151, 0.20);
-  color: var(--accent, #c18ae7);
+  background: var(--accent-soft);
+  color: var(--accent);
 
   font-size: 15px;
   font-weight: 800;
   line-height: 1;
-
   white-space: nowrap;
 }
 
@@ -174,236 +239,155 @@
   line-height: 1;
 }
 
-/* =========================================================
-   PROGRAM TITLE
-   ========================================================= */
+
+/* =========================
+   PROGRAM TEXT
+   ========================= */
 
 .programs-view .program-title {
   margin: 0;
-
-  color: #f8f5ff;
-
+  color: var(--ink);
   font-size: 40px;
   line-height: 1.08;
   font-weight: 850;
-  letter-spacing: -0.7px;
+  letter-spacing: -.7px;
 }
 
 .programs-view .program-tagline {
   margin-top: 10px;
   margin-bottom: 25px;
-
-  color: var(--accent, #c18ae7);
-
+  color: var(--accent);
   font-size: 20px;
   line-height: 1.3;
   font-weight: 700;
   font-style: italic;
 }
 
-/* =========================================================
+
+/* =========================
    PRICE
-   ========================================================= */
+   ========================= */
 
 .programs-view .price-badge {
   display: inline-flex;
   align-items: center;
-
   min-height: 58px;
-
   margin-bottom: 25px;
-
   padding: 5px 8px 5px 20px;
 
-  border: 1px solid #5a486d;
+  border: 1px solid var(--line-strong);
   border-radius: 40px;
 
-  background: #251d30;
-
-  color: #f5f0fb;
-}
-
-.programs-view .price-badge .pd {
-  font-size: 17px;
-  font-weight: 800;
-  white-space: nowrap;
+  background: var(--surface-2);
+  color: var(--ink);
 }
 
 .programs-view .price-badge .pp {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-
   margin-left: 18px;
-
   padding: 11px 18px;
-
   border-radius: 30px;
 
-  background: var(--accent, #c18ae7);
-
-  color: #ffffff;
+  background: var(--accent);
+  color: #fff;
 
   white-space: nowrap;
 }
 
-.programs-view .price-badge .pp s {
-  font-size: 14px;
-  font-weight: 600;
-  opacity: 0.65;
-}
 
-.programs-view .price-badge .pp b {
-  font-size: 20px;
-  font-weight: 850;
-}
-
-/* =========================================================
+/* =========================
    DESCRIPTION
-   ========================================================= */
+   ========================= */
 
 .programs-view .desc {
   max-width: 720px;
-
   margin: 0 0 22px;
 
-  color: #b9b0c8;
-
+  color: var(--muted);
   font-size: 17px;
   line-height: 1.65;
 }
 
-/* =========================================================
+
+/* =========================
    CHIPS
-   ========================================================= */
+   ========================= */
 
 .programs-view .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-
-  margin-bottom: 28px;
+  gap: 8px;
 }
 
 .programs-view .chip {
-  display: inline-flex;
-  align-items: center;
-
-  min-height: 38px;
-
-  padding: 7px 15px;
-
-  border: 1px solid #3c304b;
-  border-radius: 25px;
-
-  background: rgba(255,255,255,.015);
-
-  color: #ded6e9;
-
-  font-size: 13px;
-  font-weight: 700;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--muted);
 }
 
-/* =========================================================
+
+/* =========================
    BUTTONS
-   ========================================================= */
+   ========================= */
 
 .programs-view .card-actions {
   display: flex;
   align-items: center;
   gap: 16px;
-
   margin-top: 0;
-}
-
-.programs-view .btn {
-  border: 0;
-  cursor: pointer;
-
-  font-family: inherit;
-  font-weight: 800;
-
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease,
-    background .2s ease;
 }
 
 .programs-view .btn-primary {
   min-height: 60px;
-
   padding: 0 34px;
 
+  border: 0;
   border-radius: 32px;
 
-  background: var(--accent, #c18ae7);
-  color: #ffffff;
+  background: var(--accent);
+  color: #fff;
 
   font-size: 17px;
+  box-shadow: 0 12px 25px rgba(181, 127, 220, .25);
 
-  box-shadow:
-    0 12px 25px rgba(181, 127, 220, .25);
-}
-
-.programs-view .btn-primary:hover {
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 16px 32px rgba(181, 127, 220, .35);
+  cursor: pointer;
 }
 
 .programs-view .flyer-link {
   min-height: 58px;
-
   padding: 0 30px;
 
-  border: 2px solid var(--accent, #c18ae7);
+  border: 2px solid var(--accent);
   border-radius: 32px;
 
   background: transparent;
-  color: var(--accent, #c18ae7);
-
-  font-family: inherit;
-  font-size: 17px;
-  font-weight: 800;
+  color: var(--accent);
 
   cursor: pointer;
-
-  transition:
-    background .2s ease,
-    color .2s ease,
-    transform .2s ease;
 }
 
-.programs-view .flyer-link:hover {
-  background: var(--accent, #c18ae7);
-  color: #ffffff;
-  transform: translateY(-2px);
-}
 
-/* =========================================================
-   FLYER IMAGE
-   ========================================================= */
+/* =========================
+   FLYER
+   ========================= */
 
 .programs-view .card-media {
   grid-column: 2;
   grid-row: 1;
-
   align-self: center;
   justify-self: center;
 
   width: 285px;
   height: 400px;
-
   margin-right: 28px;
-
   padding: 0;
 
   border: 0;
   border-radius: 22px;
 
   background: transparent;
-
   overflow: hidden;
 
   cursor: pointer;
@@ -412,37 +396,25 @@
   align-items: center;
   justify-content: center;
 
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
-}
-
-.programs-view .card-media:hover {
-  transform: scale(1.025);
-
-  box-shadow:
-    0 20px 45px rgba(0,0,0,.3);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .programs-view .card-media img {
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
   border-radius: 22px;
 }
 
-/* =========================================================
-   OVERLAY
-   ========================================================= */
+
+/* =========================
+   MODAL
+   ========================= */
 
 .overlay {
   position: fixed;
   z-index: 1000;
-
   inset: 0;
 
   display: flex;
@@ -457,9 +429,7 @@
   opacity: 0;
   visibility: hidden;
 
-  transition:
-    opacity .2s ease,
-    visibility .2s ease;
+  transition: opacity .2s ease, visibility .2s ease;
 }
 
 .overlay.open {
@@ -467,25 +437,18 @@
   visibility: visible;
 }
 
-/* =========================================================
-   MODAL
-   ========================================================= */
-
 .modal {
   width: min(680px, 100%);
   max-height: min(900px, 92vh);
-
   overflow: auto;
 
-  background: #1d1727;
-
-  border: 1px solid #40344d;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 22px;
 
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.5);
+  box-shadow: var(--shadow);
 
-  color: #ffffff;
+  color: var(--ink);
 }
 
 .modal-head {
@@ -495,57 +458,81 @@
 
   padding: 24px;
 
-  border-bottom: 1px solid #362b42;
+  border-bottom: 1px solid var(--line);
+
+  background: var(--surface);
 }
 
 .mtitle {
   margin-top: 8px;
-
+  color: var(--ink);
   font-size: 23px;
   font-weight: 800;
 }
 
 .msub {
   margin-top: 5px;
-
-  color: #a9a0b6;
-
+  color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
 }
 
+
+/* =========================
+   FORM BADGE
+   ========================= */
+
 .badge {
   display: inline-flex;
-
   padding: 7px 12px;
-
   border-radius: 20px;
 
-  background: rgba(184, 132, 216, .15);
-  color: #c897e9;
+  background: var(--accent-soft);
+  color: var(--accent);
 
   font-size: 12px;
   font-weight: 800;
 }
 
+
+/* =========================
+   CLOSE BUTTON
+   ========================= */
+
 .x {
   width: 38px;
   height: 38px;
 
-  border: 1px solid #493b57;
+  border: 1px solid var(--line-strong);
   border-radius: 50%;
 
-  background: transparent;
-  color: #d8d0e1;
+  background: var(--surface-2);
+  color: var(--ink);
 
   font-size: 19px;
-
   cursor: pointer;
 }
 
-/* =========================================================
-   FORM
-   ========================================================= */
+
+/* =========================
+   REGISTRATION FORM
+   ========================= */
+
+.register-modal {
+  background: color-mix(
+    in srgb,
+    var(--accent) 12%,
+    var(--surface)
+  );
+}
+
+.register-modal .modal-head {
+  background: color-mix(
+    in srgb,
+    var(--accent) 12%,
+    var(--surface)
+  );
+}
 
 .register-modal form {
   padding: 24px;
@@ -557,45 +544,47 @@
 
 .field label {
   display: block;
-
   margin-bottom: 7px;
 
-  color: #e9e2f0;
+  color: var(--ink);
 
   font-size: 13px;
   font-weight: 700;
 }
 
 .req {
-  color: #e18bc5;
+  color: var(--bad);
 }
 
 .field input,
 .field select {
   width: 100%;
   height: 48px;
-
   padding: 0 14px;
 
-  border: 1px solid #40344c;
+  border: 1px solid var(--line-strong);
   border-radius: 10px;
 
   outline: none;
 
-  background: #17121f;
-  color: #f4eff8;
+  background: var(--surface-2);
+  color: var(--ink);
 
   font-family: inherit;
   font-size: 14px;
 }
 
 .field input::placeholder {
-  color: #766d81;
+  color: var(--faint);
 }
 
 .field input:focus,
 .field select:focus {
-  border-color: #b982df;
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
 .two {
@@ -606,29 +595,46 @@
 
 .err {
   display: block;
-
   min-height: 16px;
-
   margin-top: 4px;
 
-  color: #ee8e9a;
+  color: var(--bad);
 
   font-size: 11px;
 }
 
+
+/* =========================
+   FORM ERROR
+   ========================= */
+
 .form-error {
   margin-bottom: 18px;
-
   padding: 12px 14px;
 
-  border: 1px solid #743b47;
+  border: 1px solid color-mix(
+    in srgb,
+    var(--bad) 55%,
+    var(--line)
+  );
+
   border-radius: 10px;
 
-  background: #311b23;
-  color: #f2a5ae;
+  background: color-mix(
+    in srgb,
+    var(--bad) 12%,
+    var(--surface)
+  );
+
+  color: var(--bad);
 
   font-size: 13px;
 }
+
+
+/* =========================
+   SUBMIT
+   ========================= */
 
 .submit {
   width: 100%;
@@ -637,8 +643,8 @@
   border: 0;
   border-radius: 28px;
 
-  background: var(--accent, #bd87df);
-  color: #ffffff;
+  background: var(--accent);
+  color: #fff;
 
   font-family: inherit;
   font-size: 15px;
@@ -652,233 +658,44 @@
   cursor: not-allowed;
 }
 
-.spinner {
-  display: inline-block;
 
-  width: 15px;
-  height: 15px;
-
-  margin-right: 8px;
-
-  border: 2px solid rgba(255,255,255,.35);
-  border-top-color: #ffffff;
-
-  border-radius: 50%;
-
-  animation: spin .7s linear infinite;
-
-  vertical-align: -2px;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* =========================
+   CONSENT
+   ========================= */
 
 .consent {
-  margin: 13px 0 0;
-
-  color: #81788d;
-
-  font-size: 11px;
-  line-height: 1.5;
-  text-align: center;
+  color: var(--faint);
 }
 
-.hp {
-  position: absolute !important;
 
-  width: 1px !important;
-  height: 1px !important;
+/* =========================
+   KEEP YOUR EXISTING
+   SPINNER / HP / VIEWER
+   STYLES BELOW THIS POINT
+   ========================= */
 
-  overflow: hidden !important;
 
-  opacity: 0 !important;
-
-  pointer-events: none !important;
-}
-
-/* =========================================================
-   VIEWER
-   ========================================================= */
-
-.viewer {
-  width: min(900px, 100%);
-}
-
-.viewer-body {
-  padding: 20px;
-
-  background: #110d18;
-}
-
-.viewer-page {
-  margin: 0 0 20px;
-}
-
-.viewer-page img {
-  display: block;
-
-  width: 100%;
-  height: auto;
-
-  border-radius: 12px;
-}
-
-.viewer-page figcaption {
-  margin-top: 7px;
-
-  color: #8f869b;
-
-  font-size: 11px;
-  text-align: center;
-}
-
-.viewer-cta {
-  padding: 18px 20px;
-
-  border-top: 1px solid #362b42;
-}
-
-.vfull {
-  width: 100%;
-}
-
-/* =========================================================
-   SUCCESS
-   ========================================================= */
-
-.success {
-  padding: 30px 24px;
-  text-align: center;
-}
-
-.check {
-  width: 68px;
-  height: 68px;
-
-  margin: 0 auto 18px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: rgba(139, 211, 167, .13);
-  color: #8bd3a7;
-}
-
-.success h3 {
-  margin: 0;
-
-  font-size: 22px;
-}
-
-.stext {
-  max-width: 480px;
-
-  margin: 12px auto 22px;
-
-  color: #aaa1b5;
-
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.success-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.dl-btn,
-.flyer-toggle {
-  min-height: 48px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  border-radius: 25px;
-
-  font-family: inherit;
-  font-weight: 800;
-
-  text-decoration: none;
-
-  cursor: pointer;
-}
-
-.dl-btn {
-  background: var(--accent, #bd87df);
-  color: #ffffff;
-}
-
-.flyer-toggle {
-  border: 1px solid #584968;
-
-  background: transparent;
-  color: #c397e0;
-}
-
-.flyer-panel {
-  margin-top: 20px;
-}
-
-.flyer-panel img {
-  display: block;
-
-  width: 100%;
-  height: auto;
-
-  border-radius: 10px;
-}
-
-/* =========================================================
+/* =========================
    MOBILE
-   ========================================================= */
+   ========================= */
 
 @media (max-width: 900px) {
   .programs-view .card {
-    grid-template-columns: minmax(0, 1fr) 250px;
-  }
-
-  .programs-view .card-media {
-    width: 220px;
-    height: 315px;
-    margin-right: 20px;
+    grid-template-columns: minmax(0, 1fr) 260px;
   }
 
   .programs-view .card-body {
     padding-left: 48px;
-    padding-right: 24px;
   }
 
-  .programs-view .program-title {
-    font-size: 34px;
+  .programs-view .card-media {
+    width: 235px;
+    height: 340px;
+    margin-right: 20px;
   }
 }
 
 @media (max-width: 700px) {
-  .programs-head {
-    padding: 28px 18px 24px;
-  }
-
-  .programs-head h2 {
-    font-size: 27px;
-  }
-
-  .programs-head .lead {
-    font-size: 15px;
-  }
-
-  .programs {
-    padding: 0 16px 30px;
-  }
-
   .programs-view .card {
     grid-template-columns: 1fr;
   }
@@ -886,34 +703,17 @@
   .programs-view .card-body {
     grid-column: 1;
     grid-row: 1;
-
-    padding: 30px 24px 24px 34px;
+    padding: 36px 28px;
   }
 
   .programs-view .card-media {
     grid-column: 1;
     grid-row: 2;
 
-    width: calc(100% - 48px);
-    height: auto;
+    width: 260px;
+    height: 360px;
 
-    aspect-ratio: 1 / 1.18;
-
-    margin: 0 auto 25px;
-
-    justify-self: center;
-  }
-
-  .programs-view .program-title {
-    font-size: 31px;
-  }
-
-  .programs-view .program-tagline {
-    font-size: 17px;
-  }
-
-  .programs-view .price-badge {
-    max-width: 100%;
+    margin: 0 auto 30px;
   }
 }
 
@@ -927,116 +727,36 @@
   }
 
   .programs-head {
-    padding: 25px 16px 22px;
-  }
-
-  .programs-head h2 {
-    font-size: 24px;
-  }
-
-  .programs-head .lead {
-    font-size: 14px;
-    line-height: 1.55;
+    padding: 30px 18px 24px;
   }
 
   .programs {
-    padding: 0 12px 25px;
-    gap: 18px;
-  }
-
-  .programs-view .card {
-    border-radius: 21px;
-  }
-
-  .programs-view .stripe {
-    width: 7px;
-    border-radius: 21px 0 0 21px;
+    padding: 0 18px 30px;
   }
 
   .programs-view .card-body {
-    padding: 26px 18px 20px 27px;
-  }
-
-  .programs-view .plan-banner {
-    margin-bottom: 16px;
-
-    padding: 8px 13px;
-
-    font-size: 13px;
-  }
-
-  .programs-view .plan-banner-icon {
-    font-size: 18px;
+    padding: 30px 24px;
   }
 
   .programs-view .program-title {
-    font-size: 28px;
+    font-size: 32px;
   }
 
   .programs-view .program-tagline {
-    margin-top: 8px;
-    margin-bottom: 20px;
-
-    font-size: 16px;
-  }
-
-  .programs-view .price-badge {
-    width: 100%;
-
-    min-height: 52px;
-
-    padding-left: 14px;
-  }
-
-  .programs-view .price-badge .pd {
-    font-size: 13px;
-  }
-
-  .programs-view .price-badge .pp {
-    margin-left: auto;
-
-    padding: 9px 12px;
-  }
-
-  .programs-view .price-badge .pp s {
-    font-size: 11px;
-  }
-
-  .programs-view .price-badge .pp b {
-    font-size: 17px;
-  }
-
-  .programs-view .desc {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .programs-view .chip {
-    font-size: 11px;
-    padding: 6px 10px;
+    font-size: 18px;
   }
 
   .programs-view .card-actions {
-    width: 100%;
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
   }
 
   .programs-view .btn-primary,
   .programs-view .flyer-link {
     width: 100%;
-  }
-
-  .programs-view .card-media {
-    width: calc(100% - 40px);
-
-    margin-bottom: 20px;
-
-    border-radius: 18px;
-  }
-
-  .programs-view .card-media img {
-    border-radius: 18px;
+    justify-content: center;
+    text-align: center;
   }
 
   .two {
