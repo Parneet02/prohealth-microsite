@@ -1025,9 +1025,9 @@ SMALL MOBILE
     font-size: 22px;
   }
 
-  /* REDUCED SPACE ABOVE HEADING */
+  /* MOVE HEADING FURTHER UP */
   .programs-head {
-    padding: 10px 10px 24px;
+    padding: 8px 18px 24px;
   }
 
   .programs-head h1,
@@ -1040,6 +1040,7 @@ SMALL MOBILE
     padding: 0 16px 24px;
     gap: 12px;
   }
+
   .programs-view .card {
     grid-template-columns:
       minmax(0, 1fr)
