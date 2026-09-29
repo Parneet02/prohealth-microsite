@@ -51,6 +51,17 @@
 
 
 /* =========================================================
+   GLOBAL BOX SIZING
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
    DARK MODE
    ========================================================= */
 
@@ -204,17 +215,13 @@
 
   box-shadow: var(--shadow-card);
 
-  /*
-   * Default values.
-   * page.js overrides these for every program.
-   */
   --accent: var(--brand);
   --accent-soft: var(--plus-soft);
 }
 
 
 /* =========================================================
-   LEFT ACCENT STRIPE
+   STRIPE
    ========================================================= */
 
 .programs-view .stripe {
@@ -267,9 +274,6 @@
 
   border-radius: 30px;
 
-  /*
-   * Program-specific colors
-   */
   background: var(--accent-soft);
   color: var(--accent);
 
@@ -306,7 +310,7 @@
 
 
 /* =========================================================
-   PROGRAM TAGLINE
+   TAGLINE
    ========================================================= */
 
 .programs-view .program-tagline {
@@ -324,7 +328,7 @@
 
 
 /* =========================================================
-   PRICE BADGE
+   PRICE
    ========================================================= */
 
 .programs-view .price-badge {
@@ -400,7 +404,7 @@
 
 
 /* =========================================================
-   CARD ACTIONS
+   BUTTONS
    ========================================================= */
 
 .programs-view .card-actions {
@@ -411,11 +415,6 @@
 
   margin-top: 0;
 }
-
-
-/* =========================================================
-   REGISTER BUTTON
-   ========================================================= */
 
 .programs-view .btn-primary {
   min-height: 60px;
@@ -436,11 +435,6 @@
   cursor: pointer;
 }
 
-
-/* =========================================================
-   FLYER BUTTON
-   ========================================================= */
-
 .programs-view .flyer-link {
   min-height: 58px;
 
@@ -459,7 +453,7 @@
 
 
 /* =========================================================
-   FLYER IMAGE
+   FLYER
    ========================================================= */
 
 .programs-view .card-media {
@@ -568,7 +562,6 @@
 
 /* =========================================================
    REGISTRATION MODAL
-   RESTORED TO PREVIOUS FORMAT
    ========================================================= */
 
 .register-modal {
@@ -576,7 +569,8 @@
 
   max-height: 92vh;
 
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   background:
     color-mix(
@@ -610,6 +604,8 @@
   border-bottom: 1px solid var(--line);
 
   background: var(--surface);
+
+  min-width: 0;
 }
 
 .register-modal .modal-head {
@@ -636,11 +632,13 @@
     );
 
   z-index: 2;
+
+  min-width: 0;
 }
 
 
 /* =========================================================
-   MODAL TITLE
+   TITLE
    ========================================================= */
 
 .mtitle {
@@ -651,6 +649,8 @@
   font-weight: 800;
 
   color: var(--ink);
+
+  min-width: 0;
 }
 
 .register-modal .mtitle {
@@ -665,7 +665,7 @@
 
 
 /* =========================================================
-   MODAL SUBTITLE
+   SUBTITLE
    ========================================================= */
 
 .msub {
@@ -709,6 +709,8 @@
   font-size: 12px;
 
   font-weight: 800;
+
+  max-width: 100%;
 }
 
 .register-modal .badge {
@@ -731,6 +733,8 @@
   color: var(--accent);
 
   margin-bottom: 8px;
+
+  max-width: 100%;
 }
 
 
@@ -741,6 +745,8 @@
 .x {
   width: 38px;
   height: 38px;
+
+  flex: 0 0 auto;
 
   border: 1px solid var(--line-strong);
 
@@ -771,7 +777,7 @@
 
   font-size: 1.1rem;
 
-  flex: none;
+  flex: 0 0 auto;
 }
 
 
@@ -780,11 +786,15 @@
    ========================================================= */
 
 .register-modal form {
+  width: 100%;
+
   padding: 22px 26px 26px;
 
   display: grid;
 
   gap: 16px;
+
+  min-width: 0;
 }
 
 
@@ -793,6 +803,10 @@
    ========================================================= */
 
 .register-modal .field {
+  width: 100%;
+
+  min-width: 0;
+
   display: grid;
 
   gap: 6px;
@@ -801,6 +815,10 @@
 }
 
 .register-modal .field label {
+  display: block;
+
+  width: 100%;
+
   font-weight: 600;
 
   font-size: .9rem;
@@ -808,6 +826,8 @@
   color: var(--ink);
 
   margin-bottom: 0;
+
+  overflow-wrap: break-word;
 }
 
 .register-modal .field .req {
@@ -816,14 +836,23 @@
 
 
 /* =========================================================
-   INPUTS
+   INPUT + SELECT
+   IMPORTANT: FIXES OVERLAPPING
    ========================================================= */
 
 .register-modal .field input,
 .register-modal .field select {
-  width: 100%;
+  display: block;
 
-  padding: 12px 14px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  height: 46px;
+
+  padding: 0 14px;
+
+  margin: 0;
 
   border-radius: 12px;
 
@@ -833,7 +862,12 @@
 
   color: var(--ink);
 
-  font: inherit;
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+
+  box-sizing: border-box;
 
   transition:
     border .15s ease,
@@ -842,6 +876,8 @@
 
 .register-modal .field input::placeholder {
   color: var(--faint);
+
+  opacity: 1;
 }
 
 .register-modal .field input:focus,
@@ -861,15 +897,46 @@
 
 
 /* =========================================================
-   INVALID FIELD
+   TWO COLUMN FIELDS
+   IMPORTANT: FIXES CELLS OVERRIDING EACH OTHER
+   ========================================================= */
+
+.register-modal .two {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 16px;
+
+  min-width: 0;
+}
+
+.register-modal .two .field {
+  min-width: 0;
+  width: 100%;
+}
+
+
+/* =========================================================
+   ERROR
    ========================================================= */
 
 .register-modal .field .err {
+  width: 100%;
+
+  min-height: 16px;
+
   color: var(--bad);
 
   font-size: .8rem;
 
   display: none;
+
+  overflow-wrap: break-word;
 }
 
 .register-modal .field.invalid input,
@@ -883,23 +950,12 @@
 
 
 /* =========================================================
-   TWO COLUMN FIELDS
-   ========================================================= */
-
-.register-modal .two {
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 16px;
-}
-
-
-/* =========================================================
    FORM ERROR
    ========================================================= */
 
 .register-modal .form-error {
+  width: 100%;
+
   margin-bottom: 0;
 
   padding: 12px 14px;
@@ -924,6 +980,8 @@
   color: var(--bad);
 
   font-size: 13px;
+
+  overflow-wrap: break-word;
 }
 
 
@@ -932,9 +990,11 @@
    ========================================================= */
 
 .register-modal .submit {
-  margin-top: 4px;
-
   width: 100%;
+
+  min-width: 0;
+
+  margin-top: 4px;
 
   background: var(--accent);
 
@@ -951,6 +1011,8 @@
   font-size: 1.02rem;
 
   cursor: pointer;
+
+  box-sizing: border-box;
 }
 
 .register-modal .submit:disabled {
@@ -965,6 +1027,8 @@
    ========================================================= */
 
 .register-modal .consent {
+  width: 100%;
+
   font-size: .78rem;
 
   color: var(--faint);
@@ -972,6 +1036,8 @@
   text-align: center;
 
   line-height: 1.5;
+
+  overflow-wrap: break-word;
 }
 
 
@@ -1006,7 +1072,7 @@
 
 
 /* =========================================================
-   HIDDEN HONEYPOT
+   HONEYPOT
    ========================================================= */
 
 .hp {
@@ -1025,26 +1091,11 @@
 
 
 /* =========================================================
-   KEEP VIEWER / SUCCESS STYLES
-   ========================================================= */
-
-.viewer {
-  width: min(1100px, 100%);
-  max-height: 94vh;
-  overflow: auto;
-  background: var(--surface);
-  color: var(--ink);
-  border-radius: 22px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-}
-
-
-/* =========================================================
    MOBILE
    ========================================================= */
 
 @media (max-width: 900px) {
+
   .programs-view .card {
     grid-template-columns: minmax(0, 1fr) 260px;
   }
@@ -1062,6 +1113,7 @@
 
 
 @media (max-width: 700px) {
+
   .programs-view .card {
     grid-template-columns: 1fr;
   }
@@ -1086,6 +1138,7 @@
 
 
 @media (max-width: 520px) {
+
   .programs-view .sub-header {
     padding: 0 18px;
   }
@@ -1128,16 +1181,6 @@
     text-align: center;
   }
 
-  .two {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .register-modal .two {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
   .overlay {
     padding: 12px;
   }
@@ -1148,8 +1191,14 @@
   }
 
   .register-modal {
+    width: 100%;
+    max-width: 440px;
+
     max-height: 94vh;
+
     border-radius: 18px;
+
+    overflow-x: hidden;
   }
 
   .modal-head {
@@ -1161,6 +1210,31 @@
   }
 
   .register-modal form {
+    width: 100%;
+
     padding: 18px;
+
+    gap: 16px;
+  }
+
+  /*
+   * On small screens every field gets its own row.
+   * This prevents mobile/email/other cells from overlapping.
+   */
+  .register-modal .two {
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 0;
+  }
+
+  .register-modal .field {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .register-modal .field input,
+  .register-modal .field select {
+    width: 100%;
+    max-width: 100%;
   }
 }
