@@ -31,7 +31,6 @@
 
   --radius: 22px;
   --radius-sm: 14px;
-
   --app-nav: 56px;
 
   --safe-t: env(safe-area-inset-top, 0px);
@@ -122,9 +121,9 @@ PROGRAM PAGE
 }
 
 .programs-head {
-  max-width: 1250px;
+  max-width: 1150px;
   margin: 0 auto;
-  padding: 38px 24px 30px;
+  padding: 34px 20px 26px;
 }
 
 .programs-head h1,
@@ -137,11 +136,11 @@ PROGRAM PAGE
 }
 
 .programs {
-  max-width: 1250px;
+  max-width: 1150px;
   margin: 0 auto;
-  padding: 0 24px 40px;
+  padding: 0 20px 30px;
   display: grid;
-  gap: 24px;
+  gap: 18px;
 }
 
 /* =========================
@@ -189,12 +188,12 @@ CARD
   display: grid;
   grid-template-columns:
     minmax(0, 1fr)
-    310px;
-  min-height: 520px;
+    270px;
+  min-height: 440px;
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: 22px;
   box-shadow: var(--shadow-card);
   --accent: var(--brand);
   --accent-soft: var(--plus-soft);
@@ -216,7 +215,7 @@ CARD BODY
   grid-column: 1;
   grid-row: 1;
   min-width: 0;
-  padding: 38px 34px 34px 58px;
+  padding: 28px 28px 28px 42px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -361,19 +360,19 @@ BUTTONS
 }
 
 .programs-view .btn-primary {
-  min-height: 54px;
-  padding: 0 28px;
+  min-height: 50px;
+  padding: 0 24px;
   border: 0;
   border-radius: 30px;
   background: var(--accent);
   color: #fff;
-  font-size: 15px;
+  font-size: 14px;
   cursor: pointer;
 }
 
 .programs-view .flyer-link {
-  min-height: 52px;
-  padding: 0 26px;
+  min-height: 48px;
+  padding: 0 22px;
   border: 2px solid var(--accent);
   border-radius: 30px;
   background: transparent;
@@ -390,9 +389,9 @@ FLYER
   grid-row: 1;
   align-self: center;
   justify-self: center;
-  width: 270px;
-  height: 380px;
-  margin-right: 20px;
+  width: 230px;
+  height: 330px;
+  margin-right: 16px;
   padding: 0;
   border: 0;
   border-radius: 22px;
@@ -809,18 +808,18 @@ TABLET
   .programs-view .card {
     grid-template-columns:
       minmax(0, 1fr)
-      250px;
+      230px;
   }
 
   .programs-view .card-body {
-    padding-left: 42px;
+    padding-left: 34px;
     padding-right: 18px;
   }
 
   .programs-view .card-media {
-    width: 215px;
-    height: 315px;
-    margin-right: 14px;
+    width: 195px;
+    height: 285px;
+    margin-right: 12px;
   }
 
 }
@@ -831,6 +830,11 @@ MOBILE
 
 @media (max-width: 700px) {
 
+  .programs {
+    padding: 0 16px 24px;
+    gap: 14px;
+  }
+
   .programs-view .card {
     display: grid;
     grid-template-columns:
@@ -839,6 +843,7 @@ MOBILE
     min-height: 0;
     overflow: hidden;
     align-items: start;
+    border-radius: 18px;
   }
 
   /* =========================
@@ -952,10 +957,6 @@ MOBILE
     margin-top: 0;
   }
 
-  /* =========================
-  DESCRIPTION
-  ========================= */
-
   .programs-view .desc {
     width: 100%;
     max-width: 100%;
@@ -965,10 +966,6 @@ MOBILE
     line-height: 1.4;
     overflow-wrap: break-word;
   }
-
-  /* =========================
-  CHIPS
-  ========================= */
 
   .programs-view .chips {
     width: 100%;
@@ -986,10 +983,6 @@ MOBILE
     white-space: normal;
     max-width: 100%;
   }
-
-  /* =========================
-  BUTTONS
-  ========================= */
 
   .programs-view .card-actions {
     width: 100%;
@@ -1037,12 +1030,9 @@ SMALL MOBILE
   }
 
   .programs {
-    padding: 0 18px 30px;
+    padding: 0 16px 24px;
+    gap: 12px;
   }
-
-  /* =========================
-  CARD
-  ========================= */
 
   .programs-view .card {
     grid-template-columns:
@@ -1055,19 +1045,11 @@ SMALL MOBILE
     padding: 8px 18px 16px 18px;
   }
 
-  /* =========================
-  FLYER
-  ========================= */
-
   .programs-view .card-media {
     width: 103px;
     height: 148px;
     margin: 14px 12px 0 0;
   }
-
-  /* =========================
-  TOP CONTENT
-  ========================= */
 
   .programs-view .card-top-content {
     width: calc(100% - 118px);
@@ -1106,20 +1088,12 @@ SMALL MOBILE
     margin-left: 5px;
   }
 
-  /* =========================
-  LOWER CONTENT
-  ========================= */
-
   .programs-view .card-lower-content {
     width: 100%;
     max-width: 100%;
     min-width: 0;
     margin-top: 0;
   }
-
-  /* =========================
-  DESCRIPTION
-  ========================= */
 
   .programs-view .desc {
     width: 100%;
@@ -1129,10 +1103,6 @@ SMALL MOBILE
     margin: 0 0 7px;
     overflow-wrap: break-word;
   }
-
-  /* =========================
-  CHIPS
-  ========================= */
 
   .programs-view .chips {
     width: 100%;
@@ -1149,10 +1119,6 @@ SMALL MOBILE
     line-height: 1.2;
     white-space: normal;
   }
-
-  /* =========================
-  BUTTONS
-  ========================= */
 
   .programs-view .card-actions {
     width: 100%;
