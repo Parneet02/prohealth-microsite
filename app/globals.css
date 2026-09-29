@@ -923,11 +923,12 @@ PRICE
 ========================= */
 
 .programs-view .price-badge {
-max-width: 100%;
-min-height: 43px;
-margin-bottom: 8px;
-padding: 4px 5px 4px 10px;
-font-size: 11px;
+  max-width: 100%;
+  min-height: 43px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  padding: 4px 5px 4px 10px;
+  font-size: 11px;
 }
 
 .programs-view .price-badge .pp {
@@ -1085,11 +1086,12 @@ margin-bottom: 7px;
 }
 
 .programs-view .price-badge {
-max-width: 100%;
-min-height: 40px;
-font-size: 10px;
-padding-left: 8px;
-margin-bottom: 7px;
+  max-width: 100%;
+  min-height: 40px;
+  margin-top: 10px;
+  margin-bottom: 7px;
+  font-size: 10px;
+  padding-left: 8px;
 }
 
 .programs-view .price-badge .pp {
@@ -1202,25 +1204,30 @@ z-index: 2;
 }
 
 .register-modal form {
-width: 100%;
-padding: 18px;
-gap: 16px;
+  width: 100%;
+  padding: 18px;
+  gap: 16px;
 }
 
 .register-modal .two {
-grid-template-columns:
-minmax(0, 1fr);
-gap: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  min-width: 0;
 }
 
 .register-modal .field {
-width: 100%;
-min-width: 0;
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+  margin-bottom: 0;
 }
 
 .register-modal .field input,
 .register-modal .field select {
-width: 100%;
-max-width: 100%;
+  width: 100%;
+  max-width: 100%;
 }
 }
