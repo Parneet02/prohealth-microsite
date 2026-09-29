@@ -1055,10 +1055,10 @@ SMALL MOBILE
   }
 
   .programs-view .card-media {
-    width: 103px;
-    height: 148px;
-    margin: 14px 12px 0 0;
-  }
+  width: 103px;
+  height: 148px;
+  margin: 4px 12px 0 0;
+}
 
   .programs-view .card-top-content {
     width: calc(100% - 118px);
