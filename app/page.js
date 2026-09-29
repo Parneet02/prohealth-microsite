@@ -67,7 +67,6 @@ export default function Page() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null);
   const [tab, setTab] = useState('none');
-
   const nameRef = useRef(null);
   const modalRef = useRef(null);
 
@@ -84,10 +83,7 @@ export default function Page() {
     let width = window.innerWidth;
 
     const freeze = () => {
-      root.style.setProperty(
-        '--vh',
-        `${window.innerHeight}px`
-      );
+      root.style.setProperty('--vh', `${window.innerHeight}px`);
     };
 
     freeze();
@@ -138,7 +134,6 @@ export default function Page() {
     post();
 
     const ro = new ResizeObserver(post);
-
     ro.observe(document.body);
 
     window.addEventListener('load', post);
@@ -183,10 +178,7 @@ export default function Page() {
     setSuccess(null);
     setFormOpen(true);
 
-    track(
-      'form_open',
-      SERVICE_TO_KEY[service]
-    );
+    track('form_open', SERVICE_TO_KEY[service]);
 
     setTimeout(() => {
       nameRef.current?.focus();
@@ -224,13 +216,11 @@ export default function Page() {
         d.mobile.replace(/\D/g, '')
       )
     ) {
-      e.mobile =
-        'Enter a valid 10 digit mobile number.';
+      e.mobile = 'Enter a valid 10 digit mobile number.';
     }
 
     if (!d.empId.trim()) {
-      e.empId =
-        'Please enter your Employee ID.';
+      e.empId = 'Please enter your Employee ID.';
     }
 
     if (
@@ -238,18 +228,15 @@ export default function Page() {
         d.email.trim()
       )
     ) {
-      e.email =
-        'Enter a valid email address.';
+      e.email = 'Enter a valid email address.';
     }
 
     if (!d.location.trim()) {
-      e.location =
-        'Please enter your location.';
+      e.location = 'Please enter your location.';
     }
 
     if (!d.service) {
-      e.service =
-        'Please choose a preferred service.';
+      e.service = 'Please choose a preferred service.';
     }
 
     return e;
@@ -261,7 +248,6 @@ export default function Page() {
     setServerError('');
 
     const found = validate(form);
-
     setErrors(found);
 
     if (Object.keys(found).length) return;
@@ -276,10 +262,7 @@ export default function Page() {
         },
         body: JSON.stringify({
           ...form,
-          mobile: form.mobile.replace(
-            /\D/g,
-            ''
-          ),
+          mobile: form.mobile.replace(/\D/g, ''),
         }),
       });
 
@@ -461,9 +444,7 @@ export default function Page() {
             className="modal viewer"
             role="dialog"
             aria-modal="true"
-            style={accentStyle(
-              viewerProgram
-            )}
+            style={accentStyle(viewerProgram)}
           >
             <div className="modal-head">
               <div>
@@ -894,7 +875,6 @@ export default function Page() {
                         path="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"
                         width={2.2}
                       />
-
                       Download PDF flyer
                     </a>
 
