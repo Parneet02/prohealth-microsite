@@ -1026,8 +1026,9 @@ SMALL MOBILE
   }
 
   /* MOVE HEADING UP + REDUCE SPACE BELOW */
-  .programs-head {
-    padding: 0 18px 12px;
+   .programs-head {
+    margin-top: -10px;
+    padding: 0 18px 5px;
   }
 
   .programs-head h1,
@@ -1035,6 +1036,7 @@ SMALL MOBILE
     white-space: nowrap;
     font-size: 22px;
   }
+
 
   .programs {
     padding: 0 16px 24px;
