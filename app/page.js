@@ -1,4 +1,5 @@
 'use client';
+
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
@@ -66,6 +67,8 @@ export default function Page() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null);
   const [tab, setTab] = useState('none');
+  const [theme, setTheme] = useState('light');
+
   const nameRef = useRef(null);
   const modalRef = useRef(null);
 
@@ -74,15 +77,53 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || window.parent === window) {
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      setTheme(savedTheme);
+      document.documentElement.setAttribute(
+        'data-theme',
+        savedTheme
+      );
+    } else {
+      document.documentElement.setAttribute(
+        'data-theme',
+        'light'
+      );
+    }
+  }, []);
+
+  function toggleTheme() {
+    const nextTheme =
+      theme === 'dark' ? 'light' : 'dark';
+
+    setTheme(nextTheme);
+
+    document.documentElement.setAttribute(
+      'data-theme',
+      nextTheme
+    );
+
+    localStorage.setItem('theme', nextTheme);
+  }
+
+  useEffect(() => {
+    if (
+      typeof window === 'undefined' ||
+      window.parent === window
+    ) {
       return;
     }
 
     const root = document.documentElement;
+
     let width = window.innerWidth;
 
     const freeze = () => {
-      root.style.setProperty('--vh', `${window.innerHeight}px`);
+      root.style.setProperty(
+        '--vh',
+        `${window.innerHeight}px`
+      );
     };
 
     freeze();
@@ -91,19 +132,30 @@ export default function Page() {
       if (window.innerWidth === width) return;
 
       width = window.innerWidth;
+
       freeze();
     };
 
-    window.addEventListener('resize', onResize);
+    window.addEventListener(
+      'resize',
+      onResize
+    );
 
     return () => {
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener(
+        'resize',
+        onResize
+      );
+
       root.style.removeProperty('--vh');
     };
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || window.parent === window) {
+    if (
+      typeof window === 'undefined' ||
+      window.parent === window
+    ) {
       return;
     }
 
@@ -133,13 +185,21 @@ export default function Page() {
     post();
 
     const ro = new ResizeObserver(post);
+
     ro.observe(document.body);
 
-    window.addEventListener('load', post);
+    window.addEventListener(
+      'load',
+      post
+    );
 
     return () => {
       ro.disconnect();
-      window.removeEventListener('load', post);
+
+      window.removeEventListener(
+        'load',
+        post
+      );
     };
   }, [formOpen, viewerKey, success]);
 
@@ -156,13 +216,20 @@ export default function Page() {
       if (e.key !== 'Escape') return;
 
       setViewerKey(null);
+
       closeForm();
     };
 
-    document.addEventListener('keydown', onKey);
+    document.addEventListener(
+      'keydown',
+      onKey
+    );
 
     return () => {
-      document.removeEventListener('keydown', onKey);
+      document.removeEventListener(
+        'keydown',
+        onKey
+      );
     };
   }, [closeForm]);
 
@@ -175,9 +242,13 @@ export default function Page() {
     setErrors({});
     setServerError('');
     setSuccess(null);
+
     setFormOpen(true);
 
-    track('form_open', SERVICE_TO_KEY[service]);
+    track(
+      'form_open',
+      SERVICE_TO_KEY[service]
+    );
 
     setTimeout(() => {
       nameRef.current?.focus();
@@ -186,7 +257,11 @@ export default function Page() {
 
   function openViewer(key) {
     setViewerKey(key);
-    track('flyer_view', key);
+
+    track(
+      'flyer_view',
+      key
+    );
   }
 
   function update(field, value) {
@@ -207,7 +282,8 @@ export default function Page() {
     const e = {};
 
     if (d.fullName.trim().length < 2) {
-      e.fullName = 'Please enter your full name.';
+      e.fullName =
+        'Please enter your full name.';
     }
 
     if (
@@ -215,27 +291,35 @@ export default function Page() {
         d.mobile.replace(/\D/g, '')
       )
     ) {
-      e.mobile = 'Enter a valid 10 digit mobile number.';
+      e.mobile =
+        'Enter a valid 10 digit mobile number.';
     }
 
     if (!d.empId.trim()) {
-      e.empId = 'Please enter your Employee ID.';
+      e.empId =
+        'Please enter your Employee ID.';
     }
 
+    /*
+     * Fixed email validation regex
+     */
     if (
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
         d.email.trim()
       )
     ) {
-      e.email = 'Enter a valid email address.';
+      e.email =
+        'Enter a valid email address.';
     }
 
     if (!d.location.trim()) {
-      e.location = 'Please enter your location.';
+      e.location =
+        'Please enter your location.';
     }
 
     if (!d.service) {
-      e.service = 'Please choose a preferred service.';
+      e.service =
+        'Please choose a preferred service.';
     }
 
     return e;
@@ -247,27 +331,41 @@ export default function Page() {
     setServerError('');
 
     const found = validate(form);
+
     setErrors(found);
 
-    if (Object.keys(found).length) return;
+    if (Object.keys(found).length) {
+      return;
+    }
 
     setSubmitting(true);
 
     try {
-      const res = await fetch('/api/leads', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...form,
-          mobile: form.mobile.replace(/\D/g, ''),
-        }),
-      });
+      const res = await fetch(
+        '/api/leads',
+        {
+          method: 'POST',
 
-      const data = await res
-        .json()
-        .catch(() => ({}));
+          headers: {
+            'Content-Type':
+              'application/json',
+          },
+
+          body: JSON.stringify({
+            ...form,
+            mobile:
+              form.mobile.replace(
+                /\D/g,
+                ''
+              ),
+          }),
+        }
+      );
+
+      const data =
+        await res
+          .json()
+          .catch(() => ({}));
 
       if (!res.ok || !data.ok) {
         if (data.errors) {
@@ -284,9 +382,12 @@ export default function Page() {
 
       setSuccess({
         service: form.service,
+
         key:
-          SERVICE_TO_KEY[form.service] ||
-          'plus',
+          SERVICE_TO_KEY[
+            form.service
+          ] || 'plus',
+
         leadId: data.id,
       });
 
@@ -305,7 +406,9 @@ export default function Page() {
   }
 
   const successProgram = success
-    ? getProgramByService(success.service)
+    ? getProgramByService(
+        success.service
+      )
     : null;
 
   const viewerProgram = viewerKey
@@ -315,7 +418,9 @@ export default function Page() {
     : null;
 
   const formProgram = form.service
-    ? getProgramByService(form.service)
+    ? getProgramByService(
+        form.service
+      )
     : null;
 
   const accentStyle = (p) =>
@@ -323,21 +428,44 @@ export default function Page() {
       ? {
           '--accent': p.accent,
           '--accent-soft': p.soft,
-          '--banner-ratio': p.bannerRatio,
-          '--banner-top': p.bannerTop,
+          '--banner-ratio':
+            p.bannerRatio,
+          '--banner-top':
+            p.bannerTop,
         }
       : undefined;
 
   return (
     <>
       <section className="view programs-view active">
+
         <div className="sub-header">
-          <HabitHealthLogo />
+
+          <HabitHealthLogo id="programs" />
+
           <span className="sub-spacer" />
+
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={
+              theme === 'dark'
+                ? 'Switch to light mode'
+                : 'Switch to dark mode'
+            }
+          >
+            ⏾
+          </button>
+
         </div>
 
+
         <div className="programs-head">
-          <h2>Care Plans</h2>
+
+          <h1>
+            Choose your ProHealth program
+          </h1>
 
           <p className="lead">
             Premium, on-demand health programs
@@ -345,117 +473,197 @@ export default function Page() {
             one that fits you and download your
             flyer instantly.
           </p>
+
         </div>
 
+
         <div className="programs">
+
           {PROGRAMS.map((p) => (
+
             <article
               className="card"
               key={p.key}
               style={accentStyle(p)}
             >
+
               <div className="stripe" />
 
+
               <div className="card-body">
-                <h3 className="sr-only">
-                  {p.name} — {p.tagline}
-                </h3>
+
+                <div className="plan-banner">
+
+                  <span className="plan-banner-icon">
+                    ♡
+                  </span>
+
+                  <span>
+                    {p.name}
+                  </span>
+
+                </div>
+
+
+                <div className="program-tagline">
+                  {p.tagline}
+                </div>
+
 
                 <div className="price-badge">
+
                   <span className="pd">
                     Plan duration {p.duration}
                   </span>
 
                   <span className="pp">
-                    <s>{p.mrp}</s>{' '}
-                    <b>{p.price}</b>
+
+                    <s>
+                      {p.mrp}
+                    </s>
+
+                    <b>
+                      {p.price}
+                    </b>
+
                   </span>
+
                 </div>
 
+
                 <p className="desc">
-                  {p.desc}
+
+                  {p.key === 'plus'
+                    ? 'Maintain your health with diagnostics, Internal Medicine, dietitian, and fitness sessions.'
+                    : p.key === 'diet'
+                    ? 'Personalized diet plans and expert consultations to help you eat smarter and live healthier.'
+                    : p.key === 'lab'
+                    ? 'Track sugar and cholesterol with diagnostics and fitness sessions for better long-term health.'
+                    : p.desc}
+
                 </p>
 
+
                 <div className="chips">
+
                   {p.chips.map((c) => (
+
                     <span
                       className="chip"
                       key={c}
                     >
                       {c}
                     </span>
+
                   ))}
+
                 </div>
 
+
                 <div className="card-actions">
+
                   <button
                     className="btn btn-primary"
                     onClick={() =>
-                      openForm(p.service)
+                      openForm(
+                        p.service
+                      )
                     }
                   >
                     Register Now
                   </button>
 
+
                   <button
                     className="flyer-link"
                     onClick={() =>
-                      openViewer(p.key)
+                      openViewer(
+                        p.key
+                      )
                     }
                   >
-                    View flyer
+                    View Flyer
                   </button>
+
                 </div>
+
               </div>
+
 
               <button
                 type="button"
                 className="card-media"
                 onClick={() =>
-                  openViewer(p.key)
+                  openViewer(
+                    p.key
+                  )
                 }
                 aria-label={`View the ${p.name} flyer`}
               >
+
                 <img
                   src={p.previews[0]}
                   alt=""
                   loading="lazy"
                 />
+
               </button>
+
             </article>
+
           ))}
+
         </div>
+
       </section>
+
+
+      {/* FLYER VIEWER */}
 
       <div
         className={`overlay ${
-          viewerProgram ? 'open' : ''
+          viewerProgram
+            ? 'open'
+            : ''
         }`}
         aria-hidden={!viewerProgram}
         onClick={(e) => {
-          if (e.target === e.currentTarget) {
+
+          if (
+            e.target ===
+            e.currentTarget
+          ) {
             setViewerKey(null);
           }
+
         }}
       >
+
         {viewerProgram && (
+
           <div
             className="modal viewer"
             role="dialog"
             aria-modal="true"
-            style={accentStyle(viewerProgram)}
+            style={accentStyle(
+              viewerProgram
+            )}
           >
+
             <div className="modal-head">
+
               <div>
+
                 <div className="mtitle">
                   {viewerProgram.name} flyer
                 </div>
 
                 <div className="msub">
-                  Preview only — register to
-                  download the PDF.
+                  Preview only — register to download the PDF.
                 </div>
+
               </div>
+
 
               <button
                 className="x"
@@ -466,15 +674,20 @@ export default function Page() {
               >
                 ✕
               </button>
+
             </div>
 
+
             <div className="viewer-body">
+
               {viewerProgram.previews.map(
                 (src, i) => (
+
                   <figure
                     className="viewer-page"
                     key={src}
                   >
+
                     <img
                       src={src}
                       alt={`${viewerProgram.name} flyer page ${
@@ -486,44 +699,69 @@ export default function Page() {
                       Page {i + 1} of{' '}
                       {
                         viewerProgram
-                          .previews.length
+                          .previews
+                          .length
                       }
                     </figcaption>
+
                   </figure>
+
                 )
               )}
+
             </div>
 
+
             <div className="viewer-cta">
+
               <button
                 className="btn btn-primary vfull"
                 onClick={() => {
+
                   const service =
                     viewerProgram.service;
 
                   setViewerKey(null);
+
                   openForm(service);
+
                 }}
               >
                 Register to download this flyer
               </button>
+
             </div>
+
           </div>
+
         )}
+
       </div>
+
+
+      {/* REGISTRATION MODAL */}
 
       <div
         className={`overlay ${
-          formOpen ? 'open' : ''
+          formOpen
+            ? 'open'
+            : ''
         }`}
         aria-hidden={!formOpen}
         onClick={(e) => {
-          if (e.target === e.currentTarget) {
+
+          if (
+            e.target ===
+            e.currentTarget
+          ) {
             closeForm();
           }
+
         }}
       >
+
         {formOpen && (
+
           <div
             className="modal register-modal"
             role="dialog"
@@ -535,8 +773,11 @@ export default function Page() {
                 : formProgram
             )}
           >
+
             <div className="modal-head">
+
               <div>
+
                 <span className="badge">
                   {form.service ||
                     'ProHealth'}
@@ -553,7 +794,9 @@ export default function Page() {
                     ? 'Your flyer is ready to download.'
                     : 'Fill in your details to register and get your flyer.'}
                 </div>
+
               </div>
+
 
               <button
                 className="x"
@@ -562,18 +805,25 @@ export default function Page() {
               >
                 ✕
               </button>
+
             </div>
 
+
             {!success && (
+
               <form
                 onSubmit={onSubmit}
                 noValidate
               >
+
                 {serverError && (
+
                   <div className="form-error">
                     {serverError}
                   </div>
+
                 )}
+
 
                 <div
                   className={`field ${
@@ -582,6 +832,7 @@ export default function Page() {
                       : ''
                   }`}
                 >
+
                   <label htmlFor="fullName">
                     Full Name{' '}
                     <span className="req">
@@ -607,9 +858,12 @@ export default function Page() {
                   <span className="err">
                     {errors.fullName}
                   </span>
+
                 </div>
 
+
                 <div className="two">
+
                   <div
                     className={`field ${
                       errors.mobile
@@ -617,6 +871,7 @@ export default function Page() {
                         : ''
                     }`}
                   >
+
                     <label htmlFor="mobile">
                       Mobile Number{' '}
                       <span className="req">
@@ -640,7 +895,10 @@ export default function Page() {
                               /\D/g,
                               ''
                             )
-                            .slice(0, 10)
+                            .slice(
+                              0,
+                              10
+                            )
                         )
                       }
                     />
@@ -648,7 +906,9 @@ export default function Page() {
                     <span className="err">
                       {errors.mobile}
                     </span>
+
                   </div>
+
 
                   <div
                     className={`field ${
@@ -657,6 +917,7 @@ export default function Page() {
                         : ''
                     }`}
                   >
+
                     <label htmlFor="empId">
                       Employee ID{' '}
                       <span className="req">
@@ -680,8 +941,11 @@ export default function Page() {
                     <span className="err">
                       {errors.empId}
                     </span>
+
                   </div>
+
                 </div>
+
 
                 <div
                   className={`field ${
@@ -690,6 +954,7 @@ export default function Page() {
                       : ''
                   }`}
                 >
+
                   <label htmlFor="email">
                     Email ID{' '}
                     <span className="req">
@@ -714,9 +979,12 @@ export default function Page() {
                   <span className="err">
                     {errors.email}
                   </span>
+
                 </div>
 
+
                 <div className="two">
+
                   <div
                     className={`field ${
                       errors.location
@@ -724,6 +992,7 @@ export default function Page() {
                         : ''
                     }`}
                   >
+
                     <label htmlFor="location">
                       Location{' '}
                       <span className="req">
@@ -748,7 +1017,9 @@ export default function Page() {
                     <span className="err">
                       {errors.location}
                     </span>
+
                   </div>
+
 
                   <div
                     className={`field ${
@@ -757,6 +1028,7 @@ export default function Page() {
                         : ''
                     }`}
                   >
+
                     <label htmlFor="service">
                       Preferred Service{' '}
                       <span className="req">
@@ -774,25 +1046,34 @@ export default function Page() {
                         )
                       }
                     >
+
                       <option value="">
                         Select a program
                       </option>
 
-                      {PROGRAMS.map((p) => (
-                        <option
-                          key={p.key}
-                          value={p.service}
-                        >
-                          {p.name}
-                        </option>
-                      ))}
+                      {PROGRAMS.map(
+                        (p) => (
+
+                          <option
+                            key={p.key}
+                            value={p.service}
+                          >
+                            {p.name}
+                          </option>
+
+                        )
+                      )}
+
                     </select>
 
                     <span className="err">
                       {errors.service}
                     </span>
+
                   </div>
+
                 </div>
+
 
                 <input
                   className="hp"
@@ -809,22 +1090,28 @@ export default function Page() {
                   }
                 />
 
+
                 <button
                   className="submit"
                   type="submit"
                   disabled={submitting}
                 >
+
                   {submitting && (
+
                     <span
                       className="spinner"
                       aria-hidden="true"
                     />
+
                   )}
 
                   {submitting
                     ? 'Registering'
                     : 'Register and get my flyer'}
+
                 </button>
+
 
                 <p className="consent">
                   By registering you agree
@@ -832,35 +1119,47 @@ export default function Page() {
                   contact you about your
                   selected ProHealth program.
                 </p>
+
               </form>
+
             )}
+
 
             {success &&
               successProgram && (
+
                 <div className="success show">
+
                   <div className="check">
+
                     <Icon
                       path="M20 6 9 17l-5-5"
                       size={34}
                       width={2.6}
                     />
+
                   </div>
 
+
                   <h3>
-                    Thank you for sharing
-                    your interest!
+                    Thank you for sharing your interest!
                   </h3>
 
+
                   <p className="stext">
-                    Our team will reach out
-                    to you about{' '}
+
+                    Our team will reach out to
+                    you about{' '}
                     {success.service} within
                     48 working hours. You can
                     view or download your flyer
                     below.
+
                   </p>
 
+
                   <div className="success-actions">
+
                     <a
                       className="dl-btn"
                       href={`/api/brochure/${successProgram.key}?lead=${success.leadId}`}
@@ -870,12 +1169,16 @@ export default function Page() {
                       target="_blank"
                       rel="noopener"
                     >
+
                       <Icon
                         path="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"
                         width={2.2}
                       />
+
                       Download PDF flyer
+
                     </a>
+
 
                     <button
                       type="button"
@@ -891,6 +1194,7 @@ export default function Page() {
                         )
                       }
                     >
+
                       {tab === 'view'
                         ? 'Hide flyer'
                         : 'View flyer'}
@@ -904,13 +1208,19 @@ export default function Page() {
                         size={16}
                         width={2.2}
                       />
+
                     </button>
+
                   </div>
 
+
                   {tab === 'view' && (
+
                     <div className="flyer-panel">
+
                       {successProgram.previews.map(
                         (src, i) => (
+
                           <img
                             key={src}
                             src={src}
@@ -925,16 +1235,23 @@ export default function Page() {
                                 : undefined
                             }
                           />
+
                         )
                       )}
+
                     </div>
+
                   )}
+
                 </div>
+
               )}
+
           </div>
+
         )}
+
       </div>
     </>
   );
 }
-
