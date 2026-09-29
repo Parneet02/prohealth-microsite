@@ -87,16 +87,6 @@
   --good: #2E7D32;
   --bad: #C0392B;
   --focus: #B0338C;
-
-  --shadow-card:
-    0 1px 2px rgba(46, 25, 74, 0.08),
-    0 18px 45px rgba(46, 25, 74, 0.12);
-
-  --shadow:
-    0 18px 50px -22px rgba(46, 25, 74, 0.35);
-
-  --shadow-sm:
-    0 6px 20px -12px rgba(46, 25, 74, 0.30);
 }
 
 
@@ -131,16 +121,6 @@
   --good: #7FD08A;
   --bad: #F0857A;
   --focus: #E86FBE;
-
-  --shadow-card:
-    0 1px 2px rgba(0, 0, 0, 0.2),
-    0 18px 45px rgba(0, 0, 0, 0.25);
-
-  --shadow:
-    0 20px 55px -24px rgba(0, 0, 0, 0.7);
-
-  --shadow-sm:
-    0 8px 22px -14px rgba(0, 0, 0, 0.65);
 }
 
 
@@ -197,17 +177,24 @@
   margin-left: auto;
   width: 42px;
   height: 42px;
+
   flex: 0 0 auto;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border: 1px solid var(--line-strong);
   border-radius: 50%;
+
   background: var(--surface-2);
   color: var(--ink);
+
   font-size: 24px;
   line-height: 1;
+
   cursor: pointer;
+
   transition:
     background .2s ease,
     color .2s ease,
@@ -223,13 +210,6 @@
 .theme-toggle:focus {
   outline: none;
   border-color: var(--brand-2);
-  box-shadow:
-    0 0 0 3px
-    color-mix(
-      in srgb,
-      var(--brand-2) 20%,
-      transparent
-    );
 }
 
 
@@ -239,13 +219,23 @@
 
 .programs-view .card {
   position: relative;
+
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 310px;
-  min-height: 555px;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    310px;
+
+  min-height: 520px;
+
   overflow: hidden;
+
   background: var(--surface);
+
   border: 1px solid var(--line);
+
   border-radius: 28px;
+
   box-shadow: var(--shadow-card);
 
   --accent: var(--brand);
@@ -253,7 +243,9 @@
 }
 
 
-/* Remove old colored stripe */
+/* =========================
+   REMOVE STRIPE
+   ========================= */
 
 .programs-view .stripe {
   display: none;
@@ -270,47 +262,54 @@
 
   min-width: 0;
 
-  padding: 44px 36px 38px 64px;
+  padding: 38px 34px 34px 58px;
 
   display: flex;
   flex-direction: column;
+
   align-items: flex-start;
   justify-content: center;
 }
 
 
 /* =========================
-   PLAN BANNER
+   SMALLER BANNER
    ========================= */
 
 .programs-view .plan-banner {
   display: inline-flex;
+
   align-items: center;
-  gap: 10px;
 
-  margin-bottom: 18px;
-  padding: 12px 20px;
+  gap: 8px;
 
-  border-radius: 30px;
+  margin-bottom: 14px;
+
+  padding: 8px 14px;
+
+  border-radius: 24px;
 
   background: var(--accent-soft);
+
   color: var(--accent);
 
-  font-size: 21px;
+  font-size: 18px;
+
   font-weight: 850;
+
   line-height: 1;
 
   white-space: nowrap;
 }
 
 .programs-view .plan-banner-icon {
-  font-size: 27px;
+  font-size: 23px;
   line-height: 1;
 }
 
 
 /* =========================
-   REMOVE DUPLICATE TITLE
+   HIDE DUPLICATE TITLE
    ========================= */
 
 .programs-view .program-title {
@@ -324,13 +323,17 @@
 
 .programs-view .program-tagline {
   margin-top: 0;
-  margin-bottom: 22px;
+
+  margin-bottom: 18px;
 
   color: var(--accent);
 
-  font-size: 20px;
-  line-height: 1.35;
+  font-size: 18px;
+
+  line-height: 1.3;
+
   font-weight: 700;
+
   font-style: italic;
 }
 
@@ -341,31 +344,39 @@
 
 .programs-view .price-badge {
   display: inline-flex;
+
   align-items: center;
 
-  min-height: 58px;
+  min-height: 54px;
 
-  margin-bottom: 22px;
-  padding: 5px 8px 5px 20px;
+  margin-bottom: 18px;
+
+  padding: 4px 7px 4px 16px;
 
   border: 1px solid var(--line-strong);
+
   border-radius: 40px;
 
   background: var(--surface-2);
+
   color: var(--ink);
 }
 
 .programs-view .price-badge .pp {
   display: inline-flex;
-  align-items: center;
-  gap: 9px;
 
-  margin-left: 18px;
-  padding: 11px 18px;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-left: 14px;
+
+  padding: 10px 16px;
 
   border-radius: 30px;
 
   background: var(--accent);
+
   color: #fff;
 
   white-space: nowrap;
@@ -373,48 +384,52 @@
 
 
 /* =========================
-   DESCRIPTION
+   SHORT DESCRIPTION
    ========================= */
 
 .programs-view .desc {
-  max-width: 650px;
+  max-width: 610px;
 
-  margin: 0 0 20px;
+  margin: 0 0 16px;
 
   color: var(--muted);
 
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: 15px;
+
+  line-height: 1.5;
 }
 
 
 /* =========================
-   FEATURE CHIPS
+   CHIPS
    ========================= */
 
 .programs-view .chips {
   display: flex;
+
   flex-wrap: wrap;
 
-  gap: 10px 12px;
+  gap: 8px;
 
-  max-width: 680px;
+  max-width: 650px;
 
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .programs-view .chip {
-  padding: 7px 12px;
+  padding: 6px 10px;
 
   border: 1px solid var(--line);
 
-  border-radius: 20px;
+  border-radius: 18px;
 
   background: var(--surface-2);
+
   color: var(--muted);
 
-  font-size: 13px;
-  line-height: 1.25;
+  font-size: 12px;
+
+  line-height: 1.2;
 
   white-space: nowrap;
 }
@@ -426,41 +441,43 @@
 
 .programs-view .card-actions {
   display: flex;
+
   align-items: center;
 
-  gap: 14px;
+  gap: 12px;
 
   margin-top: 0;
 }
 
 .programs-view .btn-primary {
-  min-height: 58px;
+  min-height: 54px;
 
-  padding: 0 32px;
+  padding: 0 28px;
 
   border: 0;
-  border-radius: 32px;
+
+  border-radius: 30px;
 
   background: var(--accent);
+
   color: #fff;
 
-  font-size: 16px;
-
-  box-shadow:
-    0 12px 25px rgba(181, 127, 220, .25);
+  font-size: 15px;
 
   cursor: pointer;
 }
 
 .programs-view .flyer-link {
-  min-height: 56px;
+  min-height: 52px;
 
-  padding: 0 28px;
+  padding: 0 26px;
 
   border: 2px solid var(--accent);
-  border-radius: 32px;
+
+  border-radius: 30px;
 
   background: transparent;
+
   color: var(--accent);
 
   cursor: pointer;
@@ -476,15 +493,18 @@
   grid-row: 1;
 
   align-self: center;
+
   justify-self: center;
 
-  width: 285px;
-  height: 400px;
+  width: 270px;
+  height: 380px;
 
-  margin-right: 28px;
+  margin-right: 20px;
+
   padding: 0;
 
   border: 0;
+
   border-radius: 22px;
 
   background: transparent;
@@ -494,12 +514,9 @@
   cursor: pointer;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
 }
 
 .programs-view .card-media img {
@@ -509,6 +526,7 @@
   height: 100%;
 
   object-fit: contain;
+
   object-position: center;
 
   border-radius: 22px;
@@ -527,7 +545,9 @@
   inset: 0;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   padding: 24px;
@@ -537,6 +557,7 @@
   backdrop-filter: blur(10px);
 
   opacity: 0;
+
   visibility: hidden;
 
   transition:
@@ -546,12 +567,13 @@
 
 .overlay.open {
   opacity: 1;
+
   visibility: visible;
 }
 
 
 /* =========================
-   MODAL
+   NORMAL MODAL
    ========================= */
 
 .modal {
@@ -609,7 +631,9 @@
 
 .modal-head {
   display: flex;
+
   justify-content: space-between;
+
   align-items: flex-start;
 
   padding: 24px;
@@ -625,7 +649,9 @@
   padding: 22px 26px;
 
   display: flex;
+
   align-items: flex-start;
+
   justify-content: space-between;
 
   gap: 14px;
@@ -657,6 +683,7 @@
   margin-top: 8px;
 
   font-size: 23px;
+
   font-weight: 800;
 
   color: var(--ink);
@@ -745,11 +772,12 @@
 
 
 /* =========================
-   CLOSE BUTTON
+   CLOSE
    ========================= */
 
 .x {
   width: 38px;
+
   height: 38px;
 
   flex: 0 0 auto;
@@ -775,6 +803,7 @@
   color: var(--ink);
 
   width: 36px;
+
   height: 36px;
 
   border-radius: 10px;
@@ -840,7 +869,9 @@
   display: block;
 
   width: 100%;
+
   max-width: 100%;
+
   min-width: 0;
 
   height: 46px;
@@ -864,10 +895,6 @@
   outline: none;
 
   box-sizing: border-box;
-
-  transition:
-    border .15s ease,
-    box-shadow .15s ease;
 }
 
 .register-modal .field input::placeholder {
@@ -881,14 +908,6 @@
   outline: none;
 
   border-color: var(--accent);
-
-  box-shadow:
-    0 0 0 3px
-    color-mix(
-      in srgb,
-      var(--accent) 22%,
-      transparent
-    );
 }
 
 
@@ -908,12 +927,6 @@
   gap: 16px;
 
   min-width: 0;
-}
-
-.register-modal .two .field {
-  min-width: 0;
-
-  width: 100%;
 }
 
 
@@ -971,8 +984,6 @@
   color: var(--bad);
 
   font-size: 13px;
-
-  overflow-wrap: break-word;
 }
 
 
@@ -1002,8 +1013,6 @@
   font-size: 1.02rem;
 
   cursor: pointer;
-
-  box-sizing: border-box;
 }
 
 .register-modal .submit:disabled {
@@ -1027,8 +1036,6 @@
   text-align: center;
 
   line-height: 1.5;
-
-  overflow-wrap: break-word;
 }
 
 
@@ -1072,6 +1079,7 @@
   left: -9999px !important;
 
   width: 1px !important;
+
   height: 1px !important;
 
   opacity: 0 !important;
@@ -1086,31 +1094,22 @@
 
 @media (max-width: 900px) {
   .programs-view .card {
-    grid-template-columns: minmax(0, 1fr) 260px;
+    grid-template-columns:
+      minmax(0, 1fr)
+      250px;
   }
 
   .programs-view .card-body {
     padding-left: 42px;
-    padding-right: 20px;
+    padding-right: 18px;
   }
 
   .programs-view .card-media {
-    width: 225px;
-    height: 330px;
+    width: 215px;
 
-    margin-right: 16px;
-  }
+    height: 315px;
 
-  .programs-view .plan-banner {
-    font-size: 19px;
-  }
-
-  .programs-view .program-tagline {
-    font-size: 18px;
-  }
-
-  .programs-view .desc {
-    font-size: 15px;
+    margin-right: 14px;
   }
 }
 
@@ -1123,7 +1122,9 @@
   .programs-view .card {
     display: grid;
 
-    grid-template-columns: minmax(0, 1fr) 145px;
+    grid-template-columns:
+      minmax(0, 1fr)
+      145px;
 
     min-height: 0;
 
@@ -1133,19 +1134,23 @@
   }
 
   /*
-    Flyer stays at the top-right.
-    It is contained so the full flyer remains visible.
+    Flyer stays at top-right.
+    No extra grid row is created,
+    so there is no empty space below it.
   */
   .programs-view .card-media {
     grid-column: 2;
+
     grid-row: 1;
 
     width: 125px;
+
     height: 175px;
 
-    margin: 24px 20px 0 0;
+    margin: 22px 18px 0 0;
 
     justify-self: end;
+
     align-self: start;
 
     border-radius: 16px;
@@ -1155,114 +1160,109 @@
 
   .programs-view .card-media img {
     width: 100%;
+
     height: 100%;
 
     object-fit: contain;
+
     object-position: center;
 
     border-radius: 16px;
   }
 
   /*
-    Text stays on the left and is aligned
-    with the top of the flyer.
+    Content occupies the same row as the flyer.
   */
   .programs-view .card-body {
     grid-column: 1;
+
     grid-row: 1;
 
     min-width: 0;
 
-    padding: 28px 12px 30px 24px;
+    padding: 22px 8px 24px 20px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: flex-start;
+
     justify-content: flex-start;
   }
 
-  /*
-    Bigger ProHealth banner.
-  */
   .programs-view .plan-banner {
     max-width: 100%;
 
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 
-    padding: 10px 14px;
+    padding: 8px 11px;
 
-    font-size: 17px;
+    font-size: 15px;
 
-    gap: 7px;
+    gap: 6px;
 
     white-space: normal;
   }
 
   .programs-view .plan-banner-icon {
-    font-size: 22px;
+    font-size: 19px;
   }
 
   .programs-view .program-tagline {
     margin-top: 0;
 
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 
-    font-size: 15px;
+    font-size: 14px;
 
-    line-height: 1.35;
+    line-height: 1.3;
   }
 
   .programs-view .price-badge {
-    min-height: 48px;
+    min-height: 43px;
 
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 
-    padding: 4px 6px 4px 12px;
+    padding: 4px 5px 4px 10px;
 
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .programs-view .price-badge .pp {
-    gap: 6px;
+    gap: 5px;
 
-    margin-left: 8px;
+    margin-left: 6px;
 
-    padding: 8px 11px;
+    padding: 7px 9px;
   }
 
   .programs-view .desc {
     max-width: 100%;
 
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 
-    font-size: 14px;
+    font-size: 12.5px;
 
-    line-height: 1.45;
+    line-height: 1.4;
   }
 
-  /*
-    Short, compact feature line.
-  */
   .programs-view .chips {
     width: 100%;
 
     max-width: 100%;
 
-    display: flex;
+    gap: 5px;
 
-    flex-wrap: wrap;
-
-    gap: 6px 7px;
-
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
 
   .programs-view .chip {
-    padding: 5px 8px;
+    padding: 5px 7px;
 
-    font-size: 11px;
+    font-size: 10px;
 
-    line-height: 1.2;
+    line-height: 1.15;
 
     white-space: normal;
   }
@@ -1276,18 +1276,18 @@
 
     align-items: stretch;
 
-    gap: 9px;
+    gap: 7px;
   }
 
   .programs-view .btn-primary,
   .programs-view .flyer-link {
     width: 100%;
 
-    min-height: 48px;
+    min-height: 44px;
 
-    padding: 0 16px;
+    padding: 0 12px;
 
-    font-size: 14px;
+    font-size: 12px;
 
     text-align: center;
   }
@@ -1309,6 +1309,7 @@
 
   .theme-toggle {
     width: 38px;
+
     height: 38px;
 
     font-size: 22px;
@@ -1323,75 +1324,72 @@
   }
 
   .programs-view .card {
-    grid-template-columns: minmax(0, 1fr) 125px;
+    grid-template-columns:
+      minmax(0, 1fr)
+      118px;
   }
 
   .programs-view .card-body {
-    padding: 24px 8px 26px 20px;
+    padding: 20px 6px 22px 18px;
   }
 
   .programs-view .card-media {
-    width: 108px;
-    height: 155px;
+    width: 103px;
 
-    margin: 20px 14px 0 0;
+    height: 148px;
+
+    margin: 18px 12px 0 0;
   }
 
   .programs-view .plan-banner {
-    font-size: 15px;
+    font-size: 14px;
 
-    padding: 9px 11px;
+    padding: 8px 10px;
 
-    gap: 6px;
+    gap: 5px;
   }
 
   .programs-view .plan-banner-icon {
-    font-size: 19px;
+    font-size: 18px;
   }
 
   .programs-view .program-tagline {
-    font-size: 14px;
+    font-size: 13px;
 
-    margin-bottom: 13px;
+    margin-bottom: 11px;
   }
 
   .programs-view .price-badge {
-    min-height: 44px;
+    min-height: 40px;
 
-    font-size: 11px;
+    font-size: 10px;
 
-    padding-left: 10px;
+    padding-left: 8px;
   }
 
   .programs-view .price-badge .pp {
-    padding: 7px 9px;
+    padding: 6px 8px;
 
-    margin-left: 6px;
+    margin-left: 5px;
   }
 
   .programs-view .desc {
-    font-size: 13px;
+    font-size: 11.5px;
 
-    line-height: 1.4;
+    line-height: 1.35;
   }
 
   .programs-view .chip {
-    font-size: 10px;
+    font-size: 9.5px;
 
-    padding: 5px 7px;
-  }
-
-  .programs-view .card-actions {
-    width: 100%;
+    padding: 4px 6px;
   }
 
   .programs-view .btn-primary,
   .programs-view .flyer-link {
-    width: 100%;
+    min-height: 42px;
 
-    min-height: 45px;
-
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .overlay {
@@ -1414,6 +1412,7 @@
     border-radius: 18px;
 
     overflow-x: hidden;
+
     overflow-y: hidden;
   }
 
@@ -1434,7 +1433,8 @@
   }
 
   .register-modal .two {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns:
+      minmax(0, 1fr);
 
     gap: 0;
   }

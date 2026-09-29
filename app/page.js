@@ -397,7 +397,11 @@ export default function Page() {
 
                 <p className="desc">
                   {p.key === 'plus'
-                    ? 'Maintain your health momentum with diagnostics, Internal Medicine, dietitian, and fitness sessions for proactive care.'
+                    ? 'Maintain your health with diagnostics, Internal Medicine, dietitian, and fitness sessions.'
+                    : p.key === 'diet'
+                    ? 'Personalized diet plans and expert consultations to help you eat smarter and live healthier.'
+                    : p.key === 'lab'
+                    ? 'Track sugar and cholesterol with diagnostics and fitness sessions for better long-term health.'
                     : p.desc}
                 </p>
 
