@@ -151,6 +151,7 @@ export default function Page() {
     setServerError('');
     setErrors({});
     setForm(BLANK_FORM);
+    setTab('none');
   }, []);
 
   useEffect(() => {
@@ -177,6 +178,7 @@ export default function Page() {
     setErrors({});
     setServerError('');
     setSuccess(null);
+    setTab('none');
     setFormOpen(true);
 
     track('form_open', SERVICE_TO_KEY[service]);
@@ -304,6 +306,11 @@ export default function Page() {
     ? getProgramByService(form.service)
     : null;
 
+  /*
+   * IMPORTANT:
+   * Program-specific colors continue to come from p.accent.
+   * Existing green/yellow colors are therefore preserved.
+   */
   const accentStyle = (p) =>
     p
       ? {
@@ -318,7 +325,7 @@ export default function Page() {
     <>
       <section className="view programs-view active">
         <div className="sub-header">
-          <HabitHealthLogo id="programs" />
+          <HabitHealthLogo />
           <span className="sub-spacer" />
         </div>
 
@@ -326,8 +333,9 @@ export default function Page() {
           <h2>Care Plans</h2>
 
           <p className="lead">
-            Premium, on-demand health programs from HCL Healthcare. Register
-            in the one that fits you and download your flyer instantly.
+            Premium, on-demand health programs from HCL Healthcare.
+            Register in the one that fits you and download your flyer
+            instantly.
           </p>
         </div>
 
@@ -341,8 +349,6 @@ export default function Page() {
               <div className="stripe" />
 
               <div className="card-body">
-
-                {/* PLAN NAME */}
                 <div className="plan-banner">
                   <span className="plan-banner-icon">♡</span>
                   <span>{p.name}</span>
@@ -414,7 +420,6 @@ export default function Page() {
       </section>
 
       {/* FLYER VIEWER */}
-
       <div
         className={`overlay ${viewerProgram ? 'open' : ''}`}
         aria-hidden={!viewerProgram}
@@ -453,14 +458,20 @@ export default function Page() {
 
             <div className="viewer-body">
               {viewerProgram.previews.map((src, i) => (
-                <figure className="viewer-page" key={src}>
+                <figure
+                  className="viewer-page"
+                  key={src}
+                >
                   <img
                     src={src}
-                    alt={`${viewerProgram.name} flyer page ${i + 1}`}
+                    alt={`${viewerProgram.name} flyer page ${
+                      i + 1
+                    }`}
                   />
 
                   <figcaption>
-                    Page {i + 1} of {viewerProgram.previews.length}
+                    Page {i + 1} of{' '}
+                    {viewerProgram.previews.length}
                   </figcaption>
                 </figure>
               ))}
@@ -471,6 +482,7 @@ export default function Page() {
                 className="btn btn-primary vfull"
                 onClick={() => {
                   const service = viewerProgram.service;
+
                   setViewerKey(null);
                   openForm(service);
                 }}
@@ -483,7 +495,6 @@ export default function Page() {
       </div>
 
       {/* REGISTRATION MODAL */}
-
       <div
         className={`overlay ${formOpen ? 'open' : ''}`}
         aria-hidden={!formOpen}
@@ -499,7 +510,9 @@ export default function Page() {
             role="dialog"
             aria-modal="true"
             ref={modalRef}
-            style={accentStyle(success ? successProgram : formProgram)}
+            style={accentStyle(
+              success ? successProgram : formProgram
+            )}
           >
             <div className="modal-head">
               <div>
@@ -508,7 +521,9 @@ export default function Page() {
                 </span>
 
                 <div className="mtitle">
-                  {success ? 'You’re registered' : 'Register Now'}
+                  {success
+                    ? 'You’re registered'
+                    : 'Register Now'}
                 </div>
 
                 <div className="msub">
@@ -568,7 +583,8 @@ export default function Page() {
                     }`}
                   >
                     <label htmlFor="mobile">
-                      Mobile Number <span className="req">*</span>
+                      Mobile Number{' '}
+                      <span className="req">*</span>
                     </label>
 
                     <input
@@ -600,7 +616,8 @@ export default function Page() {
                     }`}
                   >
                     <label htmlFor="empId">
-                      Employee ID <span className="req">*</span>
+                      Employee ID{' '}
+                      <span className="req">*</span>
                     </label>
 
                     <input
@@ -651,7 +668,8 @@ export default function Page() {
                     }`}
                   >
                     <label htmlFor="location">
-                      Location <span className="req">*</span>
+                      Location{' '}
+                      <span className="req">*</span>
                     </label>
 
                     <input
@@ -737,8 +755,9 @@ export default function Page() {
                 </button>
 
                 <p className="consent">
-                  By registering you agree that HCL Healthcare may
-                  contact you about your selected ProHealth program.
+                  By registering you agree that HCL Healthcare
+                  may contact you about your selected ProHealth
+                  program.
                 </p>
               </form>
             )}
@@ -759,8 +778,8 @@ export default function Page() {
 
                 <p className="stext">
                   Our team will reach out to you about{' '}
-                  {success.service} within 48 working hours. You
-                  can view or download your flyer below.
+                  {success.service} within 48 working hours.
+                  You can view or download your flyer below.
                 </p>
 
                 <div className="success-actions">
@@ -775,6 +794,7 @@ export default function Page() {
                       path="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"
                       width={2.2}
                     />
+
                     Download PDF flyer
                   </a>
 
