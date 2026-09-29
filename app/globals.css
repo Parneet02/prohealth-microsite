@@ -33,6 +33,12 @@
   --shadow:
     0 18px 50px -22px rgba(46, 25, 74, 0.35);
 
+  --shadow-sm:
+    0 6px 20px -12px rgba(46, 25, 74, 0.30);
+
+  --radius: 22px;
+  --radius-sm: 14px;
+
   --app-nav: 56px;
 
   --safe-t: env(safe-area-inset-top, 0px);
@@ -44,9 +50,9 @@
 }
 
 
-/* =========================
+/* =========================================================
    DARK MODE
-   ========================= */
+   ========================================================= */
 
 :root[data-theme="dark"] {
   --ground: #140F1C;
@@ -82,12 +88,15 @@
 
   --shadow:
     0 20px 55px -24px rgba(0, 0, 0, 0.7);
+
+  --shadow-sm:
+    0 8px 22px -14px rgba(0, 0, 0, 0.65);
 }
 
 
-/* =========================
+/* =========================================================
    SYSTEM DARK MODE
-   ========================= */
+   ========================================================= */
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -124,13 +133,16 @@
 
     --shadow:
       0 20px 55px -24px rgba(0, 0, 0, 0.7);
+
+    --shadow-sm:
+      0 8px 22px -14px rgba(0, 0, 0, 0.65);
   }
 }
 
 
-/* =========================
+/* =========================================================
    PROGRAMS PAGE
-   ========================= */
+   ========================================================= */
 
 .programs-view {
   min-height: 100vh;
@@ -165,47 +177,74 @@
   max-width: 1250px;
   margin: 0 auto;
   padding: 0 24px 40px;
+
   display: grid;
   gap: 24px;
 }
 
 
-/* =========================
+/* =========================================================
    PROGRAM CARD
-   ========================= */
+   ========================================================= */
 
 .programs-view .card {
   position: relative;
+
   display: grid;
   grid-template-columns: minmax(0, 1fr) 310px;
+
   min-height: 555px;
+
   overflow: hidden;
 
   background: var(--surface);
+
   border: 1px solid var(--line);
   border-radius: 28px;
+
   box-shadow: var(--shadow-card);
 
+  /*
+   * Default values.
+   * page.js overrides these for every program.
+   */
   --accent: var(--brand);
   --accent-soft: var(--plus-soft);
 }
 
+
+/* =========================================================
+   LEFT ACCENT STRIPE
+   ========================================================= */
+
 .programs-view .stripe {
   position: absolute;
   z-index: 3;
+
   top: 0;
   bottom: 0;
   left: 0;
+
   width: 10px;
+
   background: var(--accent);
+
   border-radius: 28px 0 0 28px;
 }
+
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
 
 .programs-view .card-body {
   grid-column: 1;
   grid-row: 1;
+
   min-width: 0;
+
   padding: 44px 36px 38px 64px;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -213,24 +252,32 @@
 }
 
 
-/* =========================
+/* =========================================================
    PROGRAM BANNER
-   ========================= */
+   ========================================================= */
 
 .programs-view .plan-banner {
   display: inline-flex;
   align-items: center;
+
   gap: 9px;
+
   margin-bottom: 20px;
   padding: 10px 17px;
+
   border-radius: 30px;
 
+  /*
+   * Program-specific colors
+   */
   background: var(--accent-soft);
   color: var(--accent);
 
   font-size: 15px;
   font-weight: 800;
+
   line-height: 1;
+
   white-space: nowrap;
 }
 
@@ -240,80 +287,104 @@
 }
 
 
-/* =========================
-   PROGRAM TEXT
-   ========================= */
+/* =========================================================
+   PROGRAM TITLE
+   ========================================================= */
 
 .programs-view .program-title {
   margin: 0;
+
   color: var(--ink);
+
   font-size: 40px;
   line-height: 1.08;
+
   font-weight: 850;
+
   letter-spacing: -.7px;
 }
+
+
+/* =========================================================
+   PROGRAM TAGLINE
+   ========================================================= */
 
 .programs-view .program-tagline {
   margin-top: 10px;
   margin-bottom: 25px;
+
   color: var(--accent);
+
   font-size: 20px;
   line-height: 1.3;
+
   font-weight: 700;
   font-style: italic;
 }
 
 
-/* =========================
-   PRICE
-   ========================= */
+/* =========================================================
+   PRICE BADGE
+   ========================================================= */
 
 .programs-view .price-badge {
   display: inline-flex;
   align-items: center;
+
   min-height: 58px;
+
   margin-bottom: 25px;
+
   padding: 5px 8px 5px 20px;
 
   border: 1px solid var(--line-strong);
+
   border-radius: 40px;
 
   background: var(--surface-2);
+
   color: var(--ink);
 }
 
 .programs-view .price-badge .pp {
   display: inline-flex;
   align-items: center;
+
   gap: 9px;
+
   margin-left: 18px;
+
   padding: 11px 18px;
+
   border-radius: 30px;
 
   background: var(--accent);
+
   color: #fff;
 
   white-space: nowrap;
 }
 
 
-/* =========================
+/* =========================================================
    DESCRIPTION
-   ========================= */
+   ========================================================= */
 
 .programs-view .desc {
   max-width: 720px;
+
   margin: 0 0 22px;
 
   color: var(--muted);
+
   font-size: 17px;
   line-height: 1.65;
 }
 
 
-/* =========================
+/* =========================================================
    CHIPS
-   ========================= */
+   ========================================================= */
 
 .programs-view .chips {
   display: flex;
@@ -328,19 +399,27 @@
 }
 
 
-/* =========================
-   BUTTONS
-   ========================= */
+/* =========================================================
+   CARD ACTIONS
+   ========================================================= */
 
 .programs-view .card-actions {
   display: flex;
   align-items: center;
+
   gap: 16px;
+
   margin-top: 0;
 }
 
+
+/* =========================================================
+   REGISTER BUTTON
+   ========================================================= */
+
 .programs-view .btn-primary {
   min-height: 60px;
+
   padding: 0 34px;
 
   border: 0;
@@ -350,44 +429,59 @@
   color: #fff;
 
   font-size: 17px;
-  box-shadow: 0 12px 25px rgba(181, 127, 220, .25);
+
+  box-shadow:
+    0 12px 25px rgba(181, 127, 220, .25);
 
   cursor: pointer;
 }
 
+
+/* =========================================================
+   FLYER BUTTON
+   ========================================================= */
+
 .programs-view .flyer-link {
   min-height: 58px;
+
   padding: 0 30px;
 
   border: 2px solid var(--accent);
+
   border-radius: 32px;
 
   background: transparent;
+
   color: var(--accent);
 
   cursor: pointer;
 }
 
 
-/* =========================
-   FLYER
-   ========================= */
+/* =========================================================
+   FLYER IMAGE
+   ========================================================= */
 
 .programs-view .card-media {
   grid-column: 2;
   grid-row: 1;
+
   align-self: center;
   justify-self: center;
 
   width: 285px;
   height: 400px;
+
   margin-right: 28px;
+
   padding: 0;
 
   border: 0;
+
   border-radius: 22px;
 
   background: transparent;
+
   overflow: hidden;
 
   cursor: pointer;
@@ -396,25 +490,32 @@
   align-items: center;
   justify-content: center;
 
-  transition: transform .25s ease, box-shadow .25s ease;
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
 }
 
 .programs-view .card-media img {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+
   border-radius: 22px;
 }
 
 
-/* =========================
-   MODAL
-   ========================= */
+/* =========================================================
+   OVERLAY
+   ========================================================= */
 
 .overlay {
   position: fixed;
+
   z-index: 1000;
+
   inset: 0;
 
   display: flex;
@@ -424,12 +525,15 @@
   padding: 24px;
 
   background: rgba(7, 4, 12, .78);
+
   backdrop-filter: blur(10px);
 
   opacity: 0;
   visibility: hidden;
 
-  transition: opacity .2s ease, visibility .2s ease;
+  transition:
+    opacity .2s ease,
+    visibility .2s ease;
 }
 
 .overlay.open {
@@ -437,22 +541,67 @@
   visibility: visible;
 }
 
+
+/* =========================================================
+   NORMAL MODAL
+   ========================================================= */
+
 .modal {
   width: min(680px, 100%);
+
   max-height: min(900px, 92vh);
+
   overflow: auto;
 
   background: var(--surface);
+
   border: 1px solid var(--line);
+
   border-radius: 22px;
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, .5);
 
   color: var(--ink);
 }
 
+
+/* =========================================================
+   REGISTRATION MODAL
+   RESTORED TO PREVIOUS FORMAT
+   ========================================================= */
+
+.register-modal {
+  width: min(440px, 100%);
+
+  max-height: 92vh;
+
+  overflow: auto;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 12%,
+      var(--surface)
+    );
+
+  color: var(--ink);
+
+  border-radius: 24px;
+
+  box-shadow: var(--shadow);
+
+  border: 1px solid var(--line);
+}
+
+
+/* =========================================================
+   MODAL HEADER
+   ========================================================= */
+
 .modal-head {
   display: flex;
+
   justify-content: space-between;
   align-items: flex-start;
 
@@ -463,168 +612,314 @@
   background: var(--surface);
 }
 
+.register-modal .modal-head {
+  padding: 22px 26px;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 14px;
+
+  border-bottom: 1px solid var(--line);
+
+  position: sticky;
+
+  top: 0;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 12%,
+      var(--surface)
+    );
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   MODAL TITLE
+   ========================================================= */
+
 .mtitle {
   margin-top: 8px;
-  color: var(--ink);
+
   font-size: 23px;
+
   font-weight: 800;
+
+  color: var(--ink);
 }
+
+.register-modal .mtitle {
+  font-family: "Sora", sans-serif;
+
+  font-weight: 700;
+
+  font-size: 1.25rem;
+
+  color: var(--ink);
+}
+
+
+/* =========================================================
+   MODAL SUBTITLE
+   ========================================================= */
 
 .msub {
   margin-top: 5px;
+
   color: var(--muted);
+
   font-size: 13px;
+
   line-height: 1.5;
 }
 
+.register-modal .msub {
+  color: var(--muted);
 
-/* =========================
-   FORM BADGE
-   ========================= */
+  font-size: .9rem;
 
-.badge {
-  display: inline-flex;
-  padding: 7px 12px;
-  border-radius: 20px;
-
-  background: var(--accent-soft);
-  color: var(--accent);
-
-  font-size: 12px;
-  font-weight: 800;
+  margin-top: 3px;
 }
 
 
-/* =========================
+/* =========================================================
+   BADGE
+   ========================================================= */
+
+.badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  background: var(--accent-soft);
+
+  color: var(--accent);
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+.register-modal .badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 5px 11px;
+
+  border-radius: 999px;
+
+  font-weight: 700;
+
+  font-size: .72rem;
+
+  background: var(--accent-soft);
+
+  color: var(--accent);
+
+  margin-bottom: 8px;
+}
+
+
+/* =========================================================
    CLOSE BUTTON
-   ========================= */
+   ========================================================= */
 
 .x {
   width: 38px;
   height: 38px;
 
   border: 1px solid var(--line-strong);
+
   border-radius: 50%;
 
-  background: var(--surface-2);
+  background: transparent;
+
   color: var(--ink);
 
   font-size: 19px;
+
   cursor: pointer;
 }
 
+.register-modal .x {
+  border: none;
 
-/* =========================
-   REGISTRATION FORM
-   ========================= */
-
-.register-modal {
-  background: color-mix(
-    in srgb,
-    var(--accent) 12%,
-    var(--surface)
-  );
-}
-
-.register-modal .modal-head {
-  background: color-mix(
-    in srgb,
-    var(--accent) 12%,
-    var(--surface)
-  );
-}
-
-.register-modal form {
-  padding: 24px;
-}
-
-.field {
-  margin-bottom: 17px;
-}
-
-.field label {
-  display: block;
-  margin-bottom: 7px;
+  background: var(--surface-2);
 
   color: var(--ink);
 
-  font-size: 13px;
-  font-weight: 700;
+  width: 36px;
+  height: 36px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-size: 1.1rem;
+
+  flex: none;
 }
 
-.req {
+
+/* =========================================================
+   REGISTRATION FORM
+   ========================================================= */
+
+.register-modal form {
+  padding: 22px 26px 26px;
+
+  display: grid;
+
+  gap: 16px;
+}
+
+
+/* =========================================================
+   FIELD
+   ========================================================= */
+
+.register-modal .field {
+  display: grid;
+
+  gap: 6px;
+
+  margin-bottom: 0;
+}
+
+.register-modal .field label {
+  font-weight: 600;
+
+  font-size: .9rem;
+
+  color: var(--ink);
+
+  margin-bottom: 0;
+}
+
+.register-modal .field .req {
   color: var(--bad);
 }
 
-.field input,
-.field select {
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.register-modal .field input,
+.register-modal .field select {
   width: 100%;
-  height: 48px;
-  padding: 0 14px;
 
-  border: 1px solid var(--line-strong);
-  border-radius: 10px;
+  padding: 12px 14px;
 
-  outline: none;
+  border-radius: 12px;
+
+  border: 1.5px solid var(--line-strong);
 
   background: var(--surface-2);
+
   color: var(--ink);
 
-  font-family: inherit;
-  font-size: 14px;
+  font: inherit;
+
+  transition:
+    border .15s ease,
+    box-shadow .15s ease;
 }
 
-.field input::placeholder {
+.register-modal .field input::placeholder {
   color: var(--faint);
 }
 
-.field input:focus,
-.field select:focus {
+.register-modal .field input:focus,
+.register-modal .field select:focus {
+  outline: none;
+
   border-color: var(--accent);
 
   box-shadow:
     0 0 0 3px
-    color-mix(in srgb, var(--accent) 20%, transparent);
+    color-mix(
+      in srgb,
+      var(--accent) 22%,
+      transparent
+    );
 }
 
-.two {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
 
-.err {
-  display: block;
-  min-height: 16px;
-  margin-top: 4px;
+/* =========================================================
+   INVALID FIELD
+   ========================================================= */
 
+.register-modal .field .err {
   color: var(--bad);
 
-  font-size: 11px;
+  font-size: .8rem;
+
+  display: none;
+}
+
+.register-modal .field.invalid input,
+.register-modal .field.invalid select {
+  border-color: var(--bad);
+}
+
+.register-modal .field.invalid .err {
+  display: block;
 }
 
 
-/* =========================
-   FORM ERROR
-   ========================= */
+/* =========================================================
+   TWO COLUMN FIELDS
+   ========================================================= */
 
-.form-error {
-  margin-bottom: 18px;
+.register-modal .two {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
+}
+
+
+/* =========================================================
+   FORM ERROR
+   ========================================================= */
+
+.register-modal .form-error {
+  margin-bottom: 0;
+
   padding: 12px 14px;
 
-  border: 1px solid color-mix(
-    in srgb,
-    var(--bad) 55%,
-    var(--line)
-  );
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--bad) 55%,
+      var(--line)
+    );
 
   border-radius: 10px;
 
-  background: color-mix(
-    in srgb,
-    var(--bad) 12%,
-    var(--surface)
-  );
+  background:
+    color-mix(
+      in srgb,
+      var(--bad) 12%,
+      var(--surface)
+    );
 
   color: var(--bad);
 
@@ -632,52 +927,122 @@
 }
 
 
-/* =========================
-   SUBMIT
-   ========================= */
+/* =========================================================
+   SUBMIT BUTTON
+   ========================================================= */
 
-.submit {
+.register-modal .submit {
+  margin-top: 4px;
+
   width: 100%;
-  height: 52px;
-
-  border: 0;
-  border-radius: 28px;
 
   background: var(--accent);
+
   color: #fff;
 
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 800;
+  border: none;
+
+  padding: 15px;
+
+  border-radius: 14px;
+
+  font-weight: 700;
+
+  font-size: 1.02rem;
 
   cursor: pointer;
 }
 
-.submit:disabled {
+.register-modal .submit:disabled {
   opacity: .65;
+
   cursor: not-allowed;
 }
 
 
-/* =========================
+/* =========================================================
    CONSENT
-   ========================= */
+   ========================================================= */
 
-.consent {
+.register-modal .consent {
+  font-size: .78rem;
+
   color: var(--faint);
+
+  text-align: center;
+
+  line-height: 1.5;
 }
 
 
-/* =========================
-   KEEP YOUR EXISTING
-   SPINNER / HP / VIEWER
-   STYLES BELOW THIS POINT
-   ========================= */
+/* =========================================================
+   SPINNER
+   ========================================================= */
+
+.spinner {
+  display: inline-block;
+
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid rgba(255,255,255,.35);
+
+  border-top-color: #fff;
+
+  border-radius: 50%;
+
+  animation: spin .7s linear infinite;
+
+  vertical-align: middle;
+
+  margin-right: 7px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 
-/* =========================
+/* =========================================================
+   HIDDEN HONEYPOT
+   ========================================================= */
+
+.hp {
+  position: absolute !important;
+
+  left: -9999px !important;
+
+  width: 1px !important;
+
+  height: 1px !important;
+
+  opacity: 0 !important;
+
+  pointer-events: none !important;
+}
+
+
+/* =========================================================
+   KEEP VIEWER / SUCCESS STYLES
+   ========================================================= */
+
+.viewer {
+  width: min(1100px, 100%);
+  max-height: 94vh;
+  overflow: auto;
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
    MOBILE
-   ========================= */
+   ========================================================= */
 
 @media (max-width: 900px) {
   .programs-view .card {
@@ -695,6 +1060,7 @@
   }
 }
 
+
 @media (max-width: 700px) {
   .programs-view .card {
     grid-template-columns: 1fr;
@@ -703,6 +1069,7 @@
   .programs-view .card-body {
     grid-column: 1;
     grid-row: 1;
+
     padding: 36px 28px;
   }
 
@@ -716,6 +1083,7 @@
     margin: 0 auto 30px;
   }
 }
+
 
 @media (max-width: 520px) {
   .programs-view .sub-header {
@@ -749,6 +1117,7 @@
   .programs-view .card-actions {
     flex-direction: column;
     align-items: stretch;
+
     width: 100%;
   }
 
@@ -764,6 +1133,11 @@
     gap: 0;
   }
 
+  .register-modal .two {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
   .overlay {
     padding: 12px;
   }
@@ -773,7 +1147,16 @@
     border-radius: 18px;
   }
 
+  .register-modal {
+    max-height: 94vh;
+    border-radius: 18px;
+  }
+
   .modal-head {
+    padding: 18px;
+  }
+
+  .register-modal .modal-head {
     padding: 18px;
   }
 
