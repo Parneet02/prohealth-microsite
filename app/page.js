@@ -18,6 +18,69 @@ const BLANK_FORM = {
   company: '',
 };
 
+const THEMES = {
+  light: {
+    '--ground': '#F5F3FB',
+    '--surface': '#FFFFFF',
+    '--surface-2': '#FAF8FE',
+    '--ink': '#241A33',
+    '--muted': '#6B6480',
+    '--faint': '#938CA6',
+    '--line': '#E7E2F0',
+    '--line-strong': '#D8D0E6',
+    '--brand': '#6A2C91',
+    '--brand-2': '#B0338C',
+    '--plus': '#6A2C91',
+    '--plus-soft': '#F1E9F7',
+    '--diet': '#2E7D32',
+    '--diet-soft': '#E6F2E7',
+    '--lab': '#C6820A',
+    '--lab-soft': '#FBEFD4',
+    '--good': '#2E7D32',
+    '--bad': '#C0392B',
+    '--focus': '#B0338C',
+  },
+
+  dark: {
+    '--ground': '#140F1C',
+    '--surface': '#1E1728',
+    '--surface-2': '#241C31',
+    '--ink': '#F3EEF9',
+    '--muted': '#B4AAC6',
+    '--faint': '#8A80A0',
+    '--line': '#332941',
+    '--line-strong': '#40344F',
+    '--brand': '#B884D8',
+    '--brand-2': '#E86FBE',
+    '--plus': '#C79BE4',
+    '--plus-soft': '#2A1E38',
+    '--diet': '#7FD08A',
+    '--diet-soft': '#17281A',
+    '--lab': '#F0C04E',
+    '--lab-soft': '#2E2410',
+    '--good': '#7FD08A',
+    '--bad': '#F0857A',
+    '--focus': '#E86FBE',
+  },
+};
+
+function applyTheme(themeName) {
+  const root = document.documentElement;
+  const theme = THEMES[themeName];
+
+  if (!theme) return;
+
+  root.setAttribute('data-theme', themeName);
+  root.style.colorScheme = themeName;
+
+  Object.entries(theme).forEach(([property, value]) => {
+    root.style.setProperty(property, value);
+  });
+
+  document.body.style.backgroundColor = theme['--ground'];
+  document.body.style.color = theme['--ink'];
+}
+
 function track(type, programKey) {
   try {
     fetch('/api/events', {
@@ -67,52 +130,7 @@ export default function Page() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null);
   const [tab, setTab] = useState('none');
-
   const [theme, setTheme] = useState('light');
-
-useEffect(() => {
-  const savedTheme = localStorage.getItem('theme');
-
-  const initialTheme =
-    savedTheme === 'dark' ? 'dark' : 'light';
-
-  setTheme(initialTheme);
-
-  document.documentElement.setAttribute(
-    'data-theme',
-    initialTheme
-  );
-
-  document.documentElement.style.colorScheme =
-    initialTheme;
-}, []);
-
-function toggleTheme() {
-  const currentTheme =
-    document.documentElement.getAttribute(
-      'data-theme'
-    ) || 'light';
-
-  const nextTheme =
-    currentTheme === 'dark'
-      ? 'light'
-      : 'dark';
-
-  document.documentElement.setAttribute(
-    'data-theme',
-    nextTheme
-  );
-
-  document.documentElement.style.colorScheme =
-    nextTheme;
-
-  localStorage.setItem(
-    'theme',
-    nextTheme
-  );
-
-  setTheme(nextTheme);
-}
 
   const nameRef = useRef(null);
   const modalRef = useRef(null);
@@ -126,27 +144,22 @@ function toggleTheme() {
     const savedTheme = localStorage.getItem('theme');
 
     const initialTheme =
-      savedTheme === 'dark' || savedTheme === 'light'
-        ? savedTheme
+      savedTheme === 'dark'
+        ? 'dark'
         : 'light';
 
     setTheme(initialTheme);
-
-    document.documentElement.setAttribute(
-      'data-theme',
-      initialTheme
-    );
+    applyTheme(initialTheme);
   }, []);
 
   function toggleTheme() {
     setTheme((currentTheme) => {
       const nextTheme =
-        currentTheme === 'dark' ? 'light' : 'dark';
+        currentTheme === 'dark'
+          ? 'light'
+          : 'dark';
 
-      document.documentElement.setAttribute(
-        'data-theme',
-        nextTheme
-      );
+      applyTheme(nextTheme);
 
       localStorage.setItem(
         'theme',
@@ -233,7 +246,6 @@ function toggleTheme() {
     post();
 
     const ro = new ResizeObserver(post);
-
     ro.observe(document.body);
 
     window.addEventListener(
@@ -483,16 +495,18 @@ function toggleTheme() {
           <span className="sub-spacer" />
 
           <button
-          type="button"
-          className="theme-toggle"
-          onClick={toggleTheme}
-          aria-label={
-            theme === 'dark'
-            ? 'Switch to light mode'
-            : 'Switch to dark mode'
+            type="button"
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={
+              theme === 'dark'
+                ? 'Switch to light mode'
+                : 'Switch to dark mode'
             }
-            >
-              {theme === 'dark' ? '☀️' : '🌙'}
+          >
+            {theme === 'dark'
+              ? '☀️'
+              : '🌙'}
           </button>
         </div>
 
