@@ -352,7 +352,7 @@ export default function Page() {
                 : 'Switch to dark mode'
             }
           >
-            {theme === 'dark' ? '☀️' : '🌙'}
+            ⏾
           </button>
         </div>
 
@@ -375,7 +375,6 @@ export default function Page() {
               <div className="stripe" />
 
               <div className="card-body">
-                {/* PLAN NAME */}
                 <div className="plan-banner">
                   <span className="plan-banner-icon">♡</span>
                   <span>{p.name}</span>
@@ -447,6 +446,7 @@ export default function Page() {
       </section>
 
       {/* FLYER VIEWER */}
+
       <div
         className={`overlay ${viewerProgram ? 'open' : ''}`}
         aria-hidden={!viewerProgram}
@@ -516,6 +516,7 @@ export default function Page() {
       </div>
 
       {/* REGISTRATION MODAL */}
+
       <div
         className={`overlay ${formOpen ? 'open' : ''}`}
         aria-hidden={!formOpen}
@@ -531,7 +532,9 @@ export default function Page() {
             role="dialog"
             aria-modal="true"
             ref={modalRef}
-            style={accentStyle(success ? successProgram : formProgram)}
+            style={accentStyle(
+              success ? successProgram : formProgram
+            )}
           >
             <div className="modal-head">
               <div>
