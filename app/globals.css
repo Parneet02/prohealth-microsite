@@ -1103,17 +1103,19 @@ SMALL MOBILE
 
   .programs-view .price-badge {
     max-width: 100%;
-    min-height: 40px;
-    margin-top: 10px;
-    margin-bottom: 7px;
-    font-size: 10px;
-    padding-left: 8px;
+  min-height: 43px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  padding: 4px 5px 4px 10px;
+  font-size: 13px;
   }
 
   .programs-view .price-badge .pp {
-    padding: 6px 8px;
-    margin-left: 5px;
-  }
+  gap: 5px;
+  margin-left: 6px;
+  padding: 7px 9px;
+  font-size: 13px;
+ }
 
   .programs-view .card-lower-content {
     width: 100%;
