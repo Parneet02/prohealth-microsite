@@ -361,7 +361,7 @@ BUTTONS
 }
 
 .programs-view .btn-primary {
-  width: 100%;
+  width: 80%;
   min-height: 42px;
   padding: 0 12px;
   border: 0;
@@ -998,9 +998,20 @@ MOBILE
     align-items: stretch;
     gap: 6px;
     margin: 0;
-  }
+    }
 
-  .programs-view .btn-primary,
+  .programs-view .btn-primary{
+    width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 30px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  }
   .programs-view .flyer-link {
   width: 100%;
   min-height: auto;
@@ -1012,7 +1023,8 @@ MOBILE
   color: var(--accent);
   font-size: 12px;
   text-align: left;
-  text-decoration: none;
+  text-decoration: underline;
+  cursor: pointer;
 }
 }
 
@@ -1151,23 +1163,40 @@ SMALL MOBILE
     white-space: normal;
   }
 
-  .programs-view .card-actions {
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
+.programs-view .card-actions {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
-  .programs-view .btn-primary,
-  .programs-view .flyer-link {
+.programs-view .btn-primary {
+  width: 100%;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 30px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11.5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.programs-view .flyer-link {
   width: 100%;
   min-height: auto;
   padding: 0;
   margin-left: 8px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--accent);
   font-size: 11.5px;
   text-align: left;
-  text-decoration: none;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
   /* =========================
