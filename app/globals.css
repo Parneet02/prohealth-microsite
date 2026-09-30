@@ -1593,30 +1593,33 @@ BUTTON AND FLYER
      WEB FLYER THUMBNAIL CROP
      ========================= */
 
+  /* The thumbnail box keeps its size (275x300) and position. It shows a
+     275x230 rounded window, vertically centred where the flyer sat, and
+     each flyer is zoomed so its photo area fills that window with the
+     heading ("ProHealth Plus / Stay proactive..." etc.) left outside.
+     Transforms do not affect layout, so nothing around the card moves. */
   .programs-view .card-media {
     position: relative;
     overflow: hidden;
-  }
-
-  .programs-view .card-media::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 140px;
-    background: var(--surface);
-    z-index: 2;
-    pointer-events: none;
+    clip-path: inset(35px 0 round 22px);
   }
 
   .programs-view .card-media img {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
+    transform-origin: 0 0;
+  }
+
+  /* Per flyer: translate(x, y) scale(zoom). Raise the y value (towards 0)
+     to show more of the top of the flyer, lower it to show less. */
+  .programs-view .card-media img[src*="plus-1"] {
+    transform: translate(-55px, -117px) scale(1.4);
+  }
+
+  .programs-view .card-media img[src*="diet-1"] {
+    transform: translate(-57px, -83px) scale(1.321);
+  }
+
+  .programs-view .card-media img[src*="lab-1"] {
+    transform: translate(-57px, -78px) scale(1.321);
   }
 
 
@@ -1680,4 +1683,30 @@ BUTTON AND FLYER
 
   }
 
+}
+
+/* =========================
+WEB FLYER THUMBNAIL CROP - NARROW DESKTOP (701px to 900px)
+========================= */
+
+/* Between 701px and 900px the existing rules shrink the box to 185x270,
+   so the window and offsets are scaled to match (185x155 window) and the
+   same part of each flyer is shown. */
+@media (min-width: 701px) and (max-width: 900px) {
+
+  .programs-view .card-media {
+    clip-path: inset(57.5px 0 round 22px);
+  }
+
+  .programs-view .card-media img[src*="plus-1"] {
+    transform: translate(-37px, -92.5px) scale(1.4);
+  }
+
+  .programs-view .card-media img[src*="diet-1"] {
+    transform: translate(-38.4px, -66.5px) scale(1.321);
+  }
+
+  .programs-view .card-media img[src*="lab-1"] {
+    transform: translate(-38.4px, -63px) scale(1.321);
+  }
 }
