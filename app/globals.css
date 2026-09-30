@@ -189,8 +189,8 @@ CARD
   display: grid;
   grid-template-columns:
     minmax(0, 1fr)
-    280px;
-  min-height: 410px;
+    260px;
+  min-height: 380px;
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
