@@ -1796,3 +1796,15 @@ WEB VIEW ONLY - ALIGN VIEW FLYER WITH REGISTER NOW
     align-self: flex-start;
   }
 }
+
+
+/* =========================
+HIDE THEME TOGGLE BUTTON
+========================= */
+
+/* Hidden from view only. visibility keeps the button's space in the
+   header so the logo and spacing do not move; the theme logic in
+   page.js is untouched. */
+.theme-toggle {
+  visibility: hidden;
+}
