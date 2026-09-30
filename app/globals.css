@@ -367,10 +367,9 @@ BUTTONS
 
 .programs-view .card-actions {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 0;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .programs-view .btn-primary {
