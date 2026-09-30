@@ -468,7 +468,7 @@ BUTTONS
   text-decoration: underline;
   font-size: 14px;
   text-align: center;
-  align-self: center;
+  align-self: stretch;
 
 }
 
