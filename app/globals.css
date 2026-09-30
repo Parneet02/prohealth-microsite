@@ -410,7 +410,7 @@ FLYER
   width: 275px;
   height: 300px;
   margin-top: -8px;
-  margin-right: 200px;
+  margin-right: 220px;
   padding: 0;
   border: 0;
   border-radius: 22px;
@@ -874,7 +874,7 @@ MOBILE
     grid-row: 1;
     width: 135px;
     height: 155px;
-    margin: 60px 16px 0 0;
+    margin: 60px 26px 0 0;
     justify-self: end;
     align-self: start;
     border-radius: 16px;
