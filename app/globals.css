@@ -2322,4 +2322,9 @@ WEB VIEW ONLY - REDUCE CARD CONTENT SPACING
     margin-top: 3px !important;
   }
 
+  @media (min-width: 701px) {
+  .programs-head {
+    text-align: left;
+  }
+  }
 }
