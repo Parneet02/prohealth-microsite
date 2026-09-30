@@ -361,13 +361,15 @@ BUTTONS
 }
 
 .programs-view .btn-primary {
-  min-height: 50px;
-  padding: 0 24px;
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
   border: 0;
   border-radius: 30px;
   background: var(--accent);
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
+  text-align: center;
   cursor: pointer;
 }
 
