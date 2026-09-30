@@ -408,7 +408,7 @@ FLYER
   align-self: start;
   justify-self: center;
   width: 275px;
-  height: 350px;
+  height: 300px;
   margin-top: -8px;
   margin-right: 200px;
   padding: 0;
@@ -873,7 +873,7 @@ MOBILE
     grid-column: 2;
     grid-row: 1;
     width: 135px;
-    height: 168px;
+    height: 160px;
     margin: 60px 16px 0 0;
     justify-self: end;
     align-self: start;
@@ -1113,7 +1113,7 @@ SMALL MOBILE
 
   .programs-view .card-media {
     width: 125px;
-    height: 152px;
+    height: 150px;
     margin: -5px 12px 0 0;
   }
 
