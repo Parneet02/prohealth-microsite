@@ -1861,5 +1861,13 @@ WEB VIEW ONLY - ALIGN HEADING WITH CARDS
     text-align: center;
     align-self: stretch;
   }
-
+   .programs-view .flyer-modal,
+  .programs-view .flyer-preview,
+  .programs-view .flyer-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
 }
