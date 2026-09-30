@@ -1834,6 +1834,16 @@ WEB VIEW ONLY - ALIGN HEADING WITH CARDS
 
   .programs-view .btn-primary {
     width: 100%;
+    min-height: 36px;
+    height: 36px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 30px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
   }
 
   .programs-view .flyer-link {
