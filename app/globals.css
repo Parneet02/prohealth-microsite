@@ -397,6 +397,7 @@ BUTTONS
   text-decoration: underline;
   font-size: 14px;
   text-align: center;
+  align-self: center;
 }
 
 /* =========================
@@ -928,7 +929,7 @@ MOBILE
     display: block;
     max-width: 100%;
     margin-top: 0;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
     padding: 0;
     border-radius: 0;
     background: transparent;
@@ -949,7 +950,7 @@ MOBILE
 
   .programs-view .program-tagline {
     margin-top: 0;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     font-size: 14px;
     line-height: 1.3;
     text-align: left;
@@ -996,6 +997,8 @@ MOBILE
     line-height: 1.4;
     overflow-wrap: break-word;
     text-align: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   .programs-view .chips {
@@ -1006,6 +1009,7 @@ MOBILE
     gap: 4px;
     margin: 0 0 10px;
     text-align: left;
+    margin-top: 4px;
   }
 
   .programs-view .chip {
