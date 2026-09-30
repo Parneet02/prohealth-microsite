@@ -204,7 +204,7 @@ PROGRAM PAGE
 
   max-width: 1150px;
 
-  margin: 0 auto;
+  margin: -15px auto 0;
 
   padding: 34px 20px 26px;
 
@@ -228,7 +228,7 @@ PROGRAM PAGE
 
   max-width: 1150px;
 
-  margin: 0 auto;
+  margin: -15px auto 0;
 
   padding: 0 20px 30px;
 
@@ -1337,7 +1337,7 @@ MOBILE
 @media (max-width: 700px) {
 
   .programs {
-    margin: -15px auto 0;
+
     padding: 0 16px 24px;
 
     gap: 14px;
@@ -1669,11 +1669,15 @@ SMALL MOBILE
   }
 
   .programs-head .lead {
+
     position: relative;
+
     top: -8px;
+
   }
 
   .programs {
+
     margin-top: -15px;
 
     padding: 0 16px 24px;
@@ -2109,3 +2113,4 @@ MOBILE FLYER VIEWER
   }
 
 }
+
