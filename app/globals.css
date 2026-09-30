@@ -1858,7 +1858,7 @@ WEB VIEW ONLY - ALIGN HEADING WITH CARDS
     cursor: pointer;
     text-decoration: underline;
     font-size: 14px;
-    text-align: center;
+    text-align: left;
     align-self: stretch;
   }
 
