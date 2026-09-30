@@ -1554,13 +1554,16 @@ BUTTON AND FLYER
   ========================= */
 
   .programs-view .card-media {
-    overflow: hidden;
-  }
+  overflow: hidden;
+}
 
-  .programs-view .card-media img {
-    object-fit: cover;
-    object-position: center bottom;
-  }
+.programs-view .card-media img {
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+  object-position: center bottom;
+  transform: translateY(0);
+}
 
 
   /* =========================
