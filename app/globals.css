@@ -1710,3 +1710,67 @@ WEB FLYER THUMBNAIL CROP - NARROW DESKTOP (701px to 900px)
     transform: translate(-38.4px, -63px) scale(1.321);
   }
 }
+
+
+/* =========================
+MOBILE FLYER THUMBNAIL CROP
+========================= */
+
+/* Same zoomed crop as the web cards. The box keeps its mobile size and
+   position; only a rounded window inside it is shown and each flyer is
+   zoomed so its photo area fills that window. */
+@media (max-width: 700px) {
+
+  .programs-view .card-media {
+    clip-path: inset(21px 0 round 16px);
+  }
+
+  .programs-view .card-media img {
+    transform-origin: 0 0;
+  }
+
+  .programs-view .card-media img[src*="plus-1"] {
+    transform: translate(-27px, -59px) scale(1.4);
+  }
+
+  .programs-view .card-media img[src*="diet-1"] {
+    transform: translate(-28px, -42px) scale(1.321);
+  }
+
+  .programs-view .card-media img[src*="lab-1"] {
+    transform: translate(-28px, -39.3px) scale(1.321);
+  }
+}
+
+/* At 520px and below the existing rules shrink the box to 125x145. */
+@media (max-width: 520px) {
+
+  .programs-view .card-media {
+    clip-path: inset(20px 0 round 16px);
+  }
+
+  .programs-view .card-media img[src*="plus-1"] {
+    transform: translate(-25px, -55px) scale(1.4);
+  }
+
+  .programs-view .card-media img[src*="diet-1"] {
+    transform: translate(-25.9px, -39px) scale(1.321);
+  }
+
+  .programs-view .card-media img[src*="lab-1"] {
+    transform: translate(-25.9px, -36.6px) scale(1.321);
+  }
+}
+
+
+/* =========================
+DARK MODE ONLY - GREY PROGRAM TEXT
+========================= */
+
+/* Intro line, card descriptions and chip labels switch from the lavender
+   muted tone to a neutral grey in dark mode. Light mode is untouched. */
+[data-theme="dark"] .programs-head .lead,
+[data-theme="dark"] .programs-view .desc,
+[data-theme="dark"] .programs-view .chip {
+  color: #B3B3B3;
+}
