@@ -306,7 +306,7 @@ PRICE
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-left: 0px;
+  margin-left: 2px;
   padding: 10px 16px;
   border-radius: 30px;
   background: var(--accent);
@@ -1163,7 +1163,7 @@ SMALL MOBILE
 
   .programs-view .price-badge .pp {
     gap: 5px;
-    margin-left: 6px;
+    margin-left: 2px;
     padding: 7px 9px;
     font-size: 13px;
   }
