@@ -1,41 +1,23 @@
 :root {
 
   --ground: #F5F3FB;
-
   --surface: #FFFFFF;
-
   --surface-2: #FAF8FE;
-
   --ink: #241A33;
-
   --muted: #6B6480;
-
   --faint: #938CA6;
-
   --line: #E7E2F0;
-
   --line-strong: #D8D0E6;
-
   --brand: #6A2C91;
-
   --brand-2: #B0338C;
-
   --plus: #6A2C91;
-
   --plus-soft: #F1E9F7;
-
   --diet: #2E7D32;
-
   --diet-soft: #E6F2E7;
-
   --lab: #C6820A;
-
   --lab-soft: #FBEFD4;
-
   --good: #2E7D32;
-
   --bad: #C0392B;
-
   --focus: #B0338C;
 
   --shadow-card:
@@ -49,17 +31,12 @@
     0 6px 20px -12px rgba(46, 25, 74, 0.30);
 
   --radius: 22px;
-
   --radius-sm: 14px;
-
   --app-nav: 56px;
 
   --safe-t: env(safe-area-inset-top, 0px);
-
   --safe-r: env(safe-area-inset-right, 0px);
-
   --safe-b: env(safe-area-inset-bottom, 0px);
-
   --safe-l: env(safe-area-inset-left, 0px);
 
   --nav-clear: calc(var(--app-nav) + var(--safe-b));
@@ -79,41 +56,23 @@ LIGHT MODE
 :root {
 
   --ground: #F5F3FB;
-
   --surface: #FFFFFF;
-
   --surface-2: #FAF8FE;
-
   --ink: #241A33;
-
   --muted: #6B6480;
-
   --faint: #938CA6;
-
   --line: #E7E2F0;
-
   --line-strong: #D8D0E6;
-
   --brand: #6A2C91;
-
   --brand-2: #B0338C;
-
   --plus: #6A2C91;
-
   --plus-soft: #F1E9F7;
-
   --diet: #2E7D32;
-
   --diet-soft: #E6F2E7;
-
   --lab: #C6820A;
-
   --lab-soft: #FBEFD4;
-
   --good: #2E7D32;
-
   --bad: #C0392B;
-
   --focus: #B0338C;
 
 }
@@ -125,41 +84,23 @@ DARK MODE
 :root {
 
   --ground: #140F1C;
-
   --surface: #1E1728;
-
   --surface-2: #241C31;
-
   --ink: #F3EEF9;
-
   --muted: #B4AAC6;
-
   --faint: #8A80A0;
-
   --line: #332941;
-
   --line-strong: #40344F;
-
   --brand: #B884D8;
-
   --brand-2: #E86FBE;
-
   --plus: #C79BE4;
-
   --plus-soft: #2A1E38;
-
   --diet: #7FD08A;
-
   --diet-soft: #17281A;
-
   --lab: #F0C04E;
-
   --lab-soft: #2E2410;
-
   --good: #7FD08A;
-
   --bad: #F0857A;
-
   --focus: #E86FBE;
 
 }
@@ -171,11 +112,8 @@ PROGRAM PAGE
 .programs-view {
 
   min-height: 100vh;
-
   background: var(--ground);
-
   color: var(--ink);
-
   padding-bottom: 50px;
 
 }
@@ -183,17 +121,11 @@ PROGRAM PAGE
 .programs-view .sub-header {
 
   height: 64px;
-
   display: flex;
-
   align-items: center;
-
   padding: 0 32px;
-
   border-bottom: 1px solid var(--line);
-
   background: var(--surface);
-
   color: var(--ink);
 
 }
@@ -201,9 +133,7 @@ PROGRAM PAGE
 .programs-head {
 
   max-width: 1150px;
-
   margin: -30px auto 0;
-
   padding: 34px 20px 26px;
 
 }
@@ -224,13 +154,9 @@ PROGRAM PAGE
 .programs {
 
   max-width: 1050px;
-
   margin: -30px auto 0;
-
   padding: 0 20px 30px;
-
   display: grid;
-
   gap: 18px;
 
 }
@@ -242,31 +168,18 @@ THEME TOGGLE
 .theme-toggle {
 
   margin-left: auto;
-
   width: 42px;
-
   height: 42px;
-
   flex: 0 0 auto;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   border: 1px solid var(--line-strong);
-
   border-radius: 50%;
-
   background: var(--surface-2);
-
   color: var(--ink);
-
   font-size: 24px;
-
   line-height: 1;
-
   cursor: pointer;
 
   transition:
@@ -280,7 +193,6 @@ THEME TOGGLE
 .theme-toggle:hover {
 
   transform: scale(1.05);
-
   background: var(--surface);
 
 }
@@ -288,7 +200,6 @@ THEME TOGGLE
 .theme-toggle:focus {
 
   outline: none;
-
   border-color: var(--brand-2);
 
 }
@@ -300,7 +211,6 @@ CARD
 .programs-view .card {
 
   position: relative;
-
   display: grid;
 
   grid-template-columns:
@@ -308,19 +218,13 @@ CARD
     240px;
 
   min-height: 360px;
-
   overflow: hidden;
-
   background: var(--surface);
-
   border: 1px solid var(--line);
-
   border-radius: 22px;
-
   box-shadow: var(--shadow-card);
 
   --accent: var(--brand);
-
   --accent-soft: var(--plus-soft);
 
 }
@@ -342,21 +246,15 @@ CARD BODY
 .programs-view .card-body {
 
   grid-column: 1;
-
   grid-row: 1;
-
   min-width: 0;
 
   padding: 28px 28px 28px 42px;
 
   display: flex;
-
   flex-direction: column;
-
   align-items: flex-start;
-
   justify-content: center;
-
   text-align: left;
 
 }
@@ -368,9 +266,7 @@ TOP CARD CONTENT
 .programs-view .card-top-content {
 
   min-width: 0;
-
   width: 100%;
-
   text-align: left;
 
 }
@@ -382,9 +278,7 @@ LOWER CARD CONTENT
 .programs-view .card-lower-content {
 
   min-width: 0;
-
   width: 100%;
-
   text-align: left;
 
 }
@@ -396,23 +290,14 @@ PLAIN PLAN NAME
 .programs-view .plan-banner {
 
   display: block;
-
   margin-bottom: 14px;
-
   padding: 0;
-
   border-radius: 0;
-
   background: transparent;
-
   color: var(--accent);
-
   font-size: 18px;
-
   font-weight: 850;
-
   line-height: 1.3;
-
   white-space: nowrap;
 
 }
@@ -444,19 +329,12 @@ TAGLINE
 .programs-view .program-tagline {
 
   margin-top: 0;
-
   margin-bottom: 18px;
-
   color: var(--accent);
-
   font-size: 18px;
-
   line-height: 1.3;
-
   font-weight: 700;
-
   font-style: italic;
-
   text-align: left;
 
 }
@@ -468,27 +346,16 @@ PRICE
 .programs-view .price-badge {
 
   display: inline-flex;
-
   align-items: center;
-
   min-height: 54px;
-
   margin-bottom: 18px;
-
   padding: 4px 7px 4px 16px;
-
   border: 1px solid var(--line-strong);
-
   border-radius: 40px;
-
   background: var(--surface-2);
-
   color: var(--ink);
-
   align-self: flex-start;
-
   margin-top: 8px;
-
   margin-left: -8px;
 
 }
@@ -496,21 +363,13 @@ PRICE
 .programs-view .price-badge .pp {
 
   display: inline-flex;
-
   align-items: center;
-
   gap: 8px;
-
   margin-left: -5px;
-
   padding: 10px 16px;
-
   border-radius: 30px;
-
   background: var(--accent);
-
   color: #fff;
-
   white-space: nowrap;
 
 }
@@ -528,15 +387,10 @@ SHORT DESCRIPTION
 .programs-view .desc {
 
   max-width: 610px;
-
   margin: 0 0 16px;
-
   color: var(--muted);
-
   font-size: 15px;
-
   line-height: 1.5;
-
   text-align: left;
 
 }
@@ -548,15 +402,10 @@ CHIPS
 .programs-view .chips {
 
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 8px;
-
   max-width: 650px;
-
   margin-bottom: 20px;
-
   text-align: left;
 
 }
@@ -568,19 +417,12 @@ CHIP
 .programs-view .chip {
 
   padding: 6px 10px;
-
   border: 1px solid var(--line);
-
   border-radius: 18px;
-
   background: var(--surface-2);
-
   color: var(--muted);
-
   font-size: 12px;
-
   line-height: 1.2;
-
   white-space: nowrap;
 
 }
@@ -592,11 +434,8 @@ BUTTONS
 .programs-view .card-actions {
 
   display: flex;
-
   flex-direction: column;
-
   align-items: flex-start;
-
   gap: 8px;
 
 }
@@ -604,23 +443,14 @@ BUTTONS
 .programs-view .btn-primary {
 
   width: 80%;
-
   min-height: 42px;
-
   padding: 0 12px;
-
   border: 0;
-
   border-radius: 30px;
-
   background: var(--accent);
-
   color: #fff;
-
   font-size: 12px;
-
   text-align: center;
-
   cursor: pointer;
 
 }
@@ -628,27 +458,16 @@ BUTTONS
 .programs-view .flyer-link {
 
   min-height: auto;
-
   padding: 0;
-
   margin-left: 0;
-
   border: 0;
-
   border-radius: 0;
-
   background: transparent;
-
   color: var(--accent);
-
   cursor: pointer;
-
   text-decoration: underline;
-
   font-size: 14px;
-
   text-align: center;
-
   align-self: center;
 
 }
@@ -660,37 +479,25 @@ FLYER
 .programs-view .card-media {
 
   grid-column: 2;
-
   grid-row: 1;
-
   align-self: start;
-
   justify-self: center;
 
   width: 275px;
-
   height: 300px;
 
   margin-top: -8px;
-
   margin-right: 235px;
 
   padding: 0;
-
   border: 0;
-
   border-radius: 22px;
-
   background: transparent;
-
   overflow: hidden;
-
   cursor: pointer;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
 }
@@ -698,15 +505,10 @@ FLYER
 .programs-view .card-media img {
 
   display: block;
-
   width: 100%;
-
   height: 100%;
-
   object-fit: contain;
-
   object-position: center;
-
   border-radius: 22px;
 
 }
@@ -718,25 +520,19 @@ OVERLAY
 .overlay {
 
   position: fixed;
-
   z-index: 1000;
-
   inset: 0;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   padding: 24px;
 
   background: rgba(7, 4, 12, .78);
-
   backdrop-filter: blur(10px);
 
   opacity: 0;
-
   visibility: hidden;
 
   transition:
@@ -748,7 +544,6 @@ OVERLAY
 .overlay.open {
 
   opacity: 1;
-
   visibility: visible;
 
 }
@@ -760,15 +555,10 @@ NORMAL MODAL
 .modal {
 
   width: min(680px, 100%);
-
   max-height: min(900px, 92vh);
-
   overflow: auto;
-
   background: var(--surface);
-
   border: 1px solid var(--line);
-
   border-radius: 22px;
 
   box-shadow:
@@ -785,15 +575,11 @@ REGISTRATION MODAL
 .register-modal {
 
   width: min(440px, 100%);
-
   max-height: 92vh;
-
   overflow-x: hidden;
-
   overflow-y: auto;
 
   scrollbar-width: none;
-
   -ms-overflow-style: none;
 
   background:
@@ -804,11 +590,8 @@ REGISTRATION MODAL
     );
 
   color: var(--ink);
-
   border-radius: 24px;
-
   box-shadow: var(--shadow);
-
   border: 1px solid var(--line);
 
 }
@@ -816,9 +599,7 @@ REGISTRATION MODAL
 .register-modal::-webkit-scrollbar {
 
   width: 0;
-
   height: 0;
-
   display: none;
 
 }
@@ -830,17 +611,11 @@ MODAL HEADER
 .modal-head {
 
   display: flex;
-
   justify-content: space-between;
-
   align-items: flex-start;
-
   padding: 24px;
-
   border-bottom: 1px solid var(--line);
-
   background: var(--surface);
-
   min-width: 0;
 
 }
@@ -850,17 +625,13 @@ MODAL HEADER
   padding: 22px 26px;
 
   display: flex;
-
   align-items: flex-start;
-
   justify-content: space-between;
-
   gap: 14px;
 
   border-bottom: 1px solid var(--line);
 
   position: sticky;
-
   top: 0;
 
   background:
@@ -871,7 +642,6 @@ MODAL HEADER
     );
 
   z-index: 2;
-
   min-width: 0;
 
 }
@@ -883,13 +653,9 @@ MODAL TEXT
 .mtitle {
 
   margin-top: 8px;
-
   font-size: 23px;
-
   font-weight: 800;
-
   color: var(--ink);
-
   min-width: 0;
 
 }
@@ -897,11 +663,8 @@ MODAL TEXT
 .register-modal .mtitle {
 
   font-family: "Sora", sans-serif;
-
   font-weight: 700;
-
   font-size: 1.25rem;
-
   color: var(--ink);
 
 }
@@ -909,11 +672,8 @@ MODAL TEXT
 .msub {
 
   margin-top: 5px;
-
   color: var(--muted);
-
   font-size: 13px;
-
   line-height: 1.5;
 
 }
@@ -921,9 +681,7 @@ MODAL TEXT
 .register-modal .msub {
 
   color: var(--muted);
-
   font-size: .9rem;
-
   margin-top: 3px;
 
 }
@@ -935,23 +693,14 @@ BADGE
 .badge {
 
   display: inline-flex;
-
   align-items: center;
-
   gap: 7px;
-
   padding: 7px 12px;
-
   border-radius: 20px;
-
   background: var(--accent-soft);
-
   color: var(--accent);
-
   font-size: 12px;
-
   font-weight: 800;
-
   max-width: 100%;
 
 }
@@ -959,25 +708,15 @@ BADGE
 .register-modal .badge {
 
   display: inline-flex;
-
   align-items: center;
-
   gap: 7px;
-
   padding: 5px 11px;
-
   border-radius: 999px;
-
   font-weight: 700;
-
   font-size: .72rem;
-
   background: var(--accent-soft);
-
   color: var(--accent);
-
   margin-bottom: 8px;
-
   max-width: 100%;
 
 }
@@ -989,21 +728,13 @@ CLOSE
 .x {
 
   width: 38px;
-
   height: 38px;
-
   flex: 0 0 auto;
-
   border: 1px solid var(--line-strong);
-
   border-radius: 50%;
-
   background: transparent;
-
   color: var(--ink);
-
   font-size: 19px;
-
   cursor: pointer;
 
 }
@@ -1011,21 +742,13 @@ CLOSE
 .register-modal .x {
 
   border: none;
-
   background: var(--surface-2);
-
   color: var(--ink);
-
   width: 36px;
-
   height: 36px;
-
   border-radius: 10px;
-
   cursor: pointer;
-
   font-size: 1.1rem;
-
   flex: 0 0 auto;
 
 }
@@ -1037,13 +760,9 @@ FORM
 .register-modal form {
 
   width: 100%;
-
   padding: 22px 26px 26px;
-
   display: grid;
-
   gap: 16px;
-
   min-width: 0;
 
 }
@@ -1051,13 +770,9 @@ FORM
 .register-modal .field {
 
   width: 100%;
-
   min-width: 0;
-
   display: grid;
-
   gap: 6px;
-
   margin-bottom: 0;
 
 }
@@ -1065,17 +780,11 @@ FORM
 .register-modal .field label {
 
   display: block;
-
   width: 100%;
-
   font-weight: 600;
-
   font-size: .9rem;
-
   color: var(--ink);
-
   margin-bottom: 0;
-
   overflow-wrap: break-word;
 
 }
@@ -1090,33 +799,19 @@ FORM
 .register-modal .field select {
 
   display: block;
-
   width: 100%;
-
   max-width: 100%;
-
   min-width: 0;
-
   height: 46px;
-
   padding: 0 14px;
-
   margin: 0;
-
   border-radius: 12px;
-
   border: 1.5px solid var(--line-strong);
-
   background: var(--surface-2);
-
   color: var(--ink);
-
   font-family: inherit;
-
   font-size: 14px;
-
   outline: none;
-
   box-sizing: border-box;
 
 }
@@ -1124,7 +819,6 @@ FORM
 .register-modal .field input::placeholder {
 
   color: var(--faint);
-
   opacity: 1;
 
 }
@@ -1133,7 +827,6 @@ FORM
 .register-modal .field select:focus {
 
   outline: none;
-
   border-color: var(--accent);
 
 }
@@ -1153,7 +846,6 @@ TWO COLUMN FORM
     minmax(0, 1fr);
 
   gap: 16px;
-
   min-width: 0;
 
 }
@@ -1165,15 +857,10 @@ ERROR
 .register-modal .field .err {
 
   width: 100%;
-
   min-height: 16px;
-
   color: var(--bad);
-
   font-size: .8rem;
-
   display: none;
-
   overflow-wrap: break-word;
 
 }
@@ -1194,9 +881,7 @@ ERROR
 .register-modal .form-error {
 
   width: 100%;
-
   margin-bottom: 0;
-
   padding: 12px 14px;
 
   border:
@@ -1217,7 +902,6 @@ ERROR
     );
 
   color: var(--bad);
-
   font-size: 13px;
 
 }
@@ -1229,25 +913,15 @@ SUBMIT
 .register-modal .submit {
 
   width: 100%;
-
   min-width: 0;
-
   margin-top: 4px;
-
   background: var(--accent);
-
   color: #fff;
-
   border: none;
-
   padding: 15px;
-
   border-radius: 14px;
-
   font-weight: 700;
-
   font-size: 1.02rem;
-
   cursor: pointer;
 
 }
@@ -1255,7 +929,6 @@ SUBMIT
 .register-modal .submit:disabled {
 
   opacity: .65;
-
   cursor: not-allowed;
 
 }
@@ -1267,13 +940,9 @@ CONSENT
 .register-modal .consent {
 
   width: 100%;
-
   font-size: .78rem;
-
   color: var(--faint);
-
   text-align: center;
-
   line-height: 1.5;
 
 }
@@ -1285,21 +954,13 @@ SPINNER
 .spinner {
 
   display: inline-block;
-
   width: 16px;
-
   height: 16px;
-
   border: 2px solid rgba(255,255,255,.35);
-
   border-top-color: #fff;
-
   border-radius: 50%;
-
   animation: spin .7s linear infinite;
-
   vertical-align: middle;
-
   margin-right: 7px;
 
 }
@@ -1319,15 +980,10 @@ HONEYPOT
 .hp {
 
   position: absolute !important;
-
   left: -9999px !important;
-
   width: 1px !important;
-
   height: 1px !important;
-
   opacity: 0 !important;
-
   pointer-events: none !important;
 
 }
@@ -1349,9 +1005,7 @@ TABLET
   .programs-view .card-body {
 
     padding-left: 34px;
-
     padding-right: 18px;
-
     text-align: left;
 
   }
@@ -1359,9 +1013,7 @@ TABLET
   .programs-view .card-media {
 
     width: 185px;
-
     height: 270px;
-
     margin-right: 12px;
 
   }
@@ -1377,7 +1029,6 @@ MOBILE
   .programs {
 
     padding: 0 16px 24px;
-
     gap: 14px;
 
   }
@@ -1391,11 +1042,8 @@ MOBILE
       140px;
 
     min-height: 0;
-
     overflow: hidden;
-
     align-items: start;
-
     border-radius: 18px;
 
   }
@@ -1407,21 +1055,17 @@ MOBILE
   .programs-view .card-media {
 
     grid-column: 2;
-
     grid-row: 1;
 
     width: 135px;
-
     height: 155px;
 
     margin: 60px 16px 0 0;
 
     justify-self: end;
-
     align-self: start;
 
     border-radius: 16px;
-
     z-index: 3;
 
   }
@@ -1429,13 +1073,9 @@ MOBILE
   .programs-view .card-media img {
 
     width: 100%;
-
     height: 100%;
-
     object-fit: contain;
-
     object-position: center;
-
     border-radius: 16px;
 
   }
@@ -1447,17 +1087,14 @@ MOBILE
   .programs-view .card-body {
 
     grid-column: 1 / -1;
-
     grid-row: 1;
 
     min-width: 0;
-
     width: 100%;
 
     padding: 10px 18px 18px 20px;
 
     display: block;
-
     text-align: left;
 
   }
@@ -1469,21 +1106,15 @@ MOBILE
   .programs-view .card-top-content {
 
     width: calc(100% - 140px);
-
     min-height: 168px;
-
     min-width: 0;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: flex-start;
-
     justify-content: flex-start;
 
     padding-top: 8px;
-
     text-align: left;
 
   }
@@ -1495,27 +1126,18 @@ MOBILE
   .programs-view .plan-banner {
 
     display: block;
-
     max-width: 100%;
-
     margin-top: 0;
-
     margin-bottom: 5px;
-
     padding: 0;
 
     border-radius: 0;
-
     background: transparent;
-
     color: var(--accent);
 
     font-size: 15px;
-
     font-weight: 850;
-
     line-height: 1.3;
-
     white-space: normal;
 
   }
@@ -1533,13 +1155,9 @@ MOBILE
   .programs-view .program-tagline {
 
     margin-top: 0;
-
     margin-bottom: 5px;
-
     font-size: 14px;
-
     line-height: 1.3;
-
     text-align: left;
 
   }
@@ -1551,15 +1169,12 @@ MOBILE
   .programs-view .price-badge {
 
     max-width: 100%;
-
     min-height: 48px;
 
     margin-top: 5px;
-
     margin-bottom: -6px;
 
     padding: 5px 7px 5px 12px;
-
     font-size: 12px;
 
     align-self: flex-start;
@@ -1569,9 +1184,7 @@ MOBILE
   .programs-view .price-badge .pp {
 
     gap: 5px;
-
     margin-left: 0px;
-
     padding: 7px 9px;
 
   }
@@ -1583,13 +1196,10 @@ MOBILE
   .programs-view .card-lower-content {
 
     width: 100%;
-
     max-width: 100%;
-
     min-width: 0;
 
     margin-top: 5px;
-
     text-align: left;
 
   }
@@ -1597,23 +1207,18 @@ MOBILE
   .programs-view .desc {
 
     width: 100%;
-
     max-width: 100%;
 
     margin: 0 0 9px;
 
     color: var(--muted);
-
     font-size: 12.5px;
-
     line-height: 1.4;
 
     overflow-wrap: break-word;
-
     text-align: left;
 
     margin-top: 5px;
-
     margin-bottom: 5px;
 
   }
@@ -1621,17 +1226,14 @@ MOBILE
   .programs-view .chips {
 
     width: 100%;
-
     max-width: 100%;
 
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 4px;
 
     margin: 0 0 10px;
-
     text-align: left;
 
     margin-top: 4px;
@@ -1641,13 +1243,9 @@ MOBILE
   .programs-view .chip {
 
     padding: 5px 7px;
-
     font-size: 10px;
-
     line-height: 1.2;
-
     white-space: normal;
-
     max-width: 100%;
 
   }
@@ -1655,19 +1253,14 @@ MOBILE
   .programs-view .card-actions {
 
     width: 100%;
-
     max-width: 100%;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: stretch;
 
     gap: 6px;
-
     margin: 0;
-
     justify-content: flex-start;
 
   }
@@ -1675,23 +1268,17 @@ MOBILE
   .programs-view .btn-primary {
 
     width: 100%;
-
     min-height: 42px;
-
     padding: 0 12px;
 
     border: 0;
-
     border-radius: 30px;
 
     background: var(--accent);
-
     color: #fff;
 
     font-size: 12px;
-
     text-align: center;
-
     cursor: pointer;
 
   }
@@ -1699,25 +1286,18 @@ MOBILE
   .programs-view .flyer-link {
 
     width: 100%;
-
     min-height: auto;
-
     padding: 0;
-
     margin-left: 0;
 
     border: 0;
-
     border-radius: 0;
 
     background: transparent;
-
     color: var(--accent);
 
     font-size: 12px;
-
     text-align: center;
-
     text-decoration: underline;
 
     cursor: pointer;
@@ -1747,9 +1327,7 @@ SMALL MOBILE
   .theme-toggle {
 
     width: 38px;
-
     height: 38px;
-
     font-size: 22px;
 
   }
@@ -1759,7 +1337,6 @@ SMALL MOBILE
   .programs-head {
 
     margin-top: -10px;
-
     padding: 0 18px 5px;
 
   }
@@ -1768,7 +1345,6 @@ SMALL MOBILE
   .programs-head h2 {
 
     white-space: nowrap;
-
     font-size: 22px;
 
   }
@@ -1776,7 +1352,6 @@ SMALL MOBILE
   .programs-head .lead {
 
     position: relative;
-
     top: -8px;
 
   }
@@ -1784,9 +1359,7 @@ SMALL MOBILE
   .programs {
 
     margin-top: -25px;
-
     padding: 0 16px 24px;
-
     gap: 12px;
 
   }
@@ -1802,9 +1375,7 @@ SMALL MOBILE
   .programs-view .card-body {
 
     width: 100%;
-
     padding: 8px 18px 16px 18px;
-
     text-align: left;
 
   }
@@ -1812,9 +1383,7 @@ SMALL MOBILE
   .programs-view .card-media {
 
     width: 125px;
-
     height: 145px;
-
     margin: -5px 12px 0 0;
 
   }
@@ -1822,11 +1391,8 @@ SMALL MOBILE
   .programs-view .card-top-content {
 
     width: calc(100% - 112px);
-
     min-height: 115px;
-
     text-align: left;
-
     align-items: flex-start;
 
   }
@@ -1834,7 +1400,6 @@ SMALL MOBILE
   .programs-view .card-lower-content {
 
     margin-top: -8px;
-
     text-align: left;
 
   }
@@ -1846,21 +1411,15 @@ SMALL MOBILE
   .programs-view .plan-banner {
 
     display: block;
-
     font-size: 14px;
-
     padding: 0;
-
     gap: 0;
 
     margin-top: 0;
-
     margin-bottom: 6px;
 
     border-radius: 0;
-
     background: transparent;
-
     white-space: normal;
 
   }
@@ -1874,9 +1433,7 @@ SMALL MOBILE
   .programs-view .program-tagline {
 
     font-size: 13px;
-
     margin-bottom: 7px;
-
     text-align: left;
 
   }
@@ -1884,15 +1441,12 @@ SMALL MOBILE
   .programs-view .price-badge {
 
     max-width: 100%;
-
     min-height: 43px;
 
     margin-top: 0px;
-
     margin-bottom: 8px;
 
     padding: 4px 5px 4px 10px;
-
     font-size: 13px;
 
     align-self: flex-start;
@@ -1902,11 +1456,8 @@ SMALL MOBILE
   .programs-view .price-badge .pp {
 
     gap: 5px;
-
     margin-left: 0px;
-
     padding: 7px 9px;
-
     font-size: 13px;
 
   }
@@ -1914,13 +1465,10 @@ SMALL MOBILE
   .programs-view .card-lower-content {
 
     width: 100%;
-
     max-width: 100%;
-
     min-width: 0;
 
     margin-top: 5px;
-
     text-align: left;
 
   }
@@ -1928,17 +1476,14 @@ SMALL MOBILE
   .programs-view .desc {
 
     width: 100%;
-
     max-width: 100%;
 
     font-size: 11.5px;
-
     line-height: 1.35;
 
     margin: 0 0 7px;
 
     overflow-wrap: break-word;
-
     text-align: left;
 
   }
@@ -1946,17 +1491,14 @@ SMALL MOBILE
   .programs-view .chips {
 
     width: 100%;
-
     max-width: 100%;
 
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 3px;
 
     margin: 0 0 8px;
-
     text-align: left;
 
   }
@@ -1964,11 +1506,8 @@ SMALL MOBILE
   .programs-view .chip {
 
     font-size: 9.5px;
-
     padding: 4px 5px;
-
     line-height: 1.2;
-
     white-space: normal;
 
   }
@@ -1976,15 +1515,12 @@ SMALL MOBILE
   .programs-view .card-actions {
 
     width: 100%;
-
     max-width: 100%;
 
     display: flex;
-
     flex-direction: column;
 
     gap: 5px;
-
     justify-content: flex-start;
 
   }
@@ -1992,23 +1528,17 @@ SMALL MOBILE
   .programs-view .btn-primary {
 
     width: 100%;
-
     min-height: 40px;
-
     padding: 0 12px;
 
     border: 0;
-
     border-radius: 30px;
 
     background: var(--accent);
-
     color: #fff;
 
     font-size: 11.5px;
-
     text-align: center;
-
     cursor: pointer;
 
   }
@@ -2016,25 +1546,18 @@ SMALL MOBILE
   .programs-view .flyer-link {
 
     width: 100%;
-
     min-height: auto;
-
     padding: 0;
-
     margin-left: 0;
 
     border: 0;
-
     border-radius: 0;
 
     background: transparent;
-
     color: var(--accent);
 
     font-size: 11.5px;
-
     text-align: center;
-
     text-decoration: underline;
 
     cursor: pointer;
@@ -2054,7 +1577,6 @@ SMALL MOBILE
   .modal {
 
     max-height: 94vh;
-
     border-radius: 18px;
 
   }
@@ -2062,19 +1584,15 @@ SMALL MOBILE
   .register-modal {
 
     width: 100%;
-
     max-width: 440px;
-
     max-height: 94vh;
 
     border-radius: 18px;
 
     overflow-x: hidden !important;
-
     overflow-y: auto !important;
 
     scrollbar-width: none;
-
     -ms-overflow-style: none;
 
   }
@@ -2082,9 +1600,7 @@ SMALL MOBILE
   .register-modal::-webkit-scrollbar {
 
     display: none;
-
     width: 0;
-
     height: 0;
 
   }
@@ -2098,11 +1614,8 @@ SMALL MOBILE
   .register-modal .modal-head {
 
     padding: 18px;
-
     position: sticky;
-
     top: 0;
-
     z-index: 2;
 
   }
@@ -2110,9 +1623,7 @@ SMALL MOBILE
   .register-modal form {
 
     width: 100%;
-
     padding: 18px;
-
     gap: 16px;
 
   }
@@ -2120,13 +1631,12 @@ SMALL MOBILE
   .register-modal .two {
 
     width: 100%;
-
     display: grid;
 
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns:
+      minmax(0, 1fr);
 
     gap: 16px;
-
     min-width: 0;
 
   }
@@ -2134,13 +1644,9 @@ SMALL MOBILE
   .register-modal .field {
 
     width: 100%;
-
     min-width: 0;
-
     display: grid;
-
     gap: 6px;
-
     margin-bottom: 0;
 
   }
@@ -2149,7 +1655,6 @@ SMALL MOBILE
   .register-modal .field select {
 
     width: 100%;
-
     max-width: 100%;
 
   }
@@ -2171,15 +1676,11 @@ MOBILE FLYER VIEWER
   .modal.viewer {
 
     width: 100%;
-
     max-width: 100%;
-
     max-height: 94vh;
-
     border-radius: 16px;
 
     overflow-x: hidden;
-
     overflow-y: auto;
 
   }
@@ -2193,7 +1694,6 @@ MOBILE FLYER VIEWER
   .modal.viewer .mtitle {
 
     font-size: 18px;
-
     line-height: 1.3;
 
   }
@@ -2201,7 +1701,6 @@ MOBILE FLYER VIEWER
   .modal.viewer .msub {
 
     font-size: 12px;
-
     line-height: 1.4;
 
   }
@@ -2209,11 +1708,8 @@ MOBILE FLYER VIEWER
   .modal.viewer .x {
 
     width: 34px;
-
     height: 34px;
-
     flex: 0 0 34px;
-
     font-size: 16px;
 
   }
@@ -2221,9 +1717,7 @@ MOBILE FLYER VIEWER
   .modal.viewer .viewer-body {
 
     width: 100%;
-
     padding: 12px;
-
     overflow-x: hidden;
 
   }
@@ -2231,9 +1725,7 @@ MOBILE FLYER VIEWER
   .modal.viewer .viewer-page {
 
     width: 100%;
-
     max-width: 100%;
-
     margin: 0 auto;
 
   }
@@ -2241,15 +1733,11 @@ MOBILE FLYER VIEWER
   .modal.viewer .viewer-page img {
 
     display: block;
-
     width: 100%;
-
     max-width: 100%;
-
     height: auto;
 
     object-fit: contain;
-
     border-radius: 10px;
 
   }
@@ -2257,9 +1745,7 @@ MOBILE FLYER VIEWER
   .modal.viewer .viewer-page figcaption {
 
     text-align: center;
-
     font-size: 11px;
-
     margin-top: 6px;
 
   }
@@ -2267,15 +1753,12 @@ MOBILE FLYER VIEWER
   .modal.viewer .viewer-cta {
 
     width: 100%;
-
     padding: 12px;
 
     position: sticky;
-
     bottom: 0;
 
     background: var(--surface);
-
     border-top: 1px solid var(--line);
 
   }
@@ -2283,11 +1766,8 @@ MOBILE FLYER VIEWER
   .modal.viewer .viewer-cta .vfull {
 
     width: 100%;
-
     min-height: 44px;
-
     font-size: 12px;
-
     padding: 0 12px;
 
   }
@@ -2322,9 +1802,26 @@ WEB VIEW ONLY - REDUCE CARD CONTENT SPACING
     margin-top: 3px !important;
   }
 
-  @media (min-width: 701px) {
+}
+
+/* =========================
+WEB VIEW ONLY - ALIGN HEADING WITH CARDS
+========================= */
+
+@media (min-width: 701px) {
+
   .programs-head {
+
+    max-width: 1050px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
     text-align: left;
+
   }
-  }
+
 }
