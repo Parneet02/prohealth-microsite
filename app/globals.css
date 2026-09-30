@@ -1824,4 +1824,32 @@ WEB VIEW ONLY - ALIGN HEADING WITH CARDS
 
   }
 
+  .programs-view .card-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .programs-view .btn-primary {
+    width: 100%;
+  }
+
+  .programs-view .flyer-link {
+    width: 100%;
+    min-height: auto;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 14px;
+    text-align: center;
+    align-self: stretch;
+  }
+
 }
