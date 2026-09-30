@@ -516,10 +516,8 @@ export default function Page() {
           </h1>
 
           <p className="lead">
-            Premium, on-demand health programs
-            from HCL Healthcare. Register in the
-            one that fits you and download your
-            flyer instantly.
+            Premium, on-demand health programs. 
+            Register in the one that fits you.
           </p>
         </div>
 
@@ -550,7 +548,7 @@ export default function Page() {
 
                   <div className="price-badge">
                     <span className="pd">
-                      Plan duration {p.duration}
+                       {p.duration}
                     </span>
 
                     <span className="pp">
