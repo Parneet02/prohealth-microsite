@@ -547,21 +547,14 @@ export default function Page() {
                   </div>
 
                   <div className="price-badge">
-                    <span className="pd">
-                       {p.duration}
-                    </span>
-
                     <span className="pp">
-                      <s>
-                        {p.mrp}
-                      </s>
-
-                      <b>
-                        {p.price}
-                      </b>
-                    </span>
+                      <s>₹3998</s>
+                      <strong>₹1999</strong>
+                      </span>
+                      <span className="pd">
+                        {p.duration}
+                        </span>
                   </div>
-                </div>
 
                 <div className="card-lower-content">
                   <p className="desc">
