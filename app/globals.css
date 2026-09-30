@@ -376,14 +376,15 @@ BUTTONS
 .programs-view .flyer-link {
   min-height: auto;
   padding: 0;
-  margin-left: 8px;
+  margin-left: 0;
   border: 0;
   border-radius: 0;
   background: transparent;
   color: var(--accent);
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: underline;
   font-size: 14px;
+  text-align: center;
 }
 
 /* =========================
@@ -939,11 +940,11 @@ MOBILE
 
   .programs-view .price-badge {
     max-width: 100%;
-  min-height: 48px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  padding: 5px 7px 5px 12px;
-  font-size: 12px;
+    min-height: 48px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 5px 7px 5px 12px;
+    font-size: 12px;
   }
 
   .programs-view .price-badge .pp {
@@ -998,34 +999,35 @@ MOBILE
     align-items: stretch;
     gap: 6px;
     margin: 0;
-    }
-
-  .programs-view .btn-primary{
-    width: 100%;
-  min-height: 42px;
-  padding: 0 12px;
-  border: 0;
-  border-radius: 30px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 12px;
-  text-align: center;
-  cursor: pointer;
   }
+
+  .programs-view .btn-primary {
+    width: 100%;
+    min-height: 42px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 30px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+  }
+
   .programs-view .flyer-link {
-  width: 100%;
-  min-height: auto;
-  padding: 0;
-  margin-left: 8px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--accent);
-  font-size: 12px;
-  text-align: left;
-  text-decoration: underline;
-  cursor: pointer;
-}
+    width: 100%;
+    min-height: auto;
+    padding: 0;
+    margin-left: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--accent);
+    font-size: 12px;
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 
 /* =========================
@@ -1117,19 +1119,19 @@ SMALL MOBILE
 
   .programs-view .price-badge {
     max-width: 100%;
-  min-height: 43px;
-  margin-top: 10px;
-  margin-bottom: 8px;
-  padding: 4px 5px 4px 10px;
-  font-size: 13px;
+    min-height: 43px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    padding: 4px 5px 4px 10px;
+    font-size: 13px;
   }
 
   .programs-view .price-badge .pp {
-  gap: 5px;
-  margin-left: 6px;
-  padding: 7px 9px;
-  font-size: 13px;
- }
+    gap: 5px;
+    margin-left: 6px;
+    padding: 7px 9px;
+    font-size: 13px;
+  }
 
   .programs-view .card-lower-content {
     width: 100%;
@@ -1163,41 +1165,41 @@ SMALL MOBILE
     white-space: normal;
   }
 
-.programs-view .card-actions {
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
+  .programs-view .card-actions {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
 
-.programs-view .btn-primary {
-  width: 100%;
-  min-height: 40px;
-  padding: 0 12px;
-  border: 0;
-  border-radius: 30px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 11.5px;
-  text-align: center;
-  cursor: pointer;
-}
+  .programs-view .btn-primary {
+    width: 100%;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 30px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11.5px;
+    text-align: center;
+    cursor: pointer;
+  }
 
-.programs-view .flyer-link {
-  width: 100%;
-  min-height: auto;
-  padding: 0;
-  margin-left: 8px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--accent);
-  font-size: 11.5px;
-  text-align: left;
-  text-decoration: underline;
-  cursor: pointer;
-}
+  .programs-view .flyer-link {
+    width: 100%;
+    min-height: auto;
+    padding: 0;
+    margin-left: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--accent);
+    font-size: 11.5px;
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 
   /* =========================
   REGISTRATION MODAL MOBILE
