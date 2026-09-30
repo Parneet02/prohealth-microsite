@@ -1774,3 +1774,25 @@ DARK MODE ONLY - GREY PROGRAM TEXT
 [data-theme="dark"] .programs-view .chip {
   color: #B3B3B3;
 }
+
+
+/* =========================
+WEB VIEW ONLY - ALIGN VIEW FLYER WITH REGISTER NOW
+========================= */
+
+/* Register Now is 80% wide and left aligned, while View Flyer was centred
+   across the full row, so the two did not line up. Giving the link the
+   same 80% width centres it under the button. The button is also made
+   slightly taller (36px to 42px). */
+@media (min-width: 701px) {
+
+  .programs-view .btn-primary {
+    min-height: 42px;
+    height: 42px;
+  }
+
+  .programs-view .flyer-link {
+    width: 80%;
+    align-self: flex-start;
+  }
+}
