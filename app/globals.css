@@ -306,12 +306,15 @@ PRICE
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-left: 8px;
+  margin-left: 0px;
   padding: 10px 16px;
   border-radius: 30px;
   background: var(--accent);
   color: #fff;
   white-space: nowrap;
+}
+.programs-view .price-badge .pd {
+  margin-left: 10px;
 }
 
 /* =========================
