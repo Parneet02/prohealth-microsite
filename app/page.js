@@ -140,16 +140,23 @@ export default function Page() {
   }, []);
 
   /* THEME */
+  /* The toggle button is hidden, so the page follows the device's
+     light/dark setting (phone, computer or the host app's webview) and
+     switches live if that setting changes while the page is open. */
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-    const initialTheme =
-      savedTheme === 'dark'
-        ? 'dark'
-        : 'light';
+    function followDevice() {
+      const deviceTheme = darkQuery.matches ? 'dark' : 'light';
+      setTheme(deviceTheme);
+      applyTheme(deviceTheme);
+    }
 
-    setTheme(initialTheme);
-    applyTheme(initialTheme);
+    followDevice();
+
+    darkQuery.addEventListener('change', followDevice);
+
+    return () => darkQuery.removeEventListener('change', followDevice);
   }, []);
 
   function toggleTheme() {
