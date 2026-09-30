@@ -1061,10 +1061,13 @@ SMALL MOBILE
   }
 
   .programs-view .card-top-content {
-    width: calc(100% - 118px);
-    min-height: 148px;
-    padding-top: 6px;
-  }
+  width: calc(100% - 118px);
+  min-height: 120px;
+}
+
+.programs-view .card-lower-content {
+  margin-top: -8px;
+}
 
   .programs-view .plan-banner {
     font-size: 14px;
