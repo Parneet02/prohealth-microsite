@@ -1833,7 +1833,7 @@ WEB VIEW ONLY - ALIGN HEADING WITH CARDS
   }
 
   .programs-view .btn-primary {
-    width: 150px;
+    width: 80%;
     min-height: 36px;
     height: 36px;
     padding: 0 12px;
@@ -1858,7 +1858,7 @@ WEB VIEW ONLY - ALIGN HEADING WITH CARDS
     cursor: pointer;
     text-decoration: underline;
     font-size: 14px;
-    text-align: left;
+    text-align: center;
     align-self: stretch;
   }
 
