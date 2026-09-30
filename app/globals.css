@@ -1501,104 +1501,183 @@ BUTTON AND FLYER
 @media (min-width: 701px) {
 
   .programs-head {
+
     max-width: 1050px;
+
     margin-left: auto;
+
     margin-right: auto;
+
     padding-left: 20px;
+
     padding-right: 20px;
+
     text-align: left;
+
   }
 
   .programs-view .card-actions {
+
     width: 100%;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: stretch;
+
     gap: 8px;
+
   }
 
   .programs-view .btn-primary {
+
     width: 80%;
+
     min-height: 36px;
+
     height: 36px;
+
     padding: 0 12px;
+
     border: 0;
+
     border-radius: 30px;
+
     background: var(--accent);
+
     color: #fff;
+
     font-size: 14px;
+
     text-align: center;
+
     cursor: pointer;
+
   }
 
   .programs-view .flyer-link {
+
     display: block;
+
     width: 100%;
+
     min-height: auto;
+
     padding: 0;
+
     margin: 0;
+
     border: 0;
+
     border-radius: 0;
+
     background: transparent;
+
     color: var(--accent);
+
     cursor: pointer;
+
     text-decoration: underline;
+
     font-size: 14px;
+
     text-align: center;
+
     align-self: stretch;
+
   }
 
 
   /* =========================
-  WEB FLYER THUMBNAIL CROP
-  ========================= */
+     WEB FLYER THUMBNAIL CROP
+     ========================= */
 
   .programs-view .card-media {
-  overflow: hidden;
-}
-
-.programs-view .card-media img {
-  width: 100%;
-  height: 130%;
-  object-fit: cover;
-  object-position: center bottom;
-  transform: translateY(0);
-}
-
-
-  /* =========================
-  WEB FLYER VIEWER
-  ========================= */
-
-  .modal.viewer {
-    width: min(900px, 92vw);
-    max-width: 92vw;
-    max-height: 92vh;
+    position: relative;
     overflow: hidden;
   }
 
-  .modal.viewer .viewer-body {
+  .programs-view .card-media::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: var(--surface);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .programs-view .card-media img {
+    position: relative;
+    z-index: 1;
     width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+
+  /* =========================
+     WEB FLYER VIEWER
+     ========================= */
+
+  .modal.viewer {
+
+    width: min(900px, 92vw);
+
+    max-width: 92vw;
+
+    max-height: 92vh;
+
+    overflow: hidden;
+
+  }
+
+  .modal.viewer .viewer-body {
+
+    width: 100%;
+
     max-height: calc(92vh - 150px);
+
     padding: 20px;
+
     overflow-y: auto;
+
     overflow-x: hidden;
+
   }
 
   .modal.viewer .viewer-page {
+
     width: 100%;
+
     max-width: 100%;
+
     margin: 0 auto;
+
     text-align: center;
+
   }
 
   .modal.viewer .viewer-page img {
+
     display: block;
+
     width: auto;
+
     max-width: 100%;
+
     height: auto;
+
     object-fit: contain;
+
     margin: 0 auto;
+
     border-radius: 10px;
+
   }
+
 }
